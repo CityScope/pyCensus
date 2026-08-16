@@ -6,7 +6,7 @@ import warnings
 
 
 def fetch_variables(source: str, year: int, level: str, region: str, codes: List[str], api_key: Optional[str] = None):
-    warnings.warn(f"Destatis does not provide a REST API. Download manually from https://www.destatis.de/")
+    warnings.warn(f"Destatis does not provide a REST API. Download manually from https://www.destatis.de/ and place it in your cache directory.")
     raise NotImplementedError("Destatis data must be downloaded manually.")
 
 

@@ -7,9 +7,9 @@ Technical aspects:
     Unlike US census data which has APIs, Israel's CBS Census 2022 data
     must be downloaded as files from CBS's website. This module provides
     tools to:
-    1. Download census aggregated tables to data/israel/
-    2. Load and process the data into a common-schema GeoDataFrame
-    3. Cache processed data for efficient repeated access
+    1. Load and process the data into a common-schema GeoDataFrame
+    2. Cache processed data for efficient repeated access
+    3. Download data to the cache directory
 
 Source:
     https://www.cbs.gov.il/en/subjects/pages/census-of-population-and-housing.aspx

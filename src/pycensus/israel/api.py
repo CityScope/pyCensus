@@ -51,7 +51,7 @@ def fetch_variables(
     warnings.warn(
         f"CBS (Israel) does not provide a REST API for census data downloads. "
         f"Please download the data manually from https://www.cbs.gov.il/en/subjects/pages/census-of-population-and-housing.aspx "
-        f"and place it in your cache directory or data/israel/ folder."
+        f"and place it in your cache directory."
     )
     raise NotImplementedError(
         "CBS census data must be downloaded manually. "

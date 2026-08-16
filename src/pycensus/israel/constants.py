@@ -201,7 +201,7 @@ CENSUS_2022_URLS: Dict[str, str] = {
     "boundaries": "https://www.cbs.gov.il/en/statistics/pages/geographic-information.aspx",
 }
 
-# Default data directory
+# Default data directory (kept for backward compatibility, but cache is preferred)
 DEFAULT_DATA_DIR = "data/israel"
 
 __all__ = [

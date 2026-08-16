@@ -7,9 +7,9 @@ Technical aspects:
     Unlike US census data which has APIs, Spain's INE Census 2021 data
     must be downloaded as files from INE's website. This module provides
     tools to:
-    1. Download census aggregated tables to data/spain/
-    2. Load and process the data into a common-schema GeoDataFrame
-    3. Cache processed data for efficient repeated access
+    1. Load and process the data into a common-schema GeoDataFrame
+    2. Cache processed data for efficient repeated access
+    3. Download data to the cache directory
 
 Source:
     https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736176780

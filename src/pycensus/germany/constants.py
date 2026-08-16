@@ -78,6 +78,7 @@ CENSUS_2022_URLS: Dict[str, str] = {
     "boundaries": "https://www.destatis.de/DE/Service/Geodaten/_inhalt.html",
 }
 
+# Default data directory (kept for backward compatibility, but cache is preferred)
 DEFAULT_DATA_DIR = "data/germany"
 
 __all__ = ["STATE_CODES", "STATE_ABBR", "STATE_AGS", "LEVEL_FALLBACK", "LATEST_YEAR", "CENSUS_2022_URLS", "DEFAULT_DATA_DIR"]

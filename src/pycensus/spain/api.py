@@ -51,7 +51,7 @@ def fetch_variables(
     warnings.warn(
         f"INE (Spain) does not provide a REST API for census data downloads. "
         f"Please download the data manually from https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736176780 "
-        f"and place it in your cache directory or data/spain/ folder."
+        f"and place it in your cache directory."
     )
     raise NotImplementedError(
         "INE census data must be downloaded manually. "
