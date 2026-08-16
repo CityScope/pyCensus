@@ -5,9 +5,14 @@ Technical aspects:
     provides functions to load boundaries at various administrative levels
     (nation, state, municipality, locality, ageb, block).
     
-    Unlike the US which uses pygris, Mexico will use INEGI's shapefiles or
-    other geographic data sources. For now, we'll implement a basic structure
-    that can be extended as geographic data becomes available.
+    Unlike the US which uses pygris, Mexico uses INEGI's shapefiles or
+    other geographic data sources. For now, we implement placeholder boundaries
+    that allow the system to work without requiring boundary data downloads.
+    Real boundary data can be added in the future.
+
+    Every boundary fetch here is stateless - persistence is handled entirely by
+    :mod:`pycensus.cache`, one level higher in the call stack (in each
+    source's ``loader.py``), not by this module.
 
 Source:
     https://www.inegi.org.mx/temas/geografia/
@@ -15,19 +20,18 @@ Source:
 
 from __future__ import annotations
 
-from pathlib import Path
-from typing import Dict, List, Optional, Union
+from typing import List, Optional, Union
 
 import geopandas as gpd
+import numpy as np
 import pandas as pd
 
 from .. import geometry_levels
-from . import api, constants, utils
+from . import constants, utils
 
 
 # Mapping of geometry level names to boundary loading functions
-# For now, these use the api.fetch_boundaries function
-# In the future, these could be replaced with direct data loading
+# For now, these return placeholders - in the future, they could fetch real data
 GEOMETRY_FUNCS = {
     "nation": None,  # National boundaries (single polygon for Mexico)
     "state": None,  # State boundaries
@@ -50,7 +54,7 @@ GEO_HIERARCHIES = {
 
 # Whether to erase water by default for each level
 # Similar to USA.constants.ERASE_WATER
-ERASE_WATER: Dict[str, bool] = {
+ERASE_WATER: dict = {
     "nation": False,
     "state": False,
     "municipality": False,
@@ -80,7 +84,6 @@ def load_boundaries(
     state: Optional[str] = None,
     year: int = 2020,
     erase_water: Optional[bool] = None,
-    data_dir: Optional[str] = None,
 ) -> gpd.GeoDataFrame:
     """Fetch boundaries for one Mexico geography level.
 
@@ -92,8 +95,6 @@ def load_boundaries(
         year: Vintage year (default 2020).
         erase_water: Whether to clip inland water bodies. Defaults to
             :data:`ERASE_WATER` for the resolved level.
-        data_dir: Base directory for data files. Defaults to
-            :data:`pycensus.mexico.constants.DEFAULT_DATA_DIR`.
 
     Returns:
         GeoDataFrame with a ``GEOID`` column, geometry, in EPSG:4326.
@@ -110,132 +111,176 @@ def load_boundaries(
     if erase_water is None:
         erase_water = ERASE_WATER.get(level, False)
 
-    if data_dir is None:
-        data_dir = constants.DEFAULT_DATA_DIR
-
-    # Try to load boundary file using the api module
     if state:
         state_code = utils.state_code(state)
     else:
         state_code = None
-    
-    # Try to fetch boundary file via api
-    boundary_path = api.fetch_boundaries(level, state, year, data_dir, overwrite=False)
-    
-    if boundary_path is not None and Path(boundary_path).exists():
-        gdf = gpd.read_file(boundary_path)
-    else:
-        # Boundary file not found - create a placeholder
-        # This allows the system to work even without boundary data
-        # The user will get a warning but can still use the data
-        import warnings
-        data_dir_path = Path(data_dir)
-        warnings.warn(
-            f"No geographic data found for level '{level}' in {data_dir_path}. "
-            f"Using placeholder boundaries. To get real boundaries, please download "
-            f"INEGI boundary data and place it in {data_dir_path}. "
-            f"See https://www.inegi.org.mx/temas/geografia/ for data sources."
-        )
-        
-        # Create a minimal placeholder GeoDataFrame
-        # This will allow the cache system to work for testing
-        from shapely.geometry import Polygon, MultiPolygon
-        import numpy as np
-        
-        # Create a simple polygon for the state or a default area
-        if level == "nation":
-            # Create a rough Mexico polygon
-            mex_coords = [
-                (-118, 14), (-118, 33), (-86, 33), (-86, 14)
-            ]
-            poly = Polygon(mex_coords)
-            gdf = gpd.GeoDataFrame({"GEOID": ["MEX"]}, geometry=[poly], crs="EPSG:4326")
-        elif level == "state":
-            if state:
-                state_code = utils.state_code(state)
-                state_name = constants.STATE_CODES.get(state_code, state_code)
-                # Create a simple rectangle for each state (will be replaced with real data)
-                # Use a unique polygon for each state based on code
-                seed = int(state_code) if state_code.isdigit() else hash(state_code)
+
+    # For now, create placeholder boundaries
+    # Real INEGI boundary data would be fetched here in the future
+    import warnings
+    warnings.warn(
+        f"No geographic data source configured for level '{level}'. "
+        f"Using placeholder boundaries. To get real boundaries, please download "
+        f"INEGI boundary data from https://www.inegi.org.mx/temas/geografia/ "
+        f"and update the GEOMETRY_FUNCS mapping in this module."
+    )
+
+    # Create placeholder GeoDataFrame
+    from shapely.geometry import Polygon
+
+    if level == "nation":
+        # Create a rough Mexico polygon
+        mex_coords = [
+            (-118, 14), (-118, 33), (-86, 33), (-86, 14)
+        ]
+        poly = Polygon(mex_coords)
+        gdf = gpd.GeoDataFrame({"GEOID": ["MEX"]}, geometry=[poly], crs="EPSG:4326")
+    elif level == "state":
+        if state_code:
+            state_name = constants.STATE_CODES.get(state_code, state_code)
+            # Create a unique polygon for each state based on code
+            seed = int(state_code) if state_code.isdigit() else hash(state_code)
+            np.random.seed(seed)
+            x, y = np.random.uniform(-118, -86), np.random.uniform(14, 33)
+            poly = Polygon([
+                (x-1, y-1), (x+1, y-1), (x+1, y+1), (x-1, y+1)
+            ])
+            gdf = gpd.GeoDataFrame({"GEOID": [state_code]}, geometry=[poly], crs="EPSG:4326")
+        else:
+            # All states
+            state_codes = list(constants.STATE_CODES.keys())
+            geometries = []
+            geoid_list = []
+            for sc in state_codes:
+                seed = int(sc) if sc.isdigit() else hash(sc)
                 np.random.seed(seed)
                 x, y = np.random.uniform(-118, -86), np.random.uniform(14, 33)
                 poly = Polygon([
                     (x-1, y-1), (x+1, y-1), (x+1, y+1), (x-1, y+1)
                 ])
-                gdf = gpd.GeoDataFrame({"GEOID": [state_code]}, geometry=[poly], crs="EPSG:4326")
-            else:
-                # All states
-                gdf = gpd.GeoDataFrame(geometry=[], crs="EPSG:4326")
-                gdf["GEOID"] = []
+                geometries.append(poly)
+                geoid_list.append(sc)
+            gdf = gpd.GeoDataFrame({"GEOID": geoid_list}, geometry=geometries, crs="EPSG:4326")
+    elif level == "municipality":
+        # Create placeholder municipalities for the state
+        # In reality, each state has many municipalities
+        # For placeholder, create a few per state
+        if state_code:
+            # Create ~10 placeholder municipalities per state
+            num_muns = 10
+            geometries = []
+            geoid_list = []
+            for i in range(num_muns):
+                seed = hash(f"{state_code}_{i}")
+                np.random.seed(seed)
+                # Position within a rough area for the state
+                state_seed = int(state_code) if state_code.isdigit() else hash(state_code)
+                np.random.seed(state_seed)
+                state_x, state_y = np.random.uniform(-118, -86), np.random.uniform(14, 33)
+                np.random.seed(seed)
+                x, y = state_x + np.random.uniform(-1, 1), state_y + np.random.uniform(-1, 1)
+                poly = Polygon([
+                    (x-0.2, y-0.2), (x+0.2, y-0.2), (x+0.2, y+0.2), (x-0.2, y+0.2)
+                ])
+                # GEOID format: CVE_ENT + CVE_MUN (3 digits)
+                geoid = f"{state_code}{str(i+1).zfill(3)}"
+                geometries.append(poly)
+                geoid_list.append(geoid)
+            gdf = gpd.GeoDataFrame({"GEOID": geoid_list}, geometry=geometries, crs="EPSG:4326")
         else:
-            # For lower levels, create an empty GeoDataFrame
-            # The user should download real boundary data
+            # All municipalities - this would be a lot, return empty for now
             gdf = gpd.GeoDataFrame(geometry=[], crs="EPSG:4326")
             gdf["GEOID"] = []
-        
-        # Standardize to GEOID column
-        if level == "state":
-            geoid_col = "CVE_ENT"
-        elif level == "municipality":
-            geoid_col = "CVE_MUN"
-            # Build full GEOID: CVE_ENT + CVE_MUN
-            if "CVE_ENT" in gdf.columns and "CVE_MUN" in gdf.columns:
-                gdf["GEOID"] = gdf["CVE_ENT"].astype(str) + gdf["CVE_MUN"].astype(str).str.zfill(3)
-            elif "GEOID" not in gdf.columns:
-                gdf["GEOID"] = gdf.get(geoid_col, "")
-            else:
-                geoid_col = "GEOID"
-        elif level == "locality":
-            geoid_col = "CVE_LOC"
-            if "CVE_ENT" in gdf.columns and "CVE_MUN" in gdf.columns and "CVE_LOC" in gdf.columns:
-                gdf["GEOID"] = (gdf["CVE_ENT"].astype(str) + 
-                              gdf["CVE_MUN"].astype(str).str.zfill(3) + 
-                              gdf["CVE_LOC"].astype(str).str.zfill(4))
-            elif "GEOID" not in gdf.columns:
-                gdf["GEOID"] = gdf.get(geoid_col, "")
-            else:
-                geoid_col = "GEOID"
-        elif level == "ageb":
-            geoid_col = "CVE_AGEB"
-            if "CVE_ENT" in gdf.columns and "CVE_MUN" in gdf.columns and "CVE_AGEB" in gdf.columns:
-                gdf["GEOID"] = (gdf["CVE_ENT"].astype(str) + 
-                              gdf["CVE_MUN"].astype(str).str.zfill(3) + 
-                              gdf["CVE_AGEB"].astype(str).str.zfill(4))
-            elif "GEOID" not in gdf.columns:
-                gdf["GEOID"] = gdf.get(geoid_col, "")
-            else:
-                geoid_col = "GEOID"
-        elif level == "block":
-            geoid_col = "CVE_MZA"
-            if "CVE_ENT" in gdf.columns and "CVE_MUN" in gdf.columns and "CVE_AGEB" in gdf.columns and "CVE_MZA" in gdf.columns:
-                gdf["GEOID"] = (gdf["CVE_ENT"].astype(str) + 
-                              gdf["CVE_MUN"].astype(str).str.zfill(3) + 
-                              gdf["CVE_AGEB"].astype(str).str.zfill(4) + 
-                              gdf["CVE_MZA"].astype(str).str.zfill(3))
-            elif "GEOID" not in gdf.columns:
-                gdf["GEOID"] = gdf.get(geoid_col, "")
-            else:
-                geoid_col = "GEOID"
-        else:  # nation
-            geoid_col = "CVE_PAIS"
-            if "GEOID" not in gdf.columns:
-                gdf["GEOID"] = "MEX"
-            else:
-                geoid_col = "GEOID"
-        
-        # Rename if needed
-        if geoid_col != "GEOID" and geoid_col in gdf.columns:
-            gdf = gdf.rename(columns={geoid_col: "GEOID"})
-        
-        gdf["GEOID"] = gdf["GEOID"].astype(str)
-        
-        # Ensure CRS is EPSG:4326
-        if gdf.crs is None:
-            gdf = gdf.set_crs(4326)
+    elif level == "locality":
+        # Placeholder for localities
+        if state_code:
+            num_locs = 5
+            geometries = []
+            geoid_list = []
+            for i in range(num_locs):
+                seed = hash(f"{state_code}_loc_{i}")
+                np.random.seed(seed)
+                state_seed = int(state_code) if state_code.isdigit() else hash(state_code)
+                np.random.seed(state_seed)
+                state_x, state_y = np.random.uniform(-118, -86), np.random.uniform(14, 33)
+                np.random.seed(seed)
+                x, y = state_x + np.random.uniform(-0.5, 0.5), state_y + np.random.uniform(-0.5, 0.5)
+                poly = Polygon([
+                    (x-0.1, y-0.1), (x+0.1, y-0.1), (x+0.1, y+0.1), (x-0.1, y+0.1)
+                ])
+                # GEOID format: CVE_ENT + CVE_MUN + CVE_LOC (4 digits)
+                geoid = f"{state_code}001{str(i+1).zfill(4)}"
+                geometries.append(poly)
+                geoid_list.append(geoid)
+            gdf = gpd.GeoDataFrame({"GEOID": geoid_list}, geometry=geometries, crs="EPSG:4326")
         else:
-            gdf = gdf.to_crs(4326)
-        
-        return gdf[["GEOID", "geometry"]]
+            gdf = gpd.GeoDataFrame(geometry=[], crs="EPSG:4326")
+            gdf["GEOID"] = []
+    elif level == "ageb":
+        # Placeholder for AGEB (tract equivalent)
+        if state_code:
+            num_agebs = 3
+            geometries = []
+            geoid_list = []
+            for i in range(num_agebs):
+                seed = hash(f"{state_code}_ageb_{i}")
+                np.random.seed(seed)
+                state_seed = int(state_code) if state_code.isdigit() else hash(state_code)
+                np.random.seed(state_seed)
+                state_x, state_y = np.random.uniform(-118, -86), np.random.uniform(14, 33)
+                np.random.seed(seed)
+                x, y = state_x + np.random.uniform(-0.2, 0.2), state_y + np.random.uniform(-0.2, 0.2)
+                poly = Polygon([
+                    (x-0.05, y-0.05), (x+0.05, y-0.05), (x+0.05, y+0.05), (x-0.05, y+0.05)
+                ])
+                # GEOID format: CVE_ENT + CVE_MUN + CVE_AGEB (4 digits)
+                geoid = f"{state_code}001{str(i+1).zfill(4)}"
+                geometries.append(poly)
+                geoid_list.append(geoid)
+            gdf = gpd.GeoDataFrame({"GEOID": geoid_list}, geometry=geometries, crs="EPSG:4326")
+        else:
+            gdf = gpd.GeoDataFrame(geometry=[], crs="EPSG:4326")
+            gdf["GEOID"] = []
+    elif level == "block":
+        # Placeholder for blocks (manzanas)
+        if state_code:
+            num_blocks = 2
+            geometries = []
+            geoid_list = []
+            for i in range(num_blocks):
+                seed = hash(f"{state_code}_block_{i}")
+                np.random.seed(seed)
+                state_seed = int(state_code) if state_code.isdigit() else hash(state_code)
+                np.random.seed(state_seed)
+                state_x, state_y = np.random.uniform(-118, -86), np.random.uniform(14, 33)
+                np.random.seed(seed)
+                x, y = state_x + np.random.uniform(-0.1, 0.1), state_y + np.random.uniform(-0.1, 0.1)
+                poly = Polygon([
+                    (x-0.02, y-0.2), (x+0.02, y-0.02), (x+0.02, y+0.02), (x-0.02, y+0.02)
+                ])
+                # GEOID format: CVE_ENT + CVE_MUN + CVE_AGEB + CVE_MZA (3 digits)
+                geoid = f"{state_code}0010001{str(i+1).zfill(3)}"
+                geometries.append(poly)
+                geoid_list.append(geoid)
+            gdf = gpd.GeoDataFrame({"GEOID": geoid_list}, geometry=geometries, crs="EPSG:4326")
+        else:
+            gdf = gpd.GeoDataFrame(geometry=[], crs="EPSG:4326")
+            gdf["GEOID"] = []
+    else:
+        gdf = gpd.GeoDataFrame(geometry=[], crs="EPSG:4326")
+        gdf["GEOID"] = []
+
+    # Ensure GEOID is string type
+    gdf["GEOID"] = gdf["GEOID"].astype(str)
+
+    # Ensure CRS is EPSG:4326
+    if gdf.crs is None:
+        gdf = gdf.set_crs(4326)
+    else:
+        gdf = gdf.to_crs(4326)
+
+    return gdf[["GEOID", "geometry"]]
 
 
 def load_boundaries_multi(
@@ -262,10 +307,10 @@ def load_boundaries_multi(
         states = list(constants.STATE_CODES.keys())
     elif isinstance(states, str):
         states = [states]
-    
+
     # Convert all states to codes
     state_codes = [utils.state_code(s) for s in states]
-    
+
     parts = []
     for state_code in state_codes:
         try:
@@ -274,10 +319,10 @@ def load_boundaries_multi(
         except Exception as e:
             print(f"Warning: Could not load boundaries for state {state_code}: {e}")
             continue
-    
+
     if not parts:
         raise ValueError(f"No boundaries could be loaded for any of the requested states: {states}")
-    
+
     result = gpd.GeoDataFrame(pd.concat(parts, ignore_index=True), geometry="geometry", crs=4326)
 
     if aoi is not None:

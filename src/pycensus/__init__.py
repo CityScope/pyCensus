@@ -25,11 +25,14 @@ Currently implemented:
     - Mexico (:mod:`pycensus.mexico`): INEGI Census 2020 disaggregated data
       including population, gender, ethnicity, religion, income, employment,
       housing, car ownership, and commuting mode.
+    - Spain (:mod:`pycensus.spain`): INE Census 2021 disaggregated data
+      including population, nationality, education, income, employment,
+      housing, car ownership, commuting mode, disability, and more.
     - Worldwide (:mod:`pycensus.worldwide`): WorldPop gridded population
       rasters.
 """
 
-from . import USA, cache, geometry_levels, mexico, worldwide
+from . import USA, cache, geometry_levels, mexico, spain, worldwide
 from .accessors import ColumnView
 from .api_keys import resolve_api_key
 from .schema import ColumnDef, ColumnSchema
@@ -37,6 +40,7 @@ from .schema import ColumnDef, ColumnSchema
 __all__ = [
     "USA",
     "mexico",
+    "spain",
     "worldwide",
     "ColumnView",
     "ColumnSchema",

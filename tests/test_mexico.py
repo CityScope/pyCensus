@@ -116,7 +116,7 @@ class TestGeography:
             
             # Check that a warning was issued
             assert len(w) > 0
-            assert "No geographic data found" in str(w[0].message)
+            assert "No geographic data source configured" in str(w[0].message)
         
         # Check that we got a GeoDataFrame with the expected structure
         assert isinstance(gdf, gpd.GeoDataFrame)

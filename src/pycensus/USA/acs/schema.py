@@ -45,3 +45,29 @@ SCHEMA.add("commute_time_mean", ["B08303_001"], agg="mean", weight_by="workers")
 
 # ---------------- vehicles ----------------
 SCHEMA.add("vehicles_households_0", ["B25044_003", "B25044_010"], relative_to="households")
+
+# ---------------- housing cost / rent burden ----------------
+# B25070: gross rent as a % of household income, renter-occupied units with
+# income computed. "Rent burdened" is the standard equity threshold of >=30%
+# of income going to rent (bins 30-34.9, 35-39.9, 40-49.9, 50+).
+SCHEMA.add("rent_burden_population", ["B25070_001"])
+SCHEMA.add(
+    "rent_burdened",
+    ["B25070_007", "B25070_008", "B25070_009", "B25070_010"],
+    relative_to="rent_burden_population",
+)
+SCHEMA.add("rent_median_gross", ["B25064_001"], agg="mean", weight_by="households_renter")
+
+# ---------------- education ----------------
+# B15003: educational attainment for population 25 years and over.
+SCHEMA.add("population_25plus", ["B15003_001"], relative_to="population")
+SCHEMA.add(
+    "education_less_than_hs",
+    [f"B15003_{i:03d}" for i in range(2, 17)],
+    relative_to="population_25plus",
+)
+SCHEMA.add(
+    "education_bachelors_plus",
+    ["B15003_022", "B15003_023", "B15003_024", "B15003_025"],
+    relative_to="population_25plus",
+)
