@@ -28,11 +28,15 @@ Currently implemented:
     - Spain (:mod:`pycensus.spain`): INE Census 2021 disaggregated data
       including population, nationality, education, income, employment,
       housing, car ownership, commuting mode, disability, and more.
+    - Israel (:mod:`pycensus.israel`): CBS Census 2022 disaggregated data
+      including population, religion, immigration, education, employment, housing.
+    - Germany (:mod:`pycensus.germany`): Destatis Census 2022 disaggregated data
+      including population, nationality, education, employment, housing, religion.
     - Worldwide (:mod:`pycensus.worldwide`): WorldPop gridded population
       rasters.
 """
 
-from . import USA, cache, geometry_levels, mexico, spain, worldwide
+from . import USA, cache, geometry_levels, germany, israel, mexico, spain, worldwide
 from .accessors import ColumnView
 from .api_keys import resolve_api_key
 from .schema import ColumnDef, ColumnSchema
@@ -41,6 +45,8 @@ __all__ = [
     "USA",
     "mexico",
     "spain",
+    "israel",
+    "germany",
     "worldwide",
     "ColumnView",
     "ColumnSchema",
