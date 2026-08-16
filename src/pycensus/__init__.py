@@ -34,9 +34,12 @@ Currently implemented:
       including population, nationality, education, employment, housing, religion.
     - Worldwide (:mod:`pycensus.worldwide`): WorldPop gridded population
       rasters.
+    - Euskadi (:mod:`pycensus.euskadi`): Eustat Census 2021 disaggregated data
+      for the Basque Country, including population, Basque/Spanish language skills,
+      nationality, education, employment, housing, car ownership, and commuting mode.
 """
 
-from . import USA, cache, geometry_levels, germany, israel, mexico, spain, worldwide
+from . import USA, cache, euskadi, geometry_levels, germany, israel, mexico, spain, worldwide
 from .accessors import ColumnView
 from .api_keys import resolve_api_key
 from .schema import ColumnDef, ColumnSchema
@@ -45,6 +48,7 @@ __all__ = [
     "USA",
     "mexico",
     "spain",
+    "euskadi",
     "israel",
     "germany",
     "worldwide",
