@@ -22,15 +22,22 @@ or use it standalone.
 Currently implemented:
     - United States (:mod:`pycensus.USA`): ACS 5-year estimates, 2020
       Decennial Census DHC, and LODES RAC/WAC job counts.
+    - Mexico (:mod:`pycensus.mexico`): INEGI Census 2020 disaggregated data
+      including population, gender, ethnicity, religion, income, employment,
+      housing, car ownership, and commuting mode.
+    - Worldwide (:mod:`pycensus.worldwide`): WorldPop gridded population
+      rasters.
 """
 
-from . import USA, cache, geometry_levels
+from . import USA, cache, geometry_levels, mexico, worldwide
 from .accessors import ColumnView
 from .api_keys import resolve_api_key
 from .schema import ColumnDef, ColumnSchema
 
 __all__ = [
     "USA",
+    "mexico",
+    "worldwide",
     "ColumnView",
     "ColumnSchema",
     "ColumnDef",
