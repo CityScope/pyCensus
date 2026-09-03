@@ -1,0 +1,300 @@
+{
+  "country": "usa",
+  "source": "dhc",
+  "full_name": "US Census DHC 2020",
+  "features": [
+    {
+      "category": "population",
+      "feature_name": "population",
+      "country": "usa",
+      "source": "dhc",
+      "codes": [
+        "P1_001N"
+      ],
+      "definition": "Number of people residing in the geographic area.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "",
+      "absolute_field": ""
+    },
+    {
+      "category": "population",
+      "feature_name": "housingUnits",
+      "country": "usa",
+      "source": "dhc",
+      "codes": [
+        "H1_001N"
+      ],
+      "definition": "Total number of housing units (occupied and vacant) in the geographic area.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population",
+      "absolute_field": ""
+    },
+    {
+      "category": "population",
+      "feature_name": "malePopulation",
+      "country": "usa",
+      "source": "dhc",
+      "codes": [
+        "P12_002N"
+      ],
+      "definition": "Number of residents who are male.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population",
+      "absolute_field": ""
+    },
+    {
+      "category": "population",
+      "feature_name": "femalePopulation",
+      "country": "usa",
+      "source": "dhc",
+      "codes": [
+        "P12_026N"
+      ],
+      "definition": "Number of residents who are female.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population",
+      "absolute_field": ""
+    },
+    {
+      "category": "population",
+      "feature_name": "under18Population",
+      "country": "usa",
+      "source": "dhc",
+      "codes": [
+        "P12_003N",
+        "P12_004N",
+        "P12_005N",
+        "P12_006N",
+        "P12_027N",
+        "P12_028N",
+        "P12_029N",
+        "P12_030N"
+      ],
+      "definition": "Number of residents younger than 18 years old.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population",
+      "absolute_field": ""
+    },
+    {
+      "category": "population",
+      "feature_name": "age18to64Population",
+      "country": "usa",
+      "source": "dhc",
+      "codes": [
+        "P12_007N",
+        "P12_008N",
+        "P12_009N",
+        "P12_010N",
+        "P12_011N",
+        "P12_012N",
+        "P12_013N",
+        "P12_014N",
+        "P12_015N",
+        "P12_016N",
+        "P12_017N",
+        "P12_018N",
+        "P12_019N",
+        "P12_031N",
+        "P12_032N",
+        "P12_033N",
+        "P12_034N",
+        "P12_035N",
+        "P12_036N",
+        "P12_037N",
+        "P12_038N",
+        "P12_039N",
+        "P12_040N",
+        "P12_041N",
+        "P12_042N",
+        "P12_043N"
+      ],
+      "definition": "Number of residents aged 18 to 64 years.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population",
+      "absolute_field": ""
+    },
+    {
+      "category": "population",
+      "feature_name": "over65Population",
+      "country": "usa",
+      "source": "dhc",
+      "codes": [
+        "P12_020N",
+        "P12_021N",
+        "P12_022N",
+        "P12_023N",
+        "P12_024N",
+        "P12_025N",
+        "P12_044N",
+        "P12_045N",
+        "P12_046N",
+        "P12_047N",
+        "P12_048N",
+        "P12_049N"
+      ],
+      "definition": "Number of residents aged 65 years or older.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population",
+      "absolute_field": ""
+    },
+    {
+      "category": "population",
+      "feature_name": "whitePopulation",
+      "country": "usa",
+      "source": "dhc",
+      "codes": [
+        "P3_002N"
+      ],
+      "definition": "Number of residents identifying as White alone (not Hispanic or Latino origin questions notwithstanding).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population",
+      "absolute_field": ""
+    },
+    {
+      "category": "population",
+      "feature_name": "blackPopulation",
+      "country": "usa",
+      "source": "dhc",
+      "codes": [
+        "P3_003N"
+      ],
+      "definition": "Number of residents identifying as Black or African American alone.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population",
+      "absolute_field": ""
+    },
+    {
+      "category": "population",
+      "feature_name": "nativePopulation",
+      "country": "usa",
+      "source": "dhc",
+      "codes": [
+        "P3_004N"
+      ],
+      "definition": "Number of residents identifying as American Indian or Alaska Native alone.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population",
+      "absolute_field": ""
+    },
+    {
+      "category": "population",
+      "feature_name": "asianPopulation",
+      "country": "usa",
+      "source": "dhc",
+      "codes": [
+        "P3_005N"
+      ],
+      "definition": "Number of residents identifying as Asian alone.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population",
+      "absolute_field": ""
+    },
+    {
+      "category": "population",
+      "feature_name": "otherRacePopulation",
+      "country": "usa",
+      "source": "dhc",
+      "codes": [
+        "P3_006N",
+        "P3_007N",
+        "P3_008N"
+      ],
+      "definition": "Number of residents identifying as Native Hawaiian/Other Pacific Islander alone, some other race alone, or two or more races.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population",
+      "absolute_field": ""
+    },
+    {
+      "category": "population",
+      "feature_name": "hispanicPopulation",
+      "country": "usa",
+      "source": "dhc",
+      "codes": [
+        "P5_010N"
+      ],
+      "definition": "Number of residents of Hispanic or Latino origin (of any race).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population",
+      "absolute_field": ""
+    },
+    {
+      "category": "raceEthnicity",
+      "feature_name": "nonwhitePopulation",
+      "country": "usa",
+      "source": "dhc",
+      "codes": [],
+      "definition": "Total population minus white population (non-white population).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "",
+      "absolute_field": "",
+      "computed_from": [
+        "population",
+        "whitePopulation"
+      ]
+    }
+  ],
+  "years": [
+    2020
+  ],
+  "levels": [
+    "nation",
+    "region",
+    "division",
+    "state",
+    "county",
+    "county_subdivision",
+    "place",
+    "census_tract",
+    "block_group",
+    "block",
+    "congressional_district",
+    "public_use_microdata_area",
+    "zcta",
+    "school_district",
+    "american_indian_alaska_native_area",
+    "alaska_native_regional_corporation",
+    "hawaiian_home_land"
+  ]
+}

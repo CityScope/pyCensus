@@ -1,0 +1,76 @@
+{
+  "country": "israel",
+  "country_name": "Israel",
+  "description": "Census geography levels for Israel (CBS - Central Bureau of Statistics). Real attribute data (see pycensus.israel.cbs.schema) is natively available at both 'locality' and 'statistical_area' (a separate real, verified CBS ArcGIS layer -- see pycensus.israel.constants.CENSUS_STAT_2022_URL); 'district'/'nation' resample up from 'locality'. 'subdistrict'/'block' have no verified real source and are not implemented (see pycensus.israel.geography module docstring).",
+  "native_levels": [
+    {
+      "level": "nation",
+      "description": "Complete internationally-recognized Israel territory",
+      "source": "iplan.gov.il (dissolved from real locality polygons)",
+      "geoid_pattern": "ISR",
+      "is_standard": true,
+      "resample_from": "district",
+      "resample_to": "district",
+      "resample_intersections": false
+    },
+    {
+      "level": "district",
+      "description": "Mehoz - 6 internationally-recognized districts (dissolved from real locality polygons)",
+      "source": "iplan.gov.il",
+      "geoid_pattern": "X",
+      "geoid_pattern_description": "1-digit code: 1-6",
+      "is_standard": true,
+      "resample_from": "locality",
+      "resample_to": "locality",
+      "resample_intersections": false
+    },
+    {
+      "level": "locality",
+      "description": "Locality/Ir - municipalities, local councils, cities. Real boundary (iplan.gov.il) and real 2022-census attribute data (CBS).",
+      "source": "CBS + iplan.gov.il",
+      "geoid_pattern": "XXXX",
+      "geoid_pattern_description": "CBS/LAMAS locality code",
+      "is_standard": true,
+      "resample_from": "locality",
+      "resample_to": "locality",
+      "resample_intersections": false
+    },
+    {
+      "level": "statistical_area",
+      "description": "Area Statistit - statistical area for census purposes. Real geometry and real 2022-census attribute data (CBS, a separate hosted ArcGIS layer from 'locality' -- see pycensus.israel.constants.CENSUS_STAT_2022_URL).",
+      "source": "CBS",
+      "geoid_pattern": "XXXXXXXX",
+      "geoid_pattern_description": "YISHUV_STAT_2022 (nationally-unique stat area id)",
+      "is_standard": true,
+      "resample_from": "locality",
+      "resample_to": "locality",
+      "resample_intersections": false
+    }
+  ],
+  "levels": ["nation", "district", "locality", "statistical_area"],
+  "global_to_country_mapping": {
+    "nation": "nation",
+    "state": "district",
+    "province": "district",
+    "municipality": "locality",
+    "tract": "statistical_area",
+    "blockgroup": "statistical_area",
+    "block": "statistical_area"
+  },
+  "country_to_global_mapping": {
+    "nation": "nation",
+    "district": "province",
+    "locality": "municipality",
+    "statistical_area": "tract"
+  },
+  "fallback_resolution": {
+    "state": "district",
+    "province": "district",
+    "county": "district",
+    "municipality": "locality",
+    "tract": "statistical_area",
+    "blockgroup": "statistical_area",
+    "block": "statistical_area",
+    "place": "locality"
+  }
+}

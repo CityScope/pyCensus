@@ -1,0 +1,108 @@
+{
+  "country": "worldwide",
+  "country_name": "Worldwide",
+  "description": "WorldPop gridded population data with OSM administrative boundaries",
+  "native_levels": [
+    {
+      "level": "nation",
+      "description": "Country level - sovereign states",
+      "source": "OSM",
+      "osm_admin_level": 2,
+      "geoid_pattern": "ISO3",
+      "is_standard": true,
+      "resample_from": "state",
+      "resample_to": "state",
+      "resample_intersections": false
+    },
+    {
+      "level": "state",
+      "description": "First subnational administrative level (country-specific meaning)",
+      "source": "OSM",
+      "osm_admin_level": 4,
+      "geoid_pattern": "OSM_ID",
+      "is_standard": true,
+      "resample_from": "province",
+      "resample_to": "province",
+      "resample_intersections": false
+    },
+    {
+      "level": "province",
+      "description": "Second subnational administrative level (country-specific meaning)",
+      "source": "OSM",
+      "osm_admin_level": 5,
+      "geoid_pattern": "OSM_ID",
+      "is_standard": true,
+      "resample_from": "municipality",
+      "resample_to": "municipality",
+      "resample_intersections": false
+    },
+    {
+      "level": "municipality",
+      "description": "Municipality/City/Town level (country-specific, typically OSM admin_level 6-8)",
+      "source": "OSM",
+      "osm_admin_level": 8,
+      "geoid_pattern": "OSM_ID",
+      "is_standard": true,
+      "resample_from": "district",
+      "resample_to": "district",
+      "resample_intersections": false
+    },
+    {
+      "level": "district",
+      "description": "District/Sub-municipal level (country-specific, typically OSM admin_level 9-10)",
+      "source": "OSM",
+      "osm_admin_level": 10,
+      "geoid_pattern": "OSM_ID",
+      "is_standard": true,
+      "resample_from": "grid_1km",
+      "resample_to": "grid_1km",
+      "resample_intersections": false
+    },
+    {
+      "level": "grid_1km",
+      "description": "1km x 1km population grid cell (WorldPop)",
+      "source": "WorldPop",
+      "geoid_pattern": "lat_lon_1km",
+      "is_standard": true,
+      "resample_from": "grid_100m",
+      "resample_to": "grid_100m",
+      "resample_intersections": false
+    },
+    {
+      "level": "grid_100m",
+      "description": "100m x 100m population grid cell (WorldPop)",
+      "source": "WorldPop",
+      "geoid_pattern": "lat_lon_100m",
+      "is_standard": true,
+      "resample_from": "grid_100m",
+      "resample_to": "grid_100m",
+      "resample_intersections": false
+    }
+  ],
+  "levels": ["nation", "state", "province", "municipality", "district", "grid_1km", "grid_100m"],
+  "global_to_country_mapping": {
+    "nation": "nation",
+    "state": "state",
+    "province": "province",
+    "municipality": "municipality",
+    "tract": "district",
+    "blockgroup": "grid_1km",
+    "block": "grid_100m"
+  },
+  "country_to_global_mapping": {
+    "nation": "nation",
+    "state": "state",
+    "province": "province",
+    "municipality": "municipality",
+    "district": "tract",
+    "grid_1km": "blockgroup",
+    "grid_100m": "block"
+  },
+  "fallback_resolution": {
+    "county": "province",
+    "tract": "district",
+    "blockgroup": "grid_1km",
+    "block": "grid_100m",
+    "place": "municipality"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "country": "taiwan",
+  "country_name": "Taiwan",
+  "description": "Census geography levels for Taiwan (MOI RIS household registration statistics). No level currently has a real, verified boundary source -- see pycensus.taiwan.geography module docstring.",
+  "native_levels": [
+    {
+      "level": "nation",
+      "description": "Complete Taiwan territory",
+      "source": "MOI",
+      "geoid_pattern": "TW",
+      "is_standard": true,
+      "resample_from": "county_city",
+      "resample_to": "county_city",
+      "resample_intersections": false
+    },
+    {
+      "level": "county_city",
+      "description": "Xian/shi (縣市) - 22 units: 6 special municipalities, 3 provincial cities, 13 counties. Taiwan's only subnational tier above the township level.",
+      "source": "MOI",
+      "geoid_pattern": "XXXXX",
+      "geoid_pattern_description": "5-digit MOI code (first 5 digits of the 11-digit district_code)",
+      "is_standard": true,
+      "resample_from": "district",
+      "resample_to": "district",
+      "resample_intersections": false
+    },
+    {
+      "level": "district",
+      "description": "Xiang/zhen/shi/qu (鄉鎮市區) - township/district within a county/city",
+      "source": "MOI",
+      "geoid_pattern": "XXXXXXXX",
+      "geoid_pattern_description": "8-digit code (first 8 digits of the 11-digit district_code)",
+      "is_standard": true,
+      "resample_from": "village",
+      "resample_to": "village",
+      "resample_intersections": false
+    },
+    {
+      "level": "village",
+      "description": "Cun/li (村里) - village/neighborhood, the finest tier MOI publishes population for",
+      "source": "MOI",
+      "geoid_pattern": "XXXXXXXXXXX",
+      "geoid_pattern_description": "11-digit MOI district_code",
+      "is_standard": true,
+      "resample_from": "village",
+      "resample_to": "village",
+      "resample_intersections": false
+    }
+  ],
+  "levels": ["nation", "county_city", "district", "village"],
+  "global_to_country_mapping": {
+    "nation": "nation",
+    "state": "county_city",
+    "province": "county_city",
+    "municipality": "district",
+    "tract": "village",
+    "blockgroup": "village",
+    "block": "village"
+  },
+  "country_to_global_mapping": {
+    "nation": "nation",
+    "county_city": "state",
+    "district": "municipality",
+    "village": "tract"
+  },
+  "fallback_resolution": {
+    "state": "county_city",
+    "province": "county_city",
+    "county": "district",
+    "municipality": "district",
+    "place": "district",
+    "tract": "village",
+    "blockgroup": "village",
+    "block": "village"
+  }
+}

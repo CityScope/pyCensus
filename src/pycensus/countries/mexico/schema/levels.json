@@ -1,0 +1,104 @@
+{
+  "country": "mexico",
+  "country_name": "Mexico",
+  "description": "Census geography levels for Mexico (INEGI)",
+  "native_levels": [
+    {
+      "level": "nation",
+      "description": "Complete Mexico territory",
+      "source": "INEGI",
+      "geoid_pattern": "MX",
+      "is_standard": true,
+      "resample_from": "state",
+      "resample_to": "state",
+      "resample_intersections": false
+    },
+    {
+      "level": "state",
+      "description": "Estado - 32 federal entities (31 estados + Ciudad de Mexico)",
+      "source": "INEGI",
+      "geoid_pattern": "XX",
+      "geoid_pattern_description": "2-digit INEGI code",
+      "is_standard": true,
+      "resample_from": "municipality",
+      "resample_to": "municipality",
+      "resample_intersections": false
+    },
+    {
+      "level": "municipality",
+      "description": "Municipio - second-level administrative division",
+      "source": "INEGI",
+      "geoid_pattern": "XXX",
+      "geoid_pattern_description": "3-digit INEGI code, unique within state",
+      "is_standard": true,
+      "resample_from": "locality",
+      "resample_to": "locality",
+      "resample_intersections": false
+    },
+    {
+      "level": "locality",
+      "description": "Localidad - populated places within municipalities",
+      "source": "INEGI",
+      "geoid_pattern": "XXXX",
+      "geoid_pattern_description": "4-digit code, unique within municipality",
+      "is_standard": true,
+      "resample_from": "ageb",
+      "resample_to": "ageb",
+      "resample_intersections": false
+    },
+    {
+      "level": "ageb",
+      "description": "Area Geoestadistica Basica - basic geostatistical area, equivalent to tract",
+      "source": "INEGI",
+      "geoid_pattern": "XXXXX",
+      "geoid_pattern_description": "5-digit code",
+      "is_standard": true,
+      "resample_from": "block",
+      "resample_to": "block",
+      "resample_intersections": false
+    },
+    {
+      "level": "block",
+      "description": "Manzana - city block, smallest census unit",
+      "source": "INEGI",
+      "geoid_pattern": "XXXXXX",
+      "geoid_pattern_description": "6-digit code",
+      "is_standard": true,
+      "resample_from": "block",
+      "resample_to": "block",
+      "resample_intersections": false
+    }
+  ],
+  "levels": [
+    "nation",
+    "state",
+    "municipality",
+    "locality",
+    "ageb",
+    "block"
+  ],
+  "global_to_country_mapping": {
+    "nation": "nation",
+    "state": "state",
+    "province": "state",
+    "municipality": "municipality",
+    "tract": "locality",
+    "blockgroup": "ageb",
+    "block": "block"
+  },
+  "country_to_global_mapping": {
+    "nation": "nation",
+    "state": "state",
+    "municipality": "municipality",
+    "locality": "tract",
+    "ageb": "blockgroup",
+    "block": "block"
+  },
+  "fallback_resolution": {
+    "province": "state",
+    "county": "municipality",
+    "tract": "ageb",
+    "blockgroup": "ageb",
+    "place": "locality"
+  }
+}

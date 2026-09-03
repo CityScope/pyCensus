@@ -1,0 +1,22 @@
+{
+  "country": "chile",
+  "source": "sii",
+  "full_name": "Servicio de Impuestos Internos (SII) -- Estadisticas de Empresas por Region y Comuna",
+  "years": [2015],
+  "levels": ["comuna"],
+  "features": [
+    {
+      "category": "employment",
+      "feature_name": "jobsTotal",
+      "country": "chile",
+      "source": "sii",
+      "codes": ["Número de Trabajadores Dependientes Informados"],
+      "definition": "Real count of dependent (payroll) jobs reported by employers whose tax domicile is registered in the comuna -- jobs located in the comuna (jobs-by-workplace), not employed residents. Chile's equivalent of USA LODES WAC jobsTotal. Most recent year published in SII's PUB_Reg_Com.xlsx comunal series is commercial year 2015 -- see pycensus.countries.chile.sii.api module docstring for the vintage caveat.",
+      "type": "count",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "constant_total": true,
+      "constant_density": false
+    }
+  ]
+}

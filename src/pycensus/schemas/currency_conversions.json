@@ -1,0 +1,12 @@
+{
+  "base_currency": "$",
+  "conversions": {
+    "usa": 1.0,
+    "mexico": 0.057,
+    "spain": 1.08,
+    "germany": 1.08,
+    "euskadi": 1.08,
+    "israel": 0.26,
+    "worldwide": 1.0
+  }
+}

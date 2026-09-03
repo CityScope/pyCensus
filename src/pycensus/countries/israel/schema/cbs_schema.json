@@ -1,0 +1,640 @@
+{
+  "country": "israel",
+  "source": "cbs",
+  "full_name": "CBS Census 2022 (locality-level, 2021 boundary vintage)",
+  "description": "Real field codes verified against a live query of CBS's own ArcGIS-hosted 'census_2022_setl_all_2021' layer (see pycensus.israel.constants.CENSUS_SETL_2022_URL) on 2026-08-19, e.g. SETL_CODE=9000 (Be'er Sheva) returning pop_approx=217580.0 -- consistent with Be'er Sheva's well-documented population of roughly 210,000+.",
+  "source_url": "https://services8.arcgis.com/JcXY3lLZni6BK4El/arcgis/rest/services/%D7%A9%D7%9B%D7%91%D7%AA_%D7%99%D7%99%D7%A9%D7%95%D7%91%D7%99%D7%9D_2021_%D7%A0%D7%AA%D7%95%D7%A0%D7%99_%D7%9E%D7%A4%D7%A7%D7%93_2022/FeatureServer/1",
+  "features": [
+    {
+      "category": "population",
+      "feature_name": "population",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [
+        "pop_approx"
+      ],
+      "definition": "Approximate resident population of the locality (2022 census).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "divide_area_weighted"
+    },
+    {
+      "category": "population",
+      "feature_name": "households",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [
+        "hh_total_approx"
+      ],
+      "definition": "Approximate number of households in the locality.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "divide_area_weighted"
+    },
+    {
+      "category": "population",
+      "feature_name": "populationDensity",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [
+        "pop_density"
+      ],
+      "definition": "Resident population divided by the locality's built-up land area.",
+      "type": "density",
+      "unit": "people/km²",
+      "resampling_up": "multiply_by_area_sum_divide_by_new_area",
+      "resampling_down": "multiply_by_area_sum_divide_by_new_area"
+    },
+    {
+      "feature_name": "populationChangeSince2008",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [
+        "change_pcnt"
+      ],
+      "definition": "Percent population change since the 2008 census.",
+      "type": "rate",
+      "unit": "%",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "relative_to": "population",
+      "resampling_weight": "population"
+    },
+    {
+      "feature_name": "sexRatio",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [
+        "sexRatio"
+      ],
+      "definition": "Males per 100 females.",
+      "type": "rate",
+      "unit": "",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population"
+    },
+    {
+      "feature_name": "ageMedian",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [
+        "age_median"
+      ],
+      "definition": "Median age of residents.",
+      "type": "rate",
+      "unit": "years",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population"
+    },
+    {
+      "feature_name": "populationShare019",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [
+        "age0_19_pcnt"
+      ],
+      "definition": "Share of residents aged 0-19.",
+      "type": "rate",
+      "unit": "%",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "relative_to": "population",
+      "resampling_weight": "population"
+    },
+    {
+      "feature_name": "populationShare2064",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [
+        "age20_64_pcnt"
+      ],
+      "definition": "Share of residents aged 20-64.",
+      "type": "rate",
+      "unit": "%",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "relative_to": "population",
+      "resampling_weight": "population"
+    },
+    {
+      "feature_name": "populationShare65plus",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [
+        "age65_pcnt"
+      ],
+      "definition": "Share of residents aged 65 and over.",
+      "type": "rate",
+      "unit": "%",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "relative_to": "population",
+      "resampling_weight": "population"
+    },
+    {
+      "feature_name": "dependencyRatio",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [
+        "DependencyRatio"
+      ],
+      "definition": "Dependents (under 20, over 64) per 1,000 working-age residents.",
+      "type": "rate",
+      "unit": "per 1000",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population"
+    },
+    {
+      "feature_name": "householdSizeMean",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [
+        "size_avg"
+      ],
+      "definition": "Average persons per household.",
+      "type": "rate",
+      "unit": "persons",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "households"
+    },
+    {
+      "feature_name": "employmentRate",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [
+        "Empl_pcnt"
+      ],
+      "definition": "Share of the labour force (age 15+) that is employed.",
+      "type": "rate",
+      "unit": "%",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population"
+    },
+    {
+      "feature_name": "selfEmployedRate",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [
+        "SelfEmpl_pcnt"
+      ],
+      "definition": "Share of employed residents who are self-employed.",
+      "type": "rate",
+      "unit": "%",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population"
+    },
+    {
+      "feature_name": "employeesMedianAnnualWage",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [
+        "employeesAnnual_medWage"
+      ],
+      "definition": "Median annual wage for salaried employees, NIS.",
+      "type": "rate",
+      "unit": "NIS/year",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population"
+    },
+    {
+      "feature_name": "workOutsideLocalityRate",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [
+        "WrkOutLoc_pcnt"
+      ],
+      "definition": "Share of employed residents who work outside their locality of residence.",
+      "type": "rate",
+      "unit": "%",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population"
+    },
+    {
+      "feature_name": "academicDegreeRate",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [
+        "AcadmCert_pcnt"
+      ],
+      "definition": "Share of residents age 25+ holding an academic degree/certificate.",
+      "type": "rate",
+      "unit": "%",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population"
+    },
+    {
+      "feature_name": "householdsOwnerRate",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [
+        "own_pcnt"
+      ],
+      "definition": "Share of households that own their dwelling.",
+      "type": "rate",
+      "unit": "%",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "households"
+    },
+    {
+      "feature_name": "householdsRenterRate",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [
+        "rent_pcnt"
+      ],
+      "definition": "Share of households that rent their dwelling.",
+      "type": "rate",
+      "unit": "%",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "households"
+    },
+    {
+      "feature_name": "householdsNoVehicleRate",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [
+        "Vehicle0_pcnt"
+      ],
+      "definition": "Share of households owning no vehicle.",
+      "type": "rate",
+      "unit": "%",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "households"
+    },
+    {
+      "feature_name": "households2plusVehicleRate",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [
+        "Vehicle2up_pcnt"
+      ],
+      "definition": "Share of households owning 2 or more vehicles.",
+      "type": "rate",
+      "unit": "%",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "households"
+    },
+    {
+      "feature_name": "foreignResidentRate",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [
+        "Foreign_pcnt"
+      ],
+      "definition": "Share of residents who are foreign (non-citizen) residents.",
+      "type": "rate",
+      "unit": "%",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "relative_to": "population",
+      "resampling_weight": "population"
+    },
+    {
+      "feature_name": "institutionalizedResidentRate",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [
+        "inst_pcnt"
+      ],
+      "definition": "Share of residents living in institutions (dormitories, nursing homes, etc.). Verified live 2026-08-22: Beersheba (SETL_CODE=9000) inst_pcnt=2.9.",
+      "type": "rate",
+      "unit": "%",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "relative_to": "population",
+      "resampling_weight": "population"
+    },
+    {
+      "feature_name": "ageMedianMale",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [
+        "m_age_median"
+      ],
+      "definition": "Median age of male residents. Verified live 2026-08-22: Beersheba (SETL_CODE=9000) m_age_median=32.",
+      "type": "rate",
+      "unit": "years",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population"
+    },
+    {
+      "feature_name": "ageMedianFemale",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [
+        "w_age_median"
+      ],
+      "definition": "Median age of female residents. Verified live 2026-08-22: Beersheba (SETL_CODE=9000) w_age_median=35.",
+      "type": "rate",
+      "unit": "years",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population"
+    },
+    {
+      "feature_name": "laborForceParticipationRate",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [
+        "WrkY_pcnt"
+      ],
+      "definition": "Share of residents age 15+ who are in the labour force (working). Verified live 2026-08-22: Beersheba (SETL_CODE=9000) WrkY_pcnt=67.2; statistical area 90000111 WrkY_pcnt=55.2.",
+      "type": "rate",
+      "unit": "%",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population"
+    },
+    {
+      "feature_name": "workHoursMeanWeekly",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [
+        "HrsWrkWk_avg"
+      ],
+      "definition": "Average weekly work hours among employed residents. Verified live 2026-08-22: Beersheba (SETL_CODE=9000) HrsWrkWk_avg=38.2.",
+      "type": "mean",
+      "unit": "hours/week",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population"
+    },
+    {
+      "feature_name": "selfEmployedMedianAnnualWage",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [
+        "SelfEmployedAnnual_medWage"
+      ],
+      "definition": "Median annual wage for self-employed residents, NIS. Verified live 2026-08-22: Beersheba (SETL_CODE=9000) SelfEmployedAnnual_medWage=69800.",
+      "type": "rate",
+      "unit": "NIS/year",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population"
+    },
+    {
+      "feature_name": "topWageDecileEmployeesRate",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [
+        "EmployeesWage_decile9Up"
+      ],
+      "definition": "Share of salaried employees in the top two national wage deciles (9-10). Verified live 2026-08-22: Beersheba (SETL_CODE=9000) EmployeesWage_decile9Up=15.6.",
+      "type": "rate",
+      "unit": "%",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population"
+    },
+    {
+      "feature_name": "householdsWithYoungChildrenRate",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [
+        "hh0_5_pcnt"
+      ],
+      "definition": "Share of households with a child aged 0-5. Verified live 2026-08-22: Beersheba (SETL_CODE=9000) hh0_5_pcnt=16.5.",
+      "type": "rate",
+      "unit": "%",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "households"
+    },
+    {
+      "feature_name": "householdsWithYoungAdultsRate",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [
+        "hh18_24_pcnt"
+      ],
+      "definition": "Share of households with a resident aged 18-24. Verified live 2026-08-22: Beersheba (SETL_CODE=9000) hh18_24_pcnt=21.",
+      "type": "rate",
+      "unit": "%",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "households"
+    },
+    {
+      "feature_name": "childrenBornMean",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [
+        "ChldBorn_avg"
+      ],
+      "definition": "Average number of children born per woman. Verified live 2026-08-22: Beersheba (SETL_CODE=9000) ChldBorn_avg=1.9.",
+      "type": "mean",
+      "unit": "children",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population"
+    },
+    {
+      "feature_name": "foreignBornPopulation",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [],
+      "definition": "Derived (not a native CBS ArcGIS field): round(Foreign_pcnt / 100 * pop_approx). CBS's own live ArcGIS field list (both 'census_2022_setl_all_2021' and the statistical-area 'census_2022_stat_all_2021' layers, enumerated live 2026-08-23) has no foreign-resident COUNT field, only 'Foreign_pcnt' (a rate). 'Foreign_pcnt' is explicitly documented (see the foreignResidentRate feature above) as relative_to 'population' with resampling_weight 'population', i.e. the same pop_approx already wired as this schema's 'population' field -- so multiplying is a verified-consistent reconstruction, not a guess. Computed by pycensus.countries.israel.cbs.loader.load() after fetching (never fetched from ArcGIS directly, hence empty 'codes'). Live-verified 2026-08-23: Beersheba (SETL_CODE=9000) Foreign_pcnt=1.6, pop_approx=217580.00000000003 -> foreignBornPopulation=3481.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "divide_area_weighted",
+      "relative_to": "population",
+      "resampling_weight": "population"
+    },
+    {
+      "feature_name": "householdsWithParkingRate",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [
+        "Parking_pcnt"
+      ],
+      "definition": "Share of households with a parking space. Verified live 2026-08-22: Beersheba (SETL_CODE=9000) Parking_pcnt=62.9.",
+      "type": "rate",
+      "unit": "%",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "households"
+    },
+    {
+      "feature_name": "religionCode",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [
+        "Religion_Stat_Code",
+        "Religion_Code"
+      ],
+      "definition": "CBS's own per-area dominant-religion classification code (live-verified 2026-08-25 against both the locality layer's 'Religion_Code' and the statistical-area layer's 'Religion_Stat_Code' fields, same code scheme in both: 1=Jewish, 2=Muslim, 3=Christian, 5=Druze, 6=Other religion). A single categorical code per area, not a population breakdown -- used internally by pycensus.countries.israel.cbs.loader.load() to derive the 5 real per-religion population columns below (jewishPopulation, muslimPopulation, ...), then dropped before returning (a raw 1-6 category code is meaningless to sum/average, unlike those derived counts). Not itself exposed as a column.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "divide_area_weighted"
+    },
+    {
+      "feature_name": "jewishPopulation",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [],
+      "definition": "Derived (not a native CBS ArcGIS field): population of areas whose religionCode == 1 (Jewish), i.e. pop_approx where the area's dominant-religion classification is Jewish lowercase, else 0. CBS reports religion as a single per-area categorical classification (see the religionCode feature above), not a population breakdown -- this reconstructs a real, verified per-religion population count from that classification, analogous to foreignBornPopulation's derivation below. Computed by pycensus.countries.israel.cbs.loader.load() after fetching (never fetched from ArcGIS directly, hence empty 'codes').",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "divide_area_weighted",
+      "relative_to": "population",
+      "resampling_weight": "population"
+    },
+    {
+      "feature_name": "muslimPopulation",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [],
+      "definition": "Derived (not a native CBS ArcGIS field): population of areas whose religionCode == 2 (Muslim), i.e. pop_approx where the area's dominant-religion classification is Muslim lowercase, else 0. CBS reports religion as a single per-area categorical classification (see the religionCode feature above), not a population breakdown -- this reconstructs a real, verified per-religion population count from that classification, analogous to foreignBornPopulation's derivation below. Computed by pycensus.countries.israel.cbs.loader.load() after fetching (never fetched from ArcGIS directly, hence empty 'codes').",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "divide_area_weighted",
+      "relative_to": "population",
+      "resampling_weight": "population"
+    },
+    {
+      "feature_name": "christianPopulation",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [],
+      "definition": "Derived (not a native CBS ArcGIS field): population of areas whose religionCode == 3 (Christian), i.e. pop_approx where the area's dominant-religion classification is Christian lowercase, else 0. CBS reports religion as a single per-area categorical classification (see the religionCode feature above), not a population breakdown -- this reconstructs a real, verified per-religion population count from that classification, analogous to foreignBornPopulation's derivation below. Computed by pycensus.countries.israel.cbs.loader.load() after fetching (never fetched from ArcGIS directly, hence empty 'codes').",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "divide_area_weighted",
+      "relative_to": "population",
+      "resampling_weight": "population"
+    },
+    {
+      "feature_name": "druzePopulation",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [],
+      "definition": "Derived (not a native CBS ArcGIS field): population of areas whose religionCode == 5 (Druze), i.e. pop_approx where the area's dominant-religion classification is Druze lowercase, else 0. CBS reports religion as a single per-area categorical classification (see the religionCode feature above), not a population breakdown -- this reconstructs a real, verified per-religion population count from that classification, analogous to foreignBornPopulation's derivation below. Computed by pycensus.countries.israel.cbs.loader.load() after fetching (never fetched from ArcGIS directly, hence empty 'codes').",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "divide_area_weighted",
+      "relative_to": "population",
+      "resampling_weight": "population"
+    },
+    {
+      "feature_name": "otherReligionPopulation",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [],
+      "definition": "Derived (not a native CBS ArcGIS field): population of areas whose religionCode == 6 (Other-religion (CBS 'Other religion' code)), i.e. pop_approx where the area's dominant-religion classification is Other-religion (CBS 'Other religion' code) lowercase, else 0. CBS reports religion as a single per-area categorical classification (see the religionCode feature above), not a population breakdown -- this reconstructs a real, verified per-religion population count from that classification, analogous to foreignBornPopulation's derivation below. Computed by pycensus.countries.israel.cbs.loader.load() after fetching (never fetched from ArcGIS directly, hence empty 'codes').",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "divide_area_weighted",
+      "relative_to": "population",
+      "resampling_weight": "population"
+    },
+    {
+      "feature_name": "religiosityCode",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [
+        "hh_MidatDatiyut"
+      ],
+      "definition": "CBS's own per-area 'degree of religiosity' classification code among the Jewish population (live-verified 2026-08-25 against both the locality and statistical-area layers, same field name and code scheme on both: 1=secular (חילוני), 2=traditional (מסורתי), 3=religious/very religious (דתי/דתי מאוד), 4=Haredi/ultra-Orthodox (חרדי), 6=other (אחר). A single categorical code per area (real variation confirmed for Beersheba's statistical areas: 51 secular / 15 traditional / 1 religious / 16 unclassified out of 83), not a population breakdown -- used internally by pycensus.countries.israel.cbs.loader.load() to derive the 5 real per-category population columns below, then dropped before returning (a raw 1-6 category code is meaningless to sum/average). Not itself exposed as a column.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "divide_area_weighted"
+    },
+    {
+      "feature_name": "secularPopulation",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [],
+      "definition": "Derived (not a native CBS ArcGIS field): population of areas whose religiosityCode == 1, i.e. pop_approx where the area's dominant religious-observance classification matches that code, else 0. Named distinctly from the global-schema canonical 'religiousPopulation' feature (a different concept -- 'has any religion affiliation' vs. this field's 'degree of observance among the Jewish population') to avoid a semantic collision on canonical-name matching. Computed by pycensus.countries.israel.cbs.loader.load() after fetching (never fetched from ArcGIS directly, hence empty 'codes').",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "divide_area_weighted",
+      "relative_to": "population",
+      "resampling_weight": "population"
+    },
+    {
+      "feature_name": "traditionalReligiosityPopulation",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [],
+      "definition": "Derived (not a native CBS ArcGIS field): population of areas whose religiosityCode == 2, i.e. pop_approx where the area's dominant religious-observance classification matches that code, else 0. Named distinctly from the global-schema canonical 'religiousPopulation' feature (a different concept -- 'has any religion affiliation' vs. this field's 'degree of observance among the Jewish population') to avoid a semantic collision on canonical-name matching. Computed by pycensus.countries.israel.cbs.loader.load() after fetching (never fetched from ArcGIS directly, hence empty 'codes').",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "divide_area_weighted",
+      "relative_to": "population",
+      "resampling_weight": "population"
+    },
+    {
+      "feature_name": "religiousObservantPopulation",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [],
+      "definition": "Derived (not a native CBS ArcGIS field): population of areas whose religiosityCode == 3, i.e. pop_approx where the area's dominant religious-observance classification matches that code, else 0. Named distinctly from the global-schema canonical 'religiousPopulation' feature (a different concept -- 'has any religion affiliation' vs. this field's 'degree of observance among the Jewish population') to avoid a semantic collision on canonical-name matching. Computed by pycensus.countries.israel.cbs.loader.load() after fetching (never fetched from ArcGIS directly, hence empty 'codes').",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "divide_area_weighted",
+      "relative_to": "population",
+      "resampling_weight": "population"
+    },
+    {
+      "feature_name": "haredimPopulation",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [],
+      "definition": "Derived (not a native CBS ArcGIS field): population of areas whose religiosityCode == 4, i.e. pop_approx where the area's dominant religious-observance classification matches that code, else 0. Named distinctly from the global-schema canonical 'religiousPopulation' feature (a different concept -- 'has any religion affiliation' vs. this field's 'degree of observance among the Jewish population') to avoid a semantic collision on canonical-name matching. Computed by pycensus.countries.israel.cbs.loader.load() after fetching (never fetched from ArcGIS directly, hence empty 'codes').",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "divide_area_weighted",
+      "relative_to": "population",
+      "resampling_weight": "population"
+    },
+    {
+      "feature_name": "otherReligiosityPopulation",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [],
+      "definition": "Derived (not a native CBS ArcGIS field): population of areas whose religiosityCode == 6, i.e. pop_approx where the area's dominant religious-observance classification matches that code, else 0. Named distinctly from the global-schema canonical 'religiousPopulation' feature (a different concept -- 'has any religion affiliation' vs. this field's 'degree of observance among the Jewish population') to avoid a semantic collision on canonical-name matching. Computed by pycensus.countries.israel.cbs.loader.load() after fetching (never fetched from ArcGIS directly, hence empty 'codes').",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "divide_area_weighted",
+      "relative_to": "population",
+      "resampling_weight": "population"
+    }
+  ],
+  "years": [
+    2022
+  ],
+  "levels": [
+    "locality",
+    "statistical_area"
+  ]
+}

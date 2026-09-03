@@ -1,0 +1,84 @@
+{
+  "country": "chile",
+  "country_name": "Chile",
+  "description": "Census geography levels for Chile (INE Censo 2017, via the Esri Chile DPA FeatureServer)",
+  "native_levels": [
+    {
+      "level": "region",
+      "description": "Region - 16 first-level administrative divisions",
+      "source": "INE",
+      "geoid_pattern": "XX",
+      "geoid_pattern_description": "2-digit region code",
+      "is_standard": true,
+      "resample_from": "provincia",
+      "resample_to": "provincia",
+      "resample_intersections": false
+    },
+    {
+      "level": "provincia",
+      "description": "Provincia - second-level administrative division",
+      "source": "INE",
+      "geoid_pattern": "XXX",
+      "geoid_pattern_description": "3-digit province code",
+      "is_standard": true,
+      "resample_from": "comuna",
+      "resample_to": "comuna",
+      "resample_intersections": false
+    },
+    {
+      "level": "comuna",
+      "description": "Comuna - municipality, third-level administrative division where mayors are elected",
+      "source": "INE",
+      "geoid_pattern": "XXXXX",
+      "geoid_pattern_description": "5-digit comuna code (DIVIPOLA/CUT)",
+      "is_standard": true,
+      "resample_from": "distrito",
+      "resample_to": "distrito",
+      "resample_intersections": false
+    },
+    {
+      "level": "distrito",
+      "description": "Distrito censal - census district, finest unit published by this source",
+      "source": "INE",
+      "geoid_pattern": "XXXXXXX",
+      "geoid_pattern_description": "7-digit census-district code",
+      "is_standard": true,
+      "resample_from": "distrito",
+      "resample_to": "distrito",
+      "resample_intersections": false
+    }
+  ],
+  "levels": [
+    "region",
+    "provincia",
+    "comuna",
+    "distrito"
+  ],
+  "global_to_country_mapping": {
+    "nation": "region",
+    "state": "region",
+    "province": "provincia",
+    "municipality": "comuna",
+    "county": "comuna",
+    "place": "comuna",
+    "tract": "distrito",
+    "blockgroup": "distrito",
+    "block": "distrito"
+  },
+  "country_to_global_mapping": {
+    "region": "state",
+    "provincia": "province",
+    "comuna": "municipality",
+    "distrito": "tract"
+  },
+  "fallback_resolution": {
+    "state": "region",
+    "province": "region",
+    "county": "comuna",
+    "municipality": "comuna",
+    "place": "comuna",
+    "tract": "comuna",
+    "blockgroup": "comuna",
+    "block": "comuna"
+  }
+}

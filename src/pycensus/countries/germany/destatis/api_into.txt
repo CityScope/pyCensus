@@ -1,0 +1,293 @@
+source: https://www.destatis.de/EN/Service/OpenData/api-webservice.html
+GENESIS web service interface (API)
+"Web service" means the automated execution of processes between applications on the internet. Web services are designed for software systems which exchange data in an automated manner and/or access functions on remote computers - rather than for human interaction.
+
+By using the GENESIS web service, the GENESIS-Online stock of data can be integrated into automated processes.
+
+We currently offer a RESTful/JSON interface with a variety of methods for usage.
+
+The textual description can be found in GENESIS-Online on the information page about the webservice interface.
+
+https://genesis.destatis.de/datenbank/online/
+
+More datasets in germany: https://github.com/bundesAPI/deutschland/tree/main 
+
+Lint Publish Python 🐍 distributions 📦 to PyPI and TestPyPI Run Python 🐍 tests
+
+Deutschland
+A python package that gives you easy access to the most valuable datasets of Germany.
+
+Installation
+pip install deutschland
+Supported Python Versions
+3.9 - 3.12
+Tested on Linux, MacOS and Windows
+
+Run Python 🐍 tests
+
+Development
+For development poetry version >=1.2.0 is required.
+
+Geographic data
+Fetch information about streets, house numbers, building outlines, …
+
+from deutschland.geo import Geo
+geo = Geo()
+# top_right and bottom_left coordinates
+data = geo.fetch([52.530116236589244, 13.426532801586827],
+                 [52.50876180448243, 13.359631043007212])
+print(data.keys())
+# dict_keys(['Adresse', 'Barrierenlinie', 'Bauwerksflaeche', 'Bauwerkslinie', 'Bauwerkspunkt', 'Besondere_Flaeche', 'Besondere_Linie', 'Besonderer_Punkt', 'Gebaeudeflaeche', 'Gebaeudepunkt', 'Gewaesserflaeche', 'Gewaesserlinie', 'Grenze_Linie', 'Historischer_Punkt', 'Siedlungsflaeche', 'Vegetationslinie', 'Verkehrsflaeche', 'Verkehrslinie', 'Verkehrspunkt', 'Hintergrund'])
+
+print(data["Adresse"][0])
+# {'geometry': {'type': 'Point', 'coordinates': (13.422642946243286, 52.51500157651358)}, 'properties': {'postleitzahl': '10179', 'ort': 'Berlin', 'ortsteil': 'Mitte', 'strasse': 'Holzmarktstraße', 'hausnummer': '55'}, 'id': 0, 'type': 'Feature'}
+For the detailed documentation of this API see here
+
+The data is provided by the AdV SmartMapping. The team consists of participants from the German state surveying offices, the Federal Agency for Cartography and Geodesy (BKG), the German Federal Armed Forces (Bundeswehr ZGeoBW) and third parties from research and education.
+
+Company Data
+Bundesanzeiger
+Get financial reports for all german companies that are reporting to Bundesanzeiger. More
+
+from deutschland.bundesanzeiger import Bundesanzeiger
+ba = Bundesanzeiger()
+# search term
+data = ba.get_reports("Deutsche Bahn AG")
+# returns a dictionary with all reports found as fulltext reports
+print(data.keys())
+# dict_keys(['Jahresabschluss zum Geschäftsjahr vom 01.01.2020 bis zum 31.12.2020', 'Konzernabschluss zum Geschäftsjahr vom 01.01.2020 bis zum 31.12.2020\nErgänzung der Veröffentlichung vom 04.06.2021',
+Big thanks to Nico Duldhardt and Friedrich Eichenroth, who supported this implementation with their machine learning model.
+
+Handelsregister
+The code for the Handelsregister moved to this repo.
+
+Consumer Protection Data
+Lebensmittelwarnung
+Get current product warnings provided by the german federal portal lebensmittelwarnung.de.
+
+from deutschland.lebensmittelwarnung import Lebensmittelwarnung
+lw = Lebensmittelwarnung()
+# search by content type and region, see documetation for all available params
+data = lw.get("lebensmittel", "berlin")
+print(data)
+# [{'id': 19601, 'guid': 'https://www.lebensmittelwarnung.de/bvl-lmw-de/detail/lebensmittel/19601', 'pubDate': 'Fri, 10 Feb 2017 12:28:45 +0000', 'imgSrc': 'https://www.lebensmittelwarnung.de/bvl-lmw-de/opensaga/attachment/979f8cd3-969e-4a6c-9a8e-4bdd61586cd4/data.jpg', 'title': 'Sidroga Bio Säuglings- und Kindertee', 'manufacturer': 'Lebensmittel', 'warning': 'Pyrrolizidinalkaloide', 'affectedStates': ['Baden-Württemberg', '...']}]
+Federal Job Openings
+NRW
+VERENA
+Get open substitute teaching positions in NRW from https://www.schulministerium.nrw.de/BiPo/Verena/angebote
+
+from deutschland.verena import Verena
+v = Verena()
+data = v.get()
+print(data)
+# a full example data can be found at deutschland/verena/example.md
+# [{ "school_id": "99999", "desc": "Eine Schule\nSchule der Sekundarstufe II\ndes Landkreis Schuling\n9999 Schulingen", "replacement_job_title": "Lehrkraft", "subjects": [ "Fach 1", "Fach 2" ], "comments": "Bemerkung zur Stelle: Testbemerkung", "duration": "01.01.2021 - 01.01.2022", ...} ...]
+Autobahn
+Get data from the Autobahn.
+
+from deutschland import autobahn
+from deutschland.autobahn.api import default_api
+
+from pprint import pprint
+
+autobahn_api_instance = default_api.DefaultApi()
+
+try:
+    # Auflistung aller Autobahnen
+    api_response = autobahn_api_instance.list_autobahnen()
+    pprint(api_response)
+
+    # Details zu einer Ladestation
+    station_id = "RUxFQ1RSSUNfQ0hBUkdJTkdfU1RBVElPTl9fMTczMzM="  # str |
+    api_response = autobahn_api_instance.get_charging_station(station_id)
+    pprint(api_response)
+
+except autobahn.ApiException as e:
+    print("Exception when calling DefaultApi->get_charging_station: %s\n" % e)
+For the detailed documentation of this API see here
+
+Presseportal
+Not available for now due to changes in the API.
+
+Auto-Generated API-Clients
+bundesrat
+For the detailed documentation of this API see here
+
+bundestag
+For the detailed documentation of this API see here
+
+destatis
+For the detailed documentation of this API see here
+
+dwd
+For the detailed documentation of this API see here
+
+interpol
+For the detailed documentation of this API see here
+
+jobsuche
+For the detailed documentation of this API see here
+
+ladestationen
+For the detailed documentation of this API see here
+
+mudab
+For the detailed documentation of this API see here
+
+nina
+For the detailed documentation of this API see here
+
+polizei_brandenburg
+For the detailed documentation of this API see here
+
+risikogebiete
+For the detailed documentation of this API see here
+
+smard
+For the detailed documentation of this API see here
+
+strahlenschutz
+For the detailed documentation of this API see here
+
+travelwarning
+For the detailed documentation of this API see here
+
+zoll
+For the detailed documentation of this API see here
+
+
+github repo: https://github.com/bundesAPI/deutschland/blob/main/docs/destatis/README.md
+
+destatis
+No description provided (generated by Openapi Generator https://github.com/openapitools/openapi-generator)
+
+This Python package is automatically generated by the OpenAPI Generator project:
+
+API version: 1.0
+Package version: 1.0.0
+Build package: org.openapitools.codegen.languages.PythonClientCodegen
+Requirements.
+Python >= 3.6
+
+Installation & Usage
+pip install
+If the python package is hosted on a repository, you can install directly using:
+
+pip install git+https://github.com/bundesAPI/deutschland.git
+(you may need to run pip with root permission: sudo pip install git+https://github.com/bundesAPI/deutschland.git)
+
+Then import the package:
+
+from deutschland import destatis
+Setuptools
+Install via Setuptools.
+
+python setup.py install --user
+(or sudo python setup.py install to install the package for all users)
+
+Then import the package:
+
+from deutschland import destatis
+Getting Started
+Please follow the installation procedure and then run the following:
+
+import time
+from deutschland import destatis
+from pprint import pprint
+from deutschland.destatis.api import default_api
+# Defining the host is optional and defaults to https://www-genesis.destatis.de/genesisWS/rest/2020
+# See configuration.py for a list of all supported configuration parameters.
+configuration = destatis.Configuration(
+    host = "https://www-genesis.destatis.de/genesisWS/rest/2020"
+)
+
+
+
+# Enter a context with an instance of the API client
+with destatis.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = default_api.DefaultApi(api_client)
+    username = "GAST" # str |  (optional) (default to "GAST")
+password = "GAST" # str |  (optional) (default to "GAST")
+name = "name_example" # str |  (optional)
+area = "free" # str |  (optional) (default to "free")
+charttype = "0" # str |  (optional) (default to "0")
+drawpoints = "false" # str |  (optional) (default to "false")
+zoom = "2" # str |  (optional) (default to "2")
+focus = "false" # str |  (optional) (default to "false")
+tops = "false" # str |  (optional) (default to "false")
+format = "png" # str |  (optional) (default to "png")
+language = "de" # str |  (optional) (default to "de")
+
+    try:
+        api_instance.chart2result(username=username, password=password, name=name, area=area, charttype=charttype, drawpoints=drawpoints, zoom=zoom, focus=focus, tops=tops, format=format, language=language)
+    except destatis.ApiException as e:
+        print("Exception when calling DefaultApi->chart2result: %s\n" % e)
+Documentation for API Endpoints
+All URIs are relative to https://www-genesis.destatis.de/genesisWS/rest/2020
+
+Class	Method	HTTP request	Description
+DefaultApi	chart2result	GET /data/chart2result	
+DefaultApi	chart2table	GET /data/chart2table	
+DefaultApi	chart2timeseries	GET /data/chart2timeseries	
+DefaultApi	cube	GET /data/cube	
+DefaultApi	cube_meta	GET /metadata/cube	
+DefaultApi	cubefile	GET /data/cubefile	
+DefaultApi	cubes	GET /catalogue/cubes	
+DefaultApi	cubes2statistic	GET /catalogue/cubes2statistic	
+DefaultApi	cubes2variable	GET /catalogue/cubes2variable	
+DefaultApi	find	GET /find/find	
+DefaultApi	jobs	GET /catalogue/jobs	
+DefaultApi	logincheck	GET /helloworld/logincheck	
+DefaultApi	map2result	GET /data/map2result	
+DefaultApi	map2table	GET /data/map2table	
+DefaultApi	map2timeseries	GET /data/map2timeseries	
+DefaultApi	modifieddata	GET /catalogue/modifieddata	
+DefaultApi	password	GET /profile/password	
+DefaultApi	qualitysigns	GET /catalogue/qualitysigns	
+DefaultApi	remove_result	GET /profile/removeResult	
+DefaultApi	result	GET /data/result	
+DefaultApi	resultfile	GET /data/resultfile	
+DefaultApi	results	GET /catalogue/results	
+DefaultApi	statistic	GET /metadata/statistic	
+DefaultApi	statistics	GET /catalogue/statistics	
+DefaultApi	statistics2variable	GET /catalogue/statistics2variable	
+DefaultApi	table	GET /data/table	
+DefaultApi	table_meta	GET /metadata/table	
+DefaultApi	tablefile	GET /data/tablefile	
+DefaultApi	tables	GET /catalogue/tables	
+DefaultApi	tables2statistic	GET /catalogue/tables2statistic	
+DefaultApi	tables2variable	GET /catalogue/tables2variable	
+DefaultApi	terms	GET /catalogue/terms	
+DefaultApi	timeseries	GET /catalogue/timeseries	
+DefaultApi	timeseries2statistic	GET /catalogue/timeseries2statistic	
+DefaultApi	timeseries2variable	GET /catalogue/timeseries2variable	
+DefaultApi	timeseries_data	GET /data/timeseries	
+DefaultApi	timeseries_meta	GET /metadata/timeseries	
+DefaultApi	timeseriesfile	GET /data/timeseriesfile	
+DefaultApi	value	GET /metadata/value	
+DefaultApi	values	GET /catalogue/values	
+DefaultApi	values2variable	GET /catalogue/values2variable	
+DefaultApi	variable	GET /metadata/variable	
+DefaultApi	variables	GET /catalogue/variables	
+DefaultApi	variables2statistic	GET /catalogue/variables2statistic	
+DefaultApi	whoami	GET /helloworld/whoami	
+Documentation For Models
+Documentation For Authorization
+All endpoints do not require authorization.
+
+Author
+Notes for Large OpenAPI documents
+If the OpenAPI document is large, imports in destatis.apis and destatis.models may fail with a RecursionError indicating the maximum recursion limit has been exceeded. In that case, there are a couple of solutions:
+
+Solution 1: Use specific imports for apis and models like:
+
+from deutschland.destatis.api.default_api import DefaultApi
+from deutschland.destatis.model.pet import Pet
+Solution 2: Before importing the package, adjust the maximum recursion limit as shown below:
+
+import sys
+sys.setrecursionlimit(1500)
+from deutschland import destatis
+from deutschland.destatis.apis import *
+from deutschland.destatis.models import *

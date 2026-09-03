@@ -1,0 +1,108 @@
+{
+  "country": "usa",
+  "source": "lodes_rac",
+  "full_name": "US Census LODES RAC (Residence Area Characteristics)",
+  "features": [
+    {
+      "feature_name": "jobsTotal",
+      "country": "usa",
+      "source": "lodes_rac",
+      "codes": [
+        "C000"
+      ],
+      "type": "count",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "definition": "Total number of jobs."
+    },
+    {
+      "feature_name": "jobsIncomeLow",
+      "country": "usa",
+      "source": "lodes_rac",
+      "codes": [
+        "CE01"
+      ],
+      "type": "count",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "jobsTotal",
+      "definition": "Number of jobs with earnings $1,250/month or less."
+    },
+    {
+      "feature_name": "jobsIncomeMid",
+      "country": "usa",
+      "source": "lodes_rac",
+      "codes": [
+        "CE02"
+      ],
+      "type": "count",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "jobsTotal",
+      "definition": "Number of jobs with earnings $1,251/month to $3,333/month."
+    },
+    {
+      "feature_name": "jobsIncomeHigh",
+      "country": "usa",
+      "source": "lodes_rac",
+      "codes": [
+        "CE03"
+      ],
+      "type": "count",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "jobsTotal",
+      "definition": "Number of jobs with earnings greater than $3,333/month."
+    },
+    {
+      "feature_name": "jobsAgeYoung",
+      "country": "usa",
+      "source": "lodes_rac",
+      "codes": [
+        "CA01"
+      ],
+      "type": "count",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "jobsTotal",
+      "definition": "Number of jobs held by workers aged 29 or younger."
+    },
+    {
+      "feature_name": "jobsAgePrime",
+      "country": "usa",
+      "source": "lodes_rac",
+      "codes": [
+        "CA02"
+      ],
+      "type": "count",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "jobsTotal",
+      "definition": "Number of jobs held by workers aged 30 to 54."
+    },
+    {
+      "feature_name": "jobsAgeOlder",
+      "country": "usa",
+      "source": "lodes_rac",
+      "codes": [
+        "CA03"
+      ],
+      "type": "count",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "jobsTotal",
+      "definition": "Number of jobs held by workers aged 55 or older."
+    }
+  ],
+  "years": [
+    2019,
+    2020,
+    2021
+  ],
+  "levels": [
+    "state",
+    "county",
+    "census_tract",
+    "block"
+  ]
+}

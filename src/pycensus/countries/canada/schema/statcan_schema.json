@@ -1,0 +1,345 @@
+{
+  "country": "canada",
+  "source": "statcan",
+  "full_name": "Statistics Canada 2021 Census of Population -- Population and dwelling counts (PID 98-10-0002)",
+  "years": [
+    2021
+  ],
+  "levels": [
+    "province",
+    "municipality",
+    "dissemination-area",
+    "dissemination-block"
+  ],
+  "features": [
+    {
+      "category": "population",
+      "feature_name": "population",
+      "country": "canada",
+      "source": "statcan",
+      "codes": [
+        "Population and dwelling counts (13): Population, 2021 [1]",
+        "Population and dwelling counts (5): Population, 2021 [1]",
+        "DBPOP2021_IDPOP2021"
+      ],
+      "definition": "Total population, 2021 Census (100% data). Verified against the real downloaded 98100002.csv: Canada total 36,991,981, Ontario 14,223,942, City of Toronto 2,794,356 -- all match StatCan's own published 2021 Census figures. DA-level rows come from the companion cube PID 98-10-0015 (98100002 stops at CSD level), same '...Population, 2021 [1]' column under a '(5)' variable-count label instead of '(13)'. Dissemination-block rows come from the 2021 Geographic Attribute File (catalogue 92-151-X, column DBPOP2021_IDPOP2021) -- verified live 2026-08-22: block-level sums reproduce the DA-level PID 98-10-0015 totals exactly for all 3,743 real Toronto DAs.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "constant_total": true
+    },
+    {
+      "category": "housing",
+      "feature_name": "households",
+      "country": "canada",
+      "source": "statcan",
+      "codes": [
+        "Population and dwelling counts (13): Private dwellings occupied by usual residents, 2021 [7]",
+        "Population and dwelling counts (5): Private dwellings occupied by usual residents, 2021 [3]",
+        "DBURDWELL2021_IDRHLOG2021"
+      ],
+      "definition": "Private dwellings occupied by usual residents, 2021 Census (100% data) -- StatCan's definition of an occupied private dwelling is equivalent to a private household. Verified: Canada total 14,978,941, Ontario 5,491,201, City of Toronto row present in the real downloaded file. Dissemination-block rows come from the 2021 Geographic Attribute File (column DBURDWELL2021_IDRHLOG2021, same 'occupied by usual residents' definition).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "constant_total": true
+    },
+    {
+      "category": "housing",
+      "feature_name": "dwellings",
+      "country": "canada",
+      "source": "statcan",
+      "codes": [
+        "Population and dwelling counts (13): Total private dwellings, 2021 [4]",
+        "Population and dwelling counts (5): Total private dwellings, 2021 [2]",
+        "DBTDWELL2021_IDTLOG2021"
+      ],
+      "definition": "Total private dwellings, 2021 Census (100% data), including unoccupied/seasonal dwellings (superset of 'households'). Verified: Canada total 16,284,235, Ontario 5,929,250. Dissemination-block rows come from the 2021 Geographic Attribute File (column DBTDWELL2021_IDTLOG2021).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "constant_total": true
+    },
+    {
+      "category": "housing",
+      "feature_name": "householdSizeMean",
+      "country": "canada",
+      "source": "statcan",
+      "codes": [
+        "Average household size"
+      ],
+      "definition": "Average number of persons per private household, 2021 Census (100% data). Dissemination-area only, Ontario only, from catalogue 98-401-X2021006 (Census Profile comprehensive bulk CSV, real per-province download GEONO=006_Ontario, verified live 2026-08-23). Live-verified against 4 real Toronto DAs: DA 35204609 (downtown core) = 1.9, DA 35203712 (Scarborough) = 3, DA 35204196 (North York) = 2.1, DA 35201868 (Etobicoke) = 3.4.",
+      "type": "mean",
+      "unit": "persons/household",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "households",
+      "constant_total": false
+    },
+    {
+      "category": "income",
+      "feature_name": "medianHouseholdIncome",
+      "country": "canada",
+      "source": "statcan",
+      "codes": [
+        "Median total income of household in 2020 ($)"
+      ],
+      "definition": "Median total household income in 2020, 2021 Census (25% sample data), Canadian dollars. Dissemination-area only, Ontario only (98-401-X2021006). Live-verified against 4 real Toronto DAs: DA 35204609 = $44,800, DA 35203712 = $98,000, DA 35204196 = $65,000, DA 35201868 = $89,000 -- DA 35204609's value exactly matches this same field spot-checked in a prior session.",
+      "type": "median",
+      "unit": "$/year",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "households",
+      "constant_total": false
+    },
+    {
+      "category": "income",
+      "feature_name": "meanHouseholdIncome",
+      "country": "canada",
+      "source": "statcan",
+      "codes": [
+        "Average total income of household in 2020 ($)"
+      ],
+      "definition": "Average (mean) total household income in 2020, 2021 Census (25% sample data), Canadian dollars. Dissemination-area only, Ontario only (98-401-X2021006). Live-verified: DA 35204609 = $48,800, DA 35203712 = $108,000, DA 35204196 = $89,000, DA 35201868 = $106,000.",
+      "type": "mean",
+      "unit": "$/year",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "households",
+      "constant_total": false
+    },
+    {
+      "category": "housing",
+      "feature_name": "ownerHouseholds",
+      "country": "canada",
+      "source": "statcan",
+      "codes": [
+        "Owner"
+      ],
+      "definition": "Number of private households living in a dwelling owned by a household member, 2021 Census (25% sample data). Dissemination-area only, Ontario only (98-401-X2021006). Live-verified: DA 35204609 = 0 (all-renter DA), DA 35203712 = 125, DA 35204196 = 110, DA 35201868 = 165.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "households",
+      "constant_total": true
+    },
+    {
+      "category": "housing",
+      "feature_name": "renterHouseholds",
+      "country": "canada",
+      "source": "statcan",
+      "codes": [
+        "Renter"
+      ],
+      "definition": "Number of private households living in a rented dwelling, 2021 Census (25% sample data). Dissemination-area only, Ontario only (98-401-X2021006). Live-verified: DA 35204609 = 180, DA 35203712 = 10, DA 35204196 = 100, DA 35201868 = 95.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "households",
+      "constant_total": true
+    },
+    {
+      "category": "education",
+      "feature_name": "educationTotalPopulation",
+      "country": "canada",
+      "source": "statcan",
+      "codes": [
+        "Total - Highest certificate, diploma or degree for the population aged 15 years and over in private households - 25% sample data"
+      ],
+      "definition": "Denominator for the educationXPopulation fields: population aged 15+ in private households with a highest-certificate-attained response, 2021 Census (25% sample data). Dissemination-area only, Ontario only (98-401-X2021006).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "constant_total": true
+    },
+    {
+      "category": "education",
+      "feature_name": "educationPrimaryOrLessPopulation",
+      "country": "canada",
+      "source": "statcan",
+      "codes": [
+        "No certificate, diploma or degree"
+      ],
+      "definition": "Population aged 15+ in private households with no certificate, diploma or degree, 2021 Census (25% sample data). Dissemination-area only, Ontario only (98-401-X2021006). Live-verified: DA 35204609 = 25, DA 35203712 = 75, DA 35204196 = 65, DA 35201868 = 160.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "relative_to": "educationTotalPopulation",
+      "constant_total": true
+    },
+    {
+      "category": "education",
+      "feature_name": "educationSecondaryPopulation",
+      "country": "canada",
+      "source": "statcan",
+      "codes": [
+        "High (secondary) school diploma or equivalency certificate"
+      ],
+      "definition": "Population aged 15+ in private households whose highest credential is a high school diploma or equivalency certificate, 2021 Census (25% sample data). Dissemination-area only, Ontario only (98-401-X2021006). Live-verified: DA 35204609 = 130, DA 35203712 = 70, DA 35204196 = 35, DA 35201868 = 245.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "relative_to": "educationTotalPopulation",
+      "constant_total": true
+    },
+    {
+      "category": "education",
+      "feature_name": "educationOtherTertiaryPopulation",
+      "country": "canada",
+      "source": "statcan",
+      "codes": [
+        "Postsecondary certificate or diploma below bachelor level"
+      ],
+      "definition": "Population aged 15+ in private households whose highest credential is a postsecondary certificate or diploma below bachelor level (trades, apprenticeship, college/CEGEP, or university certificate below bachelor), 2021 Census (25% sample data). Dissemination-area only, Ontario only (98-401-X2021006). Live-verified: DA 35204609 = 70, DA 35203712 = 125, DA 35204196 = 60, DA 35201868 = 155.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "relative_to": "educationTotalPopulation",
+      "constant_total": true
+    },
+    {
+      "category": "education",
+      "feature_name": "educationUniversityPopulation",
+      "country": "canada",
+      "source": "statcan",
+      "codes": [
+        "Bachelor's degree or higher"
+      ],
+      "definition": "Population aged 15+ in private households whose highest credential is a bachelor's degree or higher, 2021 Census (25% sample data). Dissemination-area only, Ontario only (98-401-X2021006). Live-verified: DA 35204609 = 90, DA 35203712 = 85, DA 35204196 = 225, DA 35201868 = 195.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "relative_to": "educationTotalPopulation",
+      "constant_total": true
+    },
+    {
+      "category": "transport",
+      "feature_name": "commuteTotalPopulation",
+      "country": "canada",
+      "source": "statcan",
+      "codes": [
+        "Total - Main mode of commuting for the employed labour force aged 15 years and over with a usual place of work or no fixed workplace address - 25% sample data"
+      ],
+      "definition": "Denominator for the X Commuters fields: employed labour force aged 15+ with a usual place of work or no fixed workplace address, 2021 Census (25% sample data). Dissemination-area only, Ontario only (98-401-X2021006).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "constant_total": true
+    },
+    {
+      "category": "transport",
+      "feature_name": "carCommuters",
+      "country": "canada",
+      "source": "statcan",
+      "codes": [
+        "Car, truck or van"
+      ],
+      "definition": "Employed labour force whose main mode of commuting is car, truck or van (as driver or passenger), 2021 Census (25% sample data). Dissemination-area only, Ontario only (98-401-X2021006). Live-verified: DA 35204609 = 20, DA 35203712 = 85, DA 35204196 = 60, DA 35201868 = 200.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "relative_to": "commuteTotalPopulation",
+      "constant_total": true
+    },
+    {
+      "category": "transport",
+      "feature_name": "publicTransportCommuters",
+      "country": "canada",
+      "source": "statcan",
+      "codes": [
+        "Public transit"
+      ],
+      "definition": "Employed labour force whose main mode of commuting is public transit, 2021 Census (25% sample data). Dissemination-area only, Ontario only (98-401-X2021006). Live-verified: DA 35204609 = 40, DA 35203712 = 0, DA 35204196 = 30, DA 35201868 = 65.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "relative_to": "commuteTotalPopulation",
+      "constant_total": true
+    },
+    {
+      "category": "transport",
+      "feature_name": "walkCommuters",
+      "country": "canada",
+      "source": "statcan",
+      "codes": [
+        "Walked"
+      ],
+      "definition": "Employed labour force whose main mode of commuting is walking, 2021 Census (25% sample data). Dissemination-area only, Ontario only (98-401-X2021006). Live-verified: DA 35204609 = 10, DA 35203712 = 0, DA 35204196 = 10, DA 35201868 = 10.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "relative_to": "commuteTotalPopulation",
+      "constant_total": true
+    },
+    {
+      "category": "transport",
+      "feature_name": "bikeCommuters",
+      "country": "canada",
+      "source": "statcan",
+      "codes": [
+        "Bicycle"
+      ],
+      "definition": "Employed labour force whose main mode of commuting is bicycle, 2021 Census (25% sample data). Dissemination-area only, Ontario only (98-401-X2021006). Live-verified: all 4 spot-checked Toronto DAs report 0 -- consistent with real, low-count DA-level bicycle-commute cells rather than a data-loading bug (each DA's total employed labour force is only in the tens to low hundreds).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "relative_to": "commuteTotalPopulation",
+      "constant_total": true
+    },
+    {
+      "category": "population",
+      "feature_name": "foreignBornPopulation",
+      "country": "canada",
+      "source": "statcan",
+      "codes": [
+        "Immigrants"
+      ],
+      "definition": "Immigrant population (persons who are, or have ever been, a landed immigrant/permanent resident of Canada), 2021 Census (25% sample data). Dissemination-area only, Ontario only (98-401-X2021006). Live-verified 2026-08-23: Canada total 8,361,505 (23.0% of population) matches StatCan's own widely-published 2021 Census headline immigrant count/share exactly; downtown-Toronto DA 35204609 = 160 (45.1%).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "relative_to": "population",
+      "constant_total": true
+    },
+    {
+      "category": "employment",
+      "feature_name": "jobsTotal",
+      "country": "canada",
+      "source": "statcan",
+      "codes": [
+        "StatCan 98-10-0459 jobs by workplace CSD (usual place of work)"
+      ],
+      "definition": "Real workplace-located jobs count -- Canada's analog to the USA's LODES WAC total-jobs field (see pycensus.countries.canada.constants.WORKPLACE_JOBS_PID's docstring for the full live verification). Census-subdivision level, all of Canada (not Ontario-only). Sourced from PID 98-10-0459 ('Commuting flow from geography of residence to geography of work'), summed over every residence CSD for each workplace CSD. Live-verified 2026-08-23: Toronto (CSDUID 3520005) = 753,185; Montreal (2466023) = 649,595; Calgary (4806016) = 370,125; Ottawa (3506008) = 272,920; national sum 10,680,335 is within ~1.5% of the companion table 98-10-0456's own published national 'Usual place of work' total (10,846,770), consistent with StatCan's routine small-cell random rounding. IMPORTANT CAVEAT: this measure EXCLUDES workers who worked from home or had no fixed workplace address (a large share in the pandemic-affected 2021 Census), so it materially UNDER-counts true total jobs-by-workplace compared to a complete LODES-style jobs census -- do not treat as directly comparable to usa_lodes_wac_jobsTotal without accounting for this gap.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "divide_area_weighted",
+      "constant_total": true
+    }
+  ]
+}

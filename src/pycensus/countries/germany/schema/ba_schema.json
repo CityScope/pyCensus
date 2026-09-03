@@ -1,0 +1,22 @@
+{
+  "country": "germany",
+  "source": "ba",
+  "full_name": "Bundesagentur fuer Arbeit (BA) -- Statistik der Bundesagentur fuer Arbeit, 'Arbeitsmarkt kommunal' (AMK)",
+  "_note": "Live-verified 2026-08-23: https://statistik.arbeitsagentur.de/Statistikdaten/Detail/202512/arbeitsmarkt-kommunal/amk/amk-02000-0-202512-zip.zip (period 202512, the latest AMK period available as of this check -- 202603/202606 both 404) downloads a real .zip containing a real .xlsx, 'Arbeitsmarkt-kommunal_02000000_Hamburg_Freie_und_Hansestadt.xlsx', whose 'Daten' sheet has a real row 'Sozialversicherungspflichtig Beschaeftigte am Arbeitsort (Stichtag 30.06.)' / 'Insgesamt' with columns for 2021..2025: 1,008,604 / 1,038,507 / 1,061,826 / 1,073,152 / 1,084,974 -- a plausible, monotonically-growing series for Hamburg's real ~1M-scale workplace employment (Destatis' own 'Sozialversicherungspflichtig Beschaeftigte am Arbeitsort' page defers to the BA's live statistics for current figures, confirming BA is the authoritative live source for this series). Only the 'Insgesamt' (total) row under 'am Arbeitsort' (workplace, not residence) is kept -- this is the LODES-WAC equivalent for Germany. The same workbook also has 'am Wohnort' (residence, LODES-RAC equivalent) and 'Arbeitslose' (unemployed) rows, not wired here (see loader.py module docstring for how to add them later). GRANULARITY CORRECTION (also live-verified 2026-08-23): the per-Kreis ZIP is actually Gemeinde-level, not Kreis-level -- Landkreis Merzig-Wadern's real ZIP (AGS 10042) contains 7 separate real workbooks, one per Gemeinde (e.g. Beckingen, 2025 workplace jobs = 1,883), each keyed by its real 8-digit AGS (which equals GISCO's LAU_ID, per ..geography's module docstring). Hamburg has exactly one file because it is a single-Gemeinde Kreis (city-state). District-level totals are therefore a real spatial aggregation of the real Gemeinde rows (see loader.py's district branch), not a second independently-fetched table.",
+  "features": [
+    {
+      "category": "jobs",
+      "feature_name": "jobsTotal",
+      "country": "germany",
+      "source": "ba",
+      "codes": ["Sozialversicherungspflichtig Beschaeftigte am Arbeitsort - Insgesamt"],
+      "definition": "Total number of employees subject to social-insurance contributions (sozialversicherungspflichtig Beschaeftigte) whose workplace (Arbeitsort) is in this district, Stichtag 30.06, from the BA's 'Arbeitsmarkt kommunal' (AMK) annual municipal report -- Germany's real, independent (not Destatis/GENESIS) analogue to US LEHD LODES WAC 'C000'.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide"
+    }
+  ],
+  "years": [2021, 2022, 2023, 2024, 2025],
+  "levels": ["municipality", "district"]
+}

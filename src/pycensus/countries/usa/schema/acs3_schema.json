@@ -1,0 +1,239 @@
+{
+  "country": "usa",
+  "source": "acs3",
+  "full_name": "US Census ACS 3-year (historical, through 2013)",
+  "description": "ACS 3-year provides historical 3-year averaged estimates for geographies with 20,000+ population. Data available for 2011-2013 only. Does NOT provide small-area geography (tracts, block groups, blocks).",
+  "years": [
+    2013
+  ],
+  "period_length": 3,
+  "levels": [
+    "nation",
+    "state",
+    "county",
+    "metropolitan_statistical_area",
+    "congressional_district",
+    "public_use_microdata_area",
+    "place"
+  ],
+  "features": [
+    {
+      "category": "population",
+      "feature_name": "population",
+      "country": "usa",
+      "source": "acs3",
+      "codes": [
+        "B01003_001"
+      ],
+      "definition": "Number of people residing in the geographic area.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "area"
+    },
+    {
+      "category": "population",
+      "feature_name": "households",
+      "country": "usa",
+      "source": "acs3",
+      "codes": [
+        "B25044_001"
+      ],
+      "definition": "Number of residential or private households in the geographic area.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "householdSizeMean",
+      "country": "usa",
+      "source": "acs3",
+      "codes": [
+        "B25010_001"
+      ],
+      "definition": "Average number of people per household.",
+      "type": "mean",
+      "unit": "people/household",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "households"
+    },
+    {
+      "feature_name": "population16plus",
+      "country": "usa",
+      "source": "acs3",
+      "codes": [
+        "B23025_001"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population",
+      "unit": "",
+      "definition": "Number of residents aged 16 years or older."
+    },
+    {
+      "feature_name": "medianHouseholdIncome",
+      "country": "usa",
+      "source": "acs3",
+      "codes": [
+        "B19013_001"
+      ],
+      "type": "median",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "unit": "",
+      "resampling_weight": "households",
+      "definition": "Median annual household income. Matches global_schema.json's medianHouseholdIncome exactly."
+    },
+    {
+      "feature_name": "incomeMeanCapita",
+      "country": "usa",
+      "source": "acs3",
+      "codes": [
+        "B19301_001"
+      ],
+      "type": "mean",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "unit": "",
+      "resampling_weight": "population",
+      "definition": "Mean annual per-capita income."
+    },
+    {
+      "category": "income",
+      "feature_name": "povertyPopulation",
+      "country": "usa",
+      "source": "acs3",
+      "codes": [
+        "C17002_001"
+      ],
+      "definition": "Number of people whose income or economic resources are below the applicable official poverty threshold.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "area"
+    },
+    {
+      "feature_name": "laborForce",
+      "country": "usa",
+      "source": "acs3",
+      "codes": [
+        "B23025_003"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population16plus",
+      "unit": "",
+      "definition": "Number of residents aged 16+ who are in the civilian labor force (employed or unemployed and seeking work)."
+    },
+    {
+      "feature_name": "unemployedResidents",
+      "country": "usa",
+      "source": "acs3",
+      "codes": [
+        "B23025_005"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "laborForce",
+      "unit": "",
+      "definition": "Number of residents in the labor force who are unemployed. Matches global_schema.json's unemployedResidents exactly."
+    },
+    {
+      "feature_name": "workers",
+      "country": "usa",
+      "source": "acs3",
+      "codes": [
+        "B08301_001"
+      ],
+      "type": "count",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "unit": "",
+      "resampling_weight": "area",
+      "definition": "Number of employed residents aged 16+ who commute to work (workers who did not work from home)."
+    },
+    {
+      "feature_name": "commuteTimeMean",
+      "country": "usa",
+      "source": "acs3",
+      "codes": [
+        "B08303_001"
+      ],
+      "type": "mean",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "unit": "",
+      "resampling_weight": "population",
+      "definition": "Mean travel time to work, in minutes, for workers who do not work from home."
+    },
+    {
+      "category": "migration",
+      "feature_name": "foreignBornPopulation",
+      "country": "usa",
+      "source": "acs3",
+      "codes": [
+        "B05002_013"
+      ],
+      "definition": "Number of people born outside the United States.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "area"
+    },
+    {
+      "feature_name": "population25plus",
+      "country": "usa",
+      "source": "acs3",
+      "codes": [
+        "B15003_001"
+      ],
+      "definition": "Population aged 25 years or older (denominator for educational attainment breakdowns).",
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population",
+      "unit": ""
+    },
+    {
+      "feature_name": "educationHighSchool",
+      "country": "usa",
+      "source": "acs3",
+      "codes": [
+        "B15003_017",
+        "B15003_018"
+      ],
+      "definition": "Population 25+ with high school diploma or equivalent (no college).",
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population25plus",
+      "unit": ""
+    },
+    {
+      "feature_name": "educationSomeCollege",
+      "country": "usa",
+      "source": "acs3",
+      "codes": [
+        "B15003_019",
+        "B15003_020",
+        "B15003_021"
+      ],
+      "definition": "Population 25+ with some college or associate degree.",
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population25plus",
+      "unit": ""
+    }
+  ]
+}

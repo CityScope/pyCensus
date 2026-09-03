@@ -1,0 +1,107 @@
+{
+  "country": "euskadi",
+  "country_name": "Basque Country (Euskadi)",
+  "description": "Census geography levels for the Basque Country (Eustat)",
+  "native_levels": [
+    {
+      "level": "autonomous_community",
+      "description": "Euskadi - the entire Basque Country autonomous community",
+      "source": "Eustat",
+      "geoid_pattern": "EUS",
+      "is_standard": true,
+      "resample_from": "territory",
+      "resample_to": "territory",
+      "resample_intersections": false
+    },
+    {
+      "level": "territory",
+      "description": "Foru Aldundiak - historical territories: Araba, Bizkaia, Gipuzkoa",
+      "source": "Eustat",
+      "geoid_pattern": "XX",
+      "geoid_pattern_description": "2-digit code: 01, 48, 20",
+      "is_standard": true,
+      "resample_from": "comarca",
+      "resample_to": "comarca",
+      "resample_intersections": false
+    },
+    {
+      "level": "comarca",
+      "description": "Comarca - regional district, statistical grouping of municipalities",
+      "source": "Eustat",
+      "geoid_pattern": "XXX",
+      "geoid_pattern_description": "3-digit code",
+      "is_standard": true,
+      "resample_from": "municipality",
+      "resample_to": "municipality",
+      "resample_intersections": false
+    },
+    {
+      "level": "municipality",
+      "description": "Udalerria - municipality, local administrative unit",
+      "source": "Eustat",
+      "geoid_pattern": "XXX",
+      "geoid_pattern_description": "3-digit code, unique within territory",
+      "is_standard": true,
+      "resample_from": "district",
+      "resample_to": "district",
+      "resample_intersections": false
+    },
+    {
+      "level": "district",
+      "description": "Barrutia/Auzoa - district or quarter within municipalities",
+      "source": "Eustat",
+      "geoid_pattern": "XX",
+      "geoid_pattern_description": "2-digit code",
+      "is_standard": true,
+      "resample_from": "statistical_area",
+      "resample_to": "statistical_area",
+      "resample_intersections": false
+    },
+    {
+      "level": "statistical_area",
+      "description": "Area Estatistikoa - statistical area for census purposes",
+      "source": "Eustat",
+      "geoid_pattern": "XXXX",
+      "geoid_pattern_description": "4-digit code",
+      "is_standard": false,
+      "resample_from": "statistical_area",
+      "resample_to": "statistical_area",
+      "resample_intersections": false
+    }
+  ],
+  "levels": [
+    "autonomous_community",
+    "territory",
+    "comarca",
+    "municipality",
+    "district",
+    "statistical_area"
+  ],
+  "global_to_country_mapping": {
+    "nation": "autonomous_community",
+    "state": "autonomous_community",
+    "province": "territory",
+    "municipality": "municipality",
+    "tract": "district",
+    "blockgroup": "statistical_area",
+    "block": "statistical_area"
+  },
+  "country_to_global_mapping": {
+    "autonomous_community": "nation",
+    "territory": "province",
+    "comarca": "province",
+    "municipality": "municipality",
+    "district": "tract",
+    "statistical_area": "blockgroup"
+  },
+  "fallback_resolution": {
+    "nation": "autonomous_community",
+    "state": "autonomous_community",
+    "province": "territory",
+    "county": "comarca",
+    "tract": "district",
+    "blockgroup": "district",
+    "block": "district",
+    "place": "municipality"
+  }
+}

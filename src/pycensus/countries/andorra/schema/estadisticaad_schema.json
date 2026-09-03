@@ -1,0 +1,74 @@
+{
+  "country": "andorra",
+  "source": "estadisticaad",
+  "full_name": "Departament d'Estadistica - Poblacio 2010-2025 (population by locality/year)",
+  "years": [2003, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
+  "levels": ["nation", "parish"],
+  "features": [
+    {
+      "category": "population",
+      "feature_name": "population",
+      "country": "andorra",
+      "source": "estadisticaad",
+      "codes": [
+        "pob_2003", "pob_2010", "pob_2011", "pob_2012", "pob_2013", "pob_2014",
+        "pob_2015", "pob_2016", "pob_2017", "pob_2018", "pob_2019", "pob_2020",
+        "pob_2021", "pob_2022", "pob_2023", "pob_2024", "pob_2025"
+      ],
+      "definition": "Total population residing in the parish, summed from per-locality ('poble') counts published in the Departament d'Estadistica's 'Poblacio 2010-2025' table (sig.govern.ad ArcGIS FeatureServer, layer 'Poblacio_2010_25'). One raw code per year -- the loader selects the single code matching the requested year. Verified 2026-08-20: nationwide pob_2023 sums to 85,101, matching the Departament d'Estadistica's own published 31-Dec-2023 total as reported by Diari d'Andorra.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "constant_total": true,
+      "constant_density": false
+    },
+    {
+      "category": "housing",
+      "feature_name": "buildingCount",
+      "country": "andorra",
+      "source": "estadisticaad",
+      "codes": ["edif_2019"],
+      "definition": "Count of building-footprint polygons per parish, from the Departament d'Estadistica's hosted 'Edificis 2019' layer (sig.govern.ad ArcGIS FeatureServer, item 'Edificis 2019', layer 'Edificis Andorra 2019'). Single vintage year (2019); no other year is published under this item. Verified 2026-08-23: nationwide sum is 21,529 buildings across the 7 real parishes (Andorra la Vella 4655, La Massana 3904, Escaldes-Engordany 3518, Sant Julia de Loria 3030, Encamp 2623, Canillo 2175, Ordino 1624) -- the capital parish having the most buildings is a real, independently plausible sanity check.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "constant_total": true,
+      "constant_density": false
+    },
+    {
+      "category": "economy",
+      "feature_name": "activeBusinessCount",
+      "country": "andorra",
+      "source": "estadisticaad",
+      "codes": ["empreses_actives"],
+      "definition": "Count of active businesses (Es_Activa=1) per parish, from the Departament d'Estadistica's real business register (sig.govern.ad ArcGIS FeatureServer, item 'REE_Ubicacio', layer 'Ubicacio empreses'). Live current-state snapshot, not tied to a historical vintage year -- the loader returns the same current value for any requested year. Verified 2026-08-23: nationwide sum is 8,142 active businesses across the 7 real parishes (Andorra la Vella 3667, Escaldes-Engordany 1399, Encamp 998, La Massana 976, Sant Julia de Loria 438, Canillo 335, Ordino 329) -- the capital parish having far the most active businesses is a real, independently plausible sanity check. Integer PARROQUIA field (1-7) cross-verified live to match the ISO 3166-2:AD parish code suffix embedded in the same row's building-address code (vc_pkBloc_id_c).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "constant_total": true,
+      "constant_density": false
+    },
+    {
+      "category": "migration",
+      "feature_name": "foreignBornPopulation",
+      "country": "andorra",
+      "source": "estadisticaad",
+      "codes": ["estrangera"],
+      "definition": "Number of residents with a non-Andorran nationality ('Estrangera'), per parish, from the Departament d'Estadistica's real 'Nota de premsa' bulletin (A001/A003, section 2.2 'Poblacio per nacionalitat', PDF bulk publication -- no queryable FeatureServer/table carries this breakdown, verified 2026-08-23). This is a nationality-based proxy for foreign-born, not literal place-of-birth (Andorra's published statistics are nationality-based, like most small-country sources) -- matched to pyCensus's canonical 'foreignBornPopulation' name for cross-country comparability. Single dated snapshot (28-Feb-2025 estimate, bulletin published 13-Mar-2025); the loader fetches this regardless of the requested year, like buildingCount/activeBusinessCount. Verified live 2026-08-23: nationwide sum is 48,008 out of 87,486 total (54.9%), consistent with Andorra's well-documented ~45-55% foreign-resident share; parish breakdown (Andorra la Vella 13,376, Escaldes-Engordany 8,518, Encamp 7,378, La Massana 6,976, Sant Julia de Loria 4,436, Canillo 4,381, Ordino 2,943) cross-validated internally against the same bulletin's Andorrana+Estrangera=Total identity for every column.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "relative_to": "population",
+      "constant_total": true,
+      "constant_density": false
+    }
+  ]
+}

@@ -1,0 +1,1868 @@
+{
+  "country": "usa",
+  "sources": [
+    {
+      "name": "acs1",
+      "full_name": "US Census ACS 1-year",
+      "years": [
+        2018,
+        2019,
+        2021,
+        2022,
+        2023
+      ],
+      "period_length": 1,
+      "description": "1-year estimates (single year data).",
+      "levels": [
+        "nation",
+        "region",
+        "division",
+        "state",
+        "county",
+        "county_subdivision",
+        "place",
+        "alaska_native_regional_corporation",
+        "american_indian_alaska_native_area",
+        "metropolitan_statistical_area",
+        "metropolitan_division",
+        "combined_statistical_area",
+        "urban_area",
+        "congressional_district",
+        "public_use_microdata_area",
+        "school_district_elementary",
+        "school_district_secondary",
+        "school_district_unified"
+      ]
+    },
+    {
+      "name": "acs3",
+      "full_name": "US Census ACS 3-year (historical, through 2013)",
+      "years": [
+        2013
+      ],
+      "period_length": 3,
+      "description": "3-year averaged estimates covering 2011-2013 period. Discontinued after 2013.",
+      "levels": [
+        "nation",
+        "state",
+        "county",
+        "metropolitan_statistical_area",
+        "congressional_district",
+        "public_use_microdata_area",
+        "place"
+      ]
+    },
+    {
+      "name": "acs5",
+      "full_name": "US Census ACS 5-year",
+      "years": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "period_length": 5,
+      "description": "5-year averaged estimates. Each year represents the end of a 5-year period (e.g., 2018 = 2014-2018).",
+      "levels": [
+        "nation",
+        "region",
+        "division",
+        "state",
+        "county",
+        "county_subdivision",
+        "place",
+        "alaska_native_regional_corporation",
+        "american_indian_alaska_native_area",
+        "metropolitan_statistical_area",
+        "metropolitan_division",
+        "combined_statistical_area",
+        "urban_area",
+        "congressional_district",
+        "public_use_microdata_area",
+        "school_district_elementary",
+        "school_district_secondary",
+        "school_district_unified",
+        "tract",
+        "blockgroup",
+        "block"
+      ]
+    },
+    {
+      "name": "dhc",
+      "full_name": "US Census DHC 2020",
+      "years": [
+        2020
+      ],
+      "levels": [
+        "nation",
+        "region",
+        "division",
+        "state",
+        "county",
+        "county_subdivision",
+        "place",
+        "census_tract",
+        "block_group",
+        "block",
+        "congressional_district",
+        "public_use_microdata_area",
+        "zcta",
+        "school_district",
+        "american_indian_alaska_native_area",
+        "alaska_native_regional_corporation",
+        "hawaiian_home_land"
+      ]
+    },
+    {
+      "name": "lodes_rac",
+      "full_name": "US Census LODES RAC (Residence Area Characteristics)",
+      "years": [
+        2019,
+        2020,
+        2021
+      ],
+      "levels": [
+        "state",
+        "county",
+        "census_tract",
+        "block"
+      ]
+    },
+    {
+      "name": "lodes_wac",
+      "full_name": "US Census LODES WAC (Workplace Area Characteristics)",
+      "years": [
+        2019,
+        2020,
+        2021
+      ],
+      "levels": [
+        "state",
+        "county",
+        "census_tract",
+        "block"
+      ]
+    }
+  ],
+  "features": [
+    {
+      "category": "population",
+      "feature_name": "population",
+      "country": "usa",
+      "source": "acs1",
+      "codes": [
+        "B01003_001"
+      ],
+      "definition": "Number of people residing in the geographic area.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "households",
+      "country": "usa",
+      "source": "acs1",
+      "codes": [
+        "B25044_001"
+      ],
+      "definition": "Number of residential or private households in the geographic area.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population",
+      "resampling_weight": "population"
+    },
+    {
+      "feature_name": "householdsOwner",
+      "country": "usa",
+      "source": "acs1",
+      "codes": [
+        "B25003_002"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "households",
+      "unit": ""
+    },
+    {
+      "feature_name": "householdsRenter",
+      "country": "usa",
+      "source": "acs1",
+      "codes": [
+        "B25003_003"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "households",
+      "unit": ""
+    },
+    {
+      "feature_name": "householdSizeMean",
+      "country": "usa",
+      "source": "acs1",
+      "codes": [
+        "B25010_001"
+      ],
+      "type": "mean",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "unit": "",
+      "resampling_weight": "households",
+      "relative_to": "households"
+    },
+    {
+      "feature_name": "population16plus",
+      "country": "usa",
+      "source": "acs1",
+      "codes": [
+        "B23025_001"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population",
+      "unit": ""
+    },
+    {
+      "feature_name": "incomeMedianHousehold",
+      "country": "usa",
+      "source": "acs1",
+      "codes": [
+        "B19013_001"
+      ],
+      "type": "median",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "unit": "",
+      "resampling_weight": "households"
+    },
+    {
+      "feature_name": "incomeMeanCapita",
+      "country": "usa",
+      "source": "acs1",
+      "codes": [
+        "B19301_001"
+      ],
+      "type": "mean",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "unit": "",
+      "resampling_weight": "population"
+    },
+    {
+      "category": "income",
+      "feature_name": "povertyPopulation",
+      "country": "usa",
+      "source": "acs1",
+      "codes": [
+        "C17002_001"
+      ],
+      "definition": "Number of people whose income or economic resources are below the applicable official poverty threshold.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "relative_to": "population"
+    },
+    {
+      "feature_name": "povertyBelow100",
+      "country": "usa",
+      "source": "acs1",
+      "codes": [
+        "C17002_002",
+        "C17002_003"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "povertyPopulation",
+      "unit": ""
+    },
+    {
+      "feature_name": "laborForce",
+      "country": "usa",
+      "source": "acs1",
+      "codes": [
+        "B23025_003"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population16plus",
+      "unit": "",
+      "resampling_weight": "population"
+    },
+    {
+      "feature_name": "unemployed",
+      "country": "usa",
+      "source": "acs1",
+      "codes": [
+        "B23025_005"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "laborForce",
+      "unit": ""
+    },
+    {
+      "feature_name": "employedResidents",
+      "country": "usa",
+      "source": "acs1",
+      "codes": [
+        "B23025_002"
+      ],
+      "definition": "Number of employed people who reside in the geographic area, regardless of where they work.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "relative_to": "laborForce"
+    },
+    {
+      "feature_name": "workers",
+      "country": "usa",
+      "source": "acs1",
+      "codes": [
+        "B08301_001"
+      ],
+      "type": "count",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "unit": "",
+      "resampling_weight": "population",
+      "relative_to": "employedResidents"
+    },
+    {
+      "feature_name": "workersCar",
+      "country": "usa",
+      "source": "acs1",
+      "codes": [
+        "B08301_002"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "workers",
+      "unit": ""
+    },
+    {
+      "feature_name": "workersTransit",
+      "country": "usa",
+      "source": "acs1",
+      "codes": [
+        "B08301_010"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "workers",
+      "unit": ""
+    },
+    {
+      "feature_name": "workersWalk",
+      "country": "usa",
+      "source": "acs1",
+      "codes": [
+        "B08301_019"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "workers",
+      "unit": ""
+    },
+    {
+      "feature_name": "workersBike",
+      "country": "usa",
+      "source": "acs1",
+      "codes": [
+        "B08301_018"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "workers",
+      "unit": ""
+    },
+    {
+      "feature_name": "commuteTimeMean",
+      "country": "usa",
+      "source": "acs1",
+      "codes": [
+        "B08303_001"
+      ],
+      "type": "mean",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "unit": "",
+      "resampling_weight": "population"
+    },
+    {
+      "feature_name": "vehiclesHouseholds0",
+      "country": "usa",
+      "source": "acs1",
+      "codes": [
+        "B25044_003",
+        "B25044_010"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "households",
+      "unit": ""
+    },
+    {
+      "feature_name": "carHouseholds",
+      "country": "usa",
+      "source": "acs1",
+      "codes": [
+        "B25044_003",
+        "B25044_004",
+        "B25044_005",
+        "B25044_006",
+        "B25044_007",
+        "B25044_008",
+        "B25044_009",
+        "B25044_010"
+      ],
+      "definition": "Number of households with at least one car or more.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "households",
+      "relative_to": "households"
+    },
+    {
+      "feature_name": "twoCarHouseholds",
+      "country": "usa",
+      "source": "acs1",
+      "codes": [
+        "B25044_004",
+        "B25044_005",
+        "B25044_006",
+        "B25044_007",
+        "B25044_008",
+        "B25044_009",
+        "B25044_010"
+      ],
+      "definition": "Number of households with at least two cars or more.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "households",
+      "relative_to": "households"
+    },
+    {
+      "feature_name": "rentBurdenPopulation",
+      "country": "usa",
+      "source": "acs1",
+      "codes": [
+        "B25070_001"
+      ],
+      "type": "count",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "unit": "",
+      "resampling_weight": "population",
+      "relative_to": "population"
+    },
+    {
+      "feature_name": "rentBurdened",
+      "country": "usa",
+      "source": "acs1",
+      "codes": [
+        "B25070_007",
+        "B25070_008",
+        "B25070_009",
+        "B25070_010"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "rentBurdenPopulation",
+      "unit": ""
+    },
+    {
+      "feature_name": "rentMedianGross",
+      "country": "usa",
+      "source": "acs1",
+      "codes": [
+        "B25064_001"
+      ],
+      "type": "median",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "unit": "",
+      "resampling_weight": "households"
+    },
+    {
+      "feature_name": "population25plus",
+      "country": "usa",
+      "source": "acs1",
+      "codes": [
+        "B15003_001"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population",
+      "unit": ""
+    },
+    {
+      "feature_name": "educationLessThanHs",
+      "country": "usa",
+      "source": "acs1",
+      "codes": [
+        "B15003_002",
+        "B15003_003",
+        "B15003_004",
+        "B15003_005",
+        "B15003_006",
+        "B15003_007",
+        "B15003_008",
+        "B15003_009",
+        "B15003_010",
+        "B15003_011",
+        "B15003_012",
+        "B15003_013",
+        "B15003_014",
+        "B15003_015",
+        "B15003_016"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population25plus",
+      "unit": ""
+    },
+    {
+      "feature_name": "educationHighSchool",
+      "country": "usa",
+      "source": "acs1",
+      "codes": [
+        "B15003_017",
+        "B15003_018"
+      ],
+      "definition": "Number of adults whose highest completed education is high school diploma or equivalent.",
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population25plus",
+      "unit": ""
+    },
+    {
+      "feature_name": "educationSomeCollege",
+      "country": "usa",
+      "source": "acs1",
+      "codes": [
+        "B15003_019",
+        "B15003_020",
+        "B15003_021"
+      ],
+      "definition": "Number of adults whose highest completed education is some college or associate degree.",
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population25plus",
+      "unit": ""
+    },
+    {
+      "feature_name": "educationBachelorsPlus",
+      "country": "usa",
+      "source": "acs1",
+      "codes": [
+        "B15003_022",
+        "B15003_023",
+        "B15003_024",
+        "B15003_025"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population25plus",
+      "unit": ""
+    },
+    {
+      "category": "population",
+      "feature_name": "medianAge",
+      "country": "usa",
+      "source": "acs1",
+      "codes": [
+        "B01002_001"
+      ],
+      "definition": "Median age of the resident population.",
+      "type": "median",
+      "unit": "years",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population"
+    },
+    {
+      "category": "migration",
+      "feature_name": "foreignBornPopulation",
+      "country": "usa",
+      "source": "acs1",
+      "codes": [
+        "B05002_013"
+      ],
+      "definition": "Number of residents born outside the United States.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "relative_to": "population"
+    },
+    {
+      "category": "transport",
+      "feature_name": "cars",
+      "country": "usa",
+      "source": "acs1",
+      "codes": [
+        "B25044_001"
+      ],
+      "definition": "Number of privately owned or available passenger cars associated with households.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "households",
+      "relative_to": "households"
+    },
+    {
+      "category": "transport",
+      "feature_name": "bicycleHouseholds",
+      "country": "usa",
+      "source": "acs1",
+      "codes": [
+        "B08006_007"
+      ],
+      "definition": "Number of households with at least one privately owned or available bicycle.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "households",
+      "relative_to": "households"
+    },
+    {
+      "category": "transport",
+      "feature_name": "motorcycleHouseholds",
+      "country": "usa",
+      "source": "acs1",
+      "codes": [
+        "B25044_002"
+      ],
+      "definition": "Number of households with at least one privately owned or available motorcycle.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "households",
+      "relative_to": "households"
+    },
+    {
+      "category": "population",
+      "feature_name": "population",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B01003_001"
+      ],
+      "definition": "Number of people residing in the geographic area.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "households",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25044_001"
+      ],
+      "definition": "Number of residential or private households in the geographic area.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population",
+      "resampling_weight": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "malePopulation",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B01003_026"
+      ],
+      "definition": "Number of residents who are male.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "femalePopulation",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B01003_027"
+      ],
+      "definition": "Number of residents who are female.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "under18Population",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B09001_002"
+      ],
+      "definition": "Number of residents younger than 18 years old.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "age18to64Population",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B09001_003",
+        "B09001_004",
+        "B09001_005",
+        "B09001_006",
+        "B09001_007",
+        "B09001_008",
+        "B09001_009",
+        "B09001_010",
+        "B09001_011",
+        "B09001_012",
+        "B09001_013",
+        "B09001_014",
+        "B09001_015"
+      ],
+      "definition": "",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "over65Population",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B09001_016",
+        "B09001_017",
+        "B09001_018",
+        "B09001_019",
+        "B09001_020",
+        "B09001_021",
+        "B09001_022",
+        "B09001_023",
+        "B09001_024",
+        "B09001_025",
+        "B09001_026"
+      ],
+      "definition": "Number of residents aged 65 years or older.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "whitePopulation",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B02001_002"
+      ],
+      "definition": "",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "blackPopulation",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B02001_003"
+      ],
+      "definition": "",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "nativePopulation",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B02001_004"
+      ],
+      "definition": "",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "asianPopulation",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B02001_005"
+      ],
+      "definition": "",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "otherRacePopulation",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B02001_006",
+        "B02001_007",
+        "B02001_008"
+      ],
+      "definition": "",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "hispanicPopulation",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B03002_012"
+      ],
+      "definition": "",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "nonwhitePopulation",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [],
+      "definition": "Number of residents belonging to minority racial/ethnic groups.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "relative_to": "population",
+      "computed_from": [
+        "population",
+        "whitePopulation"
+      ]
+    },
+    {
+      "feature_name": "householdsOwner",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25003_002"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "households",
+      "unit": ""
+    },
+    {
+      "feature_name": "householdsRenter",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25003_003"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "households",
+      "unit": ""
+    },
+    {
+      "feature_name": "householdSizeMean",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25010_001"
+      ],
+      "type": "mean",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "unit": "",
+      "resampling_weight": "households",
+      "relative_to": "households"
+    },
+    {
+      "feature_name": "population16plus",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B23025_001"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population",
+      "unit": ""
+    },
+    {
+      "feature_name": "incomeMedianHousehold",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B19013_001"
+      ],
+      "type": "median",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "unit": "",
+      "resampling_weight": "households"
+    },
+    {
+      "feature_name": "incomeMeanCapita",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B19301_001"
+      ],
+      "type": "mean",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "unit": "",
+      "resampling_weight": "population"
+    },
+    {
+      "category": "income",
+      "feature_name": "povertyPopulation",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "C17002_001"
+      ],
+      "definition": "Number of people whose income or economic resources are below the applicable official poverty threshold.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "relative_to": "population"
+    },
+    {
+      "feature_name": "povertyBelow100",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "C17002_002",
+        "C17002_003"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "povertyPopulation",
+      "unit": ""
+    },
+    {
+      "feature_name": "laborForce",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B23025_003"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population16plus",
+      "unit": "",
+      "resampling_weight": "population"
+    },
+    {
+      "feature_name": "unemployed",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B23025_005"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "laborForce",
+      "unit": ""
+    },
+    {
+      "feature_name": "employedResidents",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B23025_002"
+      ],
+      "definition": "Number of employed people who reside in the geographic area, regardless of where they work.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "relative_to": "laborForce"
+    },
+    {
+      "feature_name": "workers",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B08301_001"
+      ],
+      "type": "count",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "unit": "",
+      "resampling_weight": "population",
+      "relative_to": "employedResidents"
+    },
+    {
+      "feature_name": "workersCar",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B08301_002"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "workers",
+      "unit": ""
+    },
+    {
+      "feature_name": "workersTransit",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B08301_010"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "workers",
+      "unit": ""
+    },
+    {
+      "feature_name": "workersWalk",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B08301_019"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "workers",
+      "unit": ""
+    },
+    {
+      "feature_name": "workersBike",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B08301_018"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "workers",
+      "unit": ""
+    },
+    {
+      "feature_name": "commuteTimeMean",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B08303_001"
+      ],
+      "type": "mean",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "unit": "",
+      "resampling_weight": "population"
+    },
+    {
+      "feature_name": "vehiclesHouseholds0",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25044_003",
+        "B25044_010"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "households",
+      "unit": ""
+    },
+    {
+      "feature_name": "carHouseholds",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25044_003",
+        "B25044_004",
+        "B25044_005",
+        "B25044_006",
+        "B25044_007",
+        "B25044_008",
+        "B25044_009",
+        "B25044_010"
+      ],
+      "definition": "Number of households with at least one car or more.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "households",
+      "relative_to": "households"
+    },
+    {
+      "feature_name": "twoCarHouseholds",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25044_004",
+        "B25044_005",
+        "B25044_006",
+        "B25044_007",
+        "B25044_008",
+        "B25044_009",
+        "B25044_010"
+      ],
+      "definition": "Number of households with at least two cars or more.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "households",
+      "relative_to": "households"
+    },
+    {
+      "feature_name": "rentBurdenPopulation",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25070_001"
+      ],
+      "type": "count",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "unit": "",
+      "resampling_weight": "population",
+      "relative_to": "population"
+    },
+    {
+      "feature_name": "rentBurdened",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25070_007",
+        "B25070_008",
+        "B25070_009",
+        "B25070_010"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "rentBurdenPopulation",
+      "unit": ""
+    },
+    {
+      "feature_name": "rentMedianGross",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25064_001"
+      ],
+      "type": "median",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "unit": "",
+      "resampling_weight": "households"
+    },
+    {
+      "feature_name": "population25plus",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B15003_001"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population",
+      "unit": ""
+    },
+    {
+      "feature_name": "educationLessThanHs",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B15003_002",
+        "B15003_003",
+        "B15003_004",
+        "B15003_005",
+        "B15003_006",
+        "B15003_007",
+        "B15003_008",
+        "B15003_009",
+        "B15003_010",
+        "B15003_011",
+        "B15003_012",
+        "B15003_013",
+        "B15003_014",
+        "B15003_015",
+        "B15003_016"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population25plus",
+      "unit": ""
+    },
+    {
+      "feature_name": "educationHighSchool",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B15003_017",
+        "B15003_018"
+      ],
+      "definition": "Number of adults whose highest completed education is high school diploma or equivalent.",
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population25plus",
+      "unit": ""
+    },
+    {
+      "feature_name": "educationSomeCollege",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B15003_019",
+        "B15003_020",
+        "B15003_021"
+      ],
+      "definition": "Number of adults whose highest completed education is some college or associate degree.",
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population25plus",
+      "unit": ""
+    },
+    {
+      "feature_name": "educationBachelorsPlus",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B15003_022",
+        "B15003_023",
+        "B15003_024",
+        "B15003_025"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population25plus",
+      "unit": ""
+    },
+    {
+      "category": "population",
+      "feature_name": "medianAge",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B01002_001"
+      ],
+      "definition": "Median age of the resident population.",
+      "type": "median",
+      "unit": "years",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population"
+    },
+    {
+      "category": "migration",
+      "feature_name": "foreignBornPopulation",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B05002_013"
+      ],
+      "definition": "Number of residents born outside the United States.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "relative_to": "population"
+    },
+    {
+      "category": "transport",
+      "feature_name": "cars",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25044_001"
+      ],
+      "definition": "Number of privately owned or available passenger cars associated with households.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "households",
+      "relative_to": "households"
+    },
+    {
+      "category": "transport",
+      "feature_name": "bicycleHouseholds",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B08006_007"
+      ],
+      "definition": "Number of households with at least one privately owned or available bicycle.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "households",
+      "relative_to": "households"
+    },
+    {
+      "category": "transport",
+      "feature_name": "motorcycleHouseholds",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25044_002"
+      ],
+      "definition": "Number of households with at least one privately owned or available motorcycle.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "households",
+      "relative_to": "households"
+    },
+    {
+      "category": "population",
+      "feature_name": "population",
+      "country": "usa",
+      "source": "dhc",
+      "codes": [
+        "P1_001N"
+      ],
+      "definition": "Number of people residing in the geographic area.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "absolute_field": "",
+      "resampling_weight": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "housingUnits",
+      "country": "usa",
+      "source": "dhc",
+      "codes": [
+        "H1_001N"
+      ],
+      "definition": "",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population",
+      "absolute_field": "",
+      "resampling_weight": "households"
+    },
+    {
+      "category": "population",
+      "feature_name": "malePopulation",
+      "country": "usa",
+      "source": "dhc",
+      "codes": [
+        "P12_002N"
+      ],
+      "definition": "",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population",
+      "absolute_field": "",
+      "resampling_weight": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "femalePopulation",
+      "country": "usa",
+      "source": "dhc",
+      "codes": [
+        "P12_026N"
+      ],
+      "definition": "",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population",
+      "absolute_field": "",
+      "resampling_weight": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "under18Population",
+      "country": "usa",
+      "source": "dhc",
+      "codes": [
+        "P12_003N",
+        "P12_004N",
+        "P12_005N",
+        "P12_006N",
+        "P12_027N",
+        "P12_028N",
+        "P12_029N",
+        "P12_030N"
+      ],
+      "definition": "",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population",
+      "absolute_field": "",
+      "resampling_weight": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "age18to64Population",
+      "country": "usa",
+      "source": "dhc",
+      "codes": [
+        "P12_007N",
+        "P12_008N",
+        "P12_009N",
+        "P12_010N",
+        "P12_011N",
+        "P12_012N",
+        "P12_013N",
+        "P12_014N",
+        "P12_015N",
+        "P12_016N",
+        "P12_017N",
+        "P12_018N",
+        "P12_019N",
+        "P12_031N",
+        "P12_032N",
+        "P12_033N",
+        "P12_034N",
+        "P12_035N",
+        "P12_036N",
+        "P12_037N",
+        "P12_038N",
+        "P12_039N",
+        "P12_040N",
+        "P12_041N",
+        "P12_042N",
+        "P12_043N"
+      ],
+      "definition": "",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population",
+      "absolute_field": ""
+    },
+    {
+      "category": "population",
+      "feature_name": "over65Population",
+      "country": "usa",
+      "source": "dhc",
+      "codes": [
+        "P12_020N",
+        "P12_021N",
+        "P12_022N",
+        "P12_023N",
+        "P12_024N",
+        "P12_025N",
+        "P12_044N",
+        "P12_045N",
+        "P12_046N",
+        "P12_047N",
+        "P12_048N",
+        "P12_049N"
+      ],
+      "definition": "",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population",
+      "absolute_field": "",
+      "resampling_weight": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "whitePopulation",
+      "country": "usa",
+      "source": "dhc",
+      "codes": [
+        "P3_002N"
+      ],
+      "definition": "",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population",
+      "absolute_field": ""
+    },
+    {
+      "category": "population",
+      "feature_name": "blackPopulation",
+      "country": "usa",
+      "source": "dhc",
+      "codes": [
+        "P3_003N"
+      ],
+      "definition": "",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population",
+      "absolute_field": ""
+    },
+    {
+      "category": "population",
+      "feature_name": "nativePopulation",
+      "country": "usa",
+      "source": "dhc",
+      "codes": [
+        "P3_004N"
+      ],
+      "definition": "",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population",
+      "absolute_field": ""
+    },
+    {
+      "category": "population",
+      "feature_name": "asianPopulation",
+      "country": "usa",
+      "source": "dhc",
+      "codes": [
+        "P3_005N"
+      ],
+      "definition": "",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population",
+      "absolute_field": ""
+    },
+    {
+      "category": "population",
+      "feature_name": "otherRacePopulation",
+      "country": "usa",
+      "source": "dhc",
+      "codes": [
+        "P3_006N",
+        "P3_007N",
+        "P3_008N"
+      ],
+      "definition": "",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population",
+      "absolute_field": ""
+    },
+    {
+      "category": "population",
+      "feature_name": "hispanicPopulation",
+      "country": "usa",
+      "source": "dhc",
+      "codes": [
+        "P5_010N"
+      ],
+      "definition": "",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population",
+      "absolute_field": ""
+    },
+    {
+      "category": "population",
+      "feature_name": "medianAge",
+      "country": "usa",
+      "source": "dhc",
+      "codes": [
+        "P15_001N"
+      ],
+      "definition": "Median age of the resident population.",
+      "type": "median",
+      "unit": "years",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "absolute_field": ""
+    },
+    {
+      "category": "migration",
+      "feature_name": "foreignBornPopulation",
+      "country": "usa",
+      "source": "dhc",
+      "codes": [
+        "P14_010N"
+      ],
+      "definition": "Number of residents born outside the United States.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "relative_to": "population",
+      "absolute_field": ""
+    },
+    {
+      "category": "population",
+      "feature_name": "nonwhitePopulation",
+      "country": "usa",
+      "source": "dhc",
+      "codes": [],
+      "definition": "Number of residents belonging to minority racial/ethnic groups.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "relative_to": "population",
+      "absolute_field": "",
+      "computed_from": [
+        "population",
+        "whitePopulation"
+      ]
+    },
+    {
+      "feature_name": "jobsTotal",
+      "country": "usa",
+      "source": "lodes_wac",
+      "codes": [
+        "C000"
+      ],
+      "type": "count",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "area"
+    },
+    {
+      "feature_name": "jobsIncomeLow",
+      "country": "usa",
+      "source": "lodes_wac",
+      "codes": [
+        "CE01"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "jobsTotal"
+    },
+    {
+      "feature_name": "jobsIncomeMid",
+      "country": "usa",
+      "source": "lodes_wac",
+      "codes": [
+        "CE02"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "jobsTotal"
+    },
+    {
+      "feature_name": "jobsIncomeHigh",
+      "country": "usa",
+      "source": "lodes_wac",
+      "codes": [
+        "CE03"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "jobsTotal"
+    },
+    {
+      "feature_name": "jobsAgeYoung",
+      "country": "usa",
+      "source": "lodes_wac",
+      "codes": [
+        "CA01"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "jobsTotal"
+    },
+    {
+      "feature_name": "jobsAgePrime",
+      "country": "usa",
+      "source": "lodes_wac",
+      "codes": [
+        "CA02"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "jobsTotal"
+    },
+    {
+      "feature_name": "jobsAgeOlder",
+      "country": "usa",
+      "source": "lodes_wac",
+      "codes": [
+        "CA03"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "jobsTotal"
+    },
+    {
+      "feature_name": "populationAndJobs",
+      "country": "usa",
+      "source": "computed",
+      "codes": [],
+      "definition": "Total population plus workplace jobs (population + workplaceJobs).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "computed_from": [
+        "population",
+        "workplaceJobs"
+      ]
+    }
+  ],
+  "global_mapping": {
+    "population": "usa_acs5_population",
+    "households": "usa_acs5_households",
+    "adultPopulation": "usa_acs5_population16plus",
+    "malePopulation": "usa_acs5_malePopulation",
+    "femalePopulation": "usa_acs5_femalePopulation",
+    "under18Population": "usa_acs5_under18Population",
+    "over65Population": "usa_acs5_over65Population",
+    "medianHouseholdIncome": "usa_acs5_incomeMedianHousehold",
+    "meanHouseholdIncome": "usa_acs5_incomeMeanCapita",
+    "povertyPopulation": "usa_acs5_povertyPopulation",
+    "laborForce": "usa_acs5_laborForce",
+    "employedResidents": "usa_acs5_employedResidents",
+    "unemployedResidents": "usa_acs5_unemployed",
+    "workplaceJobs": "usa_lodes_wac_jobsTotal",
+    "carCommuters": "usa_acs5_workersCar",
+    "publicTransportCommuters": "usa_acs5_workersTransit",
+    "walkCommuters": "usa_acs5_workersWalk",
+    "bikeCommuters": "usa_acs5_workersBike",
+    "foreignBornPopulation": "usa_acs5_foreignBornPopulation",
+    "minorityEthnicityPopulation": "usa_acs5_nonwhitePopulation",
+    "religiousPopulation": null,
+    "minorityReligionPopulation": null,
+    "medianAge": "usa_acs5_medianAge",
+    "cars": "usa_acs5_cars",
+    "motorcycleHouseholds": "usa_acs5_motorcycleHouseholds",
+    "bicycleHouseholds": "usa_acs5_bicycleHouseholds",
+    "carHouseholds": "usa_acs5_carHouseholds",
+    "twoCarHouseholds": "usa_acs5_twoCarHouseholds",
+    "educationPrimaryOrLessPopulation": "usa_acs5_educationLessThanHs",
+    "educationSecondaryPopulation": "usa_acs5_educationHighSchool",
+    "educationUniversityPopulation": "usa_acs5_educationBachelorsPlus",
+    "educationOtherTertiaryPopulation": "usa_acs5_educationSomeCollege",
+    "populationAndJobs": "usa_computed_populationAndJobs"
+  }
+}

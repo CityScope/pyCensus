@@ -1,0 +1,112 @@
+{
+  "country": "germany",
+  "country_name": "Germany",
+  "description": "Census geography levels for Germany. nation/state/district have a real, verified GISCO NUTS boundary source wired up (pycensus.germany.geography.IMPLEMENTED_LEVELS); municipality/statistical_district/census_block are defined here for schema/mapping completeness but have no boundary source implemented yet -- see pycensus.germany.geography module docstring.",
+  "native_levels": [
+    {
+      "level": "nation",
+      "description": "Complete Germany territory (GISCO NUTS level 0)",
+      "source": "GISCO/Eurostat NUTS 2021",
+      "geoid_pattern": "DE",
+      "is_standard": true,
+      "implemented": true,
+      "resample_from": "state",
+      "resample_to": "state",
+      "resample_intersections": false
+    },
+    {
+      "level": "state",
+      "description": "Bundesland - 16 federal states (GISCO NUTS level 1)",
+      "source": "GISCO/Eurostat NUTS 2021",
+      "geoid_pattern": "DEX",
+      "geoid_pattern_description": "NUTS1 code: DE1, DE2, ..., DEG",
+      "is_standard": true,
+      "implemented": true,
+      "resample_from": "district",
+      "resample_to": "district",
+      "resample_intersections": false
+    },
+    {
+      "level": "district",
+      "description": "Kreis - 401 districts (294 rural Landkreise, 107 urban Kreisfreie Staedte) (GISCO NUTS level 3)",
+      "source": "GISCO/Eurostat NUTS 2021",
+      "geoid_pattern": "DEXXX",
+      "geoid_pattern_description": "NUTS3 code, e.g. DE111",
+      "is_standard": true,
+      "implemented": true,
+      "resample_from": "municipality",
+      "resample_to": "municipality",
+      "resample_intersections": false
+    },
+    {
+      "level": "municipality",
+      "description": "Gemeinde - 11,001 real municipalities (GISCO LAU 2021). Verified live 2026-08-22: LAU_ID for Germany is literally the 8-digit AGS code; population comes from GISCO's own POP_2021 field (no GENESIS Gemeinde table exists).",
+      "source": "GISCO LAU 2021",
+      "geoid_pattern": "XXXXXXXX",
+      "geoid_pattern_description": "8-digit AGS code (identical to GISCO LAU_ID for Germany)",
+      "is_standard": true,
+      "implemented": true,
+      "resample_from": "statistical_district",
+      "resample_to": "statistical_district",
+      "resample_intersections": false
+    },
+    {
+      "level": "statistical_district",
+      "description": "Statistischer Bezirk - statistical district within municipalities. NOT IMPLEMENTED.",
+      "source": "Destatis",
+      "geoid_pattern": "XXXXXXXXXX",
+      "geoid_pattern_description": "10-digit code",
+      "is_standard": true,
+      "implemented": false,
+      "resample_from": "census_block",
+      "resample_to": "census_block",
+      "resample_intersections": false
+    },
+    {
+      "level": "census_block",
+      "description": "Zensusblock - census block, smallest enumeration unit. NOT IMPLEMENTED.",
+      "source": "Destatis",
+      "geoid_pattern": "XXXXXXXXXXXX",
+      "geoid_pattern_description": "12-digit code",
+      "is_standard": true,
+      "implemented": false,
+      "resample_from": "census_block",
+      "resample_to": "census_block",
+      "resample_intersections": false
+    }
+  ],
+  "levels": [
+    "nation",
+    "state",
+    "district",
+    "municipality",
+    "statistical_district",
+    "census_block"
+  ],
+  "global_to_country_mapping": {
+    "nation": "nation",
+    "state": "state",
+    "province": "district",
+    "municipality": "municipality",
+    "tract": "statistical_district",
+    "blockgroup": "statistical_district",
+    "block": "census_block"
+  },
+  "country_to_global_mapping": {
+    "nation": "nation",
+    "state": "state",
+    "district": "province",
+    "municipality": "municipality",
+    "statistical_district": "tract",
+    "census_block": "block"
+  },
+  "fallback_resolution": {
+    "state": "state",
+    "province": "district",
+    "county": "district",
+    "tract": "municipality",
+    "blockgroup": "municipality",
+    "block": "census_block",
+    "place": "municipality"
+  }
+}

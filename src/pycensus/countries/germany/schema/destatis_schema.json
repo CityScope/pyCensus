@@ -1,0 +1,59 @@
+{
+  "country": "germany",
+  "source": "destatis",
+  "full_name": "Destatis GENESIS-Online (Fortschreibung des Bevoelkerungsstandes)",
+  "_note": "Only 'population' is included. Live-verified 2026-08-21 against real authenticated GENESIS-Online responses (not the GAST guest account): the real value variable for statistic 12411 is 'BEVSTD' ('Bevoelkerungsstand'), not the earlier placeholder 'BEVZ01' -- BEVZ01 ('Bevoelkerung (Zensus)') is a real GENESIS variable name (found via find/find on 2026-08-19) but belongs to the separate Zensus2022 database, not GENESIS-Online's public statistic 12411 (catalogue/tables2variable?name=BEVZ01 returns 'no objects' here). See pycensus.germany.constants.GENESIS_POPULATION_TABLES and pycensus.germany.destatis.README for the exact live-verified numbers (Germany 31.12.2022 = 83,118,501; Bavaria 31.12.2022 = 13,105,221). Nation/state levels are wired in loader.py; district (Kreise) has a real, live-verified table (12411-0015) but no AGS-to-NUTS3 crosswalk yet -- see the TODO in loader.py._fetch_missing. Other fields from an earlier version of this file (POP_MALE, HH_TOTAL, INC_MED_HH, etc.) were fabricated placeholder codes never verified against any real Destatis source and have been removed rather than kept as guesses.",
+  "features": [
+    {
+      "category": "population",
+      "feature_name": "population",
+      "country": "germany",
+      "source": "destatis",
+      "codes": ["BEVSTD"],
+      "definition": "Number of people residing in the geographic area (Bevoelkerungsstand, Fortschreibung des Bevoelkerungsstandes, statistic 12411).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "divide_area_weighted"
+    },
+    {
+      "category": "population",
+      "feature_name": "malePopulation",
+      "country": "germany",
+      "source": "destatis",
+      "codes": ["BEVSTD_MAENNLICH"],
+      "definition": "Male population (Bevoelkerungsstand nach Geschlecht: maennlich), statistic 12411, tables 12411-0003/0011/0016 (nation/state/district). Not available for municipality (GISCO LAU has no sex breakdown). Live-verified 2026-08-22.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "divide_area_weighted"
+    },
+    {
+      "category": "population",
+      "feature_name": "femalePopulation",
+      "country": "germany",
+      "source": "destatis",
+      "codes": ["BEVSTD_WEIBLICH"],
+      "definition": "Female population (Bevoelkerungsstand nach Geschlecht: weiblich), statistic 12411, tables 12411-0003/0011/0016 (nation/state/district). Not available for municipality (GISCO LAU has no sex breakdown). Live-verified 2026-08-22.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "divide_area_weighted"
+    },
+    {
+      "category": "migration",
+      "feature_name": "foreignBornPopulation",
+      "country": "germany",
+      "source": "destatis",
+      "codes": ["AUSLAENDER_INSGESAMT"],
+      "definition": "Number of foreign nationals (Auslaender) registered in the Auslaenderzentralregister (AZR), statistic 12521 ('Auslaenderstatistik'), table 12521-0040 ('Auslaender: Kreise, Stichtag, Geschlecht') -- district level only. Not the same legal concept as 'born outside the country' (a citizen born abroad is not counted; a person born in Germany without German citizenship is), but this is the real, independent AZR-derived foreign-population figure GENESIS-Online actually publishes, and is used as pyCensus's canonical foreignBornPopulation field for Germany. Live-verified 2026-08-23: Muenchen (Kreis AGS 09162), 31.12.2022, male=260,335 + female=245,420 = 505,760.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "divide_area_weighted",
+      "relative_to": "population"
+    }
+  ],
+  "years": [2022],
+  "levels": ["nation", "state", "district"]
+}

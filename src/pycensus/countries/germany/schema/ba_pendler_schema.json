@@ -1,0 +1,70 @@
+{
+  "country": "germany",
+  "source": "ba_pendler",
+  "full_name": "Bundesagentur fuer Arbeit (BA) -- 'Gemeindedaten aus der Beschaeftigungsstatistik' (Pendlerstatistik: Wohnort/Arbeitsort/Pendler nach Gemeinden)",
+  "_note": "Live-verified 2026-08-25: https://statistik.arbeitsagentur.de/Statistikdaten/Detail/202506/iiia6/beschaeftigung-sozbe-gemband/gemband-dlk-0-202506-xlsx.xlsx (period 202506, Stichtag 30.06.2025) downloads a real, keyless, single national .xlsx (no per-Kreis split, unlike ../ba/'s AMK zips) whose 'Gemeindedaten' sheet has 11,832 real data rows (11,836 total incl. header/footer), each keyed by an 8-digit AGS ('Schl. Nr.') that equals GISCO's LAU_ID (some rows are 5-digit Kreis/Land aggregate rows mixed into the same sheet -- filtered out by AGS length, see loader.py). Real column layout (row 7 numbers 1-13, verified against merged-cell headers in rows 4-6): col C='Wohnort' (residents employed, SvB am Wohnort total), cols D-J=sex/nationality/age breakdowns of Wohnort (not wired here), col K='Arbeitsort' (SvB am Arbeitsort total -- matches ../ba's AMK 'jobsTotal' figure exactly: Hamburg AGS 02000000 = 1,084,974 in both sources, same Stichtag 30.06.2025, confirming internal consistency across BA's two independent Beschaeftigungsstatistik products), col L='Wohnort gleich Arbeitsort' (same-Gemeinde workers), col M='Einpendler' (in-commuters), col N='Auspendler' (out-commuters), col O='Zahl der Betriebe' (not wired here). Cross-check for Hamburg: Arbeitsort (1,084,974) approx= WohnortGleichArbeitsort (677,491) + Einpendler (406,965) = 1,084,456 (off by 518, a real small residual/rounding across BA's own sub-tables, not a parsing bug); Wohnort (828,887) approx= WohnortGleichArbeitsort (677,491) + Auspendler (151,344) = 828,835 (off by 52). Direction sanity-check: Hamburg (large city) shows Einpendler >> Auspendler (406,965 vs 151,344, i.e. a large net in-commute, as expected for a major employment center); a small suburban Gemeinde in Hamburg's real metro AOI, Pinneberg-Stadt (AGS 01056039, Schleswig-Holstein), shows the opposite: Auspendler (15,755) >> Einpendler (10,648), i.e. most residents commute OUT to work elsewhere -- the expected suburban pattern, confirming the real cross-tab direction is sane at both ends.",
+  "features": [
+    {
+      "category": "jobs",
+      "feature_name": "pendlerJobsAtWorkplace",
+      "country": "germany",
+      "source": "ba_pendler",
+      "codes": ["Sozialversicherungspflichtig Beschaeftigte - Arbeitsort"],
+      "definition": "Total number of employees subject to social-insurance contributions (sozialversicherungspflichtig Beschaeftigte) whose workplace (Arbeitsort) is in this Gemeinde, Stichtag 30.06, from BA's 'Gemeindedaten aus der Beschaeftigungsstatistik' report -- a real, independent BA product from ../ba's AMK 'jobsTotal', though verified to match it numerically for the same Stichtag (see schema note).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide"
+    },
+    {
+      "category": "jobs",
+      "feature_name": "residentWorkers",
+      "country": "germany",
+      "source": "ba_pendler",
+      "codes": ["Sozialversicherungspflichtig Beschaeftigte - Wohnort"],
+      "definition": "Total number of sozialversicherungspflichtig Beschaeftigte who live (Wohnort) in this Gemeinde, regardless of workplace, Stichtag 30.06 -- Germany's real LODES-RAC equivalent at Gemeinde level.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide"
+    },
+    {
+      "category": "jobs",
+      "feature_name": "sameGemeindeWorkers",
+      "country": "germany",
+      "source": "ba_pendler",
+      "codes": ["Wohnort gleich Arbeitsort"],
+      "definition": "Sozialversicherungspflichtig Beschaeftigte whose residence (Wohnort) and workplace (Arbeitsort) are both in this same Gemeinde, Stichtag 30.06.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide"
+    },
+    {
+      "category": "jobs",
+      "feature_name": "einpendler",
+      "country": "germany",
+      "source": "ba_pendler",
+      "codes": ["Einpendler"],
+      "definition": "In-commuters: sozialversicherungspflichtig Beschaeftigte who work in this Gemeinde but live elsewhere, Stichtag 30.06.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide"
+    },
+    {
+      "category": "jobs",
+      "feature_name": "auspendler",
+      "country": "germany",
+      "source": "ba_pendler",
+      "codes": ["Auspendler"],
+      "definition": "Out-commuters: sozialversicherungspflichtig Beschaeftigte who live in this Gemeinde but work elsewhere, Stichtag 30.06.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide"
+    }
+  ],
+  "years": [2025],
+  "levels": ["municipality", "district"]
+}

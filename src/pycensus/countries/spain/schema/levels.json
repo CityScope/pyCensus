@@ -1,0 +1,117 @@
+{
+  "country": "spain",
+  "country_name": "Spain",
+  "description": "Census geography levels for Spain (INE)",
+  "native_levels": [
+    {
+      "level": "nation",
+      "description": "Complete Spain territory",
+      "source": "INE",
+      "geoid_pattern": "ES",
+      "is_standard": true,
+      "resample_from": "autonomous_community",
+      "resample_to": "autonomous_community",
+      "resample_intersections": false
+    },
+    {
+      "level": "autonomous_community",
+      "description": "Comunidad Autonoma - 17 autonomous communities + 2 autonomous cities",
+      "source": "INE",
+      "geoid_pattern": "XX",
+      "geoid_pattern_description": "2-digit INE code",
+      "is_standard": true,
+      "resample_from": "province",
+      "resample_to": "province",
+      "resample_intersections": false
+    },
+    {
+      "level": "province",
+      "description": "Provincia - 50 provinces + 2 autonomous cities (Ceuta, Melilla)",
+      "source": "INE",
+      "geoid_pattern": "XX",
+      "geoid_pattern_description": "2-digit INE code",
+      "is_standard": true,
+      "resample_from": "municipality",
+      "resample_to": "municipality",
+      "resample_intersections": false
+    },
+    {
+      "level": "municipality",
+      "description": "Municipio - city/town level administrative division",
+      "source": "INE",
+      "geoid_pattern": "XXXXX",
+      "geoid_pattern_description": "5-digit code",
+      "is_standard": true,
+      "resample_from": "district",
+      "resample_to": "district",
+      "resample_intersections": false
+    },
+    {
+      "level": "district",
+      "description": "Distrito - district within municipalities",
+      "source": "INE",
+      "geoid_pattern": "XX",
+      "geoid_pattern_description": "2-digit code, unique within municipality",
+      "is_standard": false,
+      "resample_from": "section",
+      "resample_to": "section",
+      "resample_intersections": false
+    },
+    {
+      "level": "section",
+      "description": "Seccion Censal - census section, equivalent to tract",
+      "source": "INE",
+      "geoid_pattern": "XXXXXX",
+      "geoid_pattern_description": "6-digit code",
+      "is_standard": true,
+      "resample_from": "block",
+      "resample_to": "block",
+      "resample_intersections": false
+    },
+    {
+      "level": "block",
+      "description": "Manzana - city block, smallest census unit",
+      "source": "INE",
+      "geoid_pattern": "XXXX",
+      "geoid_pattern_description": "4-digit code, unique within section",
+      "is_standard": true,
+      "resample_from": "block",
+      "resample_to": "block",
+      "resample_intersections": false
+    }
+  ],
+  "levels": [
+    "nation",
+    "autonomous_community",
+    "province",
+    "municipality",
+    "district",
+    "section",
+    "block"
+  ],
+  "global_to_country_mapping": {
+    "nation": "nation",
+    "state": "autonomous_community",
+    "province": "province",
+    "municipality": "municipality",
+    "tract": "district",
+    "blockgroup": "section",
+    "block": "block"
+  },
+  "country_to_global_mapping": {
+    "nation": "nation",
+    "autonomous_community": "state",
+    "province": "province",
+    "municipality": "municipality",
+    "district": "tract",
+    "section": "blockgroup",
+    "block": "block"
+  },
+  "fallback_resolution": {
+    "state": "autonomous_community",
+    "county": "municipality",
+    "tract": "section",
+    "blockgroup": "section",
+    "place": "municipality"
+  }
+}

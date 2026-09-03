@@ -1,0 +1,46 @@
+{
+  "country": "euskadi",
+  "source": "eustat",
+  "full_name": "Euskadi municipal population (via Eurostat/GISCO LAU 2021)",
+  "description": "Real, verified fields only. Population/area/density come from Eurostat/GISCO's LAU 2021 GeoPackage (https://gisco-services.ec.europa.eu/distribution/v2/lau/gpkg/LAU_RG_01M_2021_4326.gpkg), which republishes each Spanish municipality's official INE-sourced boundary together with a POP_2021 figure. Verified 2026-08-19 against real downloaded data: Gipuzkoa (LAU_ID prefix '20') = 88 municipalities, population 726,033; Araba ('01') = 51 municipalities, population 333,626; Bizkaia ('48') = 112 municipalities, population 1,154,334 -- all match documented real totals. Eustat's own Data Bank API (https://www.eustat.eus/bankupx/api/v1/es/DB) IS reachable and keyless (re-verified live 2026-08-20; an earlier check of this module mistyped the path as 'bancopx' and wrongly concluded it was blocked -- see euskadi/api.py). It has richer, more current fields (households, age structure, Basque-language use, income) than GISCO's 2021 snapshot used here; switching this loader to source directly from it is a real follow-up, not done in this pass. opendata.euskadi.eus and eustat.eus/geoservicios/descargas.html (boundary-file candidates) remain genuinely unreachable to a scripted client (404/403).",
+  "features": [
+    {
+      "category": "population",
+      "feature_name": "population",
+      "country": "euskadi",
+      "source": "eustat",
+      "codes": ["POP_2021"],
+      "definition": "Number of people residing in the municipality (Eurostat/GISCO LAU 2021 vintage).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "divide_area_weighted"
+    },
+    {
+      "category": "population",
+      "feature_name": "areaKm2",
+      "country": "euskadi",
+      "source": "eustat",
+      "codes": ["AREA_KM2"],
+      "definition": "Municipality land area in square kilometers (Eurostat/GISCO LAU 2021).",
+      "type": "area",
+      "unit": "km2",
+      "resampling_up": "sum",
+      "resampling_down": "divide_area_weighted"
+    },
+    {
+      "category": "population",
+      "feature_name": "populationDensity",
+      "country": "euskadi",
+      "source": "eustat",
+      "codes": ["POP_2021", "AREA_KM2"],
+      "definition": "Population per square kilometer, computed as population / areaKm2 (Eurostat/GISCO LAU 2021 does not publish a density column directly; there is no raw 'POP_DENS_2021' code -- this is computed in loader.py from the two real codes listed here).",
+      "type": "density",
+      "unit": "people/km2",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean"
+    }
+  ],
+  "years": [2021],
+  "levels": ["autonomous_community", "territory", "municipality"]
+}

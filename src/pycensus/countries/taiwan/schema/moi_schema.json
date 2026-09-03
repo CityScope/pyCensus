@@ -1,0 +1,123 @@
+{
+  "country": "taiwan",
+  "source": "moi",
+  "full_name": "MOI RIS resident population by sex (現住人口數按性別、身分分), ODRP013",
+  "years": [2025],
+  "levels": ["village", "district", "county_city", "nation"],
+  "features": [
+    {
+      "category": "population",
+      "feature_name": "population",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": ["people_total"],
+      "definition": "Total resident population (現住人口數 總計), MOI RIS ODRP013, village granularity.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide"
+    },
+    {
+      "category": "population",
+      "feature_name": "malePopulation",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": ["people_total_m"],
+      "definition": "Male resident population (現住人口數 總計_男), MOI RIS ODRP013. Matches global_schema.json's malePopulation exactly.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "femalePopulation",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": ["people_total_f"],
+      "definition": "Female resident population (現住人口數 總計_女), MOI RIS ODRP013. Matches global_schema.json's femalePopulation exactly.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "households",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": ["household_no"],
+      "definition": "Number of registered households (戶數), MOI RIS ODRP014 (村里戶數、單一年齡人口), village granularity, merged onto ODRP013 rows by district_code. Matches global_schema.json's households exactly.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide"
+    },
+    {
+      "category": "raceEthinicity",
+      "feature_name": "minorityEthnicityPopulation",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": ["indigenous_total"],
+      "definition": "Indigenous/aboriginal resident population (原住民人口, 平地原住民+山地原住民), MOI RIS ODRP013 -- sum of aborigine_plain_total_m/f and aborigine_mountain_total_m/f, computed in pycensus.countries.taiwan.moi.loader._fetch_all_villages. Matches global_schema.json's minorityEthnicityPopulation.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "under18Population",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": ["under18_total"],
+      "definition": "Resident population younger than 18, MOI RIS ODRP014 (村里戶數、單一年齡人口) -- sum of the real single-year age buckets people_age_000..people_age_017 (m+f), computed in pycensus.countries.taiwan.moi.loader._add_derived_age_columns. Matches global_schema.json's under18Population exactly.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "adultPopulation",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": ["adult_total"],
+      "definition": "Resident population aged 18 or older, MOI RIS ODRP014 -- sum of the real single-year age buckets people_age_018..people_age_100up (m+f), computed in pycensus.countries.taiwan.moi.loader._add_derived_age_columns. Matches global_schema.json's adultPopulation exactly.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "over65Population",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": ["over65_total"],
+      "definition": "Resident population aged 65 or older, MOI RIS ODRP014 -- sum of the real single-year age buckets people_age_065..people_age_100up (m+f), computed in pycensus.countries.taiwan.moi.loader._add_derived_age_columns. Matches global_schema.json's over65Population exactly. Live-verified for Taipei City 2026-08-22: 580,555 / 2,451,007 = 23.7% over-65 share, plausible against Taipei's well-documented, unusually old age structure.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "medianAge",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": ["median_age"],
+      "definition": "Median age of the resident population, MOI RIS ODRP014 -- discrete weighted median computed directly from the real single-year age buckets people_age_000..people_age_100up (m+f) summed to the requested level (village/district/county_city/nation), in pycensus.countries.taiwan.moi.loader._weighted_median_age. Not simply averaged from lower-level medians (that would misweight small villages). The people_age_100up bucket is MOI's own top-coding (ages 100+), not an approximation. Matches global_schema.json's medianAge.",
+      "type": "median",
+      "unit": "years",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean"
+    }
+  ]
+}

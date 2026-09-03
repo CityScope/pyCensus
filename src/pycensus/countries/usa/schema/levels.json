@@ -1,0 +1,178 @@
+{
+  "country": "usa",
+  "country_name": "United States",
+  "description": "Census geography levels for the United States (US Census Bureau)",
+  "native_levels": [
+    {
+      "level": "nation",
+      "description": "The entire United States territory",
+      "source": "US Census Bureau",
+      "geoid_pattern": "US",
+      "is_standard": true,
+      "resample_from": "state",
+      "resample_to": "state",
+      "resample_intersections": false
+    },
+    {
+      "level": "state",
+      "description": "State-level administrative division (50 states + DC + territories)",
+      "source": "US Census Bureau",
+      "geoid_pattern": "XX",
+      "geoid_pattern_description": "2-letter state code",
+      "is_standard": true,
+      "resample_from": "county",
+      "resample_to": "county",
+      "resample_intersections": false
+    },
+    {
+      "level": "county",
+      "description": "County or county-equivalent (parishes in LA, boroughs in AK, independent cities)",
+      "source": "US Census Bureau",
+      "geoid_pattern": "XXXXX",
+      "geoid_pattern_description": "5-digit FIPS code",
+      "is_standard": true,
+      "resample_from": "tract",
+      "resample_to": "tract",
+      "resample_intersections": false
+    },
+    {
+      "level": "tract",
+      "description": "Census tract - small, relatively permanent statistical subdivision of a county",
+      "source": "US Census Bureau",
+      "geoid_pattern": "XXXXXX",
+      "geoid_pattern_description": "6-digit code, unique within county",
+      "is_standard": true,
+      "resample_from": "blockgroup",
+      "resample_to": "blockgroup",
+      "resample_intersections": false
+    },
+    {
+      "level": "blockgroup",
+      "description": "Block group - cluster of census blocks sharing the same first digit of their 4-digit code",
+      "source": "US Census Bureau",
+      "geoid_pattern": "X",
+      "geoid_pattern_description": "1-digit, unique within tract",
+      "is_standard": true,
+      "resample_from": "block",
+      "resample_to": "block",
+      "resample_intersections": false
+    },
+    {
+      "level": "block",
+      "description": "Census block - smallest geographic unit for which decennial census data are tabulated",
+      "source": "US Census Bureau",
+      "geoid_pattern": "XXXX",
+      "geoid_pattern_description": "4-digit code, unique within tract",
+      "is_standard": true,
+      "resample_from": "block",
+      "resample_to": "block",
+      "resample_intersections": false
+    },
+    {
+      "level": "place",
+      "description": "Incorporated place or census designated place",
+      "source": "US Census Bureau",
+      "geoid_pattern": "XXXXX",
+      "geoid_pattern_description": "5-digit place code",
+      "is_standard": false,
+      "resample_from": "blockgroup",
+      "resample_to": "blockgroup",
+      "resample_intersections": false
+    },
+    {
+      "level": "puma",
+      "description": "Public Use Microdata Area - statistical geographic area defined for tabulating ACS data",
+      "source": "US Census Bureau",
+      "geoid_pattern": "XXXXX",
+      "geoid_pattern_description": "5-digit code",
+      "is_standard": false,
+      "resample_from": "blockgroup",
+      "resample_to": "blockgroup",
+      "resample_intersections": false
+    },
+    {
+      "level": "core_based_statistical_area",
+      "description": "Core Based Statistical Area (CBSA) - metropolitan and micropolitan statistical areas",
+      "source": "US Census Bureau / OMB",
+      "geoid_pattern": "XXXXX",
+      "geoid_pattern_description": "5-digit CBSA code",
+      "is_standard": false,
+      "resample_from": "blockgroup",
+      "resample_to": "blockgroup",
+      "resample_intersections": false
+    },
+    {
+      "level": "congressional_district",
+      "description": "Congressional districts for the US House of Representatives",
+      "source": "US Census Bureau",
+      "geoid_pattern": "XX-XX",
+      "geoid_pattern_description": "state code + 2-digit district number",
+      "is_standard": false,
+      "resample_from": "blockgroup",
+      "resample_to": "blockgroup",
+      "resample_intersections": false
+    },
+    {
+      "level": "school_district",
+      "description": "School district boundaries",
+      "source": "US Census Bureau",
+      "geoid_pattern": "XX-XXXX",
+      "geoid_pattern_description": "state code + district code",
+      "is_standard": false,
+      "resample_from": "blockgroup",
+      "resample_to": "blockgroup",
+      "resample_intersections": false
+    },
+    {
+      "level": "county_subdivision",
+      "description": "County subdivisions - minor civil divisions in some states",
+      "source": "US Census Bureau",
+      "geoid_pattern": "XX-XXXX",
+      "geoid_pattern_description": "state code + subdivision code",
+      "is_standard": false,
+      "resample_from": "blockgroup",
+      "resample_to": "blockgroup",
+      "resample_intersections": false
+    }
+  ],
+  "levels": [
+    "nation",
+    "state",
+    "county",
+    "tract",
+    "blockgroup",
+    "block",
+    "place",
+    "puma",
+    "core_based_statistical_area",
+    "congressional_district",
+    "school_district",
+    "county_subdivision"
+  ],
+  "global_to_country_mapping": {
+    "nation": "nation",
+    "state": "state",
+    "province": "county",
+    "municipality": "place",
+    "tract": "tract",
+    "blockgroup": "blockgroup",
+    "block": "block"
+  },
+  "country_to_global_mapping": {
+    "nation": "nation",
+    "state": "state",
+    "county": "province",
+    "tract": "tract",
+    "blockgroup": "blockgroup",
+    "block": "block",
+    "place": "municipality",
+    "puma": "municipality",
+    "core_based_statistical_area": "state",
+    "congressional_district": "state",
+    "school_district": "municipality",
+    "county_subdivision": "municipality"
+  },
+  "fallback_resolution": {
+    "province": "county"
+  }
+}

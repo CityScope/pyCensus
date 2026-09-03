@@ -1,0 +1,92 @@
+{
+  "country": "canada",
+  "country_name": "Canada",
+  "description": "Census geography levels for Canada (Statistics Canada)",
+  "native_levels": [
+    {
+      "level": "nation",
+      "description": "Complete Canada territory",
+      "source": "StatCan",
+      "geoid_pattern": "CA",
+      "is_standard": true,
+      "resample_from": "province",
+      "resample_to": "province",
+      "resample_intersections": false
+    },
+    {
+      "level": "province",
+      "description": "Province or territory - 10 provinces + 3 territories",
+      "source": "StatCan",
+      "geoid_pattern": "XX",
+      "geoid_pattern_description": "2-digit StatCan PRUID",
+      "is_standard": true,
+      "resample_from": "municipality",
+      "resample_to": "municipality",
+      "resample_intersections": false
+    },
+    {
+      "level": "municipality",
+      "description": "Census subdivision (CSD) - city/town/village/reserve/etc., Canada's municipality-equivalent",
+      "source": "StatCan",
+      "geoid_pattern": "XXXXXXX",
+      "geoid_pattern_description": "7-digit StatCan CSDUID (2-digit PRUID + 2-digit census division + 3-digit CSD)",
+      "is_standard": true,
+      "resample_from": "municipality",
+      "resample_to": "municipality",
+      "resample_intersections": false
+    },
+    {
+      "level": "dissemination-area",
+      "description": "Dissemination area (DA) - StatCan's tract-equivalent, the finest unit with published Census Profile characteristic data",
+      "source": "StatCan",
+      "geoid_pattern": "XXXXXXXX",
+      "geoid_pattern_description": "8-digit StatCan DAUID",
+      "is_standard": true,
+      "resample_from": "dissemination-area",
+      "resample_to": "municipality",
+      "resample_intersections": false
+    },
+    {
+      "level": "dissemination-block",
+      "description": "Dissemination block (DB) - StatCan's actual finest geographic unit; real population and dwelling counts (not characteristic data) from the 2021 Geographic Attribute File",
+      "source": "StatCan",
+      "geoid_pattern": "XXXXXXXXXXX",
+      "geoid_pattern_description": "11-char StatCan DBUID (2-digit PRUID prefix + 9 more digits)",
+      "is_standard": true,
+      "resample_from": "dissemination-block",
+      "resample_to": "dissemination-area",
+      "resample_intersections": false
+    }
+  ],
+  "levels": [
+    "nation",
+    "province",
+    "municipality",
+    "dissemination-area",
+    "dissemination-block"
+  ],
+  "global_to_country_mapping": {
+    "nation": "nation",
+    "state": "province",
+    "province": "province",
+    "county": "municipality",
+    "municipality": "municipality",
+    "tract": "dissemination-area",
+    "blockgroup": "dissemination-area",
+    "block": "dissemination-block"
+  },
+  "country_to_global_mapping": {
+    "nation": "nation",
+    "province": "province",
+    "municipality": "municipality",
+    "dissemination-area": "tract",
+    "dissemination-block": "block"
+  },
+  "fallback_resolution": {
+    "state": "province",
+    "county": "municipality",
+    "tract": "dissemination-area",
+    "blockgroup": "dissemination-area",
+    "block": "dissemination-block"
+  }
+}

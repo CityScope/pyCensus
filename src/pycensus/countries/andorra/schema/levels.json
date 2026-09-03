@@ -1,0 +1,52 @@
+{
+  "country": "andorra",
+  "country_name": "Andorra",
+  "description": "Census geography levels for Andorra (Departament d'Estadistica)",
+  "native_levels": [
+    {
+      "level": "nation",
+      "description": "Principat d'Andorra (whole country, dissolved from the 7 parishes)",
+      "source": "estadistica.ad",
+      "geoid_pattern": "AD",
+      "is_standard": true,
+      "resample_from": "parish",
+      "resample_to": "parish",
+      "resample_intersections": false
+    },
+    {
+      "level": "parish",
+      "description": "Parroquia / comu - Andorra's 7 parishes, its only administrative subdivision",
+      "source": "estadistica.ad",
+      "geoid_pattern": "AD-0X",
+      "geoid_pattern_description": "ISO 3166-2:AD code, verified against estadistica.ad's own boundary layer",
+      "is_standard": true,
+      "resample_from": "parish",
+      "resample_to": "parish",
+      "resample_intersections": false
+    }
+  ],
+  "levels": ["nation", "parish"],
+  "global_to_country_mapping": {
+    "nation": "nation",
+    "state": "parish",
+    "province": "parish",
+    "municipality": "parish",
+    "tract": "parish",
+    "blockgroup": "parish",
+    "block": "parish"
+  },
+  "country_to_global_mapping": {
+    "nation": "nation",
+    "parish": "state"
+  },
+  "fallback_resolution": {
+    "state": "parish",
+    "province": "parish",
+    "county": "parish",
+    "municipality": "parish",
+    "tract": "parish",
+    "blockgroup": "parish",
+    "block": "parish",
+    "place": "parish"
+  }
+}

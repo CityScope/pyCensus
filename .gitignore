@@ -15,9 +15,23 @@ venv/
 docs/build/
 
 # Python egg files
-*.egg-info
+*.egg-info/
 dist/
 build/
+
+# Test / lint caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# OS cruft
+.DS_Store
+
+# Secrets / credentials -- never commit real key values
+*.env
+.env
+*credentials*.json
 
 # # Ignore everything in examples/
 # examples/**
@@ -31,11 +45,15 @@ build/
 
 **/api_keys.py
 
-# anything with "cache" in folder or file name
-**/*cache*/
-**/*cache*
-
 examples/
 !examples/boston_census.ipynb
 
 api_keys.json
+
+# Scraped/raw notes about each country's API -- not authored documentation;
+# see IMPLEMENTING_A_COUNTRY.md for the actual how-to-add-a-country instructions.
+**/api_info.txt
+**/lista_de_apis.txt
+
+# Small sample fixtures, not needed to run/test the released package
+tests/fixtures/canada_census_profile_Ontario_sample.zip

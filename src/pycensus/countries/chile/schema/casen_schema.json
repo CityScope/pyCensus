@@ -1,0 +1,39 @@
+{
+  "country": "chile",
+  "source": "casen",
+  "full_name": "Ministerio de Desarrollo Social y Familia -- Estimaciones Comunales de Pobreza (SAE) en base a la Encuesta Casen",
+  "years": [2022],
+  "levels": ["comuna"],
+  "features": [
+    {
+      "category": "income",
+      "feature_name": "povertyRate",
+      "country": "chile",
+      "source": "casen",
+      "codes": ["Porcentaje de personas en situación de pobreza por ingresos 2022"],
+      "definition": "Estimated share of the comuna's population below Chile's official income poverty line, 2022 -- Small Area Estimation (Fay-Herriot model, combining the Casen 2022 survey's direct estimate with a synthetic regression estimate) published by the Observatorio Social, Subsecretaria de Evaluacion Social, Ministerio de Desarrollo Social y Familia. Covers 335 of Chile's 346 comunas (those with a Casen sample); comuna 'Puchuncavi' was excluded from the Fay-Herriot model as a documented outlier (see Resultados_Estimaciones_SAE_2022.pdf).",
+      "type": "percentage",
+      "unit": "share (0-1)",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "constant_total": false,
+      "constant_density": true
+    },
+    {
+      "category": "income",
+      "feature_name": "povertyRateMultidimensional",
+      "country": "chile",
+      "source": "casen",
+      "codes": ["Porcentaje de personas en situación de pobreza multidimensional 2022"],
+      "definition": "Estimated share of the comuna's population in multidimensional poverty (education, health, housing, employment/social security indicators combined, not just income), 2022 -- same Fay-Herriot SAE methodology as povertyRate, published by the same source. Covers 335 of Chile's 346 comunas.",
+      "type": "percentage",
+      "unit": "share (0-1)",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "constant_total": false,
+      "constant_density": true
+    }
+  ]
+}

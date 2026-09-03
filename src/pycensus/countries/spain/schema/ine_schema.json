@@ -1,0 +1,45 @@
+{
+  "country": "spain",
+  "source": "ine",
+  "full_name": "INE Padron Municipal (Cifras oficiales de poblacion)",
+  "years": [2025],
+  "levels": ["municipality", "province", "autonomous_community", "nation", "section"],
+  "features": [
+    {
+      "category": "population",
+      "feature_name": "population",
+      "country": "spain",
+      "source": "ine",
+      "codes": ["TOTAL_POB"],
+      "definition": "Total population residing in the geographic area (Padron municipal, INE table 29005, sex = Total).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide"
+    },
+    {
+      "category": "population",
+      "feature_name": "malePopulation",
+      "country": "spain",
+      "source": "ine",
+      "codes": ["POB_HOMBRES"],
+      "definition": "Male population (Padron municipal, INE table 29005, sex = Hombres). Matches global_schema.json's malePopulation exactly.",
+      "type": "count",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "femalePopulation",
+      "country": "spain",
+      "source": "ine",
+      "codes": ["POB_MUJERES"],
+      "definition": "Female population (Padron municipal, INE table 29005, sex = Mujeres). Matches global_schema.json's femalePopulation exactly.",
+      "type": "count",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    }
+  ]
+}

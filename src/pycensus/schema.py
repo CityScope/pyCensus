@@ -58,6 +58,7 @@ class ColumnDef:
     relative_to: Optional[str] = None
     agg: Literal["sum", "mean"] = "sum"
     weight_by: Optional[str] = None
+    computed_from: Optional[List[str]] = None
 
     @property
     def is_count(self) -> bool:
@@ -91,6 +92,7 @@ class ColumnSchema:
         relative_to: Optional[str] = None,
         agg: Literal["sum", "mean"] = "sum",
         weight_by: Optional[str] = None,
+        computed_from: Optional[List[str]] = None,
     ) -> "ColumnSchema":
         """Register a logical column and return ``self`` for chaining.
 
@@ -103,15 +105,30 @@ class ColumnSchema:
                 quantities (rates, medians).
             weight_by: Unprefixed logical name of the weighting column
                 for ``"mean"`` aggregation.
+            computed_from: Unprefixed logical names of two other columns
+                this one is derived from as ``computed_from[0] -
+                computed_from[1]`` (e.g. Mexico/USA DHC's
+                ``religiousPopulation``), or ``None`` if this column is
+                fetched directly rather than derived.
         """
         self.columns[name] = ColumnDef(
-            name=name, codes=codes, relative_to=relative_to, agg=agg, weight_by=weight_by
+            name=name,
+            codes=codes,
+            relative_to=relative_to,
+            agg=agg,
+            weight_by=weight_by,
+            computed_from=computed_from,
         )
         return self
 
     def prefixed(self, name: str) -> str:
         """Return the on-GeoDataFrame column name for a logical name."""
         return f"{self.prefix}_{name}"
+
+    # Alias kept for existing call sites (e.g. chile/casen, chile/ine,
+    # chile/sii loaders) written against this name -- same behavior as
+    # `prefixed`, just a different spelling.
+    column_label = prefixed
 
     def strip_prefix(self, prefixed_name: str) -> str:
         """Return the logical (unprefixed) name for an on-GeoDataFrame column name."""

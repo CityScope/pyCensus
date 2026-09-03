@@ -1,0 +1,72 @@
+{
+  "geometry_levels": [
+    {
+      "geometry_level": "nation",
+      "description": "Complete country territory. The highest geographic level representing the entire country.",
+      "resample_from": "state",
+      "resample_to": [
+        "state"
+      ],
+      "intersection_mode": "centroid"
+    },
+    {
+      "geometry_level": "state",
+      "description": "State-level administrative division above provinces, where such a statelike structure exists. If the country does not have a distinct statelike level above provinces, this level is a duplicate of nation.",
+      "resample_from": "province",
+      "resample_to": [
+        "nation",
+        "province"
+      ],
+      "intersection_mode": "centroid"
+    },
+    {
+      "geometry_level": "province",
+      "description": "Provincial or equivalent administrative division between the state level and municipalities. If the country has no provincelike structure above municipalities, this level is a duplicate of state; if there is no state level, it is a duplicate of nation.",
+      "resample_from": "municipality",
+      "resample_to": [
+        "state",
+        "municipality"
+      ],
+      "intersection_mode": "centroid"
+    },
+    {
+      "geometry_level": "municipality",
+      "description": "Local administrative level at which mayors or equivalent local government leaders are usually elected.",
+      "resample_from": "tract",
+      "resample_to": [
+        "province",
+        "tract"
+      ],
+      "intersection_mode": "centroid"
+    },
+    {
+      "geometry_level": "tract",
+      "description": "Census-defined statistical geography below the municipality, generally designed to represent relatively small, socially homogeneous areas and used for the dissemination of detailed census statistics. If the country's census does not define a tract-equivalent geography, this level should be mapped to the closest available census geography below municipality.",
+      "resample_from": "blockgroup",
+      "resample_to": [
+        "municipality",
+        "blockgroup"
+      ],
+      "intersection_mode": "exact"
+    },
+    {
+      "geometry_level": "blockgroup",
+      "description": "Census-defined statistical geography below the tract and above the block, where such a hierarchy exists. It groups multiple census blocks into a larger statistical reporting area. If the country's census does not define a block-group-equivalent geography, this level should be mapped to the closest available intermediate census geography.",
+      "resample_from": "block",
+      "resample_to": [
+        "tract",
+        "block"
+      ],
+      "intersection_mode": "exact"
+    },
+    {
+      "geometry_level": "block",
+      "description": "The smallest or one of the smallest census-defined geographic units below the municipality, representing the highest available level of spatial detail in the census geometry hierarchy. Where a country uses different small-area geometries rather than blocks, the closest equivalent census-defined small-area geography should be assigned to this level.",
+      "resample_from": "blockgroup",
+      "resample_to": [
+        "blockgroup"
+      ],
+      "intersection_mode": "exact"
+    }
+  ]
+}

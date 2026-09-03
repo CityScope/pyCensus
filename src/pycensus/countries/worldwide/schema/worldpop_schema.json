@@ -1,0 +1,86 @@
+{
+  "country": "worldwide",
+  "source": "worldpop",
+  "full_name": "WorldPop gridded population, sex, and age-structure rasters",
+  "features": [
+    {
+      "category": "population",
+      "feature_name": "population",
+      "country": "worldwide",
+      "source": "worldpop",
+      "codes": ["pop"],
+      "definition": "Total gridded population count (WorldPop 'pop'/Global2 dataset, G2_CN_POP_R25A).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide"
+    },
+    {
+      "category": "population",
+      "feature_name": "malePopulation",
+      "country": "worldwide",
+      "source": "worldpop",
+      "codes": ["age_structures_T_M"],
+      "definition": "Total male population (WorldPop 'age_structures' dataset, pre-aggregated T_M band -- exact, not derived from summing age bins).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "femalePopulation",
+      "country": "worldwide",
+      "source": "worldpop",
+      "codes": ["age_structures_T_F"],
+      "definition": "Total female population (WorldPop 'age_structures' dataset, pre-aggregated T_F band -- exact, not derived from summing age bins).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "under18Population",
+      "country": "worldwide",
+      "source": "worldpop",
+      "codes": ["age_structures_t_00", "age_structures_t_01", "age_structures_t_05", "age_structures_t_10", "age_structures_t_15"],
+      "definition": "Population under 18. Derived by summing WorldPop age-structure 5-year age bins 0-14 plus 0.6x of the 15-19 bin (linear-within-bin approximation for ages 15-17, since WorldPop's per-year age-structure product has no exact 18-year cutoff -- see pycensus.worldwide.worldpop.loader module docstring).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "over65Population",
+      "country": "worldwide",
+      "source": "worldpop",
+      "codes": ["age_structures_t_65", "age_structures_t_70", "age_structures_t_75", "age_structures_t_80", "age_structures_t_85", "age_structures_t_90"],
+      "definition": "Population aged 65 and older. Exact sum of WorldPop age-structure bins 65-90+ (65 is a real bin boundary, no interpolation needed).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "adultPopulation",
+      "country": "worldwide",
+      "source": "worldpop",
+      "codes": ["age_structures_total_minus_under18"],
+      "definition": "Population aged 18 and older. Derived as the sum of all WorldPop age-structure bins minus under18Population -- inherits under18Population's bin-15 linear-interpolation approximation.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    }
+  ],
+  "years": [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030],
+  "levels": ["nation", "state", "province", "municipality", "district", "grid_1km", "grid_100m"]
+}
