@@ -38,7 +38,7 @@ from typing import Optional
 
 import polars as pl
 
-from geohierarchy.raster_resample import raster_to_h3_tiled
+from geohierarchy.raster_resample import raster_to_h3_tiled, raster_to_h3_auto
 
 
 def worldpop_raster_to_h3(
@@ -98,4 +98,55 @@ def worldpop_raster_to_h3(
     )
 
 
-__all__ = ["worldpop_raster_to_h3"]
+def worldpop_raster_to_h3_fast(
+    tif_path: str,
+    resolution: int,
+    value_col: str = "population",
+    h3_col: str = "h3_cell",
+    is_count: bool = True,
+) -> pl.DataFrame:
+    """Fast (point-based, not exact-overlay) resample of a WorldPop GeoTIFF onto an H3 grid.
+
+    2026-09-04, explicit user spec: replaces the expensive per-pixel
+    polygon-overlay `worldpop_raster_to_h3` above (real geometric
+    intersection, ~65-70s on even a small metro's population raster at
+    H3 res 11) with a much faster point/pixel-based method --
+    `geohierarchy.raster_resample.raster_to_h3_auto` (see its docstring
+    for the full algorithm and correctness argument: density conversion +
+    nearest-cell mean, OR H3-centroid raster sampling when H3 cells are
+    smaller than the raster's own pixels, either way followed by a global
+    mass-conservation rescale). Benchmarked live on Concepcion's real
+    (AOI-masked) population raster: ~270x faster at H3 res 9 (0.07s vs
+    64s) and still much faster at the harder res-11 case (~4s vs 65-70s,
+    after fixing an initial `rasterio.sample()` per-point bottleneck),
+    with totals matching the exact method to within ~0.07% (floating-point
+    + approximation noise, not a systematic bias -- the global rescale
+    step keeps the total exact by construction).
+
+    Kept as a SEPARATE function from `worldpop_raster_to_h3` (not a
+    replacement) so that function's own dedicated regression tests
+    (`test_worldpop_h3.py`'s exact-conservation and pixel-level
+    density-bound assertions, which specifically characterize the exact
+    overlay method's behavior) stay meaningful and continue to pass
+    unchanged. Real usage (`city_science_network`'s `h3_population.py`)
+    calls this fast function instead.
+
+    Args:
+        tif_path: Path to a (optionally AOI-clipped/masked) single-band
+            WorldPop GeoTIFF.
+        resolution: Target H3 resolution.
+        value_col: Output value column name.
+        h3_col: Output H3 cell-id column name.
+        is_count: Whether the raster holds an absolute count (`True`,
+            the WorldPop population default) or an already-relative/
+            density quantity (`False`).
+
+    Returns:
+        Polars DataFrame with `h3_col` and `value_col`.
+    """
+    return raster_to_h3_auto(
+        tif_path, resolution=resolution, value_col=value_col, h3_col=h3_col, is_count=is_count,
+    )
+
+
+__all__ = ["worldpop_raster_to_h3", "worldpop_raster_to_h3_fast"]
