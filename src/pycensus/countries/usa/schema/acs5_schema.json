@@ -437,6 +437,553 @@
       "resampling_down": "relative",
       "relative_to": "population25plus",
       "unit": ""
+    },
+    {
+      "category": "housing",
+      "feature_name": "vehiclesHouseholds1",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25044_004",
+        "B25044_011"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "households",
+      "unit": "",
+      "definition": "Number of households with exactly 1 vehicle available."
+    },
+    {
+      "category": "housing",
+      "feature_name": "vehiclesHouseholds2",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25044_005",
+        "B25044_012"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "households",
+      "unit": "",
+      "definition": "Number of households with exactly 2 vehicles available."
+    },
+    {
+      "category": "housing",
+      "feature_name": "vehiclesHouseholds3Plus",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25044_006",
+        "B25044_007",
+        "B25044_008",
+        "B25044_013",
+        "B25044_014",
+        "B25044_015"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "households",
+      "unit": "",
+      "definition": "Number of households with 3 or more vehicles available."
+    },
+    {
+      "category": "population",
+      "feature_name": "householdsWithChildren",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B11005_002"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "households",
+      "unit": "",
+      "definition": "Number of households with one or more people under 18 years."
+    },
+    {
+      "category": "population",
+      "feature_name": "womenAge15to50",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B13016_001"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population",
+      "unit": "",
+      "definition": "Number of women aged 15 to 50 years (denominator for recent-fertility breakdowns)."
+    },
+    {
+      "category": "population",
+      "feature_name": "womenWithBirthPast12Months",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B13016_002"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "womenAge15to50",
+      "unit": "",
+      "definition": "Number of women aged 15 to 50 who had a birth in the past 12 months."
+    },
+    {
+      "category": "income",
+      "feature_name": "incomeGini",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B19083_001"
+      ],
+      "type": "median",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "households",
+      "unit": "",
+      "definition": "Gini index of income inequality (0 = perfect equality, 1 = perfect inequality)."
+    },
+    {
+      "category": "income",
+      "feature_name": "incomeHouseholdsUnder10k",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B19001_002"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "households",
+      "unit": "",
+      "definition": "Households with annual income under $10,000."
+    },
+    {
+      "category": "income",
+      "feature_name": "incomeHouseholds10kTo25k",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B19001_003",
+        "B19001_004",
+        "B19001_005"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "households",
+      "unit": "",
+      "definition": "Households with annual income $10,000 to $24,999."
+    },
+    {
+      "category": "income",
+      "feature_name": "incomeHouseholds25kTo50k",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B19001_006",
+        "B19001_007",
+        "B19001_008",
+        "B19001_009",
+        "B19001_010"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "households",
+      "unit": "",
+      "definition": "Households with annual income $25,000 to $49,999."
+    },
+    {
+      "category": "income",
+      "feature_name": "incomeHouseholds50kTo100k",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B19001_011",
+        "B19001_012",
+        "B19001_013"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "households",
+      "unit": "",
+      "definition": "Households with annual income $50,000 to $99,999."
+    },
+    {
+      "category": "income",
+      "feature_name": "incomeHouseholds100kTo200k",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B19001_014",
+        "B19001_015",
+        "B19001_016"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "households",
+      "unit": "",
+      "definition": "Households with annual income $100,000 to $199,999."
+    },
+    {
+      "category": "income",
+      "feature_name": "incomeHouseholds200kPlus",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B19001_017"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "households",
+      "unit": "",
+      "definition": "Households with annual income $200,000 or more."
+    },
+    {
+      "category": "education",
+      "feature_name": "educationBachelorsDegree",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B15003_022"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population25plus",
+      "unit": "",
+      "definition": "Number of adults 25+ whose highest completed education is a bachelor's degree (no higher degree)."
+    },
+    {
+      "category": "education",
+      "feature_name": "educationMastersDegree",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B15003_023"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population25plus",
+      "unit": "",
+      "definition": "Number of adults 25+ whose highest completed education is a master's degree."
+    },
+    {
+      "category": "education",
+      "feature_name": "educationProfessionalDegree",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B15003_024"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population25plus",
+      "unit": "",
+      "definition": "Number of adults 25+ whose highest completed education is a professional school degree (e.g. JD, MD)."
+    },
+    {
+      "category": "education",
+      "feature_name": "educationDoctorateDegree",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B15003_025"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population25plus",
+      "unit": "",
+      "definition": "Number of adults 25+ whose highest completed education is a doctorate degree."
+    },
+    {
+      "category": "employment",
+      "feature_name": "employedPopulation16plus",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "C24010_001"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population16plus",
+      "unit": "",
+      "definition": "Civilian employed population aged 16+ (denominator for occupation-category breakdowns)."
+    },
+    {
+      "category": "employment",
+      "feature_name": "jobsManagementBusinessScienceArts",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "C24010_003",
+        "C24010_039"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "employedPopulation16plus",
+      "unit": "",
+      "definition": "Employed residents 16+ in management, business, science, and arts occupations."
+    },
+    {
+      "category": "employment",
+      "feature_name": "jobsService",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "C24010_019",
+        "C24010_055"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "employedPopulation16plus",
+      "unit": "",
+      "definition": "Employed residents 16+ in service occupations."
+    },
+    {
+      "category": "employment",
+      "feature_name": "jobsSalesOffice",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "C24010_027",
+        "C24010_063"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "employedPopulation16plus",
+      "unit": "",
+      "definition": "Employed residents 16+ in sales and office occupations."
+    },
+    {
+      "category": "employment",
+      "feature_name": "jobsNaturalResourcesConstructionMaintenance",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "C24010_030",
+        "C24010_066"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "employedPopulation16plus",
+      "unit": "",
+      "definition": "Employed residents 16+ in natural resources, construction, and maintenance occupations."
+    },
+    {
+      "category": "employment",
+      "feature_name": "jobsProductionTransportationMaterialMoving",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "C24010_034",
+        "C24010_070"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "employedPopulation16plus",
+      "unit": "",
+      "definition": "Employed residents 16+ in production, transportation, and material moving occupations."
+    },
+    {
+      "category": "employment",
+      "feature_name": "employedMalePopulation16plus",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "C24010_002"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "employedPopulation16plus",
+      "unit": "",
+      "definition": "Civilian employed male population aged 16+ (denominator for sex-disaggregated occupation breakdowns)."
+    },
+    {
+      "category": "employment",
+      "feature_name": "employedFemalePopulation16plus",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "C24010_038"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "employedPopulation16plus",
+      "unit": "",
+      "definition": "Civilian employed female population aged 16+ (denominator for sex-disaggregated occupation breakdowns)."
+    },
+    {
+      "category": "employment",
+      "feature_name": "jobsManagementBusinessScienceArtsMale",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "C24010_003"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "employedMalePopulation16plus",
+      "unit": "",
+      "definition": "Employed male residents 16+ in management, business, science, and arts occupations."
+    },
+    {
+      "category": "employment",
+      "feature_name": "jobsManagementBusinessScienceArtsFemale",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "C24010_039"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "employedFemalePopulation16plus",
+      "unit": "",
+      "definition": "Employed female residents 16+ in management, business, science, and arts occupations."
+    },
+    {
+      "category": "employment",
+      "feature_name": "jobsServiceMale",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "C24010_019"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "employedMalePopulation16plus",
+      "unit": "",
+      "definition": "Employed male residents 16+ in service occupations."
+    },
+    {
+      "category": "employment",
+      "feature_name": "jobsServiceFemale",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "C24010_055"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "employedFemalePopulation16plus",
+      "unit": "",
+      "definition": "Employed female residents 16+ in service occupations."
+    },
+    {
+      "category": "employment",
+      "feature_name": "jobsSalesOfficeMale",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "C24010_027"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "employedMalePopulation16plus",
+      "unit": "",
+      "definition": "Employed male residents 16+ in sales and office occupations."
+    },
+    {
+      "category": "employment",
+      "feature_name": "jobsSalesOfficeFemale",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "C24010_063"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "employedFemalePopulation16plus",
+      "unit": "",
+      "definition": "Employed female residents 16+ in sales and office occupations."
+    },
+    {
+      "category": "employment",
+      "feature_name": "jobsNaturalResourcesConstructionMaintenanceMale",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "C24010_030"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "employedMalePopulation16plus",
+      "unit": "",
+      "definition": "Employed male residents 16+ in natural resources, construction, and maintenance occupations."
+    },
+    {
+      "category": "employment",
+      "feature_name": "jobsNaturalResourcesConstructionMaintenanceFemale",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "C24010_066"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "employedFemalePopulation16plus",
+      "unit": "",
+      "definition": "Employed female residents 16+ in natural resources, construction, and maintenance occupations."
+    },
+    {
+      "category": "employment",
+      "feature_name": "jobsProductionTransportationMaterialMovingMale",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "C24010_034"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "employedMalePopulation16plus",
+      "unit": "",
+      "definition": "Employed male residents 16+ in production, transportation, and material moving occupations."
+    },
+    {
+      "category": "employment",
+      "feature_name": "jobsProductionTransportationMaterialMovingFemale",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "C24010_070"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "employedFemalePopulation16plus",
+      "unit": "",
+      "definition": "Employed female residents 16+ in production, transportation, and material moving occupations."
     }
   ],
   "years": [
@@ -467,7 +1014,19 @@
     "school_district_secondary",
     "school_district_unified",
     "tract",
+    "blockgroup"
+  ],
+  "native_levels": [
+    "state",
+    "county",
+    "tract",
     "blockgroup",
-    "block"
+    "congressional_district",
+    "school_district_elementary",
+    "school_district_secondary",
+    "school_district_unified",
+    "place",
+    "county_subdivision",
+    "public_use_microdata_area"
   ]
 }

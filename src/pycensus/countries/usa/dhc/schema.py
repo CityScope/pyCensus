@@ -37,6 +37,7 @@ _type_to_agg = {
 # Get source-level years and levels for default values
 _source_years = _schema_data.get("years", [])
 _source_levels = _schema_data.get("levels", [])
+NATIVE_LEVELS = _schema_data.get("native_levels", _source_levels)
 
 for feature in _schema_data.get("features", []):
     feature_name = feature.get("feature_name", "")

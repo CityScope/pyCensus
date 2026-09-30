@@ -296,5 +296,18 @@
     "american_indian_alaska_native_area",
     "alaska_native_regional_corporation",
     "hawaiian_home_land"
+  ],
+  "native_levels": [
+    "state",
+    "county",
+    "tract",
+    "blockgroup",
+    "block",
+    "county_subdivision",
+    "place",
+    "congressional_district",
+    "public_use_microdata_area",
+    "zcta",
+    "school_district"
   ]
 }

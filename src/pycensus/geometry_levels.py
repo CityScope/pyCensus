@@ -50,3 +50,29 @@ def resolve_level(level: str, fallback: Dict[str, str], country: Optional[str] =
         seen.add(level)
         level = fallback[level]
     return level
+
+
+def is_native_level(native_levels: List[str], level: str) -> bool:
+    """Whether a source genuinely publishes data at ``level`` itself.
+
+    Distinct from a schema's broader ``"levels"`` list (every geometry a
+    source's rows can be resolved/joined to, e.g. via TIGER boundaries),
+    which is NOT the same claim as "this source's own tabulated values are
+    published at this resolution" -- e.g. ACS5's ``"levels"`` used to
+    (incorrectly) include ``"block"``, a level ACS5 can never actually
+    publish estimates at (Census only tabulates ACS down to blockgroup).
+    ``native_levels`` (a schema JSON's own separate key, added 2026-09-29)
+    is the accurate list for exactly this question, and calling code
+    (loaders, resampling pipelines) should check it before resampling a
+    level a source already natively covers -- resampling should only ever
+    fill in a level that ISN'T in this list.
+
+    Args:
+        native_levels: A source schema's ``native_levels`` list (e.g.
+            loaded from its ``*_schema.json``).
+        level: Standard level name to check.
+
+    Returns:
+        True if ``level`` is one of ``native_levels``.
+    """
+    return level in native_levels

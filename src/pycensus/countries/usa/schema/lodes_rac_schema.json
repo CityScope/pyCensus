@@ -104,5 +104,11 @@
     "county",
     "census_tract",
     "block"
+  ],
+  "native_levels": [
+    "state",
+    "county",
+    "tract",
+    "block"
   ]
 }

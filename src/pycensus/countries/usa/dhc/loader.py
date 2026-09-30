@@ -21,7 +21,7 @@ from .... import cache as cache_store
 from .... import geometry_levels
 from ....api_keys import resolve_api_key
 from .. import api, constants, geography, utils
-from .schema import SCHEMA
+from .schema import NATIVE_LEVELS, SCHEMA
 from pycensus.canonical import apply_canonical_names
 
 
@@ -136,4 +136,9 @@ def load(
     if aoi is not None:
         result = result[result.intersects(aoi.to_crs(4326).union_all())].reset_index(drop=True)
 
-    return apply_canonical_names(result, SCHEMA)
+    final = apply_canonical_names(result, SCHEMA)
+    # Metadata only (per geometry_levels.is_native_level) -- never a
+    # column, so it can't be silently overwritten/resampled downstream
+    # like a real data column could.
+    final.attrs["native_level"] = level in NATIVE_LEVELS
+    return final
