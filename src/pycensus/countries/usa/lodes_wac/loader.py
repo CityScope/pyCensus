@@ -27,6 +27,8 @@ from pygris.data import get_lodes
 from .... import cache as cache_store
 from .... import geometry_levels
 from .. import constants, geography, utils
+import urllib.error
+import urllib.request
 from .schema import NATIVE_LEVELS, SCHEMA, ColumnSchema
 from pycensus.canonical import apply_canonical_names
 
@@ -45,17 +47,34 @@ def _fetch_missing(
     """Fetch the full LODES WAC file for one state and compute just the columns in ``missing_prefixed``."""
     agg_level = _AGG_LEVEL.get(level, level)
 
-    raw = (
-        pl.from_pandas(
-            get_lodes(
-                version="LODES8",
-                state=utils.state_abbr(state).lower(),
-                year=year,
-                lodes_type=_LODES_TYPE,
-                agg_level=agg_level,
-                cache=False,
-            )
+    st = utils.state_abbr(state).lower()
+
+    def _get(y: int):
+        return get_lodes(
+            version="LODES8", state=st, year=y, lodes_type=_LODES_TYPE, agg_level=agg_level, cache=False
         )
+
+    try:
+        frame = _get(year)
+    except urllib.error.HTTPError as exc:
+        if exc.code != 404:
+            raise
+        # Some states publish LODES only up to an older year (e.g. AK): fall
+        # back to the newest year actually available for this state.
+        import logging
+        import re
+
+        url = f"https://lehd.ces.census.gov/data/lodes/LODES8/{st}/{_LODES_TYPE}/"
+        listing = urllib.request.urlopen(url, timeout=60).read().decode("utf-8", "ignore")
+        years = sorted({int(y) for y in re.findall(rf"{st}_{_LODES_TYPE}_S000_JT00_(\d{{4}})", listing)})
+        usable = [y for y in years if y <= year] or years
+        if not usable:
+            raise
+        logging.getLogger(__name__).warning(f"LODES {st.upper()} {year} unavailable; using {usable[-1]}")
+        frame = _get(usable[-1])
+
+    raw = (
+        pl.from_pandas(frame)
         .rename({_GEOCODE_COL: "GEOID"})
         .with_columns(pl.col("GEOID").cast(pl.Utf8))
     )
