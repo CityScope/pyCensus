@@ -1,6 +1,6 @@
 [project]
 name = "pycensus"
-version = "0.1.0"
+version = "1.0.0"
 description = "Common-schema loaders for national census sources, ready to drop into a geohierarchy.GeoHierarchy."
 readme = "README.md"
 requires-python = ">=3.10"

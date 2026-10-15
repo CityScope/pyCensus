@@ -214,10 +214,9 @@ class TestLoader:
         cache_file = tmp_path / "spain" / "province" / "28.parquet"
         assert cache_file.exists()
         cached = gpd.read_parquet(cache_file)
-        # Unlike most other countries' loaders, Spain's `ine.load()` applies
-        # `pycensus.canonical.apply_canonical_names` BEFORE writing the
-        # cache, so the cached file itself already has bare canonical names.
-        assert "population" in cached.columns
+        # The cache stores the source-prefixed column names;
+        # `apply_canonical_names` is only applied to the returned frame.
+        assert "ine_population" in cached.columns
 
     def test_load_second_call_does_not_refetch(self, monkeypatch, tmp_path):
         calls = {"n": 0}
