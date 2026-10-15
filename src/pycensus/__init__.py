@@ -58,10 +58,12 @@ from .schema import ColumnDef, ColumnSchema
 # `pycensus.USA`/`pycensus.mexico`/etc. as a pre-imported attribute (only
 # some now-stale test files under `tests/` still do, pre-existing breakage
 # unrelated to this fix).
-from .population import get_population, census_countries
+from .population import REASSIGN_METHODS, census_countries, get_population, reassign_population
 
 __all__ = [
     "get_population",
+    "reassign_population",
+    "REASSIGN_METHODS",
     "census_countries",
     "worldwide",
     "ColumnView",

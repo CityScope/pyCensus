@@ -19,6 +19,9 @@ import numpy as np
 
 SOURCES = ("worldpop", "census")
 
+# How to treat cells (e.g. H3 hexagons) that have people but no data to sample (no street, no score...).
+REASSIGN_METHODS = ("nearest_value", "relocate_weight", "ignore")
+
 
 def _census_spain(aoi: gpd.GeoDataFrame, year, folder) -> gpd.GeoDataFrame:
     from .countries.spain.ine import loader
@@ -112,3 +115,34 @@ def get_population(
             "Use source='worldpop' instead."
         )
     return CENSUS_LOADERS[country](aoi, year, folder)
+
+
+def reassign_population(
+    cells: gpd.GeoDataFrame,
+    columns,
+    method: str = "nearest_value",
+    max_distance: Optional[float] = None,
+    population_col: str = "population",
+) -> gpd.GeoDataFrame:
+    """Handle the cells that have people but **no data** (``NaN`` in ``columns``): one call, three methods.
+
+    Typical use: an H3 grid with a street score and the population (see :func:`get_population`), where some
+    hexagons have people and no street.
+
+    - ``"nearest_value"``: take the ``columns`` of the nearest cell with data (the people stay where they are).
+    - ``"relocate_weight"``: move the people of those cells to the nearest cell with data, within
+      ``max_distance`` (default 300 m); farther they are excluded (``result.attrs["excluded_weight"]``).
+    - ``"ignore"``: leave them empty; then compute statistics with ``geohierarchy.weighted_mean``, which skips them.
+
+    Thin wrapper of :func:`geohierarchy.handle_empty_cells` with ``weight_col=population_col``.
+
+    Args:
+        cells: Cell polygons with ``columns`` and ``population_col``.
+        columns: The columns that are ``NaN`` where a cell has no data (copied by ``"nearest_value"``).
+        method: One of :data:`REASSIGN_METHODS`.
+        max_distance: Meters, center to center (``None``: no limit, or 300 for ``"relocate_weight"``).
+        population_col: Column with the people of each cell.
+    """
+    from geohierarchy import handle_empty_cells
+
+    return handle_empty_cells(cells, columns, method, population_col, max_distance)

@@ -27,3 +27,17 @@ def test_census_rejects_kids_only():
 
 def test_census_countries_lists_spain():
     assert "ES" in pycensus.census_countries()
+
+
+def test_reassign_population_wraps_the_three_methods():
+    import numpy as np
+
+    cells = gpd.GeoDataFrame(
+        {"score": [1.0, np.nan, np.nan], "population": [10, 10, 10]},
+        geometry=[shapely.box(i * 100, 0, (i + 1) * 100, 100) for i in range(3)], crs=32630,
+    )
+    assert set(pycensus.REASSIGN_METHODS) == {"nearest_value", "relocate_weight", "ignore"}
+    assert pycensus.reassign_population(cells, ["score"])["score"].notna().all()
+    moved = pycensus.reassign_population(cells, ["score"], "relocate_weight", max_distance=1000)
+    assert moved["population"].tolist() == [30.0, 0.0, 0.0]
+    assert pycensus.reassign_population(cells, ["score"], "ignore")["score"].isna().sum() == 2

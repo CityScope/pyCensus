@@ -138,3 +138,4 @@ api_keys.json
 population_data/
 output/
 **/map_tiles/
+**/cache/
