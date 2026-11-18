@@ -1,0 +1,158 @@
+"""Loader for LODES WAC (Workplace Area Characteristics) job counts.
+
+Technical aspects:
+    Reads as much as possible from pyCensus' parquet cache
+    (:mod:`pycensus.cache`, shared with ACS/DHC for the same level/region),
+    fetching pre-aggregated block-level LODES data with
+    `pygris.data.get_lodes` only when a requested column is missing. LODES
+    ships one flat file per state/type/year (no per-variable selection), so
+    a single missing column still triggers a full state fetch -- but that
+    fetch only happens once per level/region/type, ever, thanks to the
+    cache. ``agg_level`` asks pygris to pre-sum blocks up to the requested
+    level before the data even reaches this loader.
+
+Source:
+    https://lehd.ces.census.gov/data/lodes/LODES8/LODESTechDoc8.3.pdf
+"""
+
+from __future__ import annotations
+
+from typing import List, Optional, Union
+
+import geopandas as gpd
+import pandas as pd
+import polars as pl
+from pygris.data import get_lodes
+
+from pycensus import cache as cache_store
+from pycensus import geometry_levels
+from pycensus.census.countries.usa import constants, geography, utils
+import urllib.error
+import urllib.request
+from pycensus.census.countries.usa.lodes_wac.schema import NATIVE_LEVELS, SCHEMA, ColumnSchema
+from pycensus.canonical import apply_canonical_names
+
+_AGG_LEVEL = {"blockgroup": "block group", "state": "county"}
+_GEOCODE_COL = "w_geocode"
+_LODES_TYPE = "wac"
+
+
+def _fetch_missing(
+    missing_prefixed: List[str],
+    schema: ColumnSchema,
+    level: str,
+    state: str,
+    year: int,
+) -> pd.DataFrame:
+    """Fetch the full LODES WAC file for one state and compute just the columns in ``missing_prefixed``."""
+    agg_level = _AGG_LEVEL.get(level, level)
+
+    st = utils.state_abbr(state).lower()
+
+    def _get(y: int):
+        return get_lodes(
+            version="LODES8", state=st, year=y, lodes_type=_LODES_TYPE, agg_level=agg_level, cache=False
+        )
+
+    try:
+        frame = _get(year)
+    except urllib.error.HTTPError as exc:
+        if exc.code != 404:
+            raise
+        # Some states publish LODES only up to an older year (e.g. AK): fall
+        # back to the newest year actually available for this state.
+        import logging
+        import re
+
+        url = f"https://lehd.ces.census.gov/data/lodes/LODES8/{st}/{_LODES_TYPE}/"
+        listing = urllib.request.urlopen(url, timeout=60).read().decode("utf-8", "ignore")
+        years = sorted({int(y) for y in re.findall(rf"{st}_{_LODES_TYPE}_S000_JT00_(\d{{4}})", listing)})
+        usable = [y for y in years if y <= year] or years
+        if not usable:
+            raise
+        logging.getLogger(__name__).warning(f"LODES {st.upper()} {year} unavailable; using {usable[-1]}")
+        frame = _get(usable[-1])
+
+    raw = (
+        pl.from_pandas(frame)
+        .rename({_GEOCODE_COL: "GEOID"})
+        .with_columns(pl.col("GEOID").cast(pl.Utf8))
+    )
+
+    missing_defs = [schema.columns[schema.strip_prefix(c)] for c in missing_prefixed]
+    exprs = [
+        pl.sum_horizontal(
+            [pl.col(c).cast(pl.Float64, strict=False) for c in col.codes if c in raw.columns]
+        ).alias(schema.column_label(col.name))
+        for col in missing_defs
+    ]
+    logical = raw.with_columns(exprs).select(["GEOID", *[schema.column_label(c.name) for c in missing_defs]])
+    return logical.to_pandas()
+
+
+def load_wac(
+    aoi: Optional[gpd.GeoDataFrame] = None,
+    states: Optional[Union[str, List[str]]] = None,
+    level: str = "blockgroup",
+    year: Union[int, str] = "latest",
+    cache_dir: Optional[str] = None,
+    cache: bool = True,
+) -> gpd.GeoDataFrame:
+    """Load LODES Workplace Area Characteristics (jobs located in the block) data.
+
+    Args:
+        aoi: Area of interest. Used to auto-detect ``states`` if not given,
+            and to clip the final result.
+        states: State name(s)/abbreviation(s)/FIPS code(s) to load. Derived
+            from ``aoi`` if omitted (``aoi`` is then required).
+        level: Standard geometry level to pre-aggregate LODES blocks to.
+        year: Vintage year, or ``"latest"``.
+        cache_dir: Root of pyCensus' parquet cache. Defaults to
+            :func:`pycensus.cache.default_cache_dir`.
+        cache: If ``False``, bypass the cache entirely -- always fetch
+            fresh and don't persist the result.
+
+    Returns:
+        GeoDataFrame with ``GEOID``, geometry, and one
+        ``lodes_wac_``-prefixed column per logical column in
+        :data:`pycensus.usa.lodes_wac.schema.SCHEMA`.
+    """
+    level = geometry_levels.resolve_level(level, constants.LEVEL_FALLBACK, country="usa")
+    year_ = constants.LATEST_YEAR["lodes"] if year == "latest" else int(year)
+    geo_year = constants.LATEST_YEAR["geography"]
+
+    if states is None:
+        if aoi is None:
+            raise ValueError("Either 'states' or 'aoi' is required")
+        states = geography.states_in_aoi(aoi, geo_year)
+    elif isinstance(states, str):
+        states = [states]
+
+    columns = [SCHEMA.column_label(name) for name in SCHEMA.columns]
+
+    state_frames = []
+    for state in states:
+        path = cache_store.region_path(cache_dir, "usa", level, utils.state_fips(state))
+        gdf = cache_store.load_region(
+            path,
+            id_col="GEOID",
+            columns=columns,
+            fetch_boundary=lambda state=state: geography.load_boundaries(level, state, geo_year),
+            fetch_columns=lambda missing, state=state: _fetch_missing(
+                missing, SCHEMA, level, state, year_
+            ),
+            use_cache=cache,
+        )
+        state_frames.append(gdf)
+
+    result = gpd.GeoDataFrame(pd.concat(state_frames, ignore_index=True), geometry="geometry", crs=4326)
+
+    if aoi is not None:
+        result = result[result.intersects(aoi.to_crs(4326).union_all())].reset_index(drop=True)
+
+    final = apply_canonical_names(result, SCHEMA)
+    # Metadata only (per geometry_levels.is_native_level) -- never a
+    # column, so it can't be silently overwritten/resampled downstream
+    # like a real data column could.
+    final.attrs["native_level"] = level in NATIVE_LEVELS
+    return final

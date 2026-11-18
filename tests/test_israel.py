@@ -2,7 +2,7 @@
 
 Technical aspects:
     Mirrors ``tests/test_mexico.py``'s pattern: real network calls
-    (:mod:`pycensus.countries.israel.arcgis`) are monkeypatched out with small
+    (:mod:`pycensus.census.countries.israel.arcgis`) are monkeypatched out with small
     synthetic responses so the suite stays offline and fast. The real,
     live CBS/iplan ArcGIS FeatureServer endpoints were verified manually
     during development (see the pyCensus schema redesign memory) --
@@ -20,9 +20,9 @@ import geopandas as gpd
 import pytest
 from shapely.geometry import box
 
-from pycensus.countries.israel import arcgis, constants, geography, utils
-from pycensus.countries.israel.cbs import loader
-from pycensus.countries.israel.cbs.schema import SCHEMA
+from pycensus.census.countries.israel import arcgis, constants, geography, utils
+from pycensus.census.countries.israel.cbs import loader
+from pycensus.census.countries.israel.cbs.schema import SCHEMA
 
 
 class TestConstants:

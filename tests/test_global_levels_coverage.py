@@ -21,12 +21,12 @@ import pytest
 
 REPO_SRC = Path(__file__).resolve().parents[1] / "src" / "pycensus"
 
-with open(REPO_SRC / "schemas" / "global_levels.json") as f:
+with open(REPO_SRC / "reference" / "global_levels.json") as f:
     _GLOBAL_LEVELS_DATA = json.load(f)
 
 GLOBAL_LEVELS = {entry["geometry_level"] for entry in _GLOBAL_LEVELS_DATA["geometry_levels"]}
 
-LEVELS_JSON_PATHS = sorted((REPO_SRC / "countries").glob("*/schema/levels.json"))
+LEVELS_JSON_PATHS = sorted((REPO_SRC / "census" / "countries").glob("*/schema/levels.json"))
 
 
 def test_global_levels_json_has_seven_canonical_levels():

@@ -8,7 +8,7 @@ concept is shared across countries it is also given the global name (`povertyPop
 the US ACS, Spain's INE or Chile's census.
 
 ```python
-from pycensus.countries.usa import acs5
+from pycensus.census.countries.usa import acs5
 
 tracts = acs5.load(aoi=my_area, level="tract")
 tracts.acs5["population"]                  # the column; .density and .relative give per-area and per-total values
@@ -18,12 +18,12 @@ tracts.acs5["population"]                  # the column; .density and .relative 
 
 | Part | What |
 |---|---|
-| `pycensus.countries.<country>` | one package per country, one sub-package per source (census, income, housing, commuting, elections...) |
-| `pycensus.countries.eu` | EU-wide Eurostat / GISCO data (Census 2021 1 km grid, municipalities, NUTS indicators) |
-| `pycensus.countries.worldwide` | WorldPop population grids and GlobalBuildingAtlas buildings, for anywhere |
+| `pycensus.census.countries.<country>` | one package per country, one sub-package per source (census, income, housing, commuting, elections...) |
+| `pycensus.census.countries.eu` | EU-wide Eurostat / GISCO data (Census 2021 1 km grid, municipalities, NUTS indicators) |
+| `pycensus.census.worldwide` | WorldPop population grids and GlobalBuildingAtlas buildings, for anywhere |
 | `pycensus.cadaster` | buildings (floor area, floors, use, dwellings) from cadastres in one schema |
 | `pycensus.resolution` | how fine a dataset is: `low`, `normal` or `high` |
-| `pycensus/schemas/global_schema.json` | the global columns |
+| `pycensus/census/global_schema.json` | the global columns |
 
 ## Resolution classes
 

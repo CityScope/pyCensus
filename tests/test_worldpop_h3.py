@@ -1,4 +1,4 @@
-"""Tests for pycensus.countries.worldwide.worldpop.h3 (area-weighted WorldPop -> H3 resampling)."""
+"""Tests for pycensus.census.worldwide.worldpop.h3 (area-weighted WorldPop -> H3 resampling)."""
 
 from __future__ import annotations
 
@@ -9,7 +9,7 @@ import pytest
 import rasterio
 from rasterio.transform import from_origin
 
-from pycensus.countries.worldwide.worldpop.h3 import worldpop_raster_to_h3
+from pycensus.census.worldwide.worldpop.h3 import worldpop_raster_to_h3
 
 
 def _write_realistic_worldpop_tif(path: str, seed: int = 0, shape=(60, 60), nodata=-99999.0) -> None:

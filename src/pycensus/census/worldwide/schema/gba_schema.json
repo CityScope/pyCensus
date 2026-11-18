@@ -1,0 +1,184 @@
+{
+  "country": "worldwide",
+  "source": "gba",
+  "full_name": "GlobalBuildingAtlas building metrics and built-surface population (worldwide, LoD1 buildings)",
+  "years": [
+    2025
+  ],
+  "levels": [
+    "h3"
+  ],
+  "features": [
+    {
+      "category": "buildings",
+      "feature_name": "buildingCount",
+      "original_name": "buildingCount",
+      "country": "worldwide",
+      "source": "gba",
+      "codes": [
+        "buildingCount"
+      ],
+      "definition": "Number of buildings (cadaster where available, else GlobalBuildingAtlas). Building stock: never rescaled.",
+      "global_feature": "buildingCount",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "constant_total": true,
+      "constant_density": false
+    },
+    {
+      "category": "buildings",
+      "feature_name": "buildingFootprintArea",
+      "original_name": "buildingFootprintArea",
+      "country": "worldwide",
+      "source": "gba",
+      "codes": [
+        "buildingFootprintArea"
+      ],
+      "definition": "Total ground footprint area of the buildings (m2). Never rescaled.",
+      "global_feature": "buildingFootprintArea",
+      "type": "count",
+      "unit": "m2",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "area",
+      "constant_total": true,
+      "constant_density": false
+    },
+    {
+      "category": "buildings",
+      "feature_name": "builtFloorArea",
+      "original_name": "builtFloorArea",
+      "country": "worldwide",
+      "source": "gba",
+      "codes": [
+        "builtFloorArea"
+      ],
+      "definition": "Total gross floor area above ground (m2): official floor area, else footprint x floors, else footprint x height / 3. Never rescaled.",
+      "global_feature": "builtFloorArea",
+      "type": "count",
+      "unit": "m2",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "area",
+      "constant_total": true,
+      "constant_density": false
+    },
+    {
+      "category": "buildings",
+      "feature_name": "buildingHeightMedian",
+      "original_name": "buildingHeightMedian",
+      "country": "worldwide",
+      "source": "gba",
+      "codes": [
+        "buildingHeightMedian"
+      ],
+      "definition": "Median building height (m).",
+      "global_feature": "buildingHeightMedian",
+      "type": "median",
+      "unit": "m",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "builtFloorArea",
+      "constant_total": false,
+      "constant_density": false
+    },
+    {
+      "category": "populationEstimates",
+      "feature_name": "builtSurfacePopulation",
+      "original_name": "builtSurfacePopulation",
+      "country": "worldwide",
+      "source": "gba",
+      "codes": [
+        "builtSurfacePopulation"
+      ],
+      "definition": "Residents estimated from built floor area (GlobalBuildingAtlas footprint x height / 3): census residents per built m2 of each census unit times each active H3 cell's built area, scaled to the census total by one factor.",
+      "global_feature": "builtAreaPopulationEstimate",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "constant_total": true,
+      "constant_density": false
+    },
+    {
+      "category": "populationEstimates",
+      "feature_name": "population_overestimation_vs_census",
+      "original_name": "population_overestimation_vs_census",
+      "country": "worldwide",
+      "source": "gba",
+      "codes": [
+        "population_overestimation_vs_census"
+      ],
+      "definition": "max(0, built-area estimate - census residents).",
+      "global_feature": "builtAreaOverestimation",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "constant_total": true,
+      "constant_density": false
+    },
+    {
+      "category": "populationEstimates",
+      "feature_name": "population_underestimation_vs_census",
+      "original_name": "population_underestimation_vs_census",
+      "country": "worldwide",
+      "source": "gba",
+      "codes": [
+        "population_underestimation_vs_census"
+      ],
+      "definition": "max(0, census residents - built-area estimate).",
+      "global_feature": "builtAreaUnderestimation",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "resampling_weight": "population",
+      "constant_total": true,
+      "constant_density": false
+    },
+    {
+      "category": "populationEstimates",
+      "feature_name": "overestimation_share",
+      "original_name": "overestimation_share",
+      "country": "worldwide",
+      "source": "gba",
+      "codes": [
+        "overestimation_share"
+      ],
+      "definition": "Built-area overestimation / built-area estimate.",
+      "global_feature": "builtAreaOverestimationShare",
+      "type": "ratio",
+      "unit": "",
+      "resampling_up": "recompute",
+      "resampling_down": "recompute",
+      "resampling_weight": "population",
+      "constant_total": false,
+      "constant_density": false
+    },
+    {
+      "category": "populationEstimates",
+      "feature_name": "underestimation_share",
+      "original_name": "underestimation_share",
+      "country": "worldwide",
+      "source": "gba",
+      "codes": [
+        "underestimation_share"
+      ],
+      "definition": "Built-area underestimation / census residents.",
+      "global_feature": "builtAreaUnderestimationShare",
+      "type": "ratio",
+      "unit": "",
+      "resampling_up": "recompute",
+      "resampling_down": "recompute",
+      "resampling_weight": "population",
+      "constant_total": false,
+      "constant_density": false
+    }
+  ]
+}

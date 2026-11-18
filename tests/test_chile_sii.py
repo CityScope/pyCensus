@@ -1,4 +1,4 @@
-"""Tests for pycensus.countries.chile.sii: schema, api parsing, and the loader.
+"""Tests for pycensus.census.countries.chile.sii: schema, api parsing, and the loader.
 
 Technical aspects:
     The real network calls (SII's bulk .xlsx download, and the DPA
@@ -14,8 +14,8 @@ Technical aspects:
     Concepcion (08101, all 33 real Region VIII comunas matched with no
     drops) and jobsTotal=1141309 for comuna Santiago (13101, 47 of Region
     Metropolitana's 52 real comunas matched). See
-    :mod:`pycensus.countries.chile.sii.api` and
-    :mod:`pycensus.countries.chile.sii.loader` module docstrings for the
+    :mod:`pycensus.census.countries.chile.sii.api` and
+    :mod:`pycensus.census.countries.chile.sii.loader` module docstrings for the
     full verification/provenance notes.
 """
 
@@ -28,8 +28,8 @@ import openpyxl
 import pytest
 from shapely.geometry import box
 
-from pycensus.countries.chile.sii import api, loader
-from pycensus.countries.chile.sii.schema import SCHEMA
+from pycensus.census.countries.chile.sii import api, loader
+from pycensus.census.countries.chile.sii.schema import SCHEMA
 
 
 def _fake_workbook_bytes() -> bytes:
@@ -156,7 +156,7 @@ def test_real_sii_matches_verified_comuna_figures(tmp_path):
     comuna Santiago (13101) jobsTotal=1141309 (47 of 52 Region
     Metropolitana comunas matched -- 5 unmatched abbreviated/hyphenated
     SII names are dropped, not mismatched)."""
-    from pycensus.countries.chile import sii
+    from pycensus.census.countries.chile import sii
 
     gdf = sii.load(regions=["08"], cache_dir=str(tmp_path / "cache"), data_dir=str(tmp_path / "data"))
     row = gdf[gdf["GEOID"] == "08101"].iloc[0]

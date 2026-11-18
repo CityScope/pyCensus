@@ -54,7 +54,7 @@ def default_elections_cache(cache_dir: Optional[str] = None) -> Path:
     Returns:
         The folder.
     """
-    from .cache import get_cache_dir
+    from pycensus.cache import get_cache_dir
 
     p = Path(cache_dir) / "elections" if cache_dir else get_cache_dir("elections", create=False)
     p.mkdir(parents=True, exist_ok=True)
@@ -257,7 +257,7 @@ def find_worldpop(iso3: str, worldpop_path: Optional[str] = None) -> str:
     if worldpop_path:
         return worldpop_path
     import os
-    from .cache import get_worldpop_dir
+    from pycensus.cache import get_worldpop_dir
 
     env_dirs = [d for d in os.environ.get(WORLDPOP_DIRS_ENV_VAR, "").split(os.pathsep) if d]
     for d in [*env_dirs, *DEFAULT_WORLDPOP_DIRS, get_worldpop_dir(create=False)]:
@@ -266,7 +266,7 @@ def find_worldpop(iso3: str, worldpop_path: Optional[str] = None) -> str:
             return str(p)
     raise FileNotFoundError(
         f"WorldPop raster for {iso3} not found; pass worldpop_path or download with "
-        "pycensus.countries.worldwide.worldpop.loader.download_worldpop_population"
+        "pycensus.census.worldwide.worldpop.loader.download_worldpop_population"
     )
 
 

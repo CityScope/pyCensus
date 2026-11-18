@@ -1,2 +1,2 @@
-"""Worldwide fallback: GlobalBuildingAtlas (pycensus.countries.worldwide.gba) in the unified cadaster schema."""
-from .loader import load  # noqa: F401
+"""Worldwide fallback: GlobalBuildingAtlas (pycensus.census.worldwide.gba) in the unified cadaster schema."""
+from pycensus.cadaster.worldwide.gba.loader import load  # noqa: F401

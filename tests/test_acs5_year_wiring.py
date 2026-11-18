@@ -8,7 +8,7 @@ branching between an exact-year fetch and a two-year interpolated fetch.
 import pandas as pd
 import pytest
 
-import pycensus.countries.usa.acs5.loader as loader
+import pycensus.census.countries.usa.acs5.loader as loader
 from pycensus.year_resolution import YearResolution
 
 

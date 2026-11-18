@@ -191,7 +191,7 @@ def filter_map_frames(groups: Dict[str, dict], protect: Sequence[str] = (), repo
         for key, df in list(frames.items()):
             if df is None or not hasattr(df, "columns"):
                 continue
-            from .year_built import drop_intermediate_bands
+            from pycensus.year_built import drop_intermediate_bands
 
             _, dropped = latest_column_filter(df.columns, protect)
             reduced = drop_intermediate_bands(df)
@@ -230,7 +230,7 @@ def filter_map_inputs(inputs: dict, protect: Sequence[str] = (), report_path=Non
         add_globals: Add the global columns first.
     """
     if add_globals:
-        from .global_equivalents import add_global_equivalents
+        from pycensus.global_equivalents import add_global_equivalents
 
         for name in MAP_INPUT_FRAME_DICTS:
             for k, v in list((inputs.get(name) or {}).items()):

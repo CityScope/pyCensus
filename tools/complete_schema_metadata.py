@@ -9,7 +9,7 @@ import json
 import re
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent / "src" / "pycensus" / "countries"
+ROOT = Path(__file__).resolve().parent.parent / "src" / "pycensus" / "census" / "countries"
 
 _ELECTION = re.compile(r"^(\d{4})_(president|senate)_(total_votes|democrat_share|republican_share)$")
 _CBS_FIELDS = ("Foreign_pcnt", "pop_approx", "religionCode", "religiosityCode")

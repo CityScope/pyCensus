@@ -2,8 +2,8 @@
 
 Technical aspects:
     Mirrors ``tests/test_mexico.py``'s pattern: StatCan's real network calls
-    (:func:`pycensus.countries.canada.api.fetch_province_totals`/``fetch_municipality_totals``,
-    :func:`pycensus.countries.canada.geography.load_boundaries`) are monkeypatched out
+    (:func:`pycensus.census.countries.canada.api.fetch_province_totals`/``fetch_municipality_totals``,
+    :func:`pycensus.census.countries.canada.geography.load_boundaries`) are monkeypatched out
     with small synthetic frames so the suite stays offline and fast.
 
     The real download/cache pipeline was verified manually against the live
@@ -35,9 +35,9 @@ import pandas as pd
 import pytest
 from shapely.geometry import box
 
-from pycensus.countries.canada import api, constants, geography
-from pycensus.countries.canada.statcan import loader
-from pycensus.countries.canada.statcan.schema import SCHEMA
+from pycensus.census.countries.canada import api, constants, geography
+from pycensus.census.countries.canada.statcan import loader
+from pycensus.census.countries.canada.statcan.schema import SCHEMA
 
 
 class TestConstants:
@@ -309,8 +309,8 @@ class TestLoader:
 
     @pytest.fixture(autouse=True)
     def patch_network(self, monkeypatch):
-        import pycensus.countries.canada.api as api_mod
-        import pycensus.countries.canada.statcan.loader as loader_mod
+        import pycensus.census.countries.canada.api as api_mod
+        import pycensus.census.countries.canada.statcan.loader as loader_mod
 
         monkeypatch.setattr(api_mod, "fetch_province_totals", _fake_province_totals)
         monkeypatch.setattr(api_mod, "fetch_municipality_totals", _fake_municipality_totals)
@@ -399,7 +399,7 @@ class TestLoader:
         caught this: it needs a fake that behaves like the real source
         and rejects names it doesn't recognize.
         """
-        import pycensus.countries.canada.statcan.loader as loader_mod
+        import pycensus.census.countries.canada.statcan.loader as loader_mod
 
         seen_names = []
 
@@ -497,7 +497,7 @@ class TestLoader:
             calls["n"] += 1
             return _fake_province_totals(province, data_dir)
 
-        import pycensus.countries.canada.statcan.loader as loader_mod
+        import pycensus.census.countries.canada.statcan.loader as loader_mod
 
         monkeypatch.setattr(loader_mod.api, "fetch_province_totals", counting_fetch)
 
@@ -519,7 +519,7 @@ def test_real_gaf_toronto_block_sums_match_da_totals_exactly():
     population exactly."""
     import re
 
-    from pycensus.countries.canada import api
+    from pycensus.census.countries.canada import api
 
     block_df = api._read_geographic_attribute_file()
     toronto_pruid_da = block_df[block_df["PRUID_PRIDU"] == "35"]
@@ -527,7 +527,7 @@ def test_real_gaf_toronto_block_sums_match_da_totals_exactly():
     # read the raw CSV directly here (small extra column) for this check.
     import pandas as pd
 
-    from pycensus.countries.canada import constants
+    from pycensus.census.countries.canada import constants
 
     csv_path = api.download_geographic_attribute_file()
     full = pd.read_csv(
@@ -559,7 +559,7 @@ def test_real_dissemination_block_boundary_matches_gaf_dbuids():
     real DBUIDs (the one gap is a coastal-water-only block, consistent
     with StatCan's own documented exclusion for this file), with bounds
     landing squarely inside Toronto's known extent."""
-    from pycensus.countries.canada import geography
+    from pycensus.census.countries.canada import geography
 
     gdf = geography.load_boundaries("dissemination-block", province="35")
     assert gdf.crs is not None
@@ -568,7 +568,7 @@ def test_real_dissemination_block_boundary_matches_gaf_dbuids():
 
 class TestCensusProfile:
     """Offline tests for the long/tall 98-401-X2021006 pivot logic
-    (:func:`pycensus.countries.canada.api.fetch_census_profile_da_totals`),
+    (:func:`pycensus.census.countries.canada.api.fetch_census_profile_da_totals`),
     using a small real fixture (``tests/fixtures/canada_census_profile_Ontario_sample.zip``)
     -- an actual excerpt (42 rows: 2 real Toronto DAs x 16 real target
     characteristics, plus one extra real row) captured directly from the
@@ -578,7 +578,7 @@ class TestCensusProfile:
     FIXTURE_ZIP = Path(__file__).parent / "fixtures" / "canada_census_profile_Ontario_sample.zip"
 
     def test_pivot_matches_real_captured_values(self, monkeypatch, tmp_path):
-        from pycensus.countries.canada import api
+        from pycensus.census.countries.canada import api
 
         monkeypatch.setattr(api, "_census_profile_zip_path", lambda province, data_dir=None: self.FIXTURE_ZIP)
 
@@ -606,14 +606,14 @@ class TestCensusProfile:
         assert df.loc["35203712", "Public transit"] == 0
 
     def test_unrequested_columns_are_not_returned(self, monkeypatch):
-        from pycensus.countries.canada import api
+        from pycensus.census.countries.canada import api
 
         monkeypatch.setattr(api, "_census_profile_zip_path", lambda province, data_dir=None: self.FIXTURE_ZIP)
         df = api.fetch_census_profile_da_totals("35", ["Average household size"])
         assert set(df.columns) == {"GEOID", "Average household size"}
 
     def test_non_ontario_province_raises_not_implemented(self):
-        from pycensus.countries.canada import api
+        from pycensus.census.countries.canada import api
 
         with pytest.raises(NotImplementedError):
             api.fetch_census_profile_da_totals("Quebec", ["Average household size"])
@@ -631,7 +631,7 @@ def test_real_census_profile_household_size_and_income_match_prior_spot_check():
     Etobicoke) purely for internal consistency (plausible household-size
     and income ranges), since no independent live cross-check source was
     used beyond StatCan's own file."""
-    from pycensus.countries.canada import api
+    from pycensus.census.countries.canada import api
 
     df = api.fetch_census_profile_da_totals(
         "35",
@@ -656,7 +656,7 @@ def test_real_census_profile_immigrants_matches_national_headline_figure():
     'Canada' row in the same real download, which reports 8,361,505
     Immigrants nationwide (23.0%), exactly matching StatCan's own widely
     published 2021 Census headline immigrant count/share."""
-    from pycensus.countries.canada import api
+    from pycensus.census.countries.canada import api
 
     df = api.fetch_census_profile_da_totals("35", ["Immigrants"]).set_index("GEOID")
     assert df.loc["35204609", "Immigrants"] == 160
@@ -670,10 +670,10 @@ def test_real_workplace_jobs_toronto_matches_prior_spot_check():
     file. Verified 2026-08-23: summing every residence-CSD's flow into
     workplace CSDUID 3520005 (Toronto) gives 753,185, matching the value
     already spot-checked directly against the raw downloaded CSV in the
-    same session (see pycensus.countries.canada.constants.WORKPLACE_JOBS_PID's
+    same session (see pycensus.census.countries.canada.constants.WORKPLACE_JOBS_PID's
     docstring for the full verification, including the national-total
     cross-check against table 98-10-0456)."""
-    from pycensus.countries.canada import api
+    from pycensus.census.countries.canada import api
 
     df = api.fetch_workplace_jobs_totals().set_index("GEOID")
     assert df.loc["3520005", api._WORKPLACE_JOBS_COLUMN] == 753185

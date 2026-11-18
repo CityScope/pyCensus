@@ -12,7 +12,7 @@ from typing import Dict, Optional
 
 
 def _cache(cache_dir: Optional[str]) -> Path:
-    from .cache import default_cache_dir
+    from pycensus.cache import default_cache_dir
 
     d = (Path(cache_dir) if cache_dir else Path(default_cache_dir())) / "published_shares"
     d.mkdir(parents=True, exist_ok=True)

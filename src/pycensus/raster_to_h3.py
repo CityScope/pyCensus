@@ -3,8 +3,8 @@
 Technical aspects:
     Several real population sources in this codebase are shaped like a
     raster grid rather than an administrative polygon hierarchy -- e.g.
-    :mod:`pycensus.countries.worldwide.worldpop` (continuous raster) and
-    :mod:`pycensus.countries.germany.zensus_grid` (a real 100m x 100m
+    :mod:`pycensus.census.worldwide.worldpop` (continuous raster) and
+    :mod:`pycensus.census.countries.germany.zensus_grid` (a real 100m x 100m
     Destatis Zensus 2022 CSV grid). Both of those modules' own docstrings
     say a caller should resample their output onto H3 (or any other target
     geometry) itself -- this module is that shared resampler, so the same

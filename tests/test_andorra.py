@@ -1,8 +1,8 @@
 """Tests for pycensus.andorra: constants, geography, schema, and the estadisticaad loader.
 
 Technical aspects:
-    Network-touching functions (:func:`pycensus.countries.andorra.api.fetch_parish_boundaries`,
-    :func:`pycensus.countries.andorra.api.fetch_population_by_locality`) are
+    Network-touching functions (:func:`pycensus.census.countries.andorra.api.fetch_parish_boundaries`,
+    :func:`pycensus.census.countries.andorra.api.fetch_population_by_locality`) are
     monkeypatched out with small synthetic frames, same pattern as
     ``tests/test_spain.py``. The real ArcGIS endpoints were verified
     manually against the live network during development:
@@ -15,7 +15,7 @@ Technical aspects:
           returns 44 real localities; summing ``pob_2023`` across all of
           them gives 85,101, matching the Departament d'Estadistica's own
           published 31-Dec-2023 total as reported by Diari d'Andorra.
-    See the module docstrings in ``pycensus.countries.andorra.api``/``geography``/
+    See the module docstrings in ``pycensus.census.countries.andorra.api``/``geography``/
     ``estadisticaad.loader`` for the exact URLs.
 """
 
@@ -26,9 +26,9 @@ import pandas as pd
 import pytest
 from shapely.geometry import box
 
-from pycensus.countries.andorra import constants, geography
-from pycensus.countries.andorra.estadisticaad import loader
-from pycensus.countries.andorra.estadisticaad.schema import SCHEMA
+from pycensus.census.countries.andorra import constants, geography
+from pycensus.census.countries.andorra.estadisticaad import loader
+from pycensus.census.countries.andorra.estadisticaad.schema import SCHEMA
 
 
 class TestConstants:
@@ -123,7 +123,7 @@ def _fake_localities() -> pd.DataFrame:
 class TestGeographyWithFakeParishes:
     @pytest.fixture(autouse=True)
     def patch_network(self, monkeypatch):
-        import pycensus.countries.andorra.api as api_mod
+        import pycensus.census.countries.andorra.api as api_mod
 
         monkeypatch.setattr(api_mod, "fetch_parish_boundaries", lambda: _fake_parishes())
 
@@ -170,8 +170,8 @@ class TestLoader:
 
     @pytest.fixture(autouse=True)
     def patch_network(self, monkeypatch):
-        import pycensus.countries.andorra.api as api_mod
-        import pycensus.countries.andorra.estadisticaad.loader as loader_mod
+        import pycensus.census.countries.andorra.api as api_mod
+        import pycensus.census.countries.andorra.estadisticaad.loader as loader_mod
 
         monkeypatch.setattr(api_mod, "fetch_parish_boundaries", lambda: _fake_parishes())
         monkeypatch.setattr(loader_mod.api, "fetch_population_by_locality", lambda: _fake_localities())
@@ -222,7 +222,7 @@ class TestLoader:
             calls["n"] += 1
             return _fake_localities()
 
-        import pycensus.countries.andorra.estadisticaad.loader as loader_mod
+        import pycensus.census.countries.andorra.estadisticaad.loader as loader_mod
 
         monkeypatch.setattr(loader_mod.api, "fetch_population_by_locality", counting_fetch)
         loader.load(regions="AD-01", level="parish", year=2023, cache_dir=str(tmp_path))
@@ -267,7 +267,7 @@ class TestLoader:
 @pytest.mark.network
 def test_real_parish_boundary_service_returns_verified_geometry():
     """Hits the live estadistica.ad ArcGIS Server -- no API key required."""
-    from pycensus.countries.andorra import api
+    from pycensus.census.countries.andorra import api
 
     gdf = api.fetch_parish_boundaries()
     assert len(gdf) == 7
@@ -277,7 +277,7 @@ def test_real_parish_boundary_service_returns_verified_geometry():
 @pytest.mark.network
 def test_real_population_service_matches_published_total():
     """Hits the live sig.govern.ad ArcGIS Server -- no API key required."""
-    from pycensus.countries.andorra import api
+    from pycensus.census.countries.andorra import api
 
     df = api.fetch_population_by_locality()
     assert len(df) == 44
@@ -288,7 +288,7 @@ def test_real_population_service_matches_published_total():
 @pytest.mark.network
 def test_real_building_counts_by_parish():
     """Hits the live sig.govern.ad ArcGIS Server -- no API key required."""
-    from pycensus.countries.andorra import api, constants
+    from pycensus.census.countries.andorra import api, constants
 
     df = api.fetch_building_counts_by_parish()
     assert set(df["parròquia"]) == set(constants.PARISH_CODES.values())
@@ -298,7 +298,7 @@ def test_real_building_counts_by_parish():
 @pytest.mark.network
 def test_real_active_business_counts_by_parish():
     """Hits the live sig.govern.ad ArcGIS Server -- no API key required."""
-    from pycensus.countries.andorra import api
+    from pycensus.census.countries.andorra import api
 
     df = api.fetch_active_business_counts_by_parish()
     assert set(df["PARROQUIA"]) == set(range(1, 8))
@@ -319,7 +319,7 @@ def test_real_nationality_bulletin_matches_published_totals():
     development (verified 2026-08-23), and against Andorra's
     well-documented, independently known ~45-55% foreign-resident share.
     """
-    from pycensus.countries.andorra import api, constants
+    from pycensus.census.countries.andorra import api, constants
 
     df = api.fetch_population_by_nationality_and_parish()
     assert set(df["GEOID"]) == set(constants.PARISH_CODES) | {"AD"}

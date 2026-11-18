@@ -2,7 +2,7 @@
 
 Technical aspects:
     Mirrors ``tests/test_mexico.py``'s pattern: the real network call
-    (:func:`pycensus.countries.chile.api.fetch_features`, against the live Esri
+    (:func:`pycensus.census.countries.chile.api.fetch_features`, against the live Esri
     Chile "Division Politico Administrativa y Censal" FeatureServer that
     republishes INE's real Censo 2017 data) is monkeypatched out with a
     small synthetic GeoJSON payload here, to keep the suite offline and
@@ -23,9 +23,9 @@ import pandas as pd
 import pytest
 from shapely.geometry import box, mapping
 
-from pycensus.countries.chile import constants, geography, utils
-from pycensus.countries.chile.ine import loader
-from pycensus.countries.chile.ine.schema import SCHEMA
+from pycensus.census.countries.chile import constants, geography, utils
+from pycensus.census.countries.chile.ine import loader
+from pycensus.census.countries.chile.ine.schema import SCHEMA
 
 
 class TestConstants:
@@ -144,7 +144,7 @@ def _fake_geojson(region_value: str) -> dict:
 
 
 def _fake_fetch_features(level, region, data_dir=None):
-    from pycensus.countries.chile import utils as utils_mod
+    from pycensus.census.countries.chile import utils as utils_mod
 
     return _fake_geojson(utils_mod.region_api_code(region))
 
@@ -155,8 +155,8 @@ class TestLoader:
 
     @pytest.fixture(autouse=True)
     def patch_network(self, monkeypatch):
-        import pycensus.countries.chile.api as api_mod
-        import pycensus.countries.chile.ine.loader as loader_mod
+        import pycensus.census.countries.chile.api as api_mod
+        import pycensus.census.countries.chile.ine.loader as loader_mod
 
         monkeypatch.setattr(api_mod, "fetch_features", _fake_fetch_features)
         monkeypatch.setattr(loader_mod.api, "fetch_features", _fake_fetch_features)
@@ -198,7 +198,7 @@ class TestLoader:
             calls["n"] += 1
             return _fake_fetch_features(level, region, data_dir)
 
-        import pycensus.countries.chile.ine.loader as loader_mod
+        import pycensus.census.countries.chile.ine.loader as loader_mod
 
         monkeypatch.setattr(loader_mod.api, "fetch_features", counting_fetch)
 

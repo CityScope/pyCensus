@@ -4,8 +4,8 @@ import numpy as np
 import pandas as pd
 from shapely.geometry import box
 
-from pycensus.countries.spain.catastro import FEATURES, source_of_province
-from pycensus.countries.spain.catastro.loader import aggregate
+from pycensus.census.countries.spain.catastro import FEATURES, source_of_province
+from pycensus.census.countries.spain.catastro.loader import aggregate
 
 
 def test_aggregate_counts_and_rates():
@@ -30,7 +30,7 @@ def test_sources():
 def test_padron_counts_with_any_thousands_separator():
     import pandas as pd
 
-    from pycensus.countries.spain.api import _parse_count, _parse_secciones_csv
+    from pycensus.census.countries.spain.api import _parse_count, _parse_secciones_csv
 
     out = _parse_count(pd.Series(["1.944", "1,944", "1 944", "12", "", "-", "1.234.567"]))
     assert out.iloc[:4].tolist() == [1944, 1944, 1944, 12] and out.iloc[6] == 1234567 and out.iloc[4:6].isna().all()

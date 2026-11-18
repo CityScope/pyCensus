@@ -1,0 +1,73 @@
+{
+ "_description": "Taiwan party/candidate -> left/right/other mapping used by pycensus.census.countries.taiwan.elections. Taiwan's real cleavage is pan-green (DPP, Taiwan-identity, socially liberal, centre-left on welfare) vs pan-blue (KMT, PFP, NP: pan-China/ROC-identity, conservative, pro-business). Mapping used: pan-green -> left, pan-blue -> right, TPP and independents -> other. Edit 'bloc' values to change; unlisted parties default to 'other'. Candidate overrides (keyed by tag) win over party.",
+ "default_bloc": "other",
+ "parties": {
+  "民主進步黨": {
+   "bloc": "left",
+   "justification": "DPP (pan-green): centre-left, progressive social policy (marriage equality, labour, welfare), Taiwan-identity."
+  },
+  "中國國民黨": {
+   "bloc": "right",
+   "justification": "KMT (pan-blue): conservative, pro-business, favours closer cross-strait engagement."
+  },
+  "台灣民眾黨": {
+   "bloc": "other",
+   "justification": "TPP: centrist populist, formed 2019 by Ko Wen-je; cross-cutting, allied with KMT in 2024 talks and rival in 2022/2024. Treated as 'other' (neither bloc).",
+   "uncertain": true
+  },
+  "時代力量": {
+   "bloc": "left",
+   "justification": "NPP: progressive, left-liberal, pan-green-aligned; ex-Sunflower movement.",
+   "uncertain": true
+  },
+  "社會民主黨": {
+   "bloc": "left",
+   "justification": "SDP: social-democratic, explicitly left."
+  },
+  "台灣綠黨": {
+   "bloc": "left",
+   "justification": "Green Party Taiwan: environmentalist, left-progressive."
+  },
+  "台灣基進": {
+   "bloc": "left",
+   "justification": "TSP: pro-independence, progressive-left on social issues (could be argued 'other' as a nationalist party).",
+   "uncertain": true
+  },
+  "台灣團結聯盟": {
+   "bloc": "other",
+   "justification": "TSU: pro-independence but socially conservative; pan-green by identity, right-leaning on values.",
+   "uncertain": true
+  },
+  "親民黨": {
+   "bloc": "right",
+   "justification": "PFP: pan-blue, conservative, KMT offshoot."
+  },
+  "新黨": {
+   "bloc": "right",
+   "justification": "New Party: pan-blue, conservative, pro-unification."
+  },
+  "中華統一促進黨": {
+   "bloc": "right",
+   "justification": "CUPP: pro-unification far-right fringe.",
+   "uncertain": true
+  },
+  "無黨籍及未經政黨推薦": {
+   "bloc": "other",
+   "justification": "Independents / not party-endorsed: no ideological position by default (see candidate overrides)."
+  },
+  "無黨團結聯盟": {
+   "bloc": "other",
+   "justification": "Non-Partisan Solidarity Union: independents' alliance, mixed.",
+   "uncertain": true
+  }
+ },
+ "candidates": {
+  "municipal_2022": {
+   "黃珊珊": {
+    "bloc": "other",
+    "justification": "Independent (ex-Taipei deputy mayor under Ko Wen-je, TPP-backed in 2022, centrist/pan-blue-leaning electorate).",
+    "uncertain": true
+   }
+  }
+ }
+}

@@ -15,7 +15,7 @@ from pathlib import Path
 
 import pandas as pd
 
-SCHEMA = Path(__file__).resolve().parent.parent / "src" / "pycensus" / "schemas" / "global_schema.json"
+SCHEMA = Path(__file__).resolve().parent.parent / "src" / "pycensus" / "census" / "global_schema.json"
 
 
 def load(path: str) -> pd.DataFrame:

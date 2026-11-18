@@ -1,4 +1,4 @@
-"""Tests for pycensus.countries.eu (Eurostat / GISCO) and pycensus.resolution, with no network.
+"""Tests for pycensus.census.countries.eu (Eurostat / GISCO) and pycensus.resolution, with no network.
 
 Technical aspects:
     Downloads and API calls are monkeypatched with tiny synthetic tables. The real sources were checked live on
@@ -18,12 +18,12 @@ import pytest
 from shapely.geometry import box
 
 from pycensus import resolution as R
-from pycensus.countries import eu
-from pycensus.countries.eu import census_grid, constants, eurostat, lau
-from pycensus.countries.eu.eurostat import api
+from pycensus.census.countries import eu
+from pycensus.census.countries.eu import census_grid, constants, eurostat, lau
+from pycensus.census.countries.eu.eurostat import api
 
 SCHEMA_DIR = Path(eu.__file__).parent / "schema"
-GLOBAL = {f["feature_name"] for f in json.loads((Path(R.__file__).parent / "schemas" / "global_schema.json").read_text())}
+GLOBAL = {f["feature_name"] for f in json.loads((Path(R.__file__).parent / "census" / "global_schema.json").read_text())}
 
 
 # ---- constants / schema ----------------------------------------------------------------------------------------------

@@ -1,7 +1,7 @@
-"""Tests for pycensus.countries.chile.casen: schema, api parsing, and the loader.
+"""Tests for pycensus.census.countries.chile.casen: schema, api parsing, and the loader.
 
 Technical aspects:
-    The real network call (:func:`pycensus.countries.chile.casen.api._fetch_xlsx`,
+    The real network call (:func:`pycensus.census.countries.chile.casen.api._fetch_xlsx`,
     against the live Observatorio Social bulk .xlsx download) is
     monkeypatched out with a small synthetic workbook here, to keep the
     suite offline and fast.
@@ -16,7 +16,7 @@ Technical aspects:
     Concepcion (08101) povertyRate=0.054067 (5.41%), Talcahuano (08110)
     povertyRate=0.050827 (5.08%); povertyRateMultidimensional for Santiago
     =0.164654, Concepcion=0.114778. 345 comunas were returned by the
-    income-poverty table. See :mod:`pycensus.countries.chile.casen.api`'s
+    income-poverty table. See :mod:`pycensus.census.countries.chile.casen.api`'s
     module docstring for the full verification/provenance notes.
 """
 
@@ -30,8 +30,8 @@ import pandas as pd
 import pytest
 from shapely.geometry import box, mapping
 
-from pycensus.countries.chile.casen import api, loader
-from pycensus.countries.chile.casen.schema import SCHEMA
+from pycensus.census.countries.chile.casen import api, loader
+from pycensus.census.countries.chile.casen.schema import SCHEMA
 
 
 def _fake_workbook_bytes(value_col: str) -> bytes:

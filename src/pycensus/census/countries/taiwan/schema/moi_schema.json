@@ -1,0 +1,477 @@
+{
+  "country": "taiwan",
+  "source": "moi",
+  "full_name": "MOI RIS resident population by sex (現住人口數按性別、身分分), ODRP013",
+  "years": [
+    2025
+  ],
+  "levels": [
+    "village",
+    "district",
+    "county_city",
+    "nation"
+  ],
+  "features": [
+    {
+      "category": "population",
+      "feature_name": "population",
+      "original_name": "people_total",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": [
+        "people_total"
+      ],
+      "definition": "Total resident population (現住人口數 總計), MOI RIS ODRP013, village granularity.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide"
+    },
+    {
+      "category": "population",
+      "feature_name": "malePopulation",
+      "original_name": "people_total_m",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": [
+        "people_total_m"
+      ],
+      "definition": "Male resident population (現住人口數 總計_男), MOI RIS ODRP013. Matches global_schema.json's malePopulation exactly.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "femalePopulation",
+      "original_name": "people_total_f",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": [
+        "people_total_f"
+      ],
+      "definition": "Female resident population (現住人口數 總計_女), MOI RIS ODRP013. Matches global_schema.json's femalePopulation exactly.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "households",
+      "original_name": "household_no",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": [
+        "household_no"
+      ],
+      "definition": "Number of registered households (戶數), MOI RIS ODRP014 (村里戶數、單一年齡人口), village granularity, merged onto ODRP013 rows by district_code. Matches global_schema.json's households exactly.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide"
+    },
+    {
+      "category": "raceEthinicity",
+      "feature_name": "minorityEthnicityPopulation",
+      "original_name": "indigenous_total",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": [
+        "indigenous_total"
+      ],
+      "definition": "Indigenous/aboriginal resident population (原住民人口, 平地原住民+山地原住民), MOI RIS ODRP013 -- sum of aborigine_plain_total_m/f and aborigine_mountain_total_m/f, computed in pycensus.census.countries.taiwan.moi.loader._fetch_all_villages. Matches global_schema.json's minorityEthnicityPopulation.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "under18Population",
+      "original_name": "under18_total",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": [
+        "under18_total"
+      ],
+      "definition": "Resident population younger than 18, MOI RIS ODRP014 (村里戶數、單一年齡人口) -- sum of the real single-year age buckets people_age_000..people_age_017 (m+f), computed in pycensus.census.countries.taiwan.moi.loader._add_derived_age_columns. Matches global_schema.json's under18Population exactly.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "adultPopulation",
+      "original_name": "adult_total",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": [
+        "adult_total"
+      ],
+      "definition": "Resident population aged 18 or older, MOI RIS ODRP014 -- sum of the real single-year age buckets people_age_018..people_age_100up (m+f), computed in pycensus.census.countries.taiwan.moi.loader._add_derived_age_columns. Matches global_schema.json's adultPopulation exactly.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "over65Population",
+      "original_name": "over65_total",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": [
+        "over65_total"
+      ],
+      "definition": "Resident population aged 65 or older, MOI RIS ODRP014 -- sum of the real single-year age buckets people_age_065..people_age_100up (m+f), computed in pycensus.census.countries.taiwan.moi.loader._add_derived_age_columns. Matches global_schema.json's over65Population exactly. Live-verified for Taipei City 2026-08-22: 580,555 / 2,451,007 = 23.7% over-65 share, plausible against Taipei's well-documented, unusually old age structure.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "medianAge",
+      "original_name": "median_age",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": [
+        "median_age"
+      ],
+      "definition": "Median age of the resident population, MOI RIS ODRP014 -- discrete weighted median computed directly from the real single-year age buckets people_age_000..people_age_100up (m+f) summed to the requested level (village/district/county_city/nation), in pycensus.census.countries.taiwan.moi.loader._weighted_median_age. Not simply averaged from lower-level medians (that would misweight small villages). The people_age_100up bucket is MOI's own top-coding (ages 100+), not an approximation. Matches global_schema.json's medianAge.",
+      "type": "median",
+      "unit": "years",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean"
+    },
+    {
+      "category": "population",
+      "feature_name": "population15plus",
+      "original_name": "edu_age_15up_total",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": [
+        "edu_age_15up_total"
+      ],
+      "definition": "Residents aged 15 and over (ODRP020 education table).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "education",
+      "feature_name": "educationPrimaryOrLessPopulation",
+      "original_name": "edu_primary_or_less_total",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": [
+        "edu_primary_or_less_total"
+      ],
+      "definition": "Residents 15+ whose highest education is primary school or less (illiterate, self-taught, primary). Global schema educationPrimaryOrLessPopulation.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "education",
+      "feature_name": "educationSecondaryPopulation",
+      "original_name": "edu_secondary_total",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": [
+        "edu_secondary_total"
+      ],
+      "definition": "Residents 15+ whose highest education is junior or senior high school (incl. vocational). Global schema educationSecondaryPopulation.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "education",
+      "feature_name": "educationUniversityPopulation",
+      "original_name": "edu_university_total",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": [
+        "edu_university_total"
+      ],
+      "definition": "Residents 15+ with a completed bachelor, master or doctorate. Global schema educationUniversityPopulation.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "education",
+      "feature_name": "educationOtherTertiaryPopulation",
+      "original_name": "edu_other_tertiary_total",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": [
+        "edu_other_tertiary_total"
+      ],
+      "definition": "Residents 15+ with junior-college studies or incomplete university-level studies. Global schema educationOtherTertiaryPopulation.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "housing",
+      "feature_name": "householdsOrdinary",
+      "original_name": "household_ordinary_total",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": [
+        "household_ordinary_total"
+      ],
+      "definition": "Ordinary (family) households (ODRP019).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "households"
+    },
+    {
+      "category": "housing",
+      "feature_name": "householdsBusiness",
+      "original_name": "household_business_total",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": [
+        "household_business_total"
+      ],
+      "definition": "Business households (ODRP019).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "households"
+    },
+    {
+      "category": "housing",
+      "feature_name": "householdsSinglePerson",
+      "original_name": "household_single_total",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": [
+        "household_single_total"
+      ],
+      "definition": "Single-person households (ODRP019).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "households"
+    },
+    {
+      "category": "population",
+      "feature_name": "births",
+      "original_name": "births_year",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": [
+        "births_year"
+      ],
+      "definition": "Live births registered in the last complete calendar year (sum of 12 monthly ODRP012 tables). Global schema births.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "deaths",
+      "original_name": "deaths_year",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": [
+        "deaths_year"
+      ],
+      "definition": "Deaths registered in the last complete calendar year (ODRP012).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "marriages",
+      "original_name": "marriages_year",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": [
+        "marriages_year"
+      ],
+      "definition": "Marriages registered in the last complete calendar year (ODRP012).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "households"
+    },
+    {
+      "category": "population",
+      "feature_name": "taxpayerUnits",
+      "original_name": "taxpayer_units",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": [
+        "taxpayer_units"
+      ],
+      "definition": "Taxpayer units (households filing income tax). (Ministry of Finance income tax statistics by village.)",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "households"
+    },
+    {
+      "category": "income",
+      "feature_name": "meanHouseholdIncome",
+      "original_name": "income_mean",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": [
+        "income_mean"
+      ],
+      "definition": "Mean total income per taxpayer unit. (Ministry of Finance income tax statistics by village.)",
+      "type": "mean",
+      "unit": "TWD",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "households"
+    },
+    {
+      "category": "income",
+      "feature_name": "medianHouseholdIncome",
+      "original_name": "income_median",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": [
+        "income_median"
+      ],
+      "definition": "Median total income per taxpayer unit. (Ministry of Finance income tax statistics by village.)",
+      "type": "median",
+      "unit": "TWD",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "households"
+    },
+    {
+      "category": "income",
+      "feature_name": "incomeFirstQuartile",
+      "original_name": "income_q1",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": [
+        "income_q1"
+      ],
+      "definition": "First quartile of total income per taxpayer unit. (Ministry of Finance income tax statistics by village.)",
+      "type": "median",
+      "unit": "TWD",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "households"
+    },
+    {
+      "category": "income",
+      "feature_name": "incomeThirdQuartile",
+      "original_name": "income_q3",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": [
+        "income_q3"
+      ],
+      "definition": "Third quartile of total income per taxpayer unit. (Ministry of Finance income tax statistics by village.)",
+      "type": "median",
+      "unit": "TWD",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "households"
+    },
+    {
+      "category": "religion",
+      "feature_name": "templesRate",
+      "original_name": "temples_total_per10k",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": [
+        "temples_total_per10k"
+      ],
+      "definition": "Registered temples per 10,000 residents of the county (MOI temple registration statistics; published by county only).",
+      "type": "mean",
+      "unit": "per 10k",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population"
+    },
+    {
+      "category": "religion",
+      "feature_name": "buddhistTemplesRate",
+      "original_name": "temples_buddhist_per10k",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": [
+        "temples_buddhist_per10k"
+      ],
+      "definition": "Registered Buddhist temples per 10,000 residents of the county (MOI temple registration statistics; published by county only).",
+      "type": "mean",
+      "unit": "per 10k",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population"
+    },
+    {
+      "category": "religion",
+      "feature_name": "taoistTemplesRate",
+      "original_name": "temples_taoist_per10k",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": [
+        "temples_taoist_per10k"
+      ],
+      "definition": "Registered Taoist temples per 10,000 residents of the county (MOI temple registration statistics; published by county only).",
+      "type": "mean",
+      "unit": "per 10k",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population"
+    },
+    {
+      "category": "religion",
+      "feature_name": "yiguandaoTemplesRate",
+      "original_name": "temples_yiguandao_per10k",
+      "country": "taiwan",
+      "source": "moi",
+      "codes": [
+        "temples_yiguandao_per10k"
+      ],
+      "definition": "Registered Yiguandao temples per 10,000 residents of the county (MOI temple registration statistics; published by county only).",
+      "type": "mean",
+      "unit": "per 10k",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 """Tests for pycensus.taiwan: constants, schema, geography, and the MOI RIS loader.
 
 Technical aspects:
-    Network-touching functions (:func:`pycensus.countries.taiwan.api.fetch_resident_population`)
+    Network-touching functions (:func:`pycensus.census.countries.taiwan.api.fetch_resident_population`)
     are monkeypatched out with a small synthetic frame, same pattern as
     ``tests/test_spain.py``. The real MOI RIS API was verified manually
     against the live network during development:
@@ -33,7 +33,7 @@ Technical aspects:
           structure (Taiwan crossed the 20%-"super-aged" threshold
           nationwide in 2025; Taipei has run several points above the
           national figure for years). All verified 2026-08-23.
-    Boundary geometry (:mod:`pycensus.countries.taiwan.geography`) is
+    Boundary geometry (:mod:`pycensus.census.countries.taiwan.geography`) is
     implemented for ``county_city``/``district`` (geoBoundaries.org) and
     ``village`` (OSM Overpass, ``nat_ref`` == MOI's own district_code,
     verified live against MOI's own village list on every fetch -- see
@@ -51,9 +51,9 @@ from __future__ import annotations
 import pandas as pd
 import pytest
 
-from pycensus.countries.taiwan import constants, geography, utils
-from pycensus.countries.taiwan.moi import loader
-from pycensus.countries.taiwan.moi.schema import SCHEMA
+from pycensus.census.countries.taiwan import constants, geography, utils
+from pycensus.census.countries.taiwan.moi import loader
+from pycensus.census.countries.taiwan.moi.schema import SCHEMA
 
 
 class TestConstants:
@@ -124,7 +124,7 @@ class TestSchema:
 
 class TestGeography:
     def test_county_city_district_and_village_implemented(self):
-        # See module docstring / pycensus.countries.taiwan.geography docstring: real
+        # See module docstring / pycensus.census.countries.taiwan.geography docstring: real
         # NLSC boundary files exist as catalog entries but the actual
         # downloads are blocked by TGOS (HTTP 403). county_city uses
         # geoBoundaries.org's real Taiwan ADM1 layer, district uses its
@@ -223,7 +223,7 @@ class TestGeography:
             {"district_code": ["99999010001", "99999010002", "99999010003"]}
         )
         monkeypatch.setattr(geography.constants, "COUNTY_CODES", {"99999": "測試縣"}, raising=False)
-        import pycensus.countries.taiwan.api as api_mod
+        import pycensus.census.countries.taiwan.api as api_mod
 
         monkeypatch.setattr(api_mod, "fetch_resident_population", lambda yyymm, **kw: fake_moi)
 
@@ -385,7 +385,7 @@ class TestFetchMissing:
 
     @pytest.fixture(autouse=True)
     def patch_network(self, monkeypatch):
-        import pycensus.countries.taiwan.api as api_mod
+        import pycensus.census.countries.taiwan.api as api_mod
 
         monkeypatch.setattr(api_mod, "fetch_resident_population", lambda yyymm, raw_cache_path=None, timeout=60: _fake_villages())
         monkeypatch.setattr(loader.api, "fetch_resident_population", lambda yyymm, raw_cache_path=None, timeout=60: _fake_villages())
@@ -406,7 +406,7 @@ class TestFetchMissing:
 class TestLoad:
     @pytest.fixture(autouse=True)
     def patch_network(self, monkeypatch):
-        import pycensus.countries.taiwan.api as api_mod
+        import pycensus.census.countries.taiwan.api as api_mod
 
         monkeypatch.setattr(api_mod, "fetch_resident_population", lambda yyymm, raw_cache_path=None, timeout=60: _fake_villages())
         monkeypatch.setattr(loader.api, "fetch_resident_population", lambda yyymm, raw_cache_path=None, timeout=60: _fake_villages())
@@ -420,7 +420,7 @@ class TestLoad:
     def test_load_raises_valueerror_at_nation_geometry_step(self, tmp_path):
         """Population data (mocked here, real live) works at every level,
         but nation-level geometry is genuinely unimplemented (see
-        pycensus.countries.taiwan.geography docstring) -- load() must fail
+        pycensus.census.countries.taiwan.geography docstring) -- load() must fail
         loudly there, not fabricate geometry. county_city/district/village
         geometry (all real, see TestGeography) work."""
         with pytest.raises(ValueError):
@@ -444,7 +444,7 @@ def test_real_moi_ris_api_returns_verified_county_totals():
     """Hits the live MOI RIS API -- no API key required. Skipped by default
     CI runs the same way test_spain.py's network test is (only run
     explicitly, e.g. ``pytest -m network``)."""
-    from pycensus.countries.taiwan import api
+    from pycensus.census.countries.taiwan import api
 
     df = api.fetch_resident_population(constants.LATEST_YEAR["census"])
     assert len(df) > 7000
@@ -462,8 +462,8 @@ def test_real_moi_households_and_indigenous_population_match_published_totals():
     """Hits the live MOI RIS ODRP014 API (households) and re-verifies
     ODRP013's indigenous fields, cross-checked against real,
     well-documented figures for Taipei City and Hualien County (see
-    pycensus.countries.taiwan.api module docstring for the same numbers)."""
-    from pycensus.countries.taiwan import api
+    pycensus.census.countries.taiwan.api module docstring for the same numbers)."""
+    from pycensus.census.countries.taiwan import api
 
     households_df = api.fetch_village_households(constants.LATEST_YEAR["census"])
     taipei_households = households_df.loc[
@@ -498,7 +498,7 @@ def test_real_osm_village_boundaries_match_moi_for_taipei(tmp_path):
     well-documented ~2.45M population exactly (same total as the
     geometry-free test above, now going through real boundary geometry
     too)."""
-    from pycensus.countries.taiwan import geography, moi
+    from pycensus.census.countries.taiwan import geography, moi
 
     gdf = moi.load(
         regions="63000", level="village", cache_dir=str(tmp_path / "cache"), data_dir=str(tmp_path / "data")
@@ -518,7 +518,7 @@ def test_real_moi_age_buckets_match_taipei_population_and_over65_share():
     same way loader._add_derived_age_columns does, cross-checking against
     ODRP013's independently-fetched Taipei people_total and against
     Taipei's real, well-documented over-65 share."""
-    from pycensus.countries.taiwan import api
+    from pycensus.census.countries.taiwan import api
 
     households_df = api.fetch_village_households(constants.LATEST_YEAR["census"])
     age_cols = [f"people_age_{s}_{sex}" for s in api.AGE_BUCKET_SUFFIXES for sex in ("m", "f")]
@@ -553,7 +553,7 @@ def _fake_households_with_ages() -> pd.DataFrame:
     :func:`loader._weighted_median_age`). Every ODRP014 age bucket column
     is present (zeroed) so aggregation code that expects the full column
     set works, with a few buckets given nonzero counts per village."""
-    from pycensus.countries.taiwan import api
+    from pycensus.census.countries.taiwan import api
 
     df = _fake_households()
     age_cols = [f"people_age_{s}_{sex}" for s in api.AGE_BUCKET_SUFFIXES for sex in ("m", "f")]
@@ -590,7 +590,7 @@ def _fake_merged_villages_with_ages() -> pd.DataFrame:
         "aborigine_mountain_total_f",
     ]
     df["indigenous_total"] = df[indig_cols].sum(axis=1)
-    from pycensus.countries.taiwan import api
+    from pycensus.census.countries.taiwan import api
 
     for suffix in api.AGE_BUCKET_SUFFIXES:
         m_col, f_col = f"people_age_{suffix}_m", f"people_age_{suffix}_f"
@@ -643,7 +643,7 @@ class TestDerivedAgeColumns:
 class TestFetchMissingAgeFields:
     @pytest.fixture(autouse=True)
     def patch_network(self, monkeypatch):
-        import pycensus.countries.taiwan.api as api_mod
+        import pycensus.census.countries.taiwan.api as api_mod
 
         monkeypatch.setattr(api_mod, "fetch_resident_population", lambda yyymm, raw_cache_path=None, timeout=60: _fake_villages())
         monkeypatch.setattr(loader.api, "fetch_resident_population", lambda yyymm, raw_cache_path=None, timeout=60: _fake_villages())

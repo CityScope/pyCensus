@@ -2,7 +2,7 @@
 
 Technical aspects:
     Mirrors ``test_mexico.py``: the real network call
-    (:func:`pycensus.countries.euskadi.geography._download_gisco_lau`, which pulls
+    (:func:`pycensus.census.countries.euskadi.geography._download_gisco_lau`, which pulls
     Eurostat/GISCO's ~65MB LAU 2021 GeoPackage) is monkeypatched out with a
     small synthetic GeoPackage covering three fake Araba/Bizkaia/Gipuzkoa
     municipalities. The real source was verified manually against the live
@@ -24,9 +24,9 @@ import geopandas as gpd
 import pytest
 from shapely.geometry import box
 
-from pycensus.countries.euskadi import constants, geography, utils
-from pycensus.countries.euskadi.eustat import loader
-from pycensus.countries.euskadi.eustat.schema import SCHEMA
+from pycensus.census.countries.euskadi import constants, geography, utils
+from pycensus.census.countries.euskadi.eustat import loader
+from pycensus.census.countries.euskadi.eustat.schema import SCHEMA
 
 
 class TestConstants:

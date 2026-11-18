@@ -32,34 +32,35 @@ Currently implemented:
       including population, religion, immigration, education, employment, housing.
     - Germany (:mod:`pycensus.germany`): Destatis Census 2022 disaggregated data
       including population, nationality, education, employment, housing, religion.
-    - Worldwide (:mod:`pycensus.worldwide`): WorldPop gridded population
+    - Worldwide (:mod:`pycensus.census.worldwide`): WorldPop gridded population
       rasters.
     - Euskadi (:mod:`pycensus.euskadi`): Eustat Census 2021 disaggregated data
       for the Basque Country, including population, Basque/Spanish language skills,
       nationality, education, employment, housing, car ownership, and commuting mode.
 """
 
-from . import cache, geometry_levels, worldwide
-from .accessors import ColumnView
-from .api_keys import resolve_api_key
-from .schema import ColumnDef, ColumnSchema
+from pycensus import cache, cadaster, census, geometry_levels
+from pycensus.accessors import ColumnView
+from pycensus.api_keys import resolve_api_key
+from pycensus.schema import ColumnDef, ColumnSchema
 
 # Real regression fixed 2026-08-25: this used to also eagerly import
 # `USA`/`euskadi`/`germany`/`israel`/`mexico`/`spain` as direct submodules
-# of `pycensus` -- that flat layout was superseded by `pycensus.countries.*`
-# (every real country loader lives there now: `pycensus.countries.usa`,
-# `pycensus.countries.israel.cbs`, ...), and those top-level directories no
+# of `pycensus` -- that flat layout was superseded by `pycensus.census.countries.*`
+# (every real country loader lives there now: `pycensus.census.countries.usa`,
+# `pycensus.census.countries.israel.cbs`, ...), and those top-level directories no
 # longer exist on disk. Importing them here unconditionally meant ANY bare
 # `import pycensus` crashed with a circular-import `ImportError` the moment
-# something (e.g. `code.city_core`) imported `pycensus.countries.usa...`
+# something (e.g. `code.city_core`) imported `pycensus.census.countries.usa...`
 # before `pycensus/__init__.py` had finished running. `countries` needs no
-# explicit import here -- `pycensus.countries.X` imports work as a normal
+# explicit import here -- `pycensus.census.countries.X` imports work as a normal
 # subpackage regardless, and nothing in real, current code reads
 # `pycensus.USA`/`pycensus.mexico`/etc. as a pre-imported attribute (only
 # some now-stale test files under `tests/` still do, pre-existing breakage
 # unrelated to this fix).
 __all__ = [
-    "worldwide",
+    "census",
+    "cadaster",
     "ColumnView",
     "ColumnSchema",
     "ColumnDef",

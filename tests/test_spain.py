@@ -1,8 +1,8 @@
 """Tests for pycensus.spain: constants, schema, geography, and the INE Padron loader.
 
 Technical aspects:
-    Network-touching functions (:func:`pycensus.countries.spain.api.fetch_padron_municipios`,
-    :func:`pycensus.countries.spain.geography._load_spain_municipalities`) are
+    Network-touching functions (:func:`pycensus.census.countries.spain.api.fetch_padron_municipios`,
+    :func:`pycensus.census.countries.spain.geography._load_spain_municipalities`) are
     monkeypatched out with small synthetic frames, same pattern as
     ``tests/test_mexico.py``. The real INE Tempus API and GISCO LAU
     download were verified manually against the live network during
@@ -29,9 +29,9 @@ import pandas as pd
 import pytest
 from shapely.geometry import box
 
-from pycensus.countries.spain import constants, geography, utils
-from pycensus.countries.spain.ine import loader
-from pycensus.countries.spain.ine.schema import SCHEMA
+from pycensus.census.countries.spain import constants, geography, utils
+from pycensus.census.countries.spain.ine import loader
+from pycensus.census.countries.spain.ine.schema import SCHEMA
 
 
 class TestConstants:
@@ -181,8 +181,8 @@ class TestLoader:
 
     @pytest.fixture(autouse=True)
     def patch_network(self, monkeypatch):
-        import pycensus.countries.spain.api as api_mod
-        import pycensus.countries.spain.ine.loader as loader_mod
+        import pycensus.census.countries.spain.api as api_mod
+        import pycensus.census.countries.spain.ine.loader as loader_mod
 
         monkeypatch.setattr(api_mod, "fetch_padron_municipios", lambda raw_cache_path=None, timeout=120: _fake_padron())
         monkeypatch.setattr(loader_mod.api, "fetch_padron_municipios", lambda raw_cache_path=None, timeout=120: _fake_padron())
@@ -225,7 +225,7 @@ class TestLoader:
             calls["n"] += 1
             return _fake_padron()
 
-        import pycensus.countries.spain.ine.loader as loader_mod
+        import pycensus.census.countries.spain.ine.loader as loader_mod
 
         monkeypatch.setattr(loader_mod.api, "fetch_padron_municipios", counting_fetch)
         loader.load(regions="28", level="province", cache_dir=str(tmp_path), data_dir=str(tmp_path))
@@ -291,8 +291,8 @@ class TestLoaderSections:
 
     @pytest.fixture(autouse=True)
     def patch_network(self, monkeypatch):
-        import pycensus.countries.spain.api as api_mod
-        import pycensus.countries.spain.ine.loader as loader_mod
+        import pycensus.census.countries.spain.api as api_mod
+        import pycensus.census.countries.spain.ine.loader as loader_mod
 
         monkeypatch.setattr(
             loader_mod.geography, "_load_spain_sections_for_province", lambda province_code, data_dir=None: _fake_sections(province_code)
@@ -331,7 +331,7 @@ def test_real_ine_padron_secciones_gipuzkoa_matches_province_total():
     exactly 724,418, matching the file's own province-wide TOTAL row, and
     the boundary service returns 544 real 'SECCIONADO' (non-aggregate)
     polygons for the same province."""
-    from pycensus.countries.spain import api, geography
+    from pycensus.census.countries.spain import api, geography
 
     df = api.fetch_padron_secciones("20")
     assert len(df) > 500
@@ -348,7 +348,7 @@ def test_real_ine_padron_api_returns_verified_national_total():
     """Hits the live INE Tempus API -- no API key required. Skipped by
     default CI runs the same way tests/downloaders' BusMaps network test
     is (only run explicitly, e.g. ``pytest -m network``)."""
-    from pycensus.countries.spain import api
+    from pycensus.census.countries.spain import api
 
     df = api.fetch_padron_municipios()
     assert len(df) > 8000

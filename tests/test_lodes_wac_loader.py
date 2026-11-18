@@ -1,4 +1,4 @@
-"""Tests for pycensus.countries.usa.lodes_wac.loader, with get_lodes and boundary fetch monkeypatched out."""
+"""Tests for pycensus.census.countries.usa.lodes_wac.loader, with get_lodes and boundary fetch monkeypatched out."""
 
 from __future__ import annotations
 
@@ -7,9 +7,9 @@ import pandas as pd
 import pytest
 from shapely.geometry import box
 
-from pycensus.countries.usa import geography
-from pycensus.countries.usa.lodes_wac import loader
-from pycensus.countries.usa.lodes_wac.schema import SCHEMA
+from pycensus.census.countries.usa import geography
+from pycensus.census.countries.usa.lodes_wac import loader
+from pycensus.census.countries.usa.lodes_wac.schema import SCHEMA
 
 
 def _fake_get_lodes(version, state, year, lodes_type, agg_level, cache=True):

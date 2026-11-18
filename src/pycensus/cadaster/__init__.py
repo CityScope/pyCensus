@@ -1,7 +1,7 @@
 """Cadaster / building sources: one row per building with its built floor area, in one unified schema.
 
 Layout: ``pycensus/cadaster/<country>/<source>/`` with a ``loader.py`` (download + ``load(aoi, cache_dir)``) and a ``schema.json`` (how the
-source's own fields map onto the global schema ``pycensus/schemas/cadaster_global_schema.json``, and its use codes onto the unified
+source's own fields map onto the global schema ``pycensus/cadaster/global_schema.json``, and its use codes onto the unified
 ``use_class``). The worldwide fallback is GlobalBuildingAtlas (``cadaster/worldwide/gba``, footprints + heights everywhere).
 
     from pycensus import cadaster
@@ -24,21 +24,21 @@ import numpy as np
 import pandas as pd
 
 logger = logging.getLogger(__name__)
-GLOBAL_SCHEMA = json.loads((Path(__file__).resolve().parent.parent / "schemas" / "cadaster_global_schema.json").read_text())
+GLOBAL_SCHEMA = json.loads((Path(__file__).resolve().parent / "global_schema.json").read_text())
 COLUMNS = [f["name"] for f in GLOBAL_SCHEMA["fields"]]
 USE_CLASSES = next(f["values"] for f in GLOBAL_SCHEMA["fields"] if f["name"] == "use_class")
 FLOOR_HEIGHT_M = float(GLOBAL_SCHEMA["floor_height_m"])
 
 #: source key -> module (relative to pycensus.cadaster)
 SOURCES = {
-    "es_catastro": "spain.catastro",
-    "es_gipuzkoa": "spain.gipuzkoa",
-    "es_araba": "spain.araba",
-    "es_bizkaia": "spain.bizkaia",
-    "es_navarra": "spain.navarra",
-    "us_nsi": "usa.nsi",
-    "ca_toronto_massing": "canada.toronto_massing",
-    "de_hamburg_lod2": "germany.hamburg_lod2",
+    "es_catastro": "countries.spain.catastro",
+    "es_gipuzkoa": "countries.spain.gipuzkoa",
+    "es_araba": "countries.spain.araba",
+    "es_bizkaia": "countries.spain.bizkaia",
+    "es_navarra": "countries.spain.navarra",
+    "us_nsi": "countries.usa.nsi",
+    "ca_toronto_massing": "countries.canada.toronto_massing",
+    "de_hamburg_lod2": "countries.germany.hamburg_lod2",
     "gba": "worldwide.gba",
 }
 #: the cadaster sources of each country, best first (GBA fills what none of them covers)
@@ -66,7 +66,7 @@ def cache_root(cache_dir) -> Path:
     Returns:
         The folder.
     """
-    from ..cache import default_cache_dir
+    from pycensus.cache import default_cache_dir
 
     d = Path(cache_dir or default_cache_dir()) / "cadaster"
     d.mkdir(parents=True, exist_ok=True)

@@ -8,7 +8,7 @@ for `geohierarchy.GeoHierarchy.add_level`. Importing a source registers a
 matching accessor on the GeoDataFrame, e.g.:
 
 ```python
-from pycensus.countries.usa import acs5
+from pycensus.census.countries.usa import acs5
 
 gdf = acs5.load(aoi=my_aoi, level="tract")
 gdf.acs5["population"]                  # raw values
@@ -62,7 +62,7 @@ that don't need auth.
 
 ```python
 import pycensus
-from pycensus.countries.usa import acs5
+from pycensus.census.countries.usa import acs5
 
 gdf = acs5.load(aoi=my_aoi, level="tract")
 ```
@@ -96,7 +96,7 @@ pyCensus never writes into the current working directory. Every loader takes `ca
 ```python
 import pycensus
 from pycensus.cache import get_cache_dir
-from pycensus.countries.usa import acs5
+from pycensus.census.countries.usa import acs5
 
 gdf = acs5.load(states=["MA"], level="tract", cache_dir="/data/my_project/cache")   # explicit
 # or: export PYCENSUS_CACHE_DIR=/data/my_project/cache   (then omit cache_dir)

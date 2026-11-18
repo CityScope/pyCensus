@@ -1,4 +1,4 @@
-"""Global-schema equivalents of differently named census columns (`schemas/global_equivalents.json`).
+"""Global-schema equivalents of differently named census columns (`reference/global_equivalents.json`).
 
 `add_global_equivalents(df)` adds, for every local column present, the global-schema column that means the same thing (the local
 value repeated) -- unless the global column already exists. A column whose local name already equals the global name is NOT handled
@@ -12,7 +12,7 @@ from pathlib import Path
 import re
 from typing import Dict
 
-_FILE = Path(__file__).resolve().parent / "schemas" / "global_equivalents.json"
+_FILE = Path(__file__).resolve().parent / "reference" / "global_equivalents.json"
 
 
 @lru_cache(maxsize=1)
@@ -36,7 +36,7 @@ def latest_equivalents(columns) -> Dict[str, str]:
     Args:
         columns: Column names.
     """
-    from .latest_columns import parse_period
+    from pycensus.latest_columns import parse_period
 
     pats = json.loads(_FILE.read_text(encoding="utf-8")).get("latest_patterns", {})
     cols = [c for c in columns if isinstance(c, str)]
@@ -73,8 +73,8 @@ def add_global_equivalents(df):
     for glob, local in latest_equivalents(df.columns).items():
         if glob not in df.columns:
             df[glob] = df[local]
-    from .derived_columns import add_derived_columns
-    from .year_built import add_year_built_shares
+    from pycensus.derived_columns import add_derived_columns
+    from pycensus.year_built import add_year_built_shares
 
     add_derived_columns(df)   # under18/over65/university/basic-education/foreign-born shares, density, jobs, mobility
     return add_year_built_shares(df)   # dwellings_built_before_1945_share ... from the source's own construction-period bands

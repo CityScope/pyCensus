@@ -1,4 +1,4 @@
-"""Tests for pycensus.countries.worldwide.worldpop -- offline (mocked network/rasters) + one live network check."""
+"""Tests for pycensus.census.worldwide.worldpop -- offline (mocked network/rasters) + one live network check."""
 
 from __future__ import annotations
 
@@ -12,7 +12,7 @@ import rasterio
 from rasterio.transform import from_origin
 from shapely.geometry import Point
 
-from pycensus.countries.worldwide.worldpop import loader
+from pycensus.census.worldwide.worldpop import loader
 
 
 def _write_fake_raster(path: str, value: float, nodata: float = -99999.0, shape=(2, 2)) -> None:

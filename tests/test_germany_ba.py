@@ -1,4 +1,4 @@
-"""Tests for pycensus.countries.germany.ba: BA (Bundesagentur fuer Arbeit) jobs-by-workplace.
+"""Tests for pycensus.census.countries.germany.ba: BA (Bundesagentur fuer Arbeit) jobs-by-workplace.
 
 Technical aspects:
     Real network calls (the BA AMK zip download, GISCO LAU/NUTS geometry)
@@ -30,9 +30,9 @@ import pandas as pd
 import pytest
 from shapely.geometry import Point, box
 
-from pycensus.countries.germany import constants, geography, utils
-from pycensus.countries.germany.ba import loader
-from pycensus.countries.germany.ba.schema import SCHEMA
+from pycensus.census.countries.germany import constants, geography, utils
+from pycensus.census.countries.germany.ba import loader
+from pycensus.census.countries.germany.ba.schema import SCHEMA
 
 
 def _make_amk_workbook_bytes(ags8: str, name: str, jobs_by_year: dict) -> bytes:

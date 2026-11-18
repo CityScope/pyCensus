@@ -367,4 +367,4 @@ Every city-science city ends up with the same column names for the same concept 
 - `builtAreaOverestimationShare`
 - `builtAreaUnderestimationShare`
 
-`dwellings_built_before_1945_share`, `dwellings_built_1945_1970_share`, `dwellings_built_1970_2000_share`, `dwellings_built_after_2000_share` are not listed above: `year_built.py` computes them from any source that has construction-year counts (see `schemas/year_built_bands.json`).
+`dwellings_built_before_1945_share`, `dwellings_built_1945_1970_share`, `dwellings_built_1970_2000_share`, `dwellings_built_after_2000_share` are not listed above: `year_built.py` computes them from any source that has construction-year counts (see `reference/year_built_bands.json`).

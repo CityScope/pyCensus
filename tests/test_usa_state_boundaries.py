@@ -3,7 +3,7 @@
 import geopandas as gpd
 from shapely.geometry import box
 
-from pycensus.countries.usa import constants, geography
+from pycensus.census.countries.usa import constants, geography
 
 
 def _fake_states(year=None, cache=False):

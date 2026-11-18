@@ -27,8 +27,8 @@ Technical aspects:
           Germany 31.12.2022 = 83,118,501; Bavaria 31.12.2022 = 13,105,221;
           Munich (kreisfreie Stadt, AGS 09162) 31.12.2022 = 1,490,516 --
           all match Destatis' independently-published figures. See
-          pycensus.countries.germany.constants and
-          pycensus.countries.germany.api module docstrings for the exact
+          pycensus.census.countries.germany.constants and
+          pycensus.census.countries.germany.api module docstrings for the exact
           commands/responses.
     See the pyCensus schema redesign memory for this session's log.
 """
@@ -40,9 +40,9 @@ import pandas as pd
 import pytest
 from shapely.geometry import box
 
-from pycensus.countries.germany import api, constants, geography, utils
-from pycensus.countries.germany.destatis import crosswalk, loader
-from pycensus.countries.germany.destatis.schema import SCHEMA
+from pycensus.census.countries.germany import api, constants, geography, utils
+from pycensus.census.countries.germany.destatis import crosswalk, loader
+from pycensus.census.countries.germany.destatis.schema import SCHEMA
 
 
 class TestConstants:
@@ -93,7 +93,7 @@ class TestSchema:
     def test_population_column_exists_with_real_verified_code(self):
         # BEVSTD (not the earlier placeholder BEVZ01) was confirmed live
         # via real authenticated GENESIS-Online responses on 2026-08-21 --
-        # see schema.json's "_note" and pycensus.countries.germany.constants
+        # see schema.json's "_note" and pycensus.census.countries.germany.constants
         # docstring for why BEVZ01 was wrong (real variable, wrong database).
         assert "population" in SCHEMA.columns
         assert SCHEMA.columns["population"].codes == ["BEVSTD"]
@@ -131,7 +131,7 @@ class TestGeography:
     @pytest.fixture
     def fake_germany_nuts(self, monkeypatch, tmp_path):
         """Monkeypatch the GISCO download with small real-shaped synthetic data."""
-        import pycensus.countries.germany.geography as geo_mod
+        import pycensus.census.countries.germany.geography as geo_mod
 
         def fake_load(levl_code, data_dir=None):
             if levl_code == 0:
@@ -180,7 +180,7 @@ class TestGeography:
     @pytest.fixture
     def fake_germany_lau(self, monkeypatch, tmp_path):
         """Monkeypatch the GISCO LAU download with small real-shaped synthetic data."""
-        import pycensus.countries.germany.geography as geo_mod
+        import pycensus.census.countries.germany.geography as geo_mod
 
         def fake_load(data_dir=None):
             return gpd.GeoDataFrame(
@@ -210,7 +210,7 @@ class TestGeography:
 
 class TestApi:
     def test_resolve_genesis_credentials_raises_when_unconfigured(self, monkeypatch):
-        import pycensus.countries.germany.api as api_mod
+        import pycensus.census.countries.germany.api as api_mod
 
         monkeypatch.setattr(api_mod, "resolve_api_key", lambda *a, **k: None)
         with pytest.raises(api.GenesisCredentialsError):
@@ -224,7 +224,7 @@ class TestApi:
         # api_keys.json's real Germany entry is a single "destatis_genesis"
         # token, not a username/password pair -- GENESIS docs say a personal
         # token is used in place of username, password omitted.
-        import pycensus.countries.germany.api as api_mod
+        import pycensus.census.countries.germany.api as api_mod
 
         def fake_resolve(key_name, key_env, explicit=None):
             if key_name == "destatis_genesis":
@@ -236,7 +236,7 @@ class TestApi:
         assert (user, pw) == ("sometoken", "")
 
     def test_fetch_table_requires_real_credentials(self, monkeypatch):
-        import pycensus.countries.germany.api as api_mod
+        import pycensus.census.countries.germany.api as api_mod
 
         monkeypatch.setattr(api_mod, "resolve_api_key", lambda *a, **k: None)
         with pytest.raises(api.GenesisCredentialsError):
@@ -253,8 +253,8 @@ class TestApi:
         # credentials as HTTP headers ("Zugangsdaten: Felder im
         # HTTP-Header"), not POST body fields -- sending them in the body
         # (the earlier shape) gets the same rejection an anonymous request
-        # gets. See pycensus.countries.germany.api._post's docstring.
-        import pycensus.countries.germany.api as api_mod
+        # gets. See pycensus.census.countries.germany.api._post's docstring.
+        import pycensus.census.countries.germany.api as api_mod
 
         captured = {}
 
@@ -279,7 +279,7 @@ class TestApi:
         assert "username" not in captured["data"]
 
     def test_post_raises_on_real_error_status(self, monkeypatch):
-        import pycensus.countries.germany.api as api_mod
+        import pycensus.census.countries.germany.api as api_mod
         import requests as requests_mod
 
         class FakeResponse:
@@ -303,7 +303,7 @@ class TestApi:
 
 class TestLoader:
     def test_load_raises_credentials_error_when_unconfigured(self, monkeypatch, tmp_path):
-        import pycensus.countries.germany.api as api_mod
+        import pycensus.census.countries.germany.api as api_mod
 
         monkeypatch.setattr(api_mod, "resolve_api_key", lambda *a, **k: None)
         with pytest.raises(api.GenesisCredentialsError):
@@ -415,7 +415,7 @@ class TestLoader:
 
     def test_parse_flat_table_extracts_label_value_rows(self):
         # Real shape of a GENESIS data/table response filtered to one year
-        # (see pycensus.countries.germany.api.fetch_table docstring) --
+        # (see pycensus.census.countries.germany.api.fetch_table docstring) --
         # verified live 2026-08-21 against table 12411-0010.
         content = (
             "Tabelle: 12411-0010\n"
@@ -589,7 +589,7 @@ class TestLoader:
         assert dict(zip(result["GEOID"], result["destatis_population"]))["09162000"] == 1488202
 
     def test_download_census_data_boundaries_works_without_credentials(self, monkeypatch, tmp_path):
-        import pycensus.countries.germany.geography as geo_mod
+        import pycensus.census.countries.germany.geography as geo_mod
 
         calls = []
         monkeypatch.setattr(geo_mod, "load_boundaries", lambda level, r, year, data_dir=None: calls.append(r))
@@ -616,7 +616,7 @@ class TestAccessor:
 class TestCrosswalk:
     """Offline tests for the real AGS-to-NUTS3 name-matching crosswalk.
 
-    See pycensus.countries.germany.destatis.crosswalk's module docstring
+    See pycensus.census.countries.germany.destatis.crosswalk's module docstring
     for the live-network verification this logic was checked against
     (400/400 GENESIS district rows matched, 6 real districts' populations
     independently cross-checked)."""
@@ -678,7 +678,7 @@ def test_real_district_table_matches_national_total():
     to the independently verified real national total (table 12411-0001,
     see TestApi.test_list_datasets_references_real_verified_statistic) and
     Destatis' own published 31.12.2022 figure."""
-    from pycensus.countries.germany import geography
+    from pycensus.census.countries.germany import geography
 
     nuts_names = geography.district_names()
     ags_rows = []
@@ -745,7 +745,7 @@ def test_real_lau_municipality_population_sums_to_real_district_total():
     138,488 (31.12.2022) for the same Kreis -- a +1.37% change over ~1.5
     years, consistent with growth already verified for other districts at
     the district level (see test_real_district_population_matches_published_zensus_figures)."""
-    from pycensus.countries.germany import geography
+    from pycensus.census.countries.germany import geography
 
     lau = geography.municipality_population()
     starnberg = lau[lau["GEOID"].str.startswith("09188")]
@@ -775,7 +775,7 @@ def test_real_lau_geoid_is_literally_the_ags_code():
     AGS code, not an independent GISCO code -- confirmed against six known
     municipalities across six different states, so no name-matching
     crosswalk (unlike district) is needed for this level."""
-    from pycensus.countries.germany import geography
+    from pycensus.census.countries.germany import geography
 
     lau = geography.municipality_population()
     known_ags_pop = {

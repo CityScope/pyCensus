@@ -20,6 +20,7 @@ from dataclasses import dataclass, field
 from typing import Dict, List, Literal, Optional
 
 import geohierarchy as gh
+from pathlib import Path
 
 
 @dataclass
@@ -220,3 +221,15 @@ class ColumnSchema:
                 upscale = gh.Mean(weight_column=weight_col, geoweighted=True)
             strategies[prefixed] = gh.aggregation_strategy(upscale=upscale, downscale=downscale)
         return strategies
+
+
+def schema_dir(country: str) -> Path:
+    """The schema folder of a census source package: ``census/worldwide/schema`` or ``census/countries/<country>/schema``."""
+    base = Path(__file__).parent / "census"
+    return (base / "worldwide" if country == "worldwide" else base / "countries" / country) / "schema"
+
+
+def schema_dirs() -> list:
+    """Every census schema folder: the worldwide sources first, then each country."""
+    base = Path(__file__).parent / "census"
+    return [base / "worldwide" / "schema", *sorted(p for p in (base / "countries").glob("*/schema") if p.is_dir())]

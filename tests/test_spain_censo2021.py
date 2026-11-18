@@ -1,11 +1,11 @@
-"""Tests for pycensus.countries.spain.censo2021: schema, api parsing, and loader.
+"""Tests for pycensus.census.countries.spain.censo2021: schema, api parsing, and loader.
 
 Technical aspects:
     Network-touching functions (`api.fetch_section_breakdown`'s underlying
     `requests.post`) are monkeypatched with small synthetic payloads, same
     pattern as `tests/test_spain.py`. The real SDC21 API was verified
     manually against the live network during development -- see
-    `pycensus/countries/spain/censo2021/api.py`'s module docstring for the
+    `pycensus/census/countries/spain/censo2021/api.py`'s module docstring for the
     exact live numbers (nationwide education/employment/migration/
     household breakdowns all summing to ~47.4M, matching Spain's real
     2021 census population to within INE's disclosure-control rounding;
@@ -23,8 +23,8 @@ import pandas as pd
 import pytest
 from shapely.geometry import box
 
-from pycensus.countries.spain.censo2021 import api, loader
-from pycensus.countries.spain.censo2021.schema import FEATURE_FETCH_SPEC, SCHEMA
+from pycensus.census.countries.spain.censo2021 import api, loader
+from pycensus.census.countries.spain.censo2021.schema import FEATURE_FETCH_SPEC, SCHEMA
 
 
 class TestSchema:
@@ -139,7 +139,7 @@ def _fake_breakdown_frame(geoid_prefix: str, category_values: dict) -> pd.DataFr
 class TestLoader:
     @pytest.fixture(autouse=True)
     def patch_network(self, monkeypatch):
-        import pycensus.countries.spain.censo2021.loader as loader_mod
+        import pycensus.census.countries.spain.censo2021.loader as loader_mod
 
         def fake_fetch_section_breakdown(table, metric, variable, raw_cache_path=None, timeout=180):
             if table == "hog":

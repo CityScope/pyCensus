@@ -1,0 +1,196 @@
+{
+ "country": "israel",
+ "source": "knesset_elections",
+ "full_name": "Central Elections Committee Knesset 25 (1 Nov 2022) results per ballot box via data.gov.il, geocoded polling places -> H3 res 8 -> CBS statistical areas; pycensus.census.countries.israel.elections.load_knesset (Beersheba: 9000)",
+ "levels": [
+  "statistical_area",
+  "h3_8"
+ ],
+ "features": [
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2022_total_votes",
+   "original_name": "elec_national_2022_total_votes",
+   "country": "israel",
+   "source": "knesset_elections",
+   "codes": [
+    "elec_national_2022_total_votes"
+   ],
+   "definition": "Valid votes, Knesset 25 election.",
+   "type": "count",
+   "unit": "votes",
+   "resampling_up": "sum",
+   "resampling_down": "divide_area_weighted"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2022_turnout_rate",
+   "original_name": "elec_national_2022_turnout_rate",
+   "country": "israel",
+   "source": "knesset_elections",
+   "codes": [
+    "elec_national_2022_turnout_rate"
+   ],
+   "definition": "Ballots cast / eligible voters, Knesset 25 election.",
+   "type": "rate",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_national_2022_total_votes",
+   "resampling_weight": "elec_national_2022_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2022_left_share",
+   "original_name": "elec_national_2022_left_share",
+   "country": "israel",
+   "source": "knesset_elections",
+   "codes": [
+    "elec_national_2022_left_share"
+   ],
+   "definition": "Share of valid votes for the 'left' bloc (see schema/israel_elections_blocs.json), Knesset 25 election.",
+   "type": "percentage",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_national_2022_total_votes",
+   "resampling_weight": "elec_national_2022_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2022_right_share",
+   "original_name": "elec_national_2022_right_share",
+   "country": "israel",
+   "source": "knesset_elections",
+   "codes": [
+    "elec_national_2022_right_share"
+   ],
+   "definition": "Share of valid votes for the 'right' bloc (see schema/israel_elections_blocs.json), Knesset 25 election.",
+   "type": "percentage",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_national_2022_total_votes",
+   "resampling_weight": "elec_national_2022_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2022_other_share",
+   "original_name": "elec_national_2022_other_share",
+   "country": "israel",
+   "source": "knesset_elections",
+   "codes": [
+    "elec_national_2022_other_share"
+   ],
+   "definition": "Share of valid votes for the 'other' bloc (see schema/israel_elections_blocs.json), Knesset 25 election.",
+   "type": "percentage",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_national_2022_total_votes",
+   "resampling_weight": "elec_national_2022_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2022_party_likud_share",
+   "original_name": "elec_national_2022_party_likud_share",
+   "country": "israel",
+   "source": "knesset_elections",
+   "codes": [
+    "elec_national_2022_party_likud_share"
+   ],
+   "definition": "Share of valid votes for likud (parties/candidates >= 3% in the study area), Knesset 25 election.",
+   "type": "percentage",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_national_2022_total_votes",
+   "resampling_weight": "elec_national_2022_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2022_party_national_unity_share",
+   "original_name": "elec_national_2022_party_national_unity_share",
+   "country": "israel",
+   "source": "knesset_elections",
+   "codes": [
+    "elec_national_2022_party_national_unity_share"
+   ],
+   "definition": "Share of valid votes for national_unity (parties/candidates >= 3% in the study area), Knesset 25 election.",
+   "type": "percentage",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_national_2022_total_votes",
+   "resampling_weight": "elec_national_2022_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2022_party_religious_zionism_share",
+   "original_name": "elec_national_2022_party_religious_zionism_share",
+   "country": "israel",
+   "source": "knesset_elections",
+   "codes": [
+    "elec_national_2022_party_religious_zionism_share"
+   ],
+   "definition": "Share of valid votes for religious_zionism (parties/candidates >= 3% in the study area), Knesset 25 election.",
+   "type": "percentage",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_national_2022_total_votes",
+   "resampling_weight": "elec_national_2022_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2022_party_shas_share",
+   "original_name": "elec_national_2022_party_shas_share",
+   "country": "israel",
+   "source": "knesset_elections",
+   "codes": [
+    "elec_national_2022_party_shas_share"
+   ],
+   "definition": "Share of valid votes for shas (parties/candidates >= 3% in the study area), Knesset 25 election.",
+   "type": "percentage",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_national_2022_total_votes",
+   "resampling_weight": "elec_national_2022_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2022_party_yesh_atid_share",
+   "original_name": "elec_national_2022_party_yesh_atid_share",
+   "country": "israel",
+   "source": "knesset_elections",
+   "codes": [
+    "elec_national_2022_party_yesh_atid_share"
+   ],
+   "definition": "Share of valid votes for yesh_atid (parties/candidates >= 3% in the study area), Knesset 25 election.",
+   "type": "percentage",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_national_2022_total_votes",
+   "resampling_weight": "elec_national_2022_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2022_party_yisrael_beytenu_share",
+   "original_name": "elec_national_2022_party_yisrael_beytenu_share",
+   "country": "israel",
+   "source": "knesset_elections",
+   "codes": [
+    "elec_national_2022_party_yisrael_beytenu_share"
+   ],
+   "definition": "Share of valid votes for yisrael_beytenu (parties/candidates >= 3% in the study area), Knesset 25 election.",
+   "type": "percentage",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_national_2022_total_votes",
+   "resampling_weight": "elec_national_2022_total_votes"
+  }
+ ]
+}

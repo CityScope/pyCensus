@@ -43,7 +43,7 @@ build/
 # # Exclude files that start with "local" (both .py and .ipynb or any extension)
 # examples/local*
 
-**/api_keys.py
+**/api_keys.json
 !src/pycensus/api_keys.py
 
 examples/

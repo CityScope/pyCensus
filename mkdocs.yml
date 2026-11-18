@@ -32,6 +32,8 @@ markdown_extensions:
 nav:
   - Home: index.md
   - "Guide for an AI agent: census for a new city or country, and completing the global census": AGENT_GUIDE_NEW_CITY_OR_COUNTRY.md
+  - "Adding a source (downloader)": CONTRIBUTING_SOURCES.md
+  - "Schemas: where each one lives and what it must contain": SCHEMAS.md
   - "Global census columns": GLOBAL_CENSUS_COLUMNS.md
   - API reference:
       - Overview: api/index.md
@@ -40,350 +42,355 @@ nav:
       - cache: api/cache.md
       - cadaster:
           - Overview: api/cadaster/index.md
-          - canada:
-              - Overview: api/cadaster/canada/index.md
-              - toronto_massing:
-                  - Overview: api/cadaster/canada/toronto_massing/index.md
-                  - loader: api/cadaster/canada/toronto_massing/loader.md
-          - germany:
-              - Overview: api/cadaster/germany/index.md
-              - hamburg_lod2:
-                  - Overview: api/cadaster/germany/hamburg_lod2/index.md
-                  - loader: api/cadaster/germany/hamburg_lod2/loader.md
+          - countries:
+              - Overview: api/cadaster/countries/index.md
+              - canada:
+                  - Overview: api/cadaster/countries/canada/index.md
+                  - toronto_massing:
+                      - Overview: api/cadaster/countries/canada/toronto_massing/index.md
+                      - loader: api/cadaster/countries/canada/toronto_massing/loader.md
+              - germany:
+                  - Overview: api/cadaster/countries/germany/index.md
+                  - hamburg_lod2:
+                      - Overview: api/cadaster/countries/germany/hamburg_lod2/index.md
+                      - loader: api/cadaster/countries/germany/hamburg_lod2/loader.md
+              - spain:
+                  - Overview: api/cadaster/countries/spain/index.md
+                  - araba:
+                      - Overview: api/cadaster/countries/spain/araba/index.md
+                      - loader: api/cadaster/countries/spain/araba/loader.md
+                  - bizkaia:
+                      - Overview: api/cadaster/countries/spain/bizkaia/index.md
+                      - loader: api/cadaster/countries/spain/bizkaia/loader.md
+                  - catastro:
+                      - Overview: api/cadaster/countries/spain/catastro/index.md
+                      - loader: api/cadaster/countries/spain/catastro/loader.md
+                  - gipuzkoa:
+                      - Overview: api/cadaster/countries/spain/gipuzkoa/index.md
+                      - loader: api/cadaster/countries/spain/gipuzkoa/loader.md
+                  - navarra:
+                      - Overview: api/cadaster/countries/spain/navarra/index.md
+                      - loader: api/cadaster/countries/spain/navarra/loader.md
+              - usa:
+                  - Overview: api/cadaster/countries/usa/index.md
+                  - nsi:
+                      - Overview: api/cadaster/countries/usa/nsi/index.md
+                      - loader: api/cadaster/countries/usa/nsi/loader.md
           - metrics: api/cadaster/metrics.md
-          - spain:
-              - Overview: api/cadaster/spain/index.md
-              - araba:
-                  - Overview: api/cadaster/spain/araba/index.md
-                  - loader: api/cadaster/spain/araba/loader.md
-              - bizkaia:
-                  - Overview: api/cadaster/spain/bizkaia/index.md
-                  - loader: api/cadaster/spain/bizkaia/loader.md
-              - catastro:
-                  - Overview: api/cadaster/spain/catastro/index.md
-                  - loader: api/cadaster/spain/catastro/loader.md
-              - gipuzkoa:
-                  - Overview: api/cadaster/spain/gipuzkoa/index.md
-                  - loader: api/cadaster/spain/gipuzkoa/loader.md
-              - navarra:
-                  - Overview: api/cadaster/spain/navarra/index.md
-                  - loader: api/cadaster/spain/navarra/loader.md
-          - usa:
-              - Overview: api/cadaster/usa/index.md
-              - nsi:
-                  - Overview: api/cadaster/usa/nsi/index.md
-                  - loader: api/cadaster/usa/nsi/loader.md
           - worldwide:
               - Overview: api/cadaster/worldwide/index.md
               - gba:
                   - Overview: api/cadaster/worldwide/gba/index.md
                   - loader: api/cadaster/worldwide/gba/loader.md
       - canonical: api/canonical.md
-      - countries:
-          - Overview: api/countries/index.md
-          - andorra:
-              - Overview: api/countries/andorra/index.md
-              - api: api/countries/andorra/api.md
-              - constants: api/countries/andorra/constants.md
-              - elections:
-                  - Overview: api/countries/andorra/elections/index.md
-                  - loader: api/countries/andorra/elections/loader.md
-              - enm_mobility:
-                  - Overview: api/countries/andorra/enm_mobility/index.md
-                  - loader: api/countries/andorra/enm_mobility/loader.md
-              - estadisticaad:
-                  - Overview: api/countries/andorra/estadisticaad/index.md
-                  - loader: api/countries/andorra/estadisticaad/loader.md
-                  - schema: api/countries/andorra/estadisticaad/schema.md
-              - geography: api/countries/andorra/geography.md
-          - canada:
-              - Overview: api/countries/canada/index.md
-              - api: api/countries/canada/api.md
-              - constants: api/countries/canada/constants.md
-              - elections:
-                  - Overview: api/countries/canada/elections/index.md
-                  - build_schema: api/countries/canada/elections/build_schema.md
-                  - loader: api/countries/canada/elections/loader.md
-              - geography: api/countries/canada/geography.md
-              - statcan:
-                  - Overview: api/countries/canada/statcan/index.md
-                  - loader: api/countries/canada/statcan/loader.md
-                  - schema: api/countries/canada/statcan/schema.md
-              - toronto:
-                  - Overview: api/countries/canada/toronto/index.md
-                  - build_schema: api/countries/canada/toronto/build_schema.md
-                  - loader: api/countries/canada/toronto/loader.md
-              - utils: api/countries/canada/utils.md
-          - chile:
-              - Overview: api/countries/chile/index.md
-              - api: api/countries/chile/api.md
-              - casen:
-                  - Overview: api/countries/chile/casen/index.md
-                  - api: api/countries/chile/casen/api.md
-                  - loader: api/countries/chile/casen/loader.md
-                  - schema: api/countries/chile/casen/schema.md
-              - constants: api/countries/chile/constants.md
-              - elections:
-                  - Overview: api/countries/chile/elections/index.md
-                  - build_schema: api/countries/chile/elections/build_schema.md
-                  - loader: api/countries/chile/elections/loader.md
-              - geography: api/countries/chile/geography.md
-              - ine:
-                  - Overview: api/countries/chile/ine/index.md
-                  - loader: api/countries/chile/ine/loader.md
-                  - manzana: api/countries/chile/ine/manzana.md
-                  - schema: api/countries/chile/ine/schema.md
-              - sii:
-                  - Overview: api/countries/chile/sii/index.md
-                  - api: api/countries/chile/sii/api.md
-                  - loader: api/countries/chile/sii/loader.md
-                  - schema: api/countries/chile/sii/schema.md
-              - utils: api/countries/chile/utils.md
-          - china:
-              - Overview: api/countries/china/index.md
-              - shanghai_transport_survey: api/countries/china/shanghai_transport_survey.md
-          - eu:
-              - Overview: api/countries/eu/index.md
-              - census_grid:
-                  - Overview: api/countries/eu/census_grid/index.md
-                  - loader: api/countries/eu/census_grid/loader.md
-                  - schema: api/countries/eu/census_grid/schema.md
-              - constants: api/countries/eu/constants.md
-              - eurostat:
-                  - Overview: api/countries/eu/eurostat/index.md
-                  - api: api/countries/eu/eurostat/api.md
-                  - loader: api/countries/eu/eurostat/loader.md
-                  - schema: api/countries/eu/eurostat/schema.md
-              - geography: api/countries/eu/geography.md
-              - lau:
-                  - Overview: api/countries/eu/lau/index.md
-                  - loader: api/countries/eu/lau/loader.md
-                  - schema: api/countries/eu/lau/schema.md
-          - euskadi:
-              - Overview: api/countries/euskadi/index.md
-              - api: api/countries/euskadi/api.md
-              - constants: api/countries/euskadi/constants.md
-              - eustat:
-                  - Overview: api/countries/euskadi/eustat/index.md
-                  - custom_fields: api/countries/euskadi/eustat/custom_fields.md
-                  - housing_income: api/countries/euskadi/eustat/housing_income.md
-                  - loader: api/countries/euskadi/eustat/loader.md
-                  - municipal_indicators: api/countries/euskadi/eustat/municipal_indicators.md
-                  - schema: api/countries/euskadi/eustat/schema.md
-              - geography: api/countries/euskadi/geography.md
-              - utils: api/countries/euskadi/utils.md
-          - germany:
-              - Overview: api/countries/germany/index.md
-              - api: api/countries/germany/api.md
-              - ba:
-                  - Overview: api/countries/germany/ba/index.md
-                  - loader: api/countries/germany/ba/loader.md
-                  - schema: api/countries/germany/ba/schema.md
-              - ba_pendler:
-                  - Overview: api/countries/germany/ba_pendler/index.md
-                  - loader: api/countries/germany/ba_pendler/loader.md
-                  - schema: api/countries/germany/ba_pendler/schema.md
-              - constants: api/countries/germany/constants.md
-              - destatis:
-                  - Overview: api/countries/germany/destatis/index.md
-                  - crosswalk: api/countries/germany/destatis/crosswalk.md
-                  - custom_fields: api/countries/germany/destatis/custom_fields.md
-                  - loader: api/countries/germany/destatis/loader.md
-                  - schema: api/countries/germany/destatis/schema.md
-              - elections:
-                  - Overview: api/countries/germany/elections/index.md
-                  - loader: api/countries/germany/elections/loader.md
-              - geography: api/countries/germany/geography.md
-              - hamburg_sozialmonitoring:
-                  - Overview: api/countries/germany/hamburg_sozialmonitoring/index.md
-                  - loader: api/countries/germany/hamburg_sozialmonitoring/loader.md
-              - mid_hamburg: api/countries/germany/mid_hamburg.md
-              - utils: api/countries/germany/utils.md
-              - verbindungen:
-                  - Overview: api/countries/germany/verbindungen/index.md
-                  - loader: api/countries/germany/verbindungen/loader.md
-              - zensus_grid:
-                  - Overview: api/countries/germany/zensus_grid/index.md
-                  - loader: api/countries/germany/zensus_grid/loader.md
-          - israel:
-              - Overview: api/countries/israel/index.md
-              - api: api/countries/israel/api.md
-              - arcgis: api/countries/israel/arcgis.md
-              - cbs:
-                  - Overview: api/countries/israel/cbs/index.md
-                  - custom_fields: api/countries/israel/cbs/custom_fields.md
-                  - loader: api/countries/israel/cbs/loader.md
-                  - schema: api/countries/israel/cbs/schema.md
-              - cbs_commute:
-                  - Overview: api/countries/israel/cbs_commute/index.md
-                  - loader: api/countries/israel/cbs_commute/loader.md
-                  - schema: api/countries/israel/cbs_commute/schema.md
-              - constants: api/countries/israel/constants.md
-              - elections:
-                  - Overview: api/countries/israel/elections/index.md
-                  - loader: api/countries/israel/elections/loader.md
-              - geography: api/countries/israel/geography.md
-              - utils: api/countries/israel/utils.md
-          - mexico:
-              - Overview: api/countries/mexico/index.md
-              - api: api/countries/mexico/api.md
-              - coneval:
-                  - Overview: api/countries/mexico/coneval/index.md
-                  - loader: api/countries/mexico/coneval/loader.md
-              - constants: api/countries/mexico/constants.md
-              - elections:
-                  - Overview: api/countries/mexico/elections/index.md
-                  - build_schema: api/countries/mexico/elections/build_schema.md
-                  - loader: api/countries/mexico/elections/loader.md
-              - geography: api/countries/mexico/geography.md
-              - inegi:
-                  - Overview: api/countries/mexico/inegi/index.md
-                  - custom_fields: api/countries/mexico/inegi/custom_fields.md
-                  - loader: api/countries/mexico/inegi/loader.md
-                  - schema: api/countries/mexico/inegi/schema.md
-              - inegi_movilidad:
-                  - Overview: api/countries/mexico/inegi_movilidad/index.md
-                  - loader: api/countries/mexico/inegi_movilidad/loader.md
-              - utils: api/countries/mexico/utils.md
-          - spain:
-              - Overview: api/countries/spain/index.md
-              - adrh:
-                  - Overview: api/countries/spain/adrh/index.md
-                  - eustat_sections: api/countries/spain/adrh/eustat_sections.md
-                  - loader: api/countries/spain/adrh/loader.md
-              - api: api/countries/spain/api.md
-              - catastro:
-                  - Overview: api/countries/spain/catastro/index.md
-                  - loader: api/countries/spain/catastro/loader.md
-              - censo2021:
-                  - Overview: api/countries/spain/censo2021/index.md
-                  - api: api/countries/spain/censo2021/api.md
-                  - housing: api/countries/spain/censo2021/housing.md
-                  - loader: api/countries/spain/censo2021/loader.md
-                  - schema: api/countries/spain/censo2021/schema.md
-              - constants: api/countries/spain/constants.md
-              - elections:
-                  - Overview: api/countries/spain/elections/index.md
-                  - loader: api/countries/spain/elections/loader.md
-              - geography: api/countries/spain/geography.md
-              - ine:
-                  - Overview: api/countries/spain/ine/index.md
-                  - custom_fields: api/countries/spain/ine/custom_fields.md
-                  - loader: api/countries/spain/ine/loader.md
-                  - schema: api/countries/spain/ine/schema.md
-              - ine_tables:
-                  - Overview: api/countries/spain/ine_tables/index.md
-                  - loader: api/countries/spain/ine_tables/loader.md
-              - mobility:
-                  - Overview: api/countries/spain/mobility/index.md
-                  - ecepov: api/countries/spain/mobility/ecepov.md
-                  - mitma: api/countries/spain/mobility/mitma.md
-                  - resample: api/countries/spain/mobility/resample.md
-              - serpavi:
-                  - Overview: api/countries/spain/serpavi/index.md
-                  - loader: api/countries/spain/serpavi/loader.md
-              - utils: api/countries/spain/utils.md
-              - valor_tasado:
-                  - Overview: api/countries/spain/valor_tasado/index.md
-                  - loader: api/countries/spain/valor_tasado/loader.md
-          - taiwan:
-              - Overview: api/countries/taiwan/index.md
-              - api: api/countries/taiwan/api.md
-              - constants: api/countries/taiwan/constants.md
-              - elections:
-                  - Overview: api/countries/taiwan/elections/index.md
-                  - loader: api/countries/taiwan/elections/loader.md
-              - geography: api/countries/taiwan/geography.md
-              - moi:
-                  - Overview: api/countries/taiwan/moi/index.md
-                  - loader: api/countries/taiwan/moi/loader.md
-                  - realprice: api/countries/taiwan/moi/realprice.md
-                  - schema: api/countries/taiwan/moi/schema.md
-              - motc_mode_use: api/countries/taiwan/motc_mode_use.md
-              - utils: api/countries/taiwan/utils.md
-          - usa:
-              - Overview: api/countries/usa/index.md
-              - acs1:
-                  - Overview: api/countries/usa/acs1/index.md
-                  - custom_fields: api/countries/usa/acs1/custom_fields.md
-                  - loader: api/countries/usa/acs1/loader.md
-                  - schema: api/countries/usa/acs1/schema.md
-              - acs3:
-                  - Overview: api/countries/usa/acs3/index.md
-                  - custom_fields: api/countries/usa/acs3/custom_fields.md
-                  - loader: api/countries/usa/acs3/loader.md
-                  - schema: api/countries/usa/acs3/schema.md
-              - acs5:
-                  - Overview: api/countries/usa/acs5/index.md
-                  - custom_fields: api/countries/usa/acs5/custom_fields.md
-                  - loader: api/countries/usa/acs5/loader.md
-                  - schema: api/countries/usa/acs5/schema.md
-              - acs_commute_time: api/countries/usa/acs_commute_time.md
-              - api: api/countries/usa/api.md
-              - constants: api/countries/usa/constants.md
-              - dhc:
-                  - Overview: api/countries/usa/dhc/index.md
-                  - custom_fields: api/countries/usa/dhc/custom_fields.md
-                  - loader: api/countries/usa/dhc/loader.md
-                  - schema: api/countries/usa/dhc/schema.md
-              - elections:
-                  - Overview: api/countries/usa/elections/index.md
-                  - columns: api/countries/usa/elections/columns.md
-                  - loader: api/countries/usa/elections/loader.md
-                  - schema: api/countries/usa/elections/schema.md
-              - elections_precinct:
-                  - Overview: api/countries/usa/elections_precinct/index.md
-                  - build_schema: api/countries/usa/elections_precinct/build_schema.md
-                  - loader: api/countries/usa/elections_precinct/loader.md
-                  - nyt2024: api/countries/usa/elections_precinct/nyt2024.md
-                  - official:
-                      - Overview: api/countries/usa/elections_precinct/official/index.md
-                      - ca: api/countries/usa/elections_precinct/official/ca.md
-                      - de: api/countries/usa/elections_precinct/official/de.md
-                      - hi: api/countries/usa/elections_precinct/official/hi.md
-                      - nc: api/countries/usa/elections_precinct/official/nc.md
-                  - unofficial:
-                      - Overview: api/countries/usa/elections_precinct/unofficial/index.md
-                      - fec: api/countries/usa/elections_precinct/unofficial/fec.md
-                      - medsl: api/countries/usa/elections_precinct/unofficial/medsl.md
-                      - medsl_alaska: api/countries/usa/elections_precinct/unofficial/medsl_alaska.md
-                      - medsl_boundaries: api/countries/usa/elections_precinct/unofficial/medsl_boundaries.md
-                      - nyt_direct: api/countries/usa/elections_precinct/unofficial/nyt_direct.md
-                      - nyt_medsl: api/countries/usa/elections_precinct/unofficial/nyt_medsl.md
-                      - vest_residual: api/countries/usa/elections_precinct/unofficial/vest_residual.md
-              - fuel_prices: api/countries/usa/fuel_prices.md
-              - geography: api/countries/usa/geography.md
-              - housing:
-                  - Overview: api/countries/usa/housing/index.md
-                  - loader: api/countries/usa/housing/loader.md
-              - lodes_rac:
-                  - Overview: api/countries/usa/lodes_rac/index.md
-                  - custom_fields: api/countries/usa/lodes_rac/custom_fields.md
-                  - loader: api/countries/usa/lodes_rac/loader.md
-                  - schema: api/countries/usa/lodes_rac/schema.md
-              - lodes_wac:
-                  - Overview: api/countries/usa/lodes_wac/index.md
-                  - custom_fields: api/countries/usa/lodes_wac/custom_fields.md
-                  - loader: api/countries/usa/lodes_wac/loader.md
-                  - schema: api/countries/usa/lodes_wac/schema.md
-              - religion:
-                  - Overview: api/countries/usa/religion/index.md
-                  - loader: api/countries/usa/religion/loader.md
-              - utils: api/countries/usa/utils.md
-              - voting_districts: api/countries/usa/voting_districts.md
+      - census:
+          - Overview: api/census/index.md
+          - countries:
+              - Overview: api/census/countries/index.md
+              - andorra:
+                  - Overview: api/census/countries/andorra/index.md
+                  - api: api/census/countries/andorra/api.md
+                  - constants: api/census/countries/andorra/constants.md
+                  - elections:
+                      - Overview: api/census/countries/andorra/elections/index.md
+                      - loader: api/census/countries/andorra/elections/loader.md
+                  - enm_mobility:
+                      - Overview: api/census/countries/andorra/enm_mobility/index.md
+                      - loader: api/census/countries/andorra/enm_mobility/loader.md
+                  - estadisticaad:
+                      - Overview: api/census/countries/andorra/estadisticaad/index.md
+                      - loader: api/census/countries/andorra/estadisticaad/loader.md
+                      - schema: api/census/countries/andorra/estadisticaad/schema.md
+                  - geography: api/census/countries/andorra/geography.md
+              - canada:
+                  - Overview: api/census/countries/canada/index.md
+                  - api: api/census/countries/canada/api.md
+                  - constants: api/census/countries/canada/constants.md
+                  - elections:
+                      - Overview: api/census/countries/canada/elections/index.md
+                      - build_schema: api/census/countries/canada/elections/build_schema.md
+                      - loader: api/census/countries/canada/elections/loader.md
+                  - geography: api/census/countries/canada/geography.md
+                  - statcan:
+                      - Overview: api/census/countries/canada/statcan/index.md
+                      - loader: api/census/countries/canada/statcan/loader.md
+                      - schema: api/census/countries/canada/statcan/schema.md
+                  - toronto:
+                      - Overview: api/census/countries/canada/toronto/index.md
+                      - build_schema: api/census/countries/canada/toronto/build_schema.md
+                      - loader: api/census/countries/canada/toronto/loader.md
+                  - utils: api/census/countries/canada/utils.md
+              - chile:
+                  - Overview: api/census/countries/chile/index.md
+                  - api: api/census/countries/chile/api.md
+                  - casen:
+                      - Overview: api/census/countries/chile/casen/index.md
+                      - api: api/census/countries/chile/casen/api.md
+                      - loader: api/census/countries/chile/casen/loader.md
+                      - schema: api/census/countries/chile/casen/schema.md
+                  - constants: api/census/countries/chile/constants.md
+                  - elections:
+                      - Overview: api/census/countries/chile/elections/index.md
+                      - build_schema: api/census/countries/chile/elections/build_schema.md
+                      - loader: api/census/countries/chile/elections/loader.md
+                  - geography: api/census/countries/chile/geography.md
+                  - ine:
+                      - Overview: api/census/countries/chile/ine/index.md
+                      - loader: api/census/countries/chile/ine/loader.md
+                      - manzana: api/census/countries/chile/ine/manzana.md
+                      - schema: api/census/countries/chile/ine/schema.md
+                  - sii:
+                      - Overview: api/census/countries/chile/sii/index.md
+                      - api: api/census/countries/chile/sii/api.md
+                      - loader: api/census/countries/chile/sii/loader.md
+                      - schema: api/census/countries/chile/sii/schema.md
+                  - utils: api/census/countries/chile/utils.md
+              - china:
+                  - Overview: api/census/countries/china/index.md
+                  - shanghai_transport_survey: api/census/countries/china/shanghai_transport_survey.md
+              - eu:
+                  - Overview: api/census/countries/eu/index.md
+                  - census_grid:
+                      - Overview: api/census/countries/eu/census_grid/index.md
+                      - loader: api/census/countries/eu/census_grid/loader.md
+                      - schema: api/census/countries/eu/census_grid/schema.md
+                  - constants: api/census/countries/eu/constants.md
+                  - eurostat:
+                      - Overview: api/census/countries/eu/eurostat/index.md
+                      - api: api/census/countries/eu/eurostat/api.md
+                      - loader: api/census/countries/eu/eurostat/loader.md
+                      - schema: api/census/countries/eu/eurostat/schema.md
+                  - geography: api/census/countries/eu/geography.md
+                  - lau:
+                      - Overview: api/census/countries/eu/lau/index.md
+                      - loader: api/census/countries/eu/lau/loader.md
+                      - schema: api/census/countries/eu/lau/schema.md
+              - euskadi:
+                  - Overview: api/census/countries/euskadi/index.md
+                  - api: api/census/countries/euskadi/api.md
+                  - constants: api/census/countries/euskadi/constants.md
+                  - eustat:
+                      - Overview: api/census/countries/euskadi/eustat/index.md
+                      - custom_fields: api/census/countries/euskadi/eustat/custom_fields.md
+                      - housing_income: api/census/countries/euskadi/eustat/housing_income.md
+                      - loader: api/census/countries/euskadi/eustat/loader.md
+                      - municipal_indicators: api/census/countries/euskadi/eustat/municipal_indicators.md
+                      - schema: api/census/countries/euskadi/eustat/schema.md
+                  - geography: api/census/countries/euskadi/geography.md
+                  - utils: api/census/countries/euskadi/utils.md
+              - germany:
+                  - Overview: api/census/countries/germany/index.md
+                  - api: api/census/countries/germany/api.md
+                  - ba:
+                      - Overview: api/census/countries/germany/ba/index.md
+                      - loader: api/census/countries/germany/ba/loader.md
+                      - schema: api/census/countries/germany/ba/schema.md
+                  - ba_pendler:
+                      - Overview: api/census/countries/germany/ba_pendler/index.md
+                      - loader: api/census/countries/germany/ba_pendler/loader.md
+                      - schema: api/census/countries/germany/ba_pendler/schema.md
+                  - constants: api/census/countries/germany/constants.md
+                  - destatis:
+                      - Overview: api/census/countries/germany/destatis/index.md
+                      - crosswalk: api/census/countries/germany/destatis/crosswalk.md
+                      - custom_fields: api/census/countries/germany/destatis/custom_fields.md
+                      - loader: api/census/countries/germany/destatis/loader.md
+                      - schema: api/census/countries/germany/destatis/schema.md
+                  - elections:
+                      - Overview: api/census/countries/germany/elections/index.md
+                      - loader: api/census/countries/germany/elections/loader.md
+                  - geography: api/census/countries/germany/geography.md
+                  - hamburg_sozialmonitoring:
+                      - Overview: api/census/countries/germany/hamburg_sozialmonitoring/index.md
+                      - loader: api/census/countries/germany/hamburg_sozialmonitoring/loader.md
+                  - mid_hamburg: api/census/countries/germany/mid_hamburg.md
+                  - utils: api/census/countries/germany/utils.md
+                  - verbindungen:
+                      - Overview: api/census/countries/germany/verbindungen/index.md
+                      - loader: api/census/countries/germany/verbindungen/loader.md
+                  - zensus_grid:
+                      - Overview: api/census/countries/germany/zensus_grid/index.md
+                      - loader: api/census/countries/germany/zensus_grid/loader.md
+              - israel:
+                  - Overview: api/census/countries/israel/index.md
+                  - api: api/census/countries/israel/api.md
+                  - arcgis: api/census/countries/israel/arcgis.md
+                  - cbs:
+                      - Overview: api/census/countries/israel/cbs/index.md
+                      - custom_fields: api/census/countries/israel/cbs/custom_fields.md
+                      - loader: api/census/countries/israel/cbs/loader.md
+                      - schema: api/census/countries/israel/cbs/schema.md
+                  - cbs_commute:
+                      - Overview: api/census/countries/israel/cbs_commute/index.md
+                      - loader: api/census/countries/israel/cbs_commute/loader.md
+                      - schema: api/census/countries/israel/cbs_commute/schema.md
+                  - constants: api/census/countries/israel/constants.md
+                  - elections:
+                      - Overview: api/census/countries/israel/elections/index.md
+                      - loader: api/census/countries/israel/elections/loader.md
+                  - geography: api/census/countries/israel/geography.md
+                  - utils: api/census/countries/israel/utils.md
+              - mexico:
+                  - Overview: api/census/countries/mexico/index.md
+                  - api: api/census/countries/mexico/api.md
+                  - coneval:
+                      - Overview: api/census/countries/mexico/coneval/index.md
+                      - loader: api/census/countries/mexico/coneval/loader.md
+                  - constants: api/census/countries/mexico/constants.md
+                  - elections:
+                      - Overview: api/census/countries/mexico/elections/index.md
+                      - build_schema: api/census/countries/mexico/elections/build_schema.md
+                      - loader: api/census/countries/mexico/elections/loader.md
+                  - geography: api/census/countries/mexico/geography.md
+                  - inegi:
+                      - Overview: api/census/countries/mexico/inegi/index.md
+                      - custom_fields: api/census/countries/mexico/inegi/custom_fields.md
+                      - loader: api/census/countries/mexico/inegi/loader.md
+                      - schema: api/census/countries/mexico/inegi/schema.md
+                  - inegi_movilidad:
+                      - Overview: api/census/countries/mexico/inegi_movilidad/index.md
+                      - loader: api/census/countries/mexico/inegi_movilidad/loader.md
+                  - utils: api/census/countries/mexico/utils.md
+              - spain:
+                  - Overview: api/census/countries/spain/index.md
+                  - adrh:
+                      - Overview: api/census/countries/spain/adrh/index.md
+                      - eustat_sections: api/census/countries/spain/adrh/eustat_sections.md
+                      - loader: api/census/countries/spain/adrh/loader.md
+                  - api: api/census/countries/spain/api.md
+                  - catastro:
+                      - Overview: api/census/countries/spain/catastro/index.md
+                      - loader: api/census/countries/spain/catastro/loader.md
+                  - censo2021:
+                      - Overview: api/census/countries/spain/censo2021/index.md
+                      - api: api/census/countries/spain/censo2021/api.md
+                      - housing: api/census/countries/spain/censo2021/housing.md
+                      - loader: api/census/countries/spain/censo2021/loader.md
+                      - schema: api/census/countries/spain/censo2021/schema.md
+                  - constants: api/census/countries/spain/constants.md
+                  - elections:
+                      - Overview: api/census/countries/spain/elections/index.md
+                      - loader: api/census/countries/spain/elections/loader.md
+                  - geography: api/census/countries/spain/geography.md
+                  - ine:
+                      - Overview: api/census/countries/spain/ine/index.md
+                      - custom_fields: api/census/countries/spain/ine/custom_fields.md
+                      - loader: api/census/countries/spain/ine/loader.md
+                      - schema: api/census/countries/spain/ine/schema.md
+                  - ine_tables:
+                      - Overview: api/census/countries/spain/ine_tables/index.md
+                      - loader: api/census/countries/spain/ine_tables/loader.md
+                  - mobility:
+                      - Overview: api/census/countries/spain/mobility/index.md
+                      - ecepov: api/census/countries/spain/mobility/ecepov.md
+                      - mitma: api/census/countries/spain/mobility/mitma.md
+                      - resample: api/census/countries/spain/mobility/resample.md
+                  - serpavi:
+                      - Overview: api/census/countries/spain/serpavi/index.md
+                      - loader: api/census/countries/spain/serpavi/loader.md
+                  - utils: api/census/countries/spain/utils.md
+                  - valor_tasado:
+                      - Overview: api/census/countries/spain/valor_tasado/index.md
+                      - loader: api/census/countries/spain/valor_tasado/loader.md
+              - taiwan:
+                  - Overview: api/census/countries/taiwan/index.md
+                  - api: api/census/countries/taiwan/api.md
+                  - constants: api/census/countries/taiwan/constants.md
+                  - elections:
+                      - Overview: api/census/countries/taiwan/elections/index.md
+                      - loader: api/census/countries/taiwan/elections/loader.md
+                  - geography: api/census/countries/taiwan/geography.md
+                  - moi:
+                      - Overview: api/census/countries/taiwan/moi/index.md
+                      - loader: api/census/countries/taiwan/moi/loader.md
+                      - realprice: api/census/countries/taiwan/moi/realprice.md
+                      - schema: api/census/countries/taiwan/moi/schema.md
+                  - motc_mode_use: api/census/countries/taiwan/motc_mode_use.md
+                  - utils: api/census/countries/taiwan/utils.md
+              - usa:
+                  - Overview: api/census/countries/usa/index.md
+                  - acs1:
+                      - Overview: api/census/countries/usa/acs1/index.md
+                      - custom_fields: api/census/countries/usa/acs1/custom_fields.md
+                      - loader: api/census/countries/usa/acs1/loader.md
+                      - schema: api/census/countries/usa/acs1/schema.md
+                  - acs3:
+                      - Overview: api/census/countries/usa/acs3/index.md
+                      - custom_fields: api/census/countries/usa/acs3/custom_fields.md
+                      - loader: api/census/countries/usa/acs3/loader.md
+                      - schema: api/census/countries/usa/acs3/schema.md
+                  - acs5:
+                      - Overview: api/census/countries/usa/acs5/index.md
+                      - custom_fields: api/census/countries/usa/acs5/custom_fields.md
+                      - loader: api/census/countries/usa/acs5/loader.md
+                      - schema: api/census/countries/usa/acs5/schema.md
+                  - acs_commute_time: api/census/countries/usa/acs_commute_time.md
+                  - api: api/census/countries/usa/api.md
+                  - constants: api/census/countries/usa/constants.md
+                  - dhc:
+                      - Overview: api/census/countries/usa/dhc/index.md
+                      - custom_fields: api/census/countries/usa/dhc/custom_fields.md
+                      - loader: api/census/countries/usa/dhc/loader.md
+                      - schema: api/census/countries/usa/dhc/schema.md
+                  - elections:
+                      - Overview: api/census/countries/usa/elections/index.md
+                      - columns: api/census/countries/usa/elections/columns.md
+                      - loader: api/census/countries/usa/elections/loader.md
+                      - schema: api/census/countries/usa/elections/schema.md
+                  - elections_precinct:
+                      - Overview: api/census/countries/usa/elections_precinct/index.md
+                      - build_schema: api/census/countries/usa/elections_precinct/build_schema.md
+                      - loader: api/census/countries/usa/elections_precinct/loader.md
+                      - nyt2024: api/census/countries/usa/elections_precinct/nyt2024.md
+                      - official:
+                          - Overview: api/census/countries/usa/elections_precinct/official/index.md
+                          - ca: api/census/countries/usa/elections_precinct/official/ca.md
+                          - de: api/census/countries/usa/elections_precinct/official/de.md
+                          - hi: api/census/countries/usa/elections_precinct/official/hi.md
+                          - nc: api/census/countries/usa/elections_precinct/official/nc.md
+                      - unofficial:
+                          - Overview: api/census/countries/usa/elections_precinct/unofficial/index.md
+                          - fec: api/census/countries/usa/elections_precinct/unofficial/fec.md
+                          - medsl: api/census/countries/usa/elections_precinct/unofficial/medsl.md
+                          - medsl_alaska: api/census/countries/usa/elections_precinct/unofficial/medsl_alaska.md
+                          - medsl_boundaries: api/census/countries/usa/elections_precinct/unofficial/medsl_boundaries.md
+                          - nyt_direct: api/census/countries/usa/elections_precinct/unofficial/nyt_direct.md
+                          - nyt_medsl: api/census/countries/usa/elections_precinct/unofficial/nyt_medsl.md
+                          - vest_residual: api/census/countries/usa/elections_precinct/unofficial/vest_residual.md
+                  - fuel_prices: api/census/countries/usa/fuel_prices.md
+                  - geography: api/census/countries/usa/geography.md
+                  - housing:
+                      - Overview: api/census/countries/usa/housing/index.md
+                      - loader: api/census/countries/usa/housing/loader.md
+                  - lodes_rac:
+                      - Overview: api/census/countries/usa/lodes_rac/index.md
+                      - custom_fields: api/census/countries/usa/lodes_rac/custom_fields.md
+                      - loader: api/census/countries/usa/lodes_rac/loader.md
+                      - schema: api/census/countries/usa/lodes_rac/schema.md
+                  - lodes_wac:
+                      - Overview: api/census/countries/usa/lodes_wac/index.md
+                      - custom_fields: api/census/countries/usa/lodes_wac/custom_fields.md
+                      - loader: api/census/countries/usa/lodes_wac/loader.md
+                      - schema: api/census/countries/usa/lodes_wac/schema.md
+                  - religion:
+                      - Overview: api/census/countries/usa/religion/index.md
+                      - loader: api/census/countries/usa/religion/loader.md
+                  - utils: api/census/countries/usa/utils.md
+                  - voting_districts: api/census/countries/usa/voting_districts.md
           - worldwide:
-              - Overview: api/countries/worldwide/index.md
+              - Overview: api/census/worldwide/index.md
               - gba:
-                  - Overview: api/countries/worldwide/gba/index.md
-                  - loader: api/countries/worldwide/gba/loader.md
-                  - metrics: api/countries/worldwide/gba/metrics.md
-                  - population: api/countries/worldwide/gba/population.md
+                  - Overview: api/census/worldwide/gba/index.md
+                  - loader: api/census/worldwide/gba/loader.md
+                  - metrics: api/census/worldwide/gba/metrics.md
+                  - population: api/census/worldwide/gba/population.md
+              - un_metro_areas: api/census/worldwide/un_metro_areas.md
               - worldpop:
-                  - Overview: api/countries/worldwide/worldpop/index.md
-                  - custom_fields: api/countries/worldwide/worldpop/custom_fields.md
-                  - h3: api/countries/worldwide/worldpop/h3.md
-                  - loader: api/countries/worldwide/worldpop/loader.md
-                  - schema: api/countries/worldwide/worldpop/schema.md
+                  - Overview: api/census/worldwide/worldpop/index.md
+                  - custom_fields: api/census/worldwide/worldpop/custom_fields.md
+                  - h3: api/census/worldwide/worldpop/h3.md
+                  - loader: api/census/worldwide/worldpop/loader.md
+                  - schema: api/census/worldwide/worldpop/schema.md
       - dasymetric: api/dasymetric.md
       - derived_columns: api/derived_columns.md
       - elections: api/elections.md
@@ -392,14 +399,10 @@ nav:
       - geometry_levels: api/geometry_levels.md
       - global_equivalents: api/global_equivalents.md
       - latest_columns: api/latest_columns.md
-      - new_schema: api/new_schema.md
       - published_shares: api/published_shares.md
       - raster_to_h3: api/raster_to_h3.md
       - remainder: api/remainder.md
       - resolution: api/resolution.md
       - schema: api/schema.md
-      - worldwide:
-          - Overview: api/worldwide/index.md
-          - un_metro_areas: api/worldwide/un_metro_areas.md
       - year_built: api/year_built.md
       - year_resolution: api/year_resolution.md

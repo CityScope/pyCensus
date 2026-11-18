@@ -9,24 +9,29 @@ Read first: `GLOBAL_CENSUS_COLUMNS.md` (every global column, what it means, whic
 2. **Check the source with a known total.** Sum the population (or households) of what you loaded and compare with an independent figure (the agency's published total, Wikipedia). A 200 response that is an HTML error page is not data.
 3. **Sub-municipal data only** where it exists: the finest published unit (block, enumeration area, grid cell, statistical area, census tract). Municipality-only data is a last resort and must be flagged. Exceptions the study accepts: Andorra parishes, travel-survey zones, small municipalities, a district level when nothing finer exists.
 4. **Elections are sub-county**: precinct / polling place / station / mesa results with the **official electoral districts as the native geometry**, then resampled to the census levels (see `elections_common.py`). County- or municipality-only election data is not accepted when polling-unit data exist.
-5. **Keep original column names.** A source column keeps its own prefixed name (`acs5_povertyBelow100`); the global column repeats the value under the shared name. If a global column's name is unlike its source column, **both** exist (the global one and the original). See `schemas/global_equivalents.json`.
+5. **Keep original column names.** A source column keeps its own prefixed name (`acs5_povertyBelow100`); the global column repeats the value under the shared name. If a global column's name is unlike its source column, **both** exist (the global one and the original). See `reference/global_equivalents.json`.
 6. **Shared cache**: raw downloads go to the shared cache (`TransitLOSStudies/cache/...`, reachable as `cache/pycensus`), never into the package or the repo. Large files: the pre-commit hook (`tools/check_large_files.py`) refuses a file over 10 MB once and never commits one over 50 MB; raw data belongs in the cache, not in git.
 7. API keys: `pycensus.api_keys.resolve_api_key` (argument -> env var -> `api_keys.json`, gitignored). If a source needs a key you do not have, leave the module honestly blocked (section 7) and document how to get one.
 8. Never `git commit` / `git push` for the user.
 
 ## 1. Orientation: what already exists
 
+The schema files (where each one lives and what it must contain): [SCHEMAS.md](SCHEMAS.md).
+
 ```
 src/pycensus/
-  schemas/global_schema.json        the global columns (category, feature_name, definition, type, unit, relative_to, resampling_up/down, resampling_weight)
-  schemas/global_equivalents.json   local->global renames ("equivalents"), local twins that keep the original meaning ("originals"), period patterns ("latest_patterns")
-  schemas/global_levels.json        geometry levels: nation, state, province, municipality, ... down to the finest, with resampling rules between them
-  schemas/year_built_bands.json     construction-year bands -> dwellings_built_* shares
+  census/global_schema.json        the global columns (category, feature_name, definition, type, unit, relative_to, resampling_up/down, resampling_weight)
+  reference/global_equivalents.json   local->global renames ("equivalents"), local twins that keep the original meaning ("originals"), period patterns ("latest_patterns")
+  reference/global_levels.json        geometry levels: nation, state, province, municipality, ... down to the finest, with resampling rules between them
+  reference/year_built_bands.json     construction-year bands -> dwellings_built_* shares
   derived_columns.py                add_derived_columns + add_gap_columns: global columns computed from local ones (copy / sum / rate x base / commute bins / area)
   elections_common.py, electoral.py shared election machinery (units -> WorldPop pixels -> H3 -> census geometry)
-  countries/<country>/              geography, constants, levels.json, schema/*_schema.json, <source>/loader.py
-  countries/worldwide/              WorldPop gridded population (fallback for anywhere)
-  countries/eu/                     EU-wide Eurostat / GISCO: census_grid (Census 2021 1 km grid, high), lau (municipal population, low), eurostat (NUTS 2/3 indicators, low)
+  census/countries/<country>/       geography, constants, levels.json, schema/*_schema.json, <source>/loader.py
+  census/worldwide/                 WorldPop and GBA population, UN metropolitan areas (worldwide fallback); schema/*_schema.json
+  cadaster/global_schema.json       the unified building fields
+  cadaster/countries/<country>/     cadaster (building) sources of a country, <source>/schema.json + loader.py
+  cadaster/worldwide/               GlobalBuildingAtlas buildings (worldwide fallback)
+  census/countries/eu/              EU-wide Eurostat / GISCO: census_grid (Census 2021 1 km grid, high), lau (municipal population, low), eurostat (NUTS 2/3 indicators, low)
   resolution.py                     resolution class of a dataset (low / normal / high) and the rules of use
 tools/generate_column_docs.py       regenerate GLOBAL_CENSUS_COLUMNS.md
 tools/census_coverage.py            report which global columns a result table fills (the gap monitor)
@@ -52,7 +57,7 @@ Rules of use: regressions never use `low`; the census tab uses only `high` (`res
 the source's schema JSON (`"resolution"`) and as `RESOLUTION` in its loader, and record the classifier's failures in
 the country README.
 
-In an EU country, start from `countries/eu` (keyless, all member states): the Census 2021 1 km grid is `high`, so it
+In an EU country, start from `census/countries/eu` (keyless, all member states): the Census 2021 1 km grid is `high`, so it
 already satisfies the census tab for population, sex, broad age, employment, place of birth and recent moves; look
 for national sub-municipal sources only for the other topics.
 
@@ -66,9 +71,9 @@ for national sub-municipal sources only for the other topics.
    * Asia/Middle East: national statistics bureau open data (Taiwan MOI/DGBAS statistical areas, Israel CBS statistical areas), municipal open-data portals; China publishes almost nothing below district: use WorldPop and say so.
    * Always also check: national open-data portal, the agency's FTP/bucket, GitHub mirrors, Wayback Machine, academic repositories (Zenodo, Figshare), and Humanitarian Data Exchange (HDX).
 2. **Fetch for real and inspect** (`curl -I`, then open the file): field list, row count, CRS, a population total. Keep the raw download in the shared cache with its URL and date in the country README.
-3. **Boundaries.** Fill `geography.py`: real boundary download, EPSG:4326 output, `IMPLEMENTED_LEVELS` only for levels backed by a verified source, `levels.json` mapping the country's native levels to the global levels (`schemas/global_levels.json`). Prefer many levels (municipality -> census tract -> block): the study resamples between them.
-4. **Schema** `schema/<source>_schema.json`: one feature per column you take, with `feature_name` (use the **global name** when the concept is the same), `category`, `definition`, `type`, `unit`, `resampling_up/down`, `original_name` (the source's own column code), `country`, `source`, `codes`. Copy the shape of `countries/chile/schema/ine_manzana_schema.json`. Fields the source documents but you did not verify are not added.
-5. **Loader** `<source>/loader.py`: download (cached), assemble into a GeoDataFrame with a `GEOID` and the schema's columns, sums for counts, weighted means for averages. Mirror `countries/chile/ine/manzana.py` (bulk file) or `countries/spain/ine/` (API).
+3. **Boundaries.** Fill `geography.py`: real boundary download, EPSG:4326 output, `IMPLEMENTED_LEVELS` only for levels backed by a verified source, `levels.json` mapping the country's native levels to the global levels (`reference/global_levels.json`). Prefer many levels (municipality -> census tract -> block): the study resamples between them.
+4. **Schema** `schema/<source>_schema.json`: one feature per column you take, with `feature_name` (use the **global name** when the concept is the same), `category`, `definition`, `type`, `unit`, `resampling_up/down`, `original_name` (the source's own column code), `country`, `source`, `codes`. Copy the shape of `census/countries/chile/schema/ine_manzana_schema.json`. Fields the source documents but you did not verify are not added.
+5. **Loader** `<source>/loader.py`: download (cached), assemble into a GeoDataFrame with a `GEOID` and the schema's columns, sums for counts, weighted means for averages. Mirror `census/countries/chile/ine/manzana.py` (bulk file) or `census/countries/spain/ine/` (API).
 6. **Tests with mocked network** (`tests/test_<country>.py`, pattern of `tests/test_andorra.py`): schema loads, a tiny fixture produces the expected columns and totals, no network in CI.
 7. **Wire the city** (city-science only): ISO3 -> module in `city_config.py::_ISO3_TO_PYCENSUS_MODULE`, a `<country>_census_loader` in `pipeline.py`, its `*_LEVELS` and `KEEP_COLUMNS`. Not before the loader is verified end to end for one real area.
 8. Run `tools/generate_column_docs.py` and `tools/census_coverage.py` on a rebuilt city and record the result in the country README.
@@ -98,7 +103,7 @@ Concept hints for the columns that are usually missing:
 * **indices** (`socialStatusIndex`, `socialDynamicsIndex`, `deprivationIndex`): only where an official index exists (Berlin MSS, Index of Multiple Deprivation, Chile IVS). Do not invent a composite.
 
 ### Adding a NEW global column
-Only when a concept recurs or is clearly useful across countries and is not already covered (search the glossary first). Steps: add an entry to `schemas/global_schema.json` (category from `categories.json`, definition in one sentence, `type`, `unit`, `relative_to` if it is a share of another column, `resampling_up` (sum for counts), `resampling_down` (`weighted_divide` with `resampling_weight` = population for counts)); fill it from at least one country; run `tools/generate_column_docs.py`; add equivalents/rules for the countries that already have the concept under another name. **Whenever you meet a topic the schema has no column for, add the column** -- the global schema is meant to grow with every new topic. Keep names in `camelCase` for counts (`ownerHouseholds`) and `snake_case` for units/shares that already follow it (`rent_per_m2_mean`, `dwellings_built_*_share`).
+Only when a concept recurs or is clearly useful across countries and is not already covered (search the glossary first). Steps: add an entry to `census/global_schema.json` (category from `categories.json`, definition in one sentence, `type`, `unit`, `relative_to` if it is a share of another column, `resampling_up` (sum for counts), `resampling_down` (`weighted_divide` with `resampling_weight` = population for counts)); fill it from at least one country; run `tools/generate_column_docs.py`; add equivalents/rules for the countries that already have the concept under another name. **Whenever you meet a topic the schema has no column for, add the column** -- the global schema is meant to grow with every new topic. Keep names in `camelCase` for counts (`ownerHouseholds`) and `snake_case` for units/shares that already follow it (`rent_per_m2_mean`, `dwellings_built_*_share`).
 
 ## 4. Elections
 
@@ -109,19 +114,19 @@ Only when a concept recurs or is clearly useful across countries and is not alre
 
 ## 4b. Cadastre and building stock
 
-One row per building, every source in one unified schema (`schemas/cadaster_global_schema.json`): `building_id`, `source`,
+One row per building, every source in one unified schema (`cadaster/global_schema.json`): `building_id`, `source`,
 `country`, `footprint_m2`, `floors_above`, `floors_below`, `height_m`, `built_area_m2` (+ `built_area_method`), `use_class`
 (+ `use_original`), `dwellings`, `units`, `population_night`, `population_day`, `year_built`. Missing fields stay null.
 
-**Layout of a new source** `pycensus/cadaster/<country>/<source>/`:
+**Layout of a new source** `pycensus/cadaster/countries/<country>/<source>/`:
 
 1. `schema.json`: `source` key (`<iso2>_<name>`, e.g. `es_navarra`), `country` (ISO3), `name`, `url`, `license`, `coverage`,
    `api_key` (true/false), `fields` (how each unified field is obtained from the source's own fields, in words), `use_map`
-   (source use code -> `use_class`). Copy `cadaster/spain/araba/schema.json`.
+   (source use code -> `use_class`). Copy `cadaster/countries/spain/araba/schema.json`.
 2. `loader.py` with `load(aoi, cache_dir=None) -> GeoDataFrame`: download once into `cache_root(cache_dir) / <source>`, parse,
    map uses with `map_use`, compute areas with `true_area_m2`, return through `standardize(df, source, country)` (it fills
    `built_area_m2` from floors x footprint, else height x footprint / 3 m).
-3. Register it in `cadaster/__init__.py`: `SOURCES[<key>] = "<country>.<source>"` and its place in `BY_COUNTRY[<ISO3>]`
+3. Register it in `cadaster/__init__.py`: `SOURCES[<key>] = "countries.<country>.<source>"` and its place in `BY_COUNTRY[<ISO3>]`
    (best first: a regional cadastre before the national one). `load_buildings` then takes it, and fills every H3 cell no
    cadastre covers with GlobalBuildingAtlas (GBA) footprints and heights.
 4. A mocked test with a tiny GML / GeoJSON fixture: the unified columns exist, areas and floors are right.
@@ -130,7 +135,7 @@ One row per building, every source in one unified schema (`schemas/cadaster_glob
 
 * EU countries: the INSPIRE **Buildings (BU)** download service of the national or regional cadastre, usually an ATOM feed
   with one zip per municipality or province (`"INSPIRE BU ATOM <country>"`, `"edificios INSPIRE descarga"`,
-  `"Gebäude INSPIRE Download"`). `cadaster/spain/_inspire_bu.py` already reads ATOM feeds and BU GML: reuse it.
+  `"Gebäude INSPIRE Download"`). `cadaster/countries/spain/_inspire_bu.py` already reads ATOM feeds and BU GML: reuse it.
 * City or state 3D models: CityGML / LoD2 building models (`"LoD2 Gebäudemodell Download"`, `"3D massing open data"`);
   they give heights and floors for every building.
 * United States: the National Structure Inventory (USACE NSI, keyless API and state bundles), with use and floor area.
@@ -142,13 +147,13 @@ use codes in `use_original`; say in the schema's `fields` how floors and areas w
 
 ## 4c. Other kinds of data
 
-* **Gridded population** (`countries/worldwide`): WorldPop 100 m is the fallback anywhere; GBA built floor area spreads it
-  more precisely (`countries/worldwide/gba/population.py`). Grids are rescaled to the census total with one factor, and the
+* **Gridded population** (`census/worldwide`): WorldPop 100 m is the fallback anywhere; GBA built floor area spreads it
+  more precisely (`census/worldwide/gba/population.py`). Grids are rescaled to the census total with one factor, and the
   factor is saved.
 * **Travel surveys and published mode shares**: only figures the agency published for the territory, fetched with
   `published_shares.fetch` (each figure carries its URL and a pattern that must appear in the document, so a changed
   publication fails loudly). Never estimate a share yourself.
-* **EU-wide indicators** (`countries/eu`): Eurostat tables at NUTS 2 / 3 are `low` resolution: context only, never in
+* **EU-wide indicators** (`census/countries/eu`): Eurostat tables at NUTS 2 / 3 are `low` resolution: context only, never in
   regressions.
 
 ## 5. Documentation to leave behind
@@ -177,7 +182,7 @@ Keys in use today:
 | `us_census` | `US_CENSUS_API_KEY` | US Census Bureau API (ACS, Decennial) | https://api.census.gov/data/key_signup.html |
 | `destatis_genesis` (token) or `destatis_genesis_username` + `destatis_genesis_password` | `DESTATIS_GENESIS_TOKEN` (or `DESTATIS_GENESIS_USERNAME` + password key) | Destatis GENESIS-Online (German census tables) | https://www-genesis.destatis.de (register an account) |
 
-Every other source in pyCensus is keyless, including all cadastre sources and `countries/eu`.
+Every other source in pyCensus is keyless, including all cadastre sources and `census/countries/eu`.
 
 **Key-required sources (Germany GENESIS pattern).** Give each key a specific name (`destatis_genesis_username`, not `api_key`) and add it to `api_keys.example.json`; raise a small specific exception (`GenesisCredentialsError(RuntimeError)`) from a `resolve_<x>_credentials()` that uses `resolve_api_key` and names the missing keys and where to register; call it **before** any expensive download; state in the module docstring exactly which endpoints a guest account was verified to work for; if the authenticated parse cannot be tested yet, leave `NotImplementedError` with the exact next calls instead of guessing. Fall back to WorldPop for population meanwhile.
 

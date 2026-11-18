@@ -33,8 +33,8 @@ def test_no_cwd_pollution(monkeypatch, tmp_path):
     cwd = tmp_path / "cwd"
     cwd.mkdir()
     monkeypatch.chdir(cwd)
-    from pycensus.countries.spain.catastro import loader as catastro
-    from pycensus.countries.usa.housing import loader as housing
+    from pycensus.census.countries.spain.catastro import loader as catastro
+    from pycensus.census.countries.usa.housing import loader as housing
     from pycensus.elections_common import default_elections_cache
 
     default_elections_cache()

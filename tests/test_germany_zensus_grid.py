@@ -1,4 +1,4 @@
-"""Tests for pycensus.countries.germany.zensus_grid: the real Zensus 2022 100m population grid.
+"""Tests for pycensus.census.countries.germany.zensus_grid: the real Zensus 2022 100m population grid.
 
 Technical aspects:
     Real network calls (the Destatis zip download) are monkeypatched out
@@ -27,7 +27,7 @@ import pandas as pd
 import pytest
 from shapely.geometry import box
 
-from pycensus.countries.germany.zensus_grid import loader
+from pycensus.census.countries.germany.zensus_grid import loader
 
 
 class TestLoader:

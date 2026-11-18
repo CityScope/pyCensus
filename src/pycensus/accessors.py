@@ -28,7 +28,7 @@ from typing import List, Union
 import geopandas as gpd
 import pandas as pd
 
-from .schema import ColumnSchema
+from pycensus.schema import ColumnSchema
 
 
 class ColumnView:

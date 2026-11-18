@@ -1,7 +1,7 @@
 """Four year-of-construction shares of dwellings from any source's own construction-period bands.
 
 `dwellings_built_before_1945_share`, `dwellings_built_1945_1970_share`, `dwellings_built_1970_2000_share`, `dwellings_built_after_2000_share` (0-1).
-Bands come from `schemas/year_built_bands.json` (US ACS B25034, Spain Census 2021 / Catastro, Germany Zensus 2022 grid, Canada StatCan 2021). Each band
+Bands come from `reference/year_built_bands.json` (US ACS B25034, Spain Census 2021 / Catastro, Germany Zensus 2022 grid, Canada StatCan 2021). Each band
 [first, last] is spread uniformly over its years (half-open [first, last+1)) and cut at the bin edges 1945 / 1970 / 2000, so a band straddling an edge is
 split pro rata (ACS 1940-49 -> 50 % before 1945; German 1919-48 -> 26/30 before 1945; Spanish 1961-70 -> 9/10 before 1970); the oldest open band is
 assumed to start in 1900. Unknown-year dwellings are not part of the denominator (the shares of the known ones sum to 1).
@@ -15,7 +15,7 @@ from typing import Dict, List, Optional, Sequence
 
 import numpy as np
 
-_FILE = Path(__file__).resolve().parent / "schemas" / "year_built_bands.json"
+_FILE = Path(__file__).resolve().parent / "reference" / "year_built_bands.json"
 SHARE_NAMES = ("dwellings_built_before_1945_share", "dwellings_built_1945_1970_share", "dwellings_built_1970_2000_share", "dwellings_built_after_2000_share")
 
 
@@ -99,7 +99,7 @@ def add_year_built_shares(df, scale: Optional[float] = None):
     if src is None:
         return df
     if scale is None:
-        from .derived_columns import SHARE_SCALE
+        from pycensus.derived_columns import SHARE_SCALE
 
         scale = SHARE_SCALE
     sh = shares_from_bands(df, src["columns"], scale)

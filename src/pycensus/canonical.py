@@ -1,7 +1,7 @@
 """Canonical (global-schema) column naming for every source's ``load()`` output.
 
 Technical aspects:
-    ``schemas/global_schema.json`` is pyCensus' cross-country vocabulary:
+    ``census/global_schema.json`` is pyCensus' cross-country vocabulary:
     a list of ``feature_name`` entries (``population``, ``malePopulation``,
     ``medianHouseholdIncome``, ...) that mean the same thing in every
     country. Each country's ``schema.py`` already names its
@@ -41,9 +41,9 @@ from typing import TYPE_CHECKING, Dict, FrozenSet, Optional
 if TYPE_CHECKING:  # pragma: no cover
     import geopandas as gpd
 
-    from .schema import ColumnSchema
+    from pycensus.schema import ColumnSchema
 
-GLOBAL_SCHEMA_PATH = Path(__file__).parent / "schemas" / "global_schema.json"
+GLOBAL_SCHEMA_PATH = Path(__file__).parent / "census" / "global_schema.json"
 
 
 @lru_cache(maxsize=1)

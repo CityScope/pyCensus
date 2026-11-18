@@ -1,9 +1,9 @@
-"""GlobalBuildingAtlas buildings (pycensus.countries.worldwide.gba) mapped onto the unified cadaster schema."""
+"""GlobalBuildingAtlas buildings (pycensus.census.worldwide.gba) mapped onto the unified cadaster schema."""
 from __future__ import annotations
 
 import geopandas as gpd
 
-from ... import standardize
+from pycensus.cadaster import standardize
 
 
 def load(aoi: gpd.GeoDataFrame, cache_dir=None) -> gpd.GeoDataFrame:
@@ -16,7 +16,7 @@ def load(aoi: gpd.GeoDataFrame, cache_dir=None) -> gpd.GeoDataFrame:
     Returns:
         The buildings.
     """
-    from ....countries.worldwide import gba
+    from pycensus.census.worldwide import gba
 
     b = gba.fill_heights(gba.load_buildings(aoi, cache_dir=cache_dir))
     b = b.rename(columns={"height": "height_m"})
