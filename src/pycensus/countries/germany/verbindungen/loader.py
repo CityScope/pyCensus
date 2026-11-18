@@ -70,6 +70,7 @@ Technical aspects:
 """
 
 from __future__ import annotations
+from pycensus.cache import get_data_dir
 
 from pathlib import Path
 from typing import Optional
@@ -84,11 +85,11 @@ GRID_CSV_URL = "https://mobilithek.info//mdp-api/files/aux/767412562791673856/St
 GRID_CRS = 3035  # ETRS89-LAEA Europe, same INSPIRE grid CRS as zensus_grid.
 CELL_SIZE_M = 1000
 
-DEFAULT_DATA_DIR = "data/germany"
+DEFAULT_DATA_DIR = str(get_data_dir("germany"))  # env/temp default, resolved at import
 
 
 def _raw_dir(data_dir: Optional[str] = None) -> Path:
-    base = Path(data_dir) if data_dir else Path(DEFAULT_DATA_DIR)
+    base = get_data_dir("germany", data_dir)
     raw_dir = base / "raw" / "verbindungen"
     raw_dir.mkdir(parents=True, exist_ok=True)
     return raw_dir
@@ -125,6 +126,9 @@ def download_grid(data_dir: Optional[str] = None) -> gpd.GeoDataFrame:
         GeoDataFrame with ``GEOID`` (real ``ao_1km`` cell ID), ``jobsTotal``
         (real ``gesamtpendler`` "total commuters"/workplace-population
         count), ``geometry`` (EPSG:4326).
+
+    Args:
+        data_dir: Folder of the raw downloads; ``None`` = the pycensus cache.
     """
     raw_dir = _raw_dir(data_dir)
     cached_path = raw_dir / "de_verbindungen_grid_1km.parquet"

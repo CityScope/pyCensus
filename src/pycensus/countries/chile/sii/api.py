@@ -51,6 +51,7 @@ Technical aspects:
 """
 
 from __future__ import annotations
+from pycensus.cache import get_data_dir
 
 from pathlib import Path
 from typing import Optional
@@ -66,7 +67,7 @@ HEADER_ROW = 5  # 0-indexed -- real header is on row 6 of the sheet
 def _raw_dir(data_dir: Optional[str] = None) -> Path:
     from .. import constants
 
-    base = Path(data_dir) if data_dir else Path(constants.DEFAULT_DATA_DIR)
+    base = get_data_dir("chile", data_dir)
     raw_dir = base / "raw" / "sii"
     raw_dir.mkdir(parents=True, exist_ok=True)
     return raw_dir
@@ -98,6 +99,9 @@ def fetch_table(data_dir: Optional[str] = None) -> pd.DataFrame:
         DataFrame with real columns ``ano_comercial``, ``id_region``,
         ``id_comuna`` (free-text names), ``jobsTotal`` (real "Número de
         Trabajadores Dependientes Informados").
+
+    Args:
+        data_dir: Folder of the raw downloads; ``None`` = the pycensus cache.
     """
     path = _fetch_xlsx(data_dir)
     raw = pd.read_excel(path, sheet_name=SHEET_NAME, header=HEADER_ROW)

@@ -1,0 +1,402 @@
+{
+ "country": "canada",
+ "source": "elections",
+ "full_name": "Toronto election results (Elections Canada, Elections Ontario, City of Toronto) by poll, resampled to H3 res 8 and dissemination areas",
+ "years": [
+  2022,
+  2025
+ ],
+ "levels": [
+  "dissemination-area"
+ ],
+ "features": [
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_total_votes",
+   "original_name": "elec_national_2025_total_votes",
+   "country": "canada",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_total_votes"
+   ],
+   "native_level": "poll",
+   "type": "count",
+   "unit": "votes",
+   "definition": "Valid votes cast (candidates + blank), 45th federal general election 2025",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_turnout_rate",
+   "original_name": "elec_national_2025_turnout_rate",
+   "country": "canada",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_turnout_rate"
+   ],
+   "native_level": "poll",
+   "type": "rate",
+   "unit": "0-1",
+   "definition": "Ballots cast / registered electors, 45th federal general election 2025",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_national_2025_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_left_share",
+   "original_name": "elec_national_2025_left_share",
+   "country": "canada",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_left_share"
+   ],
+   "native_level": "poll",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for bloc left, 45th federal general election 2025",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_national_2025_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_right_share",
+   "original_name": "elec_national_2025_right_share",
+   "country": "canada",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_right_share"
+   ],
+   "native_level": "poll",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for bloc right, 45th federal general election 2025",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_national_2025_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_other_share",
+   "original_name": "elec_national_2025_other_share",
+   "country": "canada",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_other_share"
+   ],
+   "native_level": "poll",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for bloc other, 45th federal general election 2025",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_national_2025_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_party_conservative_share",
+   "original_name": "elec_national_2025_party_conservative_share",
+   "country": "canada",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_party_conservative_share"
+   ],
+   "native_level": "poll",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for party/candidate party_conservative, 45th federal general election 2025",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_national_2025_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_party_liberal_share",
+   "original_name": "elec_national_2025_party_liberal_share",
+   "country": "canada",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_party_liberal_share"
+   ],
+   "native_level": "poll",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for party/candidate party_liberal, 45th federal general election 2025",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_national_2025_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_party_ndp_new_democratic_party_share",
+   "original_name": "elec_national_2025_party_ndp_new_democratic_party_share",
+   "country": "canada",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_party_ndp_new_democratic_party_share"
+   ],
+   "native_level": "poll",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for party/candidate party_ndp_new_democratic_party, 45th federal general election 2025",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_national_2025_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2025_total_votes",
+   "original_name": "elec_state_2025_total_votes",
+   "country": "canada",
+   "source": "elections",
+   "codes": [
+    "elec_state_2025_total_votes"
+   ],
+   "native_level": "poll",
+   "type": "count",
+   "unit": "votes",
+   "definition": "Valid votes cast (candidates + blank), Ontario general election 2025",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2025_left_share",
+   "original_name": "elec_state_2025_left_share",
+   "country": "canada",
+   "source": "elections",
+   "codes": [
+    "elec_state_2025_left_share"
+   ],
+   "native_level": "poll",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for bloc left, Ontario general election 2025",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_state_2025_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2025_right_share",
+   "original_name": "elec_state_2025_right_share",
+   "country": "canada",
+   "source": "elections",
+   "codes": [
+    "elec_state_2025_right_share"
+   ],
+   "native_level": "poll",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for bloc right, Ontario general election 2025",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_state_2025_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2025_other_share",
+   "original_name": "elec_state_2025_other_share",
+   "country": "canada",
+   "source": "elections",
+   "codes": [
+    "elec_state_2025_other_share"
+   ],
+   "native_level": "poll",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for bloc other, Ontario general election 2025",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_state_2025_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2025_party_lib_share",
+   "original_name": "elec_state_2025_party_lib_share",
+   "country": "canada",
+   "source": "elections",
+   "codes": [
+    "elec_state_2025_party_lib_share"
+   ],
+   "native_level": "poll",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for party/candidate party_lib, Ontario general election 2025",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_state_2025_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2025_party_ndp_share",
+   "original_name": "elec_state_2025_party_ndp_share",
+   "country": "canada",
+   "source": "elections",
+   "codes": [
+    "elec_state_2025_party_ndp_share"
+   ],
+   "native_level": "poll",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for party/candidate party_ndp, Ontario general election 2025",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_state_2025_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2025_party_pcp_share",
+   "original_name": "elec_state_2025_party_pcp_share",
+   "country": "canada",
+   "source": "elections",
+   "codes": [
+    "elec_state_2025_party_pcp_share"
+   ],
+   "native_level": "poll",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for party/candidate party_pcp, Ontario general election 2025",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_state_2025_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2022_total_votes",
+   "original_name": "elec_municipal_2022_total_votes",
+   "country": "canada",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2022_total_votes"
+   ],
+   "native_level": "poll",
+   "type": "count",
+   "unit": "votes",
+   "definition": "Valid votes cast (candidates + blank), Toronto municipal election 2022 (mayor)",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2022_turnout_rate",
+   "original_name": "elec_municipal_2022_turnout_rate",
+   "country": "canada",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2022_turnout_rate"
+   ],
+   "native_level": "poll",
+   "type": "rate",
+   "unit": "0-1",
+   "definition": "Ballots cast / registered electors, Toronto municipal election 2022 (mayor)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_municipal_2022_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2022_left_share",
+   "original_name": "elec_municipal_2022_left_share",
+   "country": "canada",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2022_left_share"
+   ],
+   "native_level": "poll",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for bloc left, Toronto municipal election 2022 (mayor)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_municipal_2022_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2022_right_share",
+   "original_name": "elec_municipal_2022_right_share",
+   "country": "canada",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2022_right_share"
+   ],
+   "native_level": "poll",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for bloc right, Toronto municipal election 2022 (mayor)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_municipal_2022_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2022_other_share",
+   "original_name": "elec_municipal_2022_other_share",
+   "country": "canada",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2022_other_share"
+   ],
+   "native_level": "poll",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for bloc other, Toronto municipal election 2022 (mayor)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_municipal_2022_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2022_party_brown_chloe_marie_share",
+   "original_name": "elec_municipal_2022_party_brown_chloe_marie_share",
+   "country": "canada",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2022_party_brown_chloe_marie_share"
+   ],
+   "native_level": "poll",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for party/candidate party_brown_chloe_marie, Toronto municipal election 2022 (mayor)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_municipal_2022_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2022_party_penalosa_gil_share",
+   "original_name": "elec_municipal_2022_party_penalosa_gil_share",
+   "country": "canada",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2022_party_penalosa_gil_share"
+   ],
+   "native_level": "poll",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for party/candidate party_penalosa_gil, Toronto municipal election 2022 (mayor)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_municipal_2022_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2022_party_tory_john_share",
+   "original_name": "elec_municipal_2022_party_tory_john_share",
+   "country": "canada",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2022_party_tory_john_share"
+   ],
+   "native_level": "poll",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for party/candidate party_tory_john, Toronto municipal election 2022 (mayor)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_municipal_2022_total_votes"
+  }
+ ]
+}

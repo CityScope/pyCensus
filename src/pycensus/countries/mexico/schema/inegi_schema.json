@@ -2,15 +2,24 @@
   "country": "mexico",
   "source": "inegi",
   "full_name": "INEGI Censo de Poblacion y Vivienda 2020",
-  "years": [2020],
-  "levels": ["state", "municipality", "ageb"],
+  "years": [
+    2020
+  ],
+  "levels": [
+    "state",
+    "municipality",
+    "ageb"
+  ],
   "features": [
     {
       "category": "population",
       "feature_name": "population",
+      "original_name": "POBTOT",
       "country": "mexico",
       "source": "inegi",
-      "codes": ["POBTOT"],
+      "codes": [
+        "POBTOT"
+      ],
       "definition": "Total population.",
       "type": "count",
       "unit": "",
@@ -20,9 +29,12 @@
     {
       "category": "population",
       "feature_name": "malePopulation",
+      "original_name": "POBMAS",
       "country": "mexico",
       "source": "inegi",
-      "codes": ["POBMAS"],
+      "codes": [
+        "POBMAS"
+      ],
       "definition": "Male population. Matches global_schema.json's malePopulation exactly.",
       "type": "count",
       "unit": "",
@@ -33,9 +45,12 @@
     {
       "category": "population",
       "feature_name": "femalePopulation",
+      "original_name": "POBFEM",
       "country": "mexico",
       "source": "inegi",
-      "codes": ["POBFEM"],
+      "codes": [
+        "POBFEM"
+      ],
       "definition": "Female population. Matches global_schema.json's femalePopulation exactly.",
       "type": "count",
       "unit": "",
@@ -46,9 +61,12 @@
     {
       "category": "population",
       "feature_name": "population15plus",
+      "original_name": "P_15YMAS",
       "country": "mexico",
       "source": "inegi",
-      "codes": ["P_15YMAS"],
+      "codes": [
+        "P_15YMAS"
+      ],
       "definition": "Population aged 15 and over.",
       "type": "count",
       "unit": "",
@@ -59,9 +77,12 @@
     {
       "category": "population",
       "feature_name": "adultPopulation",
+      "original_name": "P_18YMAS",
       "country": "mexico",
       "source": "inegi",
-      "codes": ["P_18YMAS"],
+      "codes": [
+        "P_18YMAS"
+      ],
       "definition": "Adult population (18 and over). Matches global_schema.json's adultPopulation exactly.",
       "type": "count",
       "unit": "",
@@ -72,9 +93,12 @@
     {
       "category": "raceEthinicity",
       "feature_name": "minorityEthnicityPopulation",
+      "original_name": "P5_HLI",
       "country": "mexico",
       "source": "inegi",
-      "codes": ["P5_HLI"],
+      "codes": [
+        "P5_HLI"
+      ],
       "definition": "Population aged 5+ who speak an indigenous language -- INEGI's and Mexico's own census classification's standard proxy for Indigenous population identification, matching global_schema.json's minorityEthnicityPopulation ('ethnic, racial, Indigenous, or other officially defined minority population category according to the country's census classification').",
       "type": "count",
       "unit": "",
@@ -85,9 +109,12 @@
     {
       "category": "religion",
       "feature_name": "populationCatholic",
+      "original_name": "PCATOLICA",
       "country": "mexico",
       "source": "inegi",
-      "codes": ["PCATOLICA"],
+      "codes": [
+        "PCATOLICA"
+      ],
       "definition": "Catholic population.",
       "type": "count",
       "unit": "",
@@ -98,9 +125,12 @@
     {
       "category": "religion",
       "feature_name": "populationEvangelicalProtestant",
+      "original_name": "PRO_CRIEVA",
       "country": "mexico",
       "source": "inegi",
-      "codes": ["PRO_CRIEVA"],
+      "codes": [
+        "PRO_CRIEVA"
+      ],
       "definition": "Evangelical/Protestant population.",
       "type": "count",
       "unit": "",
@@ -111,9 +141,12 @@
     {
       "category": "religion",
       "feature_name": "populationOtherReligion",
+      "original_name": "POTRAS_REL",
       "country": "mexico",
       "source": "inegi",
-      "codes": ["POTRAS_REL"],
+      "codes": [
+        "POTRAS_REL"
+      ],
       "definition": "Population of other/non-Catholic religions.",
       "type": "count",
       "unit": "",
@@ -124,9 +157,12 @@
     {
       "category": "religion",
       "feature_name": "populationNoReligion",
+      "original_name": "PSIN_RELIG",
       "country": "mexico",
       "source": "inegi",
-      "codes": ["PSIN_RELIG"],
+      "codes": [
+        "PSIN_RELIG"
+      ],
       "definition": "Population with no religion.",
       "type": "count",
       "unit": "",
@@ -137,10 +173,14 @@
     {
       "category": "religion",
       "feature_name": "religiousPopulation",
+      "original_name": "computed from population, populationNoReligion",
       "country": "mexico",
       "source": "inegi",
       "codes": [],
-      "computed_from": ["population", "populationNoReligion"],
+      "computed_from": [
+        "population",
+        "populationNoReligion"
+      ],
       "definition": "Population reporting affiliation with any religion, computed as population minus populationNoReligion (PSIN_RELIG). Matches global_schema.json's religiousPopulation exactly.",
       "type": "count",
       "unit": "",
@@ -151,9 +191,12 @@
     {
       "category": "employment",
       "feature_name": "laborForce",
+      "original_name": "PEA",
       "country": "mexico",
       "source": "inegi",
-      "codes": ["PEA"],
+      "codes": [
+        "PEA"
+      ],
       "definition": "Economically active population.",
       "type": "count",
       "unit": "",
@@ -164,9 +207,12 @@
     {
       "category": "employment",
       "feature_name": "employedResidents",
+      "original_name": "POCUPADA",
       "country": "mexico",
       "source": "inegi",
-      "codes": ["POCUPADA"],
+      "codes": [
+        "POCUPADA"
+      ],
       "definition": "Employed population. Matches global_schema.json's employedResidents exactly.",
       "type": "count",
       "unit": "",
@@ -177,9 +223,12 @@
     {
       "category": "employment",
       "feature_name": "unemployedResidents",
+      "original_name": "PDESOCUP",
       "country": "mexico",
       "source": "inegi",
-      "codes": ["PDESOCUP"],
+      "codes": [
+        "PDESOCUP"
+      ],
       "definition": "Unemployed population. Matches global_schema.json's unemployedResidents exactly.",
       "type": "count",
       "unit": "",
@@ -190,9 +239,12 @@
     {
       "category": "health",
       "feature_name": "populationWithHealthcare",
+      "original_name": "PDER_SS",
       "country": "mexico",
       "source": "inegi",
-      "codes": ["PDER_SS"],
+      "codes": [
+        "PDER_SS"
+      ],
       "definition": "Population affiliated to a health service.",
       "type": "count",
       "unit": "",
@@ -203,9 +255,12 @@
     {
       "category": "health",
       "feature_name": "populationWithoutHealthcare",
+      "original_name": "PSINDER",
       "country": "mexico",
       "source": "inegi",
-      "codes": ["PSINDER"],
+      "codes": [
+        "PSINDER"
+      ],
       "definition": "Population not affiliated to any health service.",
       "type": "count",
       "unit": "",
@@ -216,9 +271,12 @@
     {
       "category": "disability",
       "feature_name": "populationDisability",
+      "original_name": "PCON_DISC",
       "country": "mexico",
       "source": "inegi",
-      "codes": ["PCON_DISC"],
+      "codes": [
+        "PCON_DISC"
+      ],
       "definition": "Population with a disability.",
       "type": "count",
       "unit": "",
@@ -229,9 +287,12 @@
     {
       "category": "education",
       "feature_name": "educationMeanGrade",
+      "original_name": "GRAPROES",
       "country": "mexico",
       "source": "inegi",
-      "codes": ["GRAPROES"],
+      "codes": [
+        "GRAPROES"
+      ],
       "definition": "Mean grade of schooling completed (population 15+).",
       "type": "mean",
       "unit": "grade",
@@ -242,9 +303,12 @@
     {
       "category": "housing",
       "feature_name": "households",
+      "original_name": "TOTHOG",
       "country": "mexico",
       "source": "inegi",
-      "codes": ["TOTHOG"],
+      "codes": [
+        "TOTHOG"
+      ],
       "definition": "Total households.",
       "type": "count",
       "unit": "",
@@ -254,9 +318,12 @@
     {
       "category": "housing",
       "feature_name": "dwellings",
+      "original_name": "VIVTOT",
       "country": "mexico",
       "source": "inegi",
-      "codes": ["VIVTOT"],
+      "codes": [
+        "VIVTOT"
+      ],
       "definition": "Total private dwellings.",
       "type": "count",
       "unit": "",
@@ -266,9 +333,12 @@
     {
       "category": "housing",
       "feature_name": "occupiedDwellings",
+      "original_name": "TVIVHAB",
       "country": "mexico",
       "source": "inegi",
-      "codes": ["TVIVHAB"],
+      "codes": [
+        "TVIVHAB"
+      ],
       "definition": "Occupied private dwellings.",
       "type": "count",
       "unit": "",
@@ -279,9 +349,12 @@
     {
       "category": "housing",
       "feature_name": "dwellingsInternet",
+      "original_name": "VPH_INTER",
       "country": "mexico",
       "source": "inegi",
-      "codes": ["VPH_INTER"],
+      "codes": [
+        "VPH_INTER"
+      ],
       "definition": "Dwellings with internet access.",
       "type": "count",
       "unit": "",
@@ -292,9 +365,12 @@
     {
       "category": "housing",
       "feature_name": "dwellingsComputer",
+      "original_name": "VPH_PC",
       "country": "mexico",
       "source": "inegi",
-      "codes": ["VPH_PC"],
+      "codes": [
+        "VPH_PC"
+      ],
       "definition": "Dwellings with a computer.",
       "type": "count",
       "unit": "",
@@ -305,9 +381,12 @@
     {
       "category": "housing",
       "feature_name": "dwellingsCellphone",
+      "original_name": "VPH_CEL",
       "country": "mexico",
       "source": "inegi",
-      "codes": ["VPH_CEL"],
+      "codes": [
+        "VPH_CEL"
+      ],
       "definition": "Dwellings with a cellphone.",
       "type": "count",
       "unit": "",
@@ -318,10 +397,627 @@
     {
       "category": "transport",
       "feature_name": "carHouseholds",
+      "original_name": "VPH_AUTOM",
       "country": "mexico",
       "source": "inegi",
-      "codes": ["VPH_AUTOM"],
+      "codes": [
+        "VPH_AUTOM"
+      ],
       "definition": "Dwellings/households with an automobile or light truck. Matches global_schema.json's carHouseholds ('households with at least one car or more').",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "occupiedDwellings"
+    },
+    {
+      "category": "population",
+      "feature_name": "under18Population",
+      "original_name": "P_0A2 + P_3A5 + P_6A11 + P_12A14 + P_15A17",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "P_0A2",
+        "P_3A5",
+        "P_6A11",
+        "P_12A14",
+        "P_15A17"
+      ],
+      "definition": "Population under 18 (0-2 + 3-5 + 6-11 + 12-14 + 15-17 age groups). Global schema under18Population.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "over65Population",
+      "original_name": "POB65_MAS",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "POB65_MAS"
+      ],
+      "definition": "Population aged 65 and over. Global schema over65Population.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "population0to14",
+      "original_name": "POB0_14",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "POB0_14"
+      ],
+      "definition": "Population aged 0-14.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "population15to64",
+      "original_name": "POB15_64",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "POB15_64"
+      ],
+      "definition": "Population aged 15-64.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "population60plus",
+      "original_name": "P_60YMAS",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "P_60YMAS"
+      ],
+      "definition": "Population aged 60 and over.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "population0to2",
+      "original_name": "P_0A2",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "P_0A2"
+      ],
+      "definition": "Population aged 0-2.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "population18to24",
+      "original_name": "P_18A24",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "P_18A24"
+      ],
+      "definition": "Population aged 18-24.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "migration",
+      "feature_name": "bornInEntityPopulation",
+      "original_name": "PNACENT",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "PNACENT"
+      ],
+      "definition": "Population born in the state (entity) where they live.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "migration",
+      "feature_name": "bornInOtherEntityPopulation",
+      "original_name": "PNACOE",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "PNACOE"
+      ],
+      "definition": "Population born in another state (entity) of Mexico.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "migration",
+      "feature_name": "residentAbroad2015Population",
+      "original_name": "PRESOE15",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "PRESOE15"
+      ],
+      "definition": "Population aged 5+ who lived in another country in March 2015.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "raceEthinicity",
+      "feature_name": "indigenousHouseholdPopulation",
+      "original_name": "PHOG_IND",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "PHOG_IND"
+      ],
+      "definition": "Population living in households whose head or spouse speaks an indigenous language.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "raceEthinicity",
+      "feature_name": "afroMexicanPopulation",
+      "original_name": "POB_AFRO",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "POB_AFRO"
+      ],
+      "definition": "Population that self-identifies as Afro-Mexican / Afro-descendant.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "disability",
+      "feature_name": "populationLimitation",
+      "original_name": "PCON_LIMI",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "PCON_LIMI"
+      ],
+      "definition": "Population with a limitation in daily activity.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "education",
+      "feature_name": "illiteratePopulation15plus",
+      "original_name": "P15YM_AN",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "P15YM_AN"
+      ],
+      "definition": "Population aged 15+ who is illiterate.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "education",
+      "feature_name": "noSchoolingPopulation15plus",
+      "original_name": "P15YM_SE",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "P15YM_SE"
+      ],
+      "definition": "Population aged 15+ with no schooling.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "education",
+      "feature_name": "educationPrimaryOrLessPopulation",
+      "original_name": "P15YM_SE + P15PRI_IN + P15PRI_CO",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "P15YM_SE",
+        "P15PRI_IN",
+        "P15PRI_CO"
+      ],
+      "definition": "Population 15+ with at most primary education (no schooling + primary incomplete + primary complete). Global schema educationPrimaryOrLessPopulation.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "education",
+      "feature_name": "educationSecondaryPopulation",
+      "original_name": "P15SEC_IN + P15SEC_CO",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "P15SEC_IN",
+        "P15SEC_CO"
+      ],
+      "definition": "Population 15+ whose highest level is lower secondary (incomplete + complete). Global schema educationSecondaryPopulation.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "education",
+      "feature_name": "educationPostBasicPopulation",
+      "original_name": "P18YM_PB",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "P18YM_PB"
+      ],
+      "definition": "Population aged 18+ with post-basic education (upper secondary or higher).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "employment",
+      "feature_name": "economicallyInactivePopulation",
+      "original_name": "PE_INAC",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "PE_INAC"
+      ],
+      "definition": "Economically inactive population (12+).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "health",
+      "feature_name": "healthInsuranceIMSSPopulation",
+      "original_name": "PDER_IMSS",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "PDER_IMSS"
+      ],
+      "definition": "Population entitled to IMSS (private-sector social security) health services.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "health",
+      "feature_name": "healthInsuranceISSSTEPopulation",
+      "original_name": "PDER_ISTE",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "PDER_ISTE"
+      ],
+      "definition": "Population entitled to ISSSTE (public-servants) health services.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "housing",
+      "feature_name": "femaleHeadedHouseholds",
+      "original_name": "HOGJEF_F",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "HOGJEF_F"
+      ],
+      "definition": "Census households headed by a woman.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "households"
+    },
+    {
+      "category": "housing",
+      "feature_name": "particularDwellings",
+      "original_name": "TVIVPAR",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "TVIVPAR"
+      ],
+      "definition": "Total private dwellings.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide"
+    },
+    {
+      "category": "housing",
+      "feature_name": "vacantDwellings",
+      "original_name": "VIVPAR_DES",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "VIVPAR_DES"
+      ],
+      "definition": "Uninhabited private dwellings.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "particularDwellings"
+    },
+    {
+      "category": "housing",
+      "feature_name": "temporaryUseDwellings",
+      "original_name": "VIVPAR_UT",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "VIVPAR_UT"
+      ],
+      "definition": "Private dwellings for temporary use.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "particularDwellings"
+    },
+    {
+      "category": "housing",
+      "feature_name": "occupantsPerDwellingMean",
+      "original_name": "PROM_OCUP",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "PROM_OCUP"
+      ],
+      "definition": "Average occupants per occupied dwelling.",
+      "type": "mean",
+      "unit": "people",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "occupiedDwellings"
+    },
+    {
+      "category": "transport",
+      "feature_name": "motorcycleHouseholds",
+      "original_name": "VPH_MOTO",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "VPH_MOTO"
+      ],
+      "definition": "Dwellings with a motorcycle or scooter. Global schema motorcycleHouseholds.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "occupiedDwellings"
+    },
+    {
+      "category": "transport",
+      "feature_name": "bicycleHouseholds",
+      "original_name": "VPH_BICI",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "VPH_BICI"
+      ],
+      "definition": "Dwellings with a bicycle. Global schema bicycleHouseholds.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "occupiedDwellings"
+    },
+    {
+      "category": "housing",
+      "feature_name": "dwellingsNoElectricity",
+      "original_name": "VPH_S_ELEC",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "VPH_S_ELEC"
+      ],
+      "definition": "Dwellings without electricity.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "occupiedDwellings"
+    },
+    {
+      "category": "housing",
+      "feature_name": "dwellingsPipedWater",
+      "original_name": "VPH_AGUADV",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "VPH_AGUADV"
+      ],
+      "definition": "Dwellings with piped water inside the dwelling.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "occupiedDwellings"
+    },
+    {
+      "category": "housing",
+      "feature_name": "dwellingsDrainage",
+      "original_name": "VPH_DRENAJ",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "VPH_DRENAJ"
+      ],
+      "definition": "Dwellings connected to a drainage / sewer system.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "occupiedDwellings"
+    },
+    {
+      "category": "housing",
+      "feature_name": "dwellingsDirtFloor",
+      "original_name": "VPH_PISODT",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "VPH_PISODT"
+      ],
+      "definition": "Dwellings with an earth floor.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "occupiedDwellings"
+    },
+    {
+      "category": "housing",
+      "feature_name": "dwellingsOneRoom",
+      "original_name": "VPH_1CUART",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "VPH_1CUART"
+      ],
+      "definition": "Dwellings with a single room.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "occupiedDwellings"
+    },
+    {
+      "category": "housing",
+      "feature_name": "dwellingsRefrigerator",
+      "original_name": "VPH_REFRI",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "VPH_REFRI"
+      ],
+      "definition": "Dwellings with a refrigerator.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "occupiedDwellings"
+    },
+    {
+      "category": "housing",
+      "feature_name": "dwellingsWashingMachine",
+      "original_name": "VPH_LAVAD",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "VPH_LAVAD"
+      ],
+      "definition": "Dwellings with a washing machine.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "occupiedDwellings"
+    },
+    {
+      "category": "housing",
+      "feature_name": "dwellingsTelevision",
+      "original_name": "VPH_TV",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "VPH_TV"
+      ],
+      "definition": "Dwellings with a television.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "occupiedDwellings"
+    },
+    {
+      "category": "housing",
+      "feature_name": "dwellingsLandline",
+      "original_name": "VPH_TELEF",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "VPH_TELEF"
+      ],
+      "definition": "Dwellings with a landline telephone.",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "occupiedDwellings"
+    },
+    {
+      "category": "housing",
+      "feature_name": "dwellingsNoICT",
+      "original_name": "VPH_SINTIC",
+      "country": "mexico",
+      "source": "inegi",
+      "codes": [
+        "VPH_SINTIC"
+      ],
+      "definition": "Dwellings with none of the listed ICT goods (radio, TV, computer, phone, internet...).",
       "type": "count",
       "unit": "",
       "resampling_up": "sum",

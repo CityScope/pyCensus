@@ -1,0 +1,884 @@
+{
+ "country": "andorra",
+ "source": "elections",
+ "full_name": "Andorra election results by parish (Govern d'Andorra, eleccions.ad)",
+ "years": [
+  2023
+ ],
+ "levels": [
+  "parish",
+  "h3"
+ ],
+ "features": [
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_total_votes",
+   "original_name": "elec_national_2023_total_votes",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_total_votes"
+   ],
+   "definition": "national election 2023: total votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_votes_cast",
+   "original_name": "elec_national_2023_votes_cast",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_votes_cast"
+   ],
+   "definition": "national election 2023: votes cast (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_electors",
+   "original_name": "elec_national_2023_electors",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_electors"
+   ],
+   "definition": "national election 2023: electors (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_turnout_rate",
+   "original_name": "elec_national_2023_turnout_rate",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_turnout_rate"
+   ],
+   "definition": "national election 2023: turnout rate (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "rate",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_left_votes",
+   "original_name": "elec_national_2023_left_votes",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_left_votes"
+   ],
+   "definition": "national election 2023: left votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_right_votes",
+   "original_name": "elec_national_2023_right_votes",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_right_votes"
+   ],
+   "definition": "national election 2023: right votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_party_accio_votes",
+   "original_name": "elec_national_2023_party_accio_votes",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_party_accio_votes"
+   ],
+   "definition": "national election 2023: party accio votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_party_andorra_endavant_votes",
+   "original_name": "elec_national_2023_party_andorra_endavant_votes",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_party_andorra_endavant_votes"
+   ],
+   "definition": "national election 2023: party andorra endavant votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_party_concordia_votes",
+   "original_name": "elec_national_2023_party_concordia_votes",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_party_concordia_votes"
+   ],
+   "definition": "national election 2023: party concordia votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_party_democrates_ciutadans_compromesos_accio_comunal_d_ordino_un_votes",
+   "original_name": "elec_national_2023_party_democrates_ciutadans_compromesos_accio_comunal_d_ordino_un_votes",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_party_democrates_ciutadans_compromesos_accio_comunal_d_ordino_un_votes"
+   ],
+   "definition": "national election 2023: party democrates ciutadans compromesos accio comunal d ordino un votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_party_liberals_d_andorra_votes",
+   "original_name": "elec_national_2023_party_liberals_d_andorra_votes",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_party_liberals_d_andorra_votes"
+   ],
+   "definition": "national election 2023: party liberals d andorra votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_party_ps_sdp_votes",
+   "original_name": "elec_national_2023_party_ps_sdp_votes",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_party_ps_sdp_votes"
+   ],
+   "definition": "national election 2023: party ps sdp votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_left_share",
+   "original_name": "elec_national_2023_left_share",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_left_share"
+   ],
+   "definition": "national election 2023: left share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_right_share",
+   "original_name": "elec_national_2023_right_share",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_right_share"
+   ],
+   "definition": "national election 2023: right share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_other_share",
+   "original_name": "elec_national_2023_other_share",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_other_share"
+   ],
+   "definition": "national election 2023: other share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_party_accio_share",
+   "original_name": "elec_national_2023_party_accio_share",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_party_accio_share"
+   ],
+   "definition": "national election 2023: party accio share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_party_andorra_endavant_share",
+   "original_name": "elec_national_2023_party_andorra_endavant_share",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_party_andorra_endavant_share"
+   ],
+   "definition": "national election 2023: party andorra endavant share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_party_concordia_share",
+   "original_name": "elec_national_2023_party_concordia_share",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_party_concordia_share"
+   ],
+   "definition": "national election 2023: party concordia share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_party_democrates_ciutadans_compromesos_accio_comunal_d_ordino_un_share",
+   "original_name": "elec_national_2023_party_democrates_ciutadans_compromesos_accio_comunal_d_ordino_un_share",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_party_democrates_ciutadans_compromesos_accio_comunal_d_ordino_un_share"
+   ],
+   "definition": "national election 2023: party democrates ciutadans compromesos accio comunal d ordino un share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_party_liberals_d_andorra_share",
+   "original_name": "elec_national_2023_party_liberals_d_andorra_share",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_party_liberals_d_andorra_share"
+   ],
+   "definition": "national election 2023: party liberals d andorra share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_party_ps_sdp_share",
+   "original_name": "elec_national_2023_party_ps_sdp_share",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_party_ps_sdp_share"
+   ],
+   "definition": "national election 2023: party ps sdp share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_total_votes",
+   "original_name": "elec_municipal_2023_total_votes",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_total_votes"
+   ],
+   "definition": "municipal election 2023: total votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_votes_cast",
+   "original_name": "elec_municipal_2023_votes_cast",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_votes_cast"
+   ],
+   "definition": "municipal election 2023: votes cast (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_electors",
+   "original_name": "elec_municipal_2023_electors",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_electors"
+   ],
+   "definition": "municipal election 2023: electors (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_turnout_rate",
+   "original_name": "elec_municipal_2023_turnout_rate",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_turnout_rate"
+   ],
+   "definition": "municipal election 2023: turnout rate (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "rate",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_left_votes",
+   "original_name": "elec_municipal_2023_left_votes",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_left_votes"
+   ],
+   "definition": "municipal election 2023: left votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_right_votes",
+   "original_name": "elec_municipal_2023_right_votes",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_right_votes"
+   ],
+   "definition": "municipal election 2023: right votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_ad_01_democrates_independents_votes",
+   "original_name": "elec_municipal_2023_party_ad_01_democrates_independents_votes",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_ad_01_democrates_independents_votes"
+   ],
+   "definition": "municipal election 2023: party ad 01 democrates independents votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_ad_02_avancem_votes",
+   "original_name": "elec_municipal_2023_party_ad_02_avancem_votes",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_ad_02_avancem_votes"
+   ],
+   "definition": "municipal election 2023: party ad 02 avancem votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_ad_02_units_per_al_progres_democrates_independents_votes",
+   "original_name": "elec_municipal_2023_party_ad_02_units_per_al_progres_democrates_independents_votes",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_ad_02_units_per_al_progres_democrates_independents_votes"
+   ],
+   "definition": "municipal election 2023: party ad 02 units per al progres democrates independents votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_ad_03_accio_comunal_d_ordino_democrates_independents_progressistes_sdp_votes",
+   "original_name": "elec_municipal_2023_party_ad_03_accio_comunal_d_ordino_democrates_independents_progressistes_sdp_votes",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_ad_03_accio_comunal_d_ordino_democrates_independents_progressistes_sdp_votes"
+   ],
+   "definition": "municipal election 2023: party ad 03 accio comunal d ordino democrates independents progressistes sdp votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_ad_03_units_per_ordino_votes",
+   "original_name": "elec_municipal_2023_party_ad_03_units_per_ordino_votes",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_ad_03_units_per_ordino_votes"
+   ],
+   "definition": "municipal election 2023: party ad 03 units per ordino votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_ad_04_amb_seny_votes",
+   "original_name": "elec_municipal_2023_party_ad_04_amb_seny_votes",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_ad_04_amb_seny_votes"
+   ],
+   "definition": "municipal election 2023: party ad 04 amb seny votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_ad_04_ciutadans_compromesos_da_independents_votes",
+   "original_name": "elec_municipal_2023_party_ad_04_ciutadans_compromesos_da_independents_votes",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_ad_04_ciutadans_compromesos_da_independents_votes"
+   ],
+   "definition": "municipal election 2023: party ad 04 ciutadans compromesos da independents votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_ad_05_democrates_progressistes_sdp_independents_votes",
+   "original_name": "elec_municipal_2023_party_ad_05_democrates_progressistes_sdp_independents_votes",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_ad_05_democrates_progressistes_sdp_independents_votes"
+   ],
+   "definition": "municipal election 2023: party ad 05 democrates progressistes sdp independents votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_ad_05_enclar_votes",
+   "original_name": "elec_municipal_2023_party_ad_05_enclar_votes",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_ad_05_enclar_votes"
+   ],
+   "definition": "municipal election 2023: party ad 05 enclar votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_ad_06_desperta_lauredia_votes",
+   "original_name": "elec_municipal_2023_party_ad_06_desperta_lauredia_votes",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_ad_06_desperta_lauredia_votes"
+   ],
+   "definition": "municipal election 2023: party ad 06 desperta lauredia votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_ad_06_per_sant_julia_votes",
+   "original_name": "elec_municipal_2023_party_ad_06_per_sant_julia_votes",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_ad_06_per_sant_julia_votes"
+   ],
+   "definition": "municipal election 2023: party ad 06 per sant julia votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_ad_06_unio_laurediana_democrates_accio_independents_votes",
+   "original_name": "elec_municipal_2023_party_ad_06_unio_laurediana_democrates_accio_independents_votes",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_ad_06_unio_laurediana_democrates_accio_independents_votes"
+   ],
+   "definition": "municipal election 2023: party ad 06 unio laurediana democrates accio independents votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_ad_07_consens_per_escaldes_engordany_votes",
+   "original_name": "elec_municipal_2023_party_ad_07_consens_per_escaldes_engordany_votes",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_ad_07_consens_per_escaldes_engordany_votes"
+   ],
+   "definition": "municipal election 2023: party ad 07 consens per escaldes engordany votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_ad_07_democrates_accio_sdp_independents_votes",
+   "original_name": "elec_municipal_2023_party_ad_07_democrates_accio_sdp_independents_votes",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_ad_07_democrates_accio_sdp_independents_votes"
+   ],
+   "definition": "municipal election 2023: party ad 07 democrates accio sdp independents votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_left_share",
+   "original_name": "elec_municipal_2023_left_share",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_left_share"
+   ],
+   "definition": "municipal election 2023: left share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_right_share",
+   "original_name": "elec_municipal_2023_right_share",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_right_share"
+   ],
+   "definition": "municipal election 2023: right share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_other_share",
+   "original_name": "elec_municipal_2023_other_share",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_other_share"
+   ],
+   "definition": "municipal election 2023: other share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_ad_01_democrates_independents_share",
+   "original_name": "elec_municipal_2023_party_ad_01_democrates_independents_share",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_ad_01_democrates_independents_share"
+   ],
+   "definition": "municipal election 2023: party ad 01 democrates independents share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_ad_02_avancem_share",
+   "original_name": "elec_municipal_2023_party_ad_02_avancem_share",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_ad_02_avancem_share"
+   ],
+   "definition": "municipal election 2023: party ad 02 avancem share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_ad_02_units_per_al_progres_democrates_independents_share",
+   "original_name": "elec_municipal_2023_party_ad_02_units_per_al_progres_democrates_independents_share",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_ad_02_units_per_al_progres_democrates_independents_share"
+   ],
+   "definition": "municipal election 2023: party ad 02 units per al progres democrates independents share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_ad_03_accio_comunal_d_ordino_democrates_independents_progressistes_sdp_share",
+   "original_name": "elec_municipal_2023_party_ad_03_accio_comunal_d_ordino_democrates_independents_progressistes_sdp_share",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_ad_03_accio_comunal_d_ordino_democrates_independents_progressistes_sdp_share"
+   ],
+   "definition": "municipal election 2023: party ad 03 accio comunal d ordino democrates independents progressistes sdp share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_ad_03_units_per_ordino_share",
+   "original_name": "elec_municipal_2023_party_ad_03_units_per_ordino_share",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_ad_03_units_per_ordino_share"
+   ],
+   "definition": "municipal election 2023: party ad 03 units per ordino share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_ad_04_amb_seny_share",
+   "original_name": "elec_municipal_2023_party_ad_04_amb_seny_share",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_ad_04_amb_seny_share"
+   ],
+   "definition": "municipal election 2023: party ad 04 amb seny share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_ad_04_ciutadans_compromesos_da_independents_share",
+   "original_name": "elec_municipal_2023_party_ad_04_ciutadans_compromesos_da_independents_share",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_ad_04_ciutadans_compromesos_da_independents_share"
+   ],
+   "definition": "municipal election 2023: party ad 04 ciutadans compromesos da independents share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_ad_05_democrates_progressistes_sdp_independents_share",
+   "original_name": "elec_municipal_2023_party_ad_05_democrates_progressistes_sdp_independents_share",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_ad_05_democrates_progressistes_sdp_independents_share"
+   ],
+   "definition": "municipal election 2023: party ad 05 democrates progressistes sdp independents share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_ad_05_enclar_share",
+   "original_name": "elec_municipal_2023_party_ad_05_enclar_share",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_ad_05_enclar_share"
+   ],
+   "definition": "municipal election 2023: party ad 05 enclar share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_ad_06_desperta_lauredia_share",
+   "original_name": "elec_municipal_2023_party_ad_06_desperta_lauredia_share",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_ad_06_desperta_lauredia_share"
+   ],
+   "definition": "municipal election 2023: party ad 06 desperta lauredia share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_ad_06_per_sant_julia_share",
+   "original_name": "elec_municipal_2023_party_ad_06_per_sant_julia_share",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_ad_06_per_sant_julia_share"
+   ],
+   "definition": "municipal election 2023: party ad 06 per sant julia share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_ad_06_unio_laurediana_democrates_accio_independents_share",
+   "original_name": "elec_municipal_2023_party_ad_06_unio_laurediana_democrates_accio_independents_share",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_ad_06_unio_laurediana_democrates_accio_independents_share"
+   ],
+   "definition": "municipal election 2023: party ad 06 unio laurediana democrates accio independents share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_ad_07_consens_per_escaldes_engordany_share",
+   "original_name": "elec_municipal_2023_party_ad_07_consens_per_escaldes_engordany_share",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_ad_07_consens_per_escaldes_engordany_share"
+   ],
+   "definition": "municipal election 2023: party ad 07 consens per escaldes engordany share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_ad_07_democrates_accio_sdp_independents_share",
+   "original_name": "elec_municipal_2023_party_ad_07_democrates_accio_sdp_independents_share",
+   "country": "andorra",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_ad_07_democrates_accio_sdp_independents_share"
+   ],
+   "definition": "municipal election 2023: party ad 07 democrates accio sdp independents share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  }
+ ]
+}

@@ -11,7 +11,7 @@ def test_explicit_key_wins_over_everything(monkeypatch, tmp_path):
     monkeypatch.setenv("SOME_KEY", "env-value")
     keys_file = tmp_path / "api_keys.json"
     keys_file.write_text(json.dumps({"some": "file-value"}))
-    monkeypatch.setattr(api_keys, "_KEYS_FILE", keys_file)
+    monkeypatch.setattr(api_keys, "_candidate_paths", lambda: [keys_file])
 
     assert api_keys.resolve_api_key("some", "SOME_KEY", "explicit-value") == "explicit-value"
 
@@ -20,7 +20,7 @@ def test_env_var_wins_over_file(monkeypatch, tmp_path):
     monkeypatch.setenv("SOME_KEY", "env-value")
     keys_file = tmp_path / "api_keys.json"
     keys_file.write_text(json.dumps({"some": "file-value"}))
-    monkeypatch.setattr(api_keys, "_KEYS_FILE", keys_file)
+    monkeypatch.setattr(api_keys, "_candidate_paths", lambda: [keys_file])
 
     assert api_keys.resolve_api_key("some", "SOME_KEY") == "env-value"
 
@@ -29,14 +29,14 @@ def test_falls_back_to_json_file(monkeypatch, tmp_path):
     monkeypatch.delenv("SOME_KEY", raising=False)
     keys_file = tmp_path / "api_keys.json"
     keys_file.write_text(json.dumps({"some": "file-value"}))
-    monkeypatch.setattr(api_keys, "_KEYS_FILE", keys_file)
+    monkeypatch.setattr(api_keys, "_candidate_paths", lambda: [keys_file])
 
     assert api_keys.resolve_api_key("some", "SOME_KEY") == "file-value"
 
 
 def test_returns_none_when_nowhere_found(monkeypatch, tmp_path):
     monkeypatch.delenv("SOME_KEY", raising=False)
-    monkeypatch.setattr(api_keys, "_KEYS_FILE", tmp_path / "does_not_exist.json")
+    monkeypatch.setattr(api_keys, "_candidate_paths", lambda: [tmp_path / "does_not_exist.json"])
 
     assert api_keys.resolve_api_key("some", "SOME_KEY") is None
 
@@ -45,7 +45,7 @@ def test_empty_string_in_file_is_treated_as_missing(monkeypatch, tmp_path):
     monkeypatch.delenv("SOME_KEY", raising=False)
     keys_file = tmp_path / "api_keys.json"
     keys_file.write_text(json.dumps({"some": ""}))
-    monkeypatch.setattr(api_keys, "_KEYS_FILE", keys_file)
+    monkeypatch.setattr(api_keys, "_candidate_paths", lambda: [keys_file])
 
     assert api_keys.resolve_api_key("some", "SOME_KEY") is None
 
@@ -54,7 +54,7 @@ def test_malformed_json_file_does_not_raise(monkeypatch, tmp_path):
     monkeypatch.delenv("SOME_KEY", raising=False)
     keys_file = tmp_path / "api_keys.json"
     keys_file.write_text("{not valid json")
-    monkeypatch.setattr(api_keys, "_KEYS_FILE", keys_file)
+    monkeypatch.setattr(api_keys, "_candidate_paths", lambda: [keys_file])
 
     assert api_keys.resolve_api_key("some", "SOME_KEY") is None
 
@@ -63,6 +63,22 @@ def test_missing_key_name_in_valid_file_returns_none(monkeypatch, tmp_path):
     monkeypatch.delenv("SOME_KEY", raising=False)
     keys_file = tmp_path / "api_keys.json"
     keys_file.write_text(json.dumps({"other": "value"}))
-    monkeypatch.setattr(api_keys, "_KEYS_FILE", keys_file)
+    monkeypatch.setattr(api_keys, "_candidate_paths", lambda: [keys_file])
 
     assert api_keys.resolve_api_key("some", "SOME_KEY") is None
+
+
+def test_standard_keys_file_is_read_first(monkeypatch, tmp_path):
+    """The one standard place (~/.config/ptlos/api_keys.json) is read; API_KEYS_FILE points elsewhere and wins."""
+    monkeypatch.delenv("SOME_KEY", raising=False)
+    monkeypatch.delenv(api_keys.CONFIG_FILE_ENV_VAR, raising=False)
+    standard = tmp_path / "standard.json"
+    standard.write_text(json.dumps({"some": "from-standard"}))
+    monkeypatch.setattr(api_keys, "STANDARD_PATH", standard)
+    monkeypatch.setattr(api_keys, "DEFAULT_CONFIG_PATH", tmp_path / "none.json")
+    monkeypatch.chdir(tmp_path)
+    assert api_keys._candidate_paths()[0] == standard
+    other = tmp_path / "other.json"
+    other.write_text(json.dumps({"some": "from-env-file"}))
+    monkeypatch.setenv(api_keys.SHARED_FILE_ENV_VAR, str(other))
+    assert api_keys._candidate_paths()[0] == other

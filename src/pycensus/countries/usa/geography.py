@@ -81,6 +81,7 @@ def _retry_tiger(fetch, attempts: int = 3):
     """
     import glob
     import os
+    import tempfile
     import time
 
     last = None
@@ -89,7 +90,7 @@ def _retry_tiger(fetch, attempts: int = 3):
             return fetch()
         except Exception as exc:  # pyogrio DataSourceError, HTTP errors, ...
             last = exc
-            for path in glob.glob("/tmp/tl_*.zip"):
+            for path in glob.glob(os.path.join(tempfile.gettempdir(), "tl_*.zip")):
                 try:
                     if os.path.getsize(path) < 1024:
                         os.remove(path)
@@ -122,7 +123,7 @@ def _retry_tiger_years(fetch_for_year, year: int):
 
 def load_boundaries(
     level: str,
-    state: str,
+    state: Optional[str],
     year: int,
     erase_water: Optional[bool] = None,
 ) -> gpd.GeoDataFrame:
@@ -133,7 +134,7 @@ def load_boundaries(
             (:data:`pycensus.geometry_levels.STANDARD_LEVELS`), resolved
             through :data:`pycensus.usa.constants.LEVEL_FALLBACK` if the US
             has no native geography for it.
-        state: State name, abbreviation, or FIPS code.
+        state: State name, abbreviation, or FIPS code (``None`` with ``level="state"``: every state).
         year: TIGER/Line vintage year.
         erase_water: Whether to clip inland water bodies. Defaults to
             :data:`pycensus.usa.constants.ERASE_WATER` for the resolved level.
@@ -168,8 +169,14 @@ def load_boundaries(
         # requested -- load_boundaries is called once per state by a
         # multi-state loader.load(), and callers expect exactly one row back.
         all_states = func(year=year, cache=False).to_crs(4326)
-        abbr = utils.state_abbr(state)
-        gdf = all_states[all_states["STUSPS"] == abbr]
+        gdf = all_states if state is None else all_states[all_states["STUSPS"] == utils.state_abbr(state)]   # None: every state
+    elif level == "core_based_statistical_area":
+        # metropolitan / micropolitan areas are published as one national layer (no `state` kwarg); keep those that touch the requested state's
+        # counties' states via the state's own boundary, so a per-state caller gets the areas that intersect it
+        all_cbsa = _retry_tiger_years(lambda y: func(year=y, cache=False), year).to_crs(4326)
+        st = constants.GEOMETRY_FUNCS["state"](year=year, cache=False).to_crs(4326)
+        st = st[st["STUSPS"] == utils.state_abbr(state)]
+        gdf = all_cbsa[all_cbsa.intersects(st.union_all())]
     else:
         gdf = _retry_tiger_years(lambda y: func(state=utils.state_abbr(state), year=y, cache=False), year).to_crs(4326)
 

@@ -19,7 +19,8 @@ Source:
 from ....accessors import register_source_accessor
 from .loader import load
 from .schema import SCHEMA
+from .realprice import load_realprice
 
 register_source_accessor(SCHEMA)
 
-__all__ = ["load", "SCHEMA"]
+__all__ = ["load", "SCHEMA", "load_realprice"]

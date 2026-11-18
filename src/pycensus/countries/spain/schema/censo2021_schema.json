@@ -8,6 +8,7 @@
     {
       "category": "population",
       "feature_name": "households",
+      "original_name": "table hog; metric SHOGARES",
       "country": "spain",
       "source": "censo2021",
       "table": "hog",
@@ -24,6 +25,7 @@
     {
       "category": "education",
       "feature_name": "educationPrimaryOrLessPopulation",
+      "original_name": "table per.ppal; metric SPERSONAS; ID_ESREAL_GR5 = Educación primaria e inferior",
       "country": "spain",
       "source": "censo2021",
       "table": "per.ppal",
@@ -40,6 +42,7 @@
     {
       "category": "education",
       "feature_name": "educationSecondaryPopulation",
+      "original_name": "table per.ppal; metric SPERSONAS; ID_ESREAL_GR5 = ['Primera etapa de Educación Secundaria y similar', 'Segunda etapa de Educación Secundaria y Educación Postsecundaria no Superior']",
       "country": "spain",
       "source": "censo2021",
       "table": "per.ppal",
@@ -56,6 +59,7 @@
     {
       "category": "education",
       "feature_name": "educationUniversityPopulation",
+      "original_name": "table per.ppal; metric SPERSONAS; ID_ESREAL_GR5 = Educación Superior",
       "country": "spain",
       "source": "censo2021",
       "table": "per.ppal",
@@ -72,6 +76,7 @@
     {
       "category": "employment",
       "feature_name": "laborForce",
+      "original_name": "table per.ppal; metric SPERSONAS; ID_RELA2 = Activo",
       "country": "spain",
       "source": "censo2021",
       "table": "per.ppal",
@@ -88,6 +93,7 @@
     {
       "category": "employment",
       "feature_name": "employedResidents",
+      "original_name": "table per.ppal; metric SPERSONAS; ID_RELA = Ocupado/a",
       "country": "spain",
       "source": "censo2021",
       "table": "per.ppal",
@@ -104,6 +110,7 @@
     {
       "category": "employment",
       "feature_name": "unemployedResidents",
+      "original_name": "table per.ppal; metric SPERSONAS; ID_RELA = Parado/a",
       "country": "spain",
       "source": "censo2021",
       "table": "per.ppal",
@@ -120,6 +127,7 @@
     {
       "category": "migration",
       "feature_name": "foreignBornPopulation",
+      "original_name": "table per.ppal; metric SPERSONAS; ID_LUGAR_NAC_EXT_N1 = Extranjero",
       "country": "spain",
       "source": "censo2021",
       "table": "per.ppal",

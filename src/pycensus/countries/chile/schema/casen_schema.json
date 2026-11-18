@@ -8,6 +8,7 @@
     {
       "category": "income",
       "feature_name": "povertyRate",
+      "original_name": "Porcentaje de personas en situación de pobreza por ingresos 2022",
       "country": "chile",
       "source": "casen",
       "codes": ["Porcentaje de personas en situación de pobreza por ingresos 2022"],
@@ -23,6 +24,7 @@
     {
       "category": "income",
       "feature_name": "povertyRateMultidimensional",
+      "original_name": "Porcentaje de personas en situación de pobreza multidimensional 2022",
       "country": "chile",
       "source": "casen",
       "codes": ["Porcentaje de personas en situación de pobreza multidimensional 2022"],

@@ -14,6 +14,7 @@ Technical aspects:
 """
 
 from __future__ import annotations
+from pycensus.cache import get_data_dir
 
 from typing import Dict
 
@@ -62,7 +63,7 @@ LATEST_YEAR: Dict[str, int] = {
 }
 
 # Default data directory for raw (pre-parquet-cache) downloads.
-DEFAULT_DATA_DIR = "data/andorra"
+DEFAULT_DATA_DIR = str(get_data_dir("andorra"))  # env/temp default, resolved at import
 
 
 def parish_code(name_or_code: str) -> str:

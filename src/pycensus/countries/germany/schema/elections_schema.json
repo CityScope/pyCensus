@@ -1,0 +1,1020 @@
+{
+ "country": "germany",
+ "source": "elections",
+ "full_name": "Hamburg election results by Wahlbezirk (Statistik Nord / Landeswahlleitung Hamburg)",
+ "years": [
+  2024,
+  2025
+ ],
+ "levels": [
+  "wahlbezirk",
+  "h3"
+ ],
+ "features": [
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_total_votes",
+   "original_name": "elec_national_2025_total_votes",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_total_votes"
+   ],
+   "definition": "national election 2025: total votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_votes_cast",
+   "original_name": "elec_national_2025_votes_cast",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_votes_cast"
+   ],
+   "definition": "national election 2025: votes cast (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_electors",
+   "original_name": "elec_national_2025_electors",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_electors"
+   ],
+   "definition": "national election 2025: electors (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_turnout_rate",
+   "original_name": "elec_national_2025_turnout_rate",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_turnout_rate"
+   ],
+   "definition": "national election 2025: turnout rate (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "rate",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_left_votes",
+   "original_name": "elec_national_2025_left_votes",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_left_votes"
+   ],
+   "definition": "national election 2025: left votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_right_votes",
+   "original_name": "elec_national_2025_right_votes",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_right_votes"
+   ],
+   "definition": "national election 2025: right votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_party_afd_votes",
+   "original_name": "elec_national_2025_party_afd_votes",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_party_afd_votes"
+   ],
+   "definition": "national election 2025: party afd votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_party_bsw_votes",
+   "original_name": "elec_national_2025_party_bsw_votes",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_party_bsw_votes"
+   ],
+   "definition": "national election 2025: party bsw votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_party_cdu_votes",
+   "original_name": "elec_national_2025_party_cdu_votes",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_party_cdu_votes"
+   ],
+   "definition": "national election 2025: party cdu votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_party_die_linke_votes",
+   "original_name": "elec_national_2025_party_die_linke_votes",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_party_die_linke_votes"
+   ],
+   "definition": "national election 2025: party die linke votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_party_fdp_votes",
+   "original_name": "elec_national_2025_party_fdp_votes",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_party_fdp_votes"
+   ],
+   "definition": "national election 2025: party fdp votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_party_grune_votes",
+   "original_name": "elec_national_2025_party_grune_votes",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_party_grune_votes"
+   ],
+   "definition": "national election 2025: party grune votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_party_spd_votes",
+   "original_name": "elec_national_2025_party_spd_votes",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_party_spd_votes"
+   ],
+   "definition": "national election 2025: party spd votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_left_share",
+   "original_name": "elec_national_2025_left_share",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_left_share"
+   ],
+   "definition": "national election 2025: left share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_right_share",
+   "original_name": "elec_national_2025_right_share",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_right_share"
+   ],
+   "definition": "national election 2025: right share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_other_share",
+   "original_name": "elec_national_2025_other_share",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_other_share"
+   ],
+   "definition": "national election 2025: other share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_party_afd_share",
+   "original_name": "elec_national_2025_party_afd_share",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_party_afd_share"
+   ],
+   "definition": "national election 2025: party afd share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_party_bsw_share",
+   "original_name": "elec_national_2025_party_bsw_share",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_party_bsw_share"
+   ],
+   "definition": "national election 2025: party bsw share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_party_cdu_share",
+   "original_name": "elec_national_2025_party_cdu_share",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_party_cdu_share"
+   ],
+   "definition": "national election 2025: party cdu share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_party_die_linke_share",
+   "original_name": "elec_national_2025_party_die_linke_share",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_party_die_linke_share"
+   ],
+   "definition": "national election 2025: party die linke share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_party_fdp_share",
+   "original_name": "elec_national_2025_party_fdp_share",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_party_fdp_share"
+   ],
+   "definition": "national election 2025: party fdp share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_party_grune_share",
+   "original_name": "elec_national_2025_party_grune_share",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_party_grune_share"
+   ],
+   "definition": "national election 2025: party grune share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_party_spd_share",
+   "original_name": "elec_national_2025_party_spd_share",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_party_spd_share"
+   ],
+   "definition": "national election 2025: party spd share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2025_total_votes",
+   "original_name": "elec_state_2025_total_votes",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_state_2025_total_votes"
+   ],
+   "definition": "state election 2025: total votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2025_votes_cast",
+   "original_name": "elec_state_2025_votes_cast",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_state_2025_votes_cast"
+   ],
+   "definition": "state election 2025: votes cast (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2025_electors",
+   "original_name": "elec_state_2025_electors",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_state_2025_electors"
+   ],
+   "definition": "state election 2025: electors (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2025_turnout_rate",
+   "original_name": "elec_state_2025_turnout_rate",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_state_2025_turnout_rate"
+   ],
+   "definition": "state election 2025: turnout rate (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "rate",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2025_left_votes",
+   "original_name": "elec_state_2025_left_votes",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_state_2025_left_votes"
+   ],
+   "definition": "state election 2025: left votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2025_right_votes",
+   "original_name": "elec_state_2025_right_votes",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_state_2025_right_votes"
+   ],
+   "definition": "state election 2025: right votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2025_party_afd_votes",
+   "original_name": "elec_state_2025_party_afd_votes",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_state_2025_party_afd_votes"
+   ],
+   "definition": "state election 2025: party afd votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2025_party_cdu_votes",
+   "original_name": "elec_state_2025_party_cdu_votes",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_state_2025_party_cdu_votes"
+   ],
+   "definition": "state election 2025: party cdu votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2025_party_die_linke_votes",
+   "original_name": "elec_state_2025_party_die_linke_votes",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_state_2025_party_die_linke_votes"
+   ],
+   "definition": "state election 2025: party die linke votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2025_party_grune_votes",
+   "original_name": "elec_state_2025_party_grune_votes",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_state_2025_party_grune_votes"
+   ],
+   "definition": "state election 2025: party grune votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2025_party_spd_votes",
+   "original_name": "elec_state_2025_party_spd_votes",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_state_2025_party_spd_votes"
+   ],
+   "definition": "state election 2025: party spd votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2025_party_volt_votes",
+   "original_name": "elec_state_2025_party_volt_votes",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_state_2025_party_volt_votes"
+   ],
+   "definition": "state election 2025: party volt votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2025_left_share",
+   "original_name": "elec_state_2025_left_share",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_state_2025_left_share"
+   ],
+   "definition": "state election 2025: left share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2025_right_share",
+   "original_name": "elec_state_2025_right_share",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_state_2025_right_share"
+   ],
+   "definition": "state election 2025: right share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2025_other_share",
+   "original_name": "elec_state_2025_other_share",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_state_2025_other_share"
+   ],
+   "definition": "state election 2025: other share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2025_party_afd_share",
+   "original_name": "elec_state_2025_party_afd_share",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_state_2025_party_afd_share"
+   ],
+   "definition": "state election 2025: party afd share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2025_party_cdu_share",
+   "original_name": "elec_state_2025_party_cdu_share",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_state_2025_party_cdu_share"
+   ],
+   "definition": "state election 2025: party cdu share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2025_party_die_linke_share",
+   "original_name": "elec_state_2025_party_die_linke_share",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_state_2025_party_die_linke_share"
+   ],
+   "definition": "state election 2025: party die linke share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2025_party_grune_share",
+   "original_name": "elec_state_2025_party_grune_share",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_state_2025_party_grune_share"
+   ],
+   "definition": "state election 2025: party grune share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2025_party_spd_share",
+   "original_name": "elec_state_2025_party_spd_share",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_state_2025_party_spd_share"
+   ],
+   "definition": "state election 2025: party spd share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2025_party_volt_share",
+   "original_name": "elec_state_2025_party_volt_share",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_state_2025_party_volt_share"
+   ],
+   "definition": "state election 2025: party volt share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2024_total_votes",
+   "original_name": "elec_municipal_2024_total_votes",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2024_total_votes"
+   ],
+   "definition": "municipal election 2024: total votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2024_votes_cast",
+   "original_name": "elec_municipal_2024_votes_cast",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2024_votes_cast"
+   ],
+   "definition": "municipal election 2024: votes cast (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2024_electors",
+   "original_name": "elec_municipal_2024_electors",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2024_electors"
+   ],
+   "definition": "municipal election 2024: electors (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2024_turnout_rate",
+   "original_name": "elec_municipal_2024_turnout_rate",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2024_turnout_rate"
+   ],
+   "definition": "municipal election 2024: turnout rate (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "rate",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2024_left_votes",
+   "original_name": "elec_municipal_2024_left_votes",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2024_left_votes"
+   ],
+   "definition": "municipal election 2024: left votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2024_right_votes",
+   "original_name": "elec_municipal_2024_right_votes",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2024_right_votes"
+   ],
+   "definition": "municipal election 2024: right votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2024_party_afd_votes",
+   "original_name": "elec_municipal_2024_party_afd_votes",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2024_party_afd_votes"
+   ],
+   "definition": "municipal election 2024: party afd votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2024_party_cdu_votes",
+   "original_name": "elec_municipal_2024_party_cdu_votes",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2024_party_cdu_votes"
+   ],
+   "definition": "municipal election 2024: party cdu votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2024_party_die_linke_votes",
+   "original_name": "elec_municipal_2024_party_die_linke_votes",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2024_party_die_linke_votes"
+   ],
+   "definition": "municipal election 2024: party die linke votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2024_party_fdp_votes",
+   "original_name": "elec_municipal_2024_party_fdp_votes",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2024_party_fdp_votes"
+   ],
+   "definition": "municipal election 2024: party fdp votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2024_party_grune_votes",
+   "original_name": "elec_municipal_2024_party_grune_votes",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2024_party_grune_votes"
+   ],
+   "definition": "municipal election 2024: party grune votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2024_party_spd_votes",
+   "original_name": "elec_municipal_2024_party_spd_votes",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2024_party_spd_votes"
+   ],
+   "definition": "municipal election 2024: party spd votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2024_party_volt_votes",
+   "original_name": "elec_municipal_2024_party_volt_votes",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2024_party_volt_votes"
+   ],
+   "definition": "municipal election 2024: party volt votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2024_left_share",
+   "original_name": "elec_municipal_2024_left_share",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2024_left_share"
+   ],
+   "definition": "municipal election 2024: left share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2024_right_share",
+   "original_name": "elec_municipal_2024_right_share",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2024_right_share"
+   ],
+   "definition": "municipal election 2024: right share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2024_other_share",
+   "original_name": "elec_municipal_2024_other_share",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2024_other_share"
+   ],
+   "definition": "municipal election 2024: other share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2024_party_afd_share",
+   "original_name": "elec_municipal_2024_party_afd_share",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2024_party_afd_share"
+   ],
+   "definition": "municipal election 2024: party afd share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2024_party_cdu_share",
+   "original_name": "elec_municipal_2024_party_cdu_share",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2024_party_cdu_share"
+   ],
+   "definition": "municipal election 2024: party cdu share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2024_party_die_linke_share",
+   "original_name": "elec_municipal_2024_party_die_linke_share",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2024_party_die_linke_share"
+   ],
+   "definition": "municipal election 2024: party die linke share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2024_party_fdp_share",
+   "original_name": "elec_municipal_2024_party_fdp_share",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2024_party_fdp_share"
+   ],
+   "definition": "municipal election 2024: party fdp share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2024_party_grune_share",
+   "original_name": "elec_municipal_2024_party_grune_share",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2024_party_grune_share"
+   ],
+   "definition": "municipal election 2024: party grune share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2024_party_spd_share",
+   "original_name": "elec_municipal_2024_party_spd_share",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2024_party_spd_share"
+   ],
+   "definition": "municipal election 2024: party spd share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2024_party_volt_share",
+   "original_name": "elec_municipal_2024_party_volt_share",
+   "country": "germany",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2024_party_volt_share"
+   ],
+   "definition": "municipal election 2024: party volt share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  }
+ ]
+}

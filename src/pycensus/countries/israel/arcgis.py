@@ -26,6 +26,22 @@ from shapely.geometry import MultiPolygon, Point, Polygon
 _TIMEOUT = 60
 
 
+class _LegacyTlsAdapter(requests.adapters.HTTPAdapter):
+    """ags.iplan.gov.il only offers old TLS ciphers (python's default OpenSSL 3 policy fails the handshake): allow them."""
+
+    def init_poolmanager(self, *args, **kwargs):
+        import ssl
+
+        ctx = ssl.create_default_context()
+        ctx.set_ciphers("DEFAULT@SECLEVEL=0")
+        kwargs["ssl_context"] = ctx
+        return super().init_poolmanager(*args, **kwargs)
+
+
+_SESSION = requests.Session()
+_SESSION.mount("https://", _LegacyTlsAdapter())
+
+
 def query_features(
     url: str,
     where: str = "1=1",
@@ -71,7 +87,7 @@ def query_features(
             params["resultOffset"] = offset
             params["resultRecordCount"] = page_size
 
-        resp = requests.get(f"{url}/query", params=params, timeout=_TIMEOUT)
+        resp = _SESSION.get(f"{url}/query", params=params, timeout=_TIMEOUT)
         resp.raise_for_status()
         data = resp.json()
         if "error" in data:

@@ -112,7 +112,16 @@ def register_source_accessor(schema: ColumnSchema) -> type:
 
         def __getitem__(self, key: Union[str, List[str]]) -> ColumnView:
             names = [key] if isinstance(key, str) else list(key)
-            prefixed = [n if n.startswith(schema.prefix + "_") else schema.prefixed(n) for n in names]
+            cols = set(self._gdf.columns)
+
+            def resolve(n: str) -> str:
+                # the source's prefixed name (cache files) or, after `load`'s canonical renaming, the bare global name
+                p = n if n.startswith(schema.prefix + "_") else schema.prefixed(n)
+                if p in cols or n not in cols:
+                    return p
+                return n
+
+            prefixed = [resolve(n) for n in names]
             data = self._gdf[prefixed[0]] if len(prefixed) == 1 else self._gdf[prefixed]
             return ColumnView(data, self._gdf, schema)
 

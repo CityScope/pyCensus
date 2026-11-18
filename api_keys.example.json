@@ -1,0 +1,4 @@
+{
+  "us_census": "US Census Bureau API key (https://api.census.gov/data/key_signup.html); env US_CENSUS_API_KEY",
+  "destatis_genesis": "Destatis GENESIS-Online token (https://www-genesis.destatis.de, register, then 'Token'); env DESTATIS_GENESIS_TOKEN"
+}

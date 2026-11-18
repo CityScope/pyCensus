@@ -1,0 +1,679 @@
+{
+ "country": "chile",
+ "source": "ine_manzana",
+ "full_name": "INE Chile Censo 2024 block-level base (manzana-entidad)",
+ "years": [
+  2024
+ ],
+ "levels": [
+  "manzana"
+ ],
+ "features": [
+  {
+   "category": "population",
+   "feature_name": "population",
+   "definition": "Number of people residing in the geographic area. (INE Censo 2024, block level.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "original_name": "n_per",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_per"
+   ]
+  },
+  {
+   "category": "population",
+   "feature_name": "malePopulation",
+   "definition": "Number of residents who are male. (INE Censo 2024, block level.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population",
+   "original_name": "n_hombres",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_hombres"
+   ]
+  },
+  {
+   "category": "population",
+   "feature_name": "femalePopulation",
+   "definition": "Number of residents who are female. (INE Censo 2024, block level.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population",
+   "original_name": "n_mujeres",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_mujeres"
+   ]
+  },
+  {
+   "category": "population",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "feature_name": "population0to5",
+   "original_name": "n_edad_0_5",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_edad_0_5"
+   ],
+   "definition": "People aged 0-5. (INE Censo 2024, block level.)"
+  },
+  {
+   "category": "population",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "feature_name": "population6to13",
+   "original_name": "n_edad_6_13",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_edad_6_13"
+   ],
+   "definition": "People aged 6-13. (INE Censo 2024, block level.)"
+  },
+  {
+   "category": "population",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "feature_name": "population14to17",
+   "original_name": "n_edad_14_17",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_edad_14_17"
+   ],
+   "definition": "People aged 14-17. (INE Censo 2024, block level.)"
+  },
+  {
+   "category": "population",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "feature_name": "population18to24",
+   "original_name": "n_edad_18_24",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_edad_18_24"
+   ],
+   "definition": "People aged 18-24. (INE Censo 2024, block level.)"
+  },
+  {
+   "category": "population",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "feature_name": "population25to44",
+   "original_name": "n_edad_25_44",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_edad_25_44"
+   ],
+   "definition": "People aged 25-44. (INE Censo 2024, block level.)"
+  },
+  {
+   "category": "population",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "feature_name": "population45to59",
+   "original_name": "n_edad_45_59",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_edad_45_59"
+   ],
+   "definition": "People aged 45-59. (INE Censo 2024, block level.)"
+  },
+  {
+   "category": "population",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "feature_name": "population60plus",
+   "original_name": "n_edad_60_mas",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_edad_60_mas"
+   ],
+   "definition": "People aged 60+. (INE Censo 2024, block level.)"
+  },
+  {
+   "category": "migration",
+   "feature_name": "foreignBornPopulation",
+   "definition": "Number of residents born outside the country in which the geographic area is located. (INE Censo 2024, block level.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population",
+   "original_name": "n_inmigrantes",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_inmigrantes"
+   ]
+  },
+  {
+   "category": "raceEthinicity",
+   "feature_name": "minorityEthnicityPopulation",
+   "definition": "Number of residents belonging to an ethnic, racial, Indigenous, or other officially defined minority population category according to the country's census classification. (INE Censo 2024, block level.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population",
+   "original_name": "n_pueblos_orig",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_pueblos_orig"
+   ]
+  },
+  {
+   "category": "religion",
+   "feature_name": "religiousPopulation",
+   "definition": "Number of residents reporting affiliation with any religion or religious denomination. (INE Censo 2024, block level.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population",
+   "original_name": "n_religion",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_religion"
+   ]
+  },
+  {
+   "category": "population",
+   "feature_name": "disabledPopulation",
+   "definition": "Residents with a disability or long-term limitation. (INE Censo 2024, block level.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population",
+   "original_name": "n_discapacidad",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_discapacidad"
+   ]
+  },
+  {
+   "category": "employment",
+   "feature_name": "employedResidents",
+   "definition": "Number of employed people who reside in the geographic area, regardless of where they work. (INE Censo 2024, block level.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "laborForce",
+   "original_name": "n_ocupado",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_ocupado"
+   ]
+  },
+  {
+   "category": "employment",
+   "feature_name": "unemployedResidents",
+   "definition": "Number of unemployed residents who are part of the labor force and actively available for or seeking work according to the applicable census definition. (INE Censo 2024, block level.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "laborForce",
+   "original_name": "n_desocupado",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_desocupado"
+   ]
+  },
+  {
+   "category": "employment",
+   "feature_name": "selfEmployedResidents",
+   "definition": "Employed residents working on their own account. (INE Censo 2024, block level.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "employedResidents",
+   "original_name": "n_cise_rec_independientes",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_cise_rec_independientes"
+   ]
+  },
+  {
+   "category": "transport",
+   "feature_name": "carCommuters",
+   "definition": "Number of employed residents whose usual journey to work is primarily by private car or automobile. (INE Censo 2024, block level.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "employedResidents",
+   "original_name": "n_transporte_auto",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_transporte_auto"
+   ]
+  },
+  {
+   "category": "transport",
+   "feature_name": "publicTransportCommuters",
+   "definition": "Number of employed residents whose usual journey to work is primarily by public transportation. (INE Censo 2024, block level.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "employedResidents",
+   "original_name": "n_transporte_publico",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_transporte_publico"
+   ]
+  },
+  {
+   "category": "transport",
+   "feature_name": "walkCommuters",
+   "definition": "Number of employed residents whose usual journey to work is primarily on foot. (INE Censo 2024, block level.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "employedResidents",
+   "original_name": "n_transporte_camina",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_transporte_camina"
+   ]
+  },
+  {
+   "category": "transport",
+   "feature_name": "bikeCommuters",
+   "definition": "Number of employed residents whose usual journey to work is primarily by bicycle. (INE Censo 2024, block level.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "employedResidents",
+   "original_name": "n_transporte_bicicleta",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_transporte_bicicleta"
+   ]
+  },
+  {
+   "category": "population",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "feature_name": "motorcycleCommuters",
+   "original_name": "n_transporte_motocicleta",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_transporte_motocicleta"
+   ],
+   "definition": "Employed residents commuting mainly by motorcycle. (INE Censo 2024, block level.)"
+  },
+  {
+   "category": "housing",
+   "feature_name": "dwellings",
+   "definition": "Number of dwellings (occupied or not). (INE Censo 2024, block level.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "households",
+   "original_name": "n_vp",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_vp"
+   ]
+  },
+  {
+   "category": "population",
+   "feature_name": "households",
+   "definition": "Number of residential or private households in the geographic area. (INE Censo 2024, block level.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population",
+   "original_name": "n_hog",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_hog"
+   ]
+  },
+  {
+   "category": "housing",
+   "feature_name": "singlePersonHouseholds",
+   "definition": "Households with a single resident. (INE Censo 2024, block level.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "households",
+   "original_name": "n_hog_unipersonales",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_hog_unipersonales"
+   ]
+  },
+  {
+   "category": "population",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "feature_name": "dwellingsHouse",
+   "original_name": "n_tipo_viv_casa",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_tipo_viv_casa"
+   ],
+   "definition": "dwellingsHouse (INE Censo 2024, block level.)"
+  },
+  {
+   "category": "population",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "feature_name": "dwellingsApartment",
+   "original_name": "n_tipo_viv_depto",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_tipo_viv_depto"
+   ],
+   "definition": "dwellingsApartment (INE Censo 2024, block level.)"
+  },
+  {
+   "category": "population",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "feature_name": "dwellingsTenement",
+   "original_name": "n_tipo_viv_pieza",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_tipo_viv_pieza"
+   ],
+   "definition": "dwellingsTenement (INE Censo 2024, block level.)"
+  },
+  {
+   "category": "population",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "feature_name": "dwellingsMediagua",
+   "original_name": "n_tipo_viv_mediagua",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_tipo_viv_mediagua"
+   ],
+   "definition": "dwellingsMediagua (INE Censo 2024, block level.)"
+  },
+  {
+   "category": "population",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "feature_name": "dwellingsMobile",
+   "original_name": "n_tipo_viv_movil",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_tipo_viv_movil"
+   ],
+   "definition": "dwellingsMobile (INE Censo 2024, block level.)"
+  },
+  {
+   "category": "population",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "feature_name": "dwellingsIndigenous",
+   "original_name": "n_tipo_viv_indigena",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_tipo_viv_indigena"
+   ],
+   "definition": "dwellingsIndigenous (INE Censo 2024, block level.)"
+  },
+  {
+   "category": "population",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "feature_name": "dwellingsOtherType",
+   "original_name": "n_tipo_viv_otro",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_tipo_viv_otro"
+   ],
+   "definition": "dwellingsOtherType (INE Censo 2024, block level.)"
+  },
+  {
+   "category": "education",
+   "type": "mean",
+   "unit": "years",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_divide",
+   "feature_name": "meanSchoolingYears",
+   "original_name": "prom_escolaridad18",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "prom_escolaridad18"
+   ],
+   "definition": "Mean years of schooling of people aged 18 or more. (INE Censo 2024, block level.)"
+  },
+  {
+   "category": "population",
+   "feature_name": "under18Population",
+   "definition": "Number of residents younger than 18 years old. (INE Censo 2024, block level.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population",
+   "original_name": "n_edad_0_5+n_edad_6_13+n_edad_14_17",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_edad_0_5",
+    "n_edad_6_13",
+    "n_edad_14_17"
+   ]
+  },
+  {
+   "category": "education",
+   "feature_name": "educationPrimaryOrLessPopulation",
+   "definition": "Number of adults whose highest completed education is primary education or less. (INE Censo 2024, block level.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "adultPopulation",
+   "original_name": "n_cine_nunca_curso_primera_infancia+n_cine_primaria",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_cine_nunca_curso_primera_infancia",
+    "n_cine_primaria"
+   ]
+  },
+  {
+   "category": "education",
+   "feature_name": "educationSecondaryPopulation",
+   "definition": "Number of adults whose highest completed education is secondary education (high school diploma or equivalent) or more. (INE Censo 2024, block level.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "adultPopulation",
+   "original_name": "n_cine_secundaria",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_cine_secundaria"
+   ]
+  },
+  {
+   "category": "education",
+   "feature_name": "educationUniversityPopulation",
+   "definition": "Number of adults whose highest completed education is a bachelor's degree or more. (INE Censo 2024, block level.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "adultPopulation",
+   "original_name": "n_cine_terciaria_maestria_doctorado",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_cine_terciaria_maestria_doctorado"
+   ]
+  },
+  {
+   "category": "employment",
+   "feature_name": "laborForce",
+   "definition": "Number of residents who are economically active and form the labor force, including employed and unemployed people according to the applicable census definition. (INE Censo 2024, block level.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "adultPopulation",
+   "original_name": "n_ocupado+n_desocupado",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_ocupado",
+    "n_desocupado"
+   ]
+  },
+  {
+   "category": "housing",
+   "feature_name": "ownerHouseholds",
+   "definition": "Households that own their dwelling. (INE Censo 2024, block level.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "households",
+   "original_name": "n_tenencia_propia_pagada+n_tenencia_propia_pagandose",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_tenencia_propia_pagada",
+    "n_tenencia_propia_pagandose"
+   ]
+  },
+  {
+   "category": "housing",
+   "feature_name": "renterHouseholds",
+   "definition": "Households that rent their dwelling. (INE Censo 2024, block level.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "households",
+   "original_name": "n_tenencia_arrendada_contrato+n_tenencia_arrendada_sin_contrato",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_tenencia_arrendada_contrato",
+    "n_tenencia_arrendada_sin_contrato"
+   ]
+  },
+  {
+   "category": "transport",
+   "feature_name": "motorizedCommuters",
+   "definition": "Workers commuting by car or motorcycle (all private motorized modes). (INE Censo 2024, block level.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "employedResidents",
+   "original_name": "n_transporte_auto+n_transporte_publico+n_transporte_motocicleta",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_transporte_auto",
+    "n_transporte_publico",
+    "n_transporte_motocicleta"
+   ]
+  },
+  {
+   "category": "population",
+   "feature_name": "adultPopulation",
+   "definition": "Number of residents aged 18 years or older. (INE Censo 2024, block level.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population",
+   "original_name": "n_edad_18_24+n_edad_25_44+n_edad_45_59+n_edad_60_mas",
+   "country": "chile",
+   "source": "ine_manzana",
+   "codes": [
+    "n_edad_18_24",
+    "n_edad_25_44",
+    "n_edad_45_59",
+    "n_edad_60_mas"
+   ]
+  }
+ ]
+}

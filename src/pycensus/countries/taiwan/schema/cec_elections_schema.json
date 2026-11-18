@@ -1,0 +1,566 @@
+{
+ "country": "taiwan",
+ "source": "cec_elections",
+ "full_name": "Central Election Commission election database (db.cec.gov.tw), results per village; pycensus.countries.taiwan.elections.load_presidential/load_legislative/load_mayor/load_council; party columns shown for Taipei (63000)",
+ "levels": [
+  "village",
+  "district",
+  "county_city",
+  "h3_8"
+ ],
+ "features": [
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2024_total_votes",
+   "original_name": "elec_national_2024_total_votes",
+   "country": "taiwan",
+   "source": "cec_elections",
+   "codes": [
+    "elec_national_2024_total_votes"
+   ],
+   "definition": "Valid votes, 2024 presidential election.",
+   "type": "count",
+   "unit": "votes",
+   "resampling_up": "sum",
+   "resampling_down": "divide_area_weighted"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2024_turnout_rate",
+   "original_name": "elec_national_2024_turnout_rate",
+   "country": "taiwan",
+   "source": "cec_elections",
+   "codes": [
+    "elec_national_2024_turnout_rate"
+   ],
+   "definition": "Ballots cast / eligible voters, 2024 presidential election.",
+   "type": "rate",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_national_2024_total_votes",
+   "resampling_weight": "elec_national_2024_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2024_left_share",
+   "original_name": "elec_national_2024_left_share",
+   "country": "taiwan",
+   "source": "cec_elections",
+   "codes": [
+    "elec_national_2024_left_share"
+   ],
+   "definition": "Share of valid votes for the 'left' bloc (see schema/taiwan_elections_blocs.json), 2024 presidential election.",
+   "type": "percentage",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_national_2024_total_votes",
+   "resampling_weight": "elec_national_2024_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2024_right_share",
+   "original_name": "elec_national_2024_right_share",
+   "country": "taiwan",
+   "source": "cec_elections",
+   "codes": [
+    "elec_national_2024_right_share"
+   ],
+   "definition": "Share of valid votes for the 'right' bloc (see schema/taiwan_elections_blocs.json), 2024 presidential election.",
+   "type": "percentage",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_national_2024_total_votes",
+   "resampling_weight": "elec_national_2024_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2024_other_share",
+   "original_name": "elec_national_2024_other_share",
+   "country": "taiwan",
+   "source": "cec_elections",
+   "codes": [
+    "elec_national_2024_other_share"
+   ],
+   "definition": "Share of valid votes for the 'other' bloc (see schema/taiwan_elections_blocs.json), 2024 presidential election.",
+   "type": "percentage",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_national_2024_total_votes",
+   "resampling_weight": "elec_national_2024_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2024_party_dpp_share",
+   "original_name": "elec_national_2024_party_dpp_share",
+   "country": "taiwan",
+   "source": "cec_elections",
+   "codes": [
+    "elec_national_2024_party_dpp_share"
+   ],
+   "definition": "Share of valid votes for dpp (parties/candidates >= 3% in the study area), 2024 presidential election.",
+   "type": "percentage",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_national_2024_total_votes",
+   "resampling_weight": "elec_national_2024_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2024_party_kmt_share",
+   "original_name": "elec_national_2024_party_kmt_share",
+   "country": "taiwan",
+   "source": "cec_elections",
+   "codes": [
+    "elec_national_2024_party_kmt_share"
+   ],
+   "definition": "Share of valid votes for kmt (parties/candidates >= 3% in the study area), 2024 presidential election.",
+   "type": "percentage",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_national_2024_total_votes",
+   "resampling_weight": "elec_national_2024_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2024_party_tpp_share",
+   "original_name": "elec_national_2024_party_tpp_share",
+   "country": "taiwan",
+   "source": "cec_elections",
+   "codes": [
+    "elec_national_2024_party_tpp_share"
+   ],
+   "definition": "Share of valid votes for tpp (parties/candidates >= 3% in the study area), 2024 presidential election.",
+   "type": "percentage",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_national_2024_total_votes",
+   "resampling_weight": "elec_national_2024_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2024leg_total_votes",
+   "original_name": "elec_national_2024leg_total_votes",
+   "country": "taiwan",
+   "source": "cec_elections",
+   "codes": [
+    "elec_national_2024leg_total_votes"
+   ],
+   "definition": "Valid votes, 2024 Legislative Yuan party-list vote.",
+   "type": "count",
+   "unit": "votes",
+   "resampling_up": "sum",
+   "resampling_down": "divide_area_weighted"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2024leg_turnout_rate",
+   "original_name": "elec_national_2024leg_turnout_rate",
+   "country": "taiwan",
+   "source": "cec_elections",
+   "codes": [
+    "elec_national_2024leg_turnout_rate"
+   ],
+   "definition": "Ballots cast / eligible voters, 2024 Legislative Yuan party-list vote.",
+   "type": "rate",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_national_2024leg_total_votes",
+   "resampling_weight": "elec_national_2024leg_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2024leg_left_share",
+   "original_name": "elec_national_2024leg_left_share",
+   "country": "taiwan",
+   "source": "cec_elections",
+   "codes": [
+    "elec_national_2024leg_left_share"
+   ],
+   "definition": "Share of valid votes for the 'left' bloc (see schema/taiwan_elections_blocs.json), 2024 Legislative Yuan party-list vote.",
+   "type": "percentage",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_national_2024leg_total_votes",
+   "resampling_weight": "elec_national_2024leg_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2024leg_right_share",
+   "original_name": "elec_national_2024leg_right_share",
+   "country": "taiwan",
+   "source": "cec_elections",
+   "codes": [
+    "elec_national_2024leg_right_share"
+   ],
+   "definition": "Share of valid votes for the 'right' bloc (see schema/taiwan_elections_blocs.json), 2024 Legislative Yuan party-list vote.",
+   "type": "percentage",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_national_2024leg_total_votes",
+   "resampling_weight": "elec_national_2024leg_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2024leg_other_share",
+   "original_name": "elec_national_2024leg_other_share",
+   "country": "taiwan",
+   "source": "cec_elections",
+   "codes": [
+    "elec_national_2024leg_other_share"
+   ],
+   "definition": "Share of valid votes for the 'other' bloc (see schema/taiwan_elections_blocs.json), 2024 Legislative Yuan party-list vote.",
+   "type": "percentage",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_national_2024leg_total_votes",
+   "resampling_weight": "elec_national_2024leg_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2024leg_party_dpp_share",
+   "original_name": "elec_national_2024leg_party_dpp_share",
+   "country": "taiwan",
+   "source": "cec_elections",
+   "codes": [
+    "elec_national_2024leg_party_dpp_share"
+   ],
+   "definition": "Share of valid votes for dpp (parties/candidates >= 3% in the study area), 2024 Legislative Yuan party-list vote.",
+   "type": "percentage",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_national_2024leg_total_votes",
+   "resampling_weight": "elec_national_2024leg_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2024leg_party_kmt_share",
+   "original_name": "elec_national_2024leg_party_kmt_share",
+   "country": "taiwan",
+   "source": "cec_elections",
+   "codes": [
+    "elec_national_2024leg_party_kmt_share"
+   ],
+   "definition": "Share of valid votes for kmt (parties/candidates >= 3% in the study area), 2024 Legislative Yuan party-list vote.",
+   "type": "percentage",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_national_2024leg_total_votes",
+   "resampling_weight": "elec_national_2024leg_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2024leg_party_tpp_share",
+   "original_name": "elec_national_2024leg_party_tpp_share",
+   "country": "taiwan",
+   "source": "cec_elections",
+   "codes": [
+    "elec_national_2024leg_party_tpp_share"
+   ],
+   "definition": "Share of valid votes for tpp (parties/candidates >= 3% in the study area), 2024 Legislative Yuan party-list vote.",
+   "type": "percentage",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_national_2024leg_total_votes",
+   "resampling_weight": "elec_national_2024leg_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2022_total_votes",
+   "original_name": "elec_municipal_2022_total_votes",
+   "country": "taiwan",
+   "source": "cec_elections",
+   "codes": [
+    "elec_municipal_2022_total_votes"
+   ],
+   "definition": "Valid votes, 2022 mayoral election.",
+   "type": "count",
+   "unit": "votes",
+   "resampling_up": "sum",
+   "resampling_down": "divide_area_weighted"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2022_turnout_rate",
+   "original_name": "elec_municipal_2022_turnout_rate",
+   "country": "taiwan",
+   "source": "cec_elections",
+   "codes": [
+    "elec_municipal_2022_turnout_rate"
+   ],
+   "definition": "Ballots cast / eligible voters, 2022 mayoral election.",
+   "type": "rate",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_municipal_2022_total_votes",
+   "resampling_weight": "elec_municipal_2022_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2022_left_share",
+   "original_name": "elec_municipal_2022_left_share",
+   "country": "taiwan",
+   "source": "cec_elections",
+   "codes": [
+    "elec_municipal_2022_left_share"
+   ],
+   "definition": "Share of valid votes for the 'left' bloc (see schema/taiwan_elections_blocs.json), 2022 mayoral election.",
+   "type": "percentage",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_municipal_2022_total_votes",
+   "resampling_weight": "elec_municipal_2022_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2022_right_share",
+   "original_name": "elec_municipal_2022_right_share",
+   "country": "taiwan",
+   "source": "cec_elections",
+   "codes": [
+    "elec_municipal_2022_right_share"
+   ],
+   "definition": "Share of valid votes for the 'right' bloc (see schema/taiwan_elections_blocs.json), 2022 mayoral election.",
+   "type": "percentage",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_municipal_2022_total_votes",
+   "resampling_weight": "elec_municipal_2022_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2022_other_share",
+   "original_name": "elec_municipal_2022_other_share",
+   "country": "taiwan",
+   "source": "cec_elections",
+   "codes": [
+    "elec_municipal_2022_other_share"
+   ],
+   "definition": "Share of valid votes for the 'other' bloc (see schema/taiwan_elections_blocs.json), 2022 mayoral election.",
+   "type": "percentage",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_municipal_2022_total_votes",
+   "resampling_weight": "elec_municipal_2022_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2022_party_dpp_share",
+   "original_name": "elec_municipal_2022_party_dpp_share",
+   "country": "taiwan",
+   "source": "cec_elections",
+   "codes": [
+    "elec_municipal_2022_party_dpp_share"
+   ],
+   "definition": "Share of valid votes for dpp (parties/candidates >= 3% in the study area), 2022 mayoral election.",
+   "type": "percentage",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_municipal_2022_total_votes",
+   "resampling_weight": "elec_municipal_2022_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2022_party_huang_shan_shan_share",
+   "original_name": "elec_municipal_2022_party_huang_shan_shan_share",
+   "country": "taiwan",
+   "source": "cec_elections",
+   "codes": [
+    "elec_municipal_2022_party_huang_shan_shan_share"
+   ],
+   "definition": "Share of valid votes for huang_shan_shan (parties/candidates >= 3% in the study area), 2022 mayoral election.",
+   "type": "percentage",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_municipal_2022_total_votes",
+   "resampling_weight": "elec_municipal_2022_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2022_party_kmt_share",
+   "original_name": "elec_municipal_2022_party_kmt_share",
+   "country": "taiwan",
+   "source": "cec_elections",
+   "codes": [
+    "elec_municipal_2022_party_kmt_share"
+   ],
+   "definition": "Share of valid votes for kmt (parties/candidates >= 3% in the study area), 2022 mayoral election.",
+   "type": "percentage",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_municipal_2022_total_votes",
+   "resampling_weight": "elec_municipal_2022_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2022council_total_votes",
+   "original_name": "elec_municipal_2022council_total_votes",
+   "country": "taiwan",
+   "source": "cec_elections",
+   "codes": [
+    "elec_municipal_2022council_total_votes"
+   ],
+   "definition": "Valid votes, 2022 city council election (regional constituencies).",
+   "type": "count",
+   "unit": "votes",
+   "resampling_up": "sum",
+   "resampling_down": "divide_area_weighted"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2022council_turnout_rate",
+   "original_name": "elec_municipal_2022council_turnout_rate",
+   "country": "taiwan",
+   "source": "cec_elections",
+   "codes": [
+    "elec_municipal_2022council_turnout_rate"
+   ],
+   "definition": "Ballots cast / eligible voters, 2022 city council election (regional constituencies).",
+   "type": "rate",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_municipal_2022council_total_votes",
+   "resampling_weight": "elec_municipal_2022council_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2022council_left_share",
+   "original_name": "elec_municipal_2022council_left_share",
+   "country": "taiwan",
+   "source": "cec_elections",
+   "codes": [
+    "elec_municipal_2022council_left_share"
+   ],
+   "definition": "Share of valid votes for the 'left' bloc (see schema/taiwan_elections_blocs.json), 2022 city council election (regional constituencies).",
+   "type": "percentage",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_municipal_2022council_total_votes",
+   "resampling_weight": "elec_municipal_2022council_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2022council_right_share",
+   "original_name": "elec_municipal_2022council_right_share",
+   "country": "taiwan",
+   "source": "cec_elections",
+   "codes": [
+    "elec_municipal_2022council_right_share"
+   ],
+   "definition": "Share of valid votes for the 'right' bloc (see schema/taiwan_elections_blocs.json), 2022 city council election (regional constituencies).",
+   "type": "percentage",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_municipal_2022council_total_votes",
+   "resampling_weight": "elec_municipal_2022council_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2022council_other_share",
+   "original_name": "elec_municipal_2022council_other_share",
+   "country": "taiwan",
+   "source": "cec_elections",
+   "codes": [
+    "elec_municipal_2022council_other_share"
+   ],
+   "definition": "Share of valid votes for the 'other' bloc (see schema/taiwan_elections_blocs.json), 2022 city council election (regional constituencies).",
+   "type": "percentage",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_municipal_2022council_total_votes",
+   "resampling_weight": "elec_municipal_2022council_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2022council_party_dpp_share",
+   "original_name": "elec_municipal_2022council_party_dpp_share",
+   "country": "taiwan",
+   "source": "cec_elections",
+   "codes": [
+    "elec_municipal_2022council_party_dpp_share"
+   ],
+   "definition": "Share of valid votes for dpp (parties/candidates >= 3% in the study area), 2022 city council election (regional constituencies).",
+   "type": "percentage",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_municipal_2022council_total_votes",
+   "resampling_weight": "elec_municipal_2022council_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2022council_party_independent_share",
+   "original_name": "elec_municipal_2022council_party_independent_share",
+   "country": "taiwan",
+   "source": "cec_elections",
+   "codes": [
+    "elec_municipal_2022council_party_independent_share"
+   ],
+   "definition": "Share of valid votes for independent (parties/candidates >= 3% in the study area), 2022 city council election (regional constituencies).",
+   "type": "percentage",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_municipal_2022council_total_votes",
+   "resampling_weight": "elec_municipal_2022council_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2022council_party_kmt_share",
+   "original_name": "elec_municipal_2022council_party_kmt_share",
+   "country": "taiwan",
+   "source": "cec_elections",
+   "codes": [
+    "elec_municipal_2022council_party_kmt_share"
+   ],
+   "definition": "Share of valid votes for kmt (parties/candidates >= 3% in the study area), 2022 city council election (regional constituencies).",
+   "type": "percentage",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_municipal_2022council_total_votes",
+   "resampling_weight": "elec_municipal_2022council_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2022council_party_tpp_share",
+   "original_name": "elec_municipal_2022council_party_tpp_share",
+   "country": "taiwan",
+   "source": "cec_elections",
+   "codes": [
+    "elec_municipal_2022council_party_tpp_share"
+   ],
+   "definition": "Share of valid votes for tpp (parties/candidates >= 3% in the study area), 2022 city council election (regional constituencies).",
+   "type": "percentage",
+   "unit": "share 0-1",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "relative_to": "elec_municipal_2022council_total_votes",
+   "resampling_weight": "elec_municipal_2022council_total_votes"
+  }
+ ]
+}

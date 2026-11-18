@@ -5,7 +5,17 @@ from typing import Optional
 
 
 def territory_code(territory: str) -> str:
-    """Normalize a territory name, abbreviation, or code to its code."""
+    """Normalize a territory name, abbreviation, or code to its code.
+
+    Args:
+        territory: Territory name, abbreviation or code.
+
+    Returns:
+        The code.
+
+    Raises:
+        ValueError: For an unknown territory.
+    """
     from .constants import TERRITORY_ABBR, TERRITORY_BASQUE, TERRITORY_CODES
     
     if territory in TERRITORY_CODES:
@@ -23,7 +33,17 @@ def territory_code(territory: str) -> str:
 
 
 def territory_abbr(territory: str) -> str:
-    """Normalize a territory name or code to its abbreviation."""
+    """Normalize a territory name or code to its abbreviation.
+
+    Args:
+        territory: Territory name or code.
+
+    Returns:
+        The abbreviation.
+
+    Raises:
+        ValueError: For an unknown territory.
+    """
     from .constants import TERRITORY_ABBR, TERRITORY_CODES
     
     if isinstance(territory, str) and territory in {v.upper() for v in TERRITORY_ABBR.values()}:
@@ -43,6 +63,15 @@ def comarca_code(comarca: str) -> str:
     """Normalize a comarca name or code to its code.
     
     Note: This is a partial implementation.
+
+    Args:
+        comarca: Comarca name or code.
+
+    Returns:
+        The code.
+
+    Raises:
+        ValueError: For an unknown comarca.
     """
     from .constants import COMARCAS_CODES
     
@@ -69,7 +98,14 @@ def comarca_code(comarca: str) -> str:
 
 
 def pick_geoid_column(columns) -> Optional[str]:
-    """Pick the most specific GEOID-like column present."""
+    """Pick the most specific GEOID-like column present.
+
+    Args:
+        columns: Column names.
+
+    Returns:
+        The column, or None.
+    """
     candidates = [c for c in columns if "GEOID" in c.upper() or "COD" in c.upper() or "CODE" in c.upper()]
     
     if not candidates:

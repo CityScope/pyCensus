@@ -38,6 +38,7 @@ GEOMETRY_FUNCS = {
     "core_based_statistical_area": pygris.core_based_statistical_areas,
     "congressional_district": pygris.congressional_districts,
     "school_district": pygris.school_districts,
+    "voting_district": pygris.voting_districts,
     "county_subdivision": pygris.county_subdivisions,
 }
 """Logical level name -> pygris function that fetches its boundaries."""
@@ -69,6 +70,7 @@ ERASE_WATER: Dict[str, bool] = {
     "core_based_statistical_area": False,
     "congressional_district": True,
     "school_district": True,
+    "voting_district": True,
     "county_subdivision": False,
 }
 """Level -> whether `pygris.utils.erase_water` should clip inland water bodies by default."""

@@ -1,0 +1,263 @@
+{
+ "country": "usa",
+ "note": "Bloc = left | right | other. other includes centre, minor, write-in, blank. Shares of party/candidate keys are matched on upper-case names. uncertain=true means please review.",
+ "sources": [
+  "Wikipedia party articles",
+  "Ballotpedia",
+  "SF Chronicle / Mission Local mayoral guides (2024)",
+  "Boston Globe/WBUR 2025 mayoral coverage"
+ ],
+ "elections": {
+  "national_2024": {
+   "description": "2024 US President, keyed by MEDSL party_simplified",
+   "entries": {
+    "DEMOCRAT": {
+     "bloc": "left",
+     "why": "Democratic Party: US centre-left party; the main left-of-centre pole of the two-party system"
+    },
+    "REPUBLICAN": {
+     "bloc": "right",
+     "why": "Republican Party: US conservative/right party"
+    },
+    "GREEN": {
+     "bloc": "left",
+     "why": "Green Party: eco-socialist / progressive left minor party",
+     "uncertain": true
+    },
+    "LIBERTARIAN": {
+     "bloc": "other",
+     "why": "Libertarian Party: economically right, socially liberal; not placed on either bloc",
+     "uncertain": true
+    },
+    "OTHER": {
+     "bloc": "other",
+     "why": "Independents, write-ins and minor parties (heterogeneous)"
+    },
+    "INDEPENDENT": {
+     "bloc": "other",
+     "why": "Independents (heterogeneous)"
+    },
+    "NONPARTISAN": {
+     "bloc": "other",
+     "why": "Non-partisan label"
+    }
+   }
+  },
+  "state_2022_ma": {
+   "description": "2022 Massachusetts Governor (Healey D / Diehl R / Reed L-United Independent)",
+   "entries": {
+    "DEMOCRAT": {
+     "bloc": "left",
+     "why": "Democratic Party: US centre-left party; the main left-of-centre pole of the two-party system"
+    },
+    "REPUBLICAN": {
+     "bloc": "right",
+     "why": "Republican Party: US conservative/right party"
+    },
+    "GREEN": {
+     "bloc": "left",
+     "why": "Green Party: eco-socialist / progressive left minor party",
+     "uncertain": true
+    },
+    "LIBERTARIAN": {
+     "bloc": "other",
+     "why": "Libertarian Party: economically right, socially liberal; not placed on either bloc",
+     "uncertain": true
+    },
+    "OTHER": {
+     "bloc": "other",
+     "why": "Independents, write-ins and minor parties (heterogeneous)"
+    },
+    "INDEPENDENT": {
+     "bloc": "other",
+     "why": "Independents (heterogeneous)"
+    },
+    "NONPARTISAN": {
+     "bloc": "other",
+     "why": "Non-partisan label"
+    }
+   }
+  },
+  "state_2022_ca": {
+   "description": "2022 California Governor (Newsom D / Dahle R)",
+   "entries": {
+    "DEMOCRAT": {
+     "bloc": "left",
+     "why": "Democratic Party: US centre-left party; the main left-of-centre pole of the two-party system"
+    },
+    "REPUBLICAN": {
+     "bloc": "right",
+     "why": "Republican Party: US conservative/right party"
+    },
+    "GREEN": {
+     "bloc": "left",
+     "why": "Green Party: eco-socialist / progressive left minor party",
+     "uncertain": true
+    },
+    "LIBERTARIAN": {
+     "bloc": "other",
+     "why": "Libertarian Party: economically right, socially liberal; not placed on either bloc",
+     "uncertain": true
+    },
+    "OTHER": {
+     "bloc": "other",
+     "why": "Independents, write-ins and minor parties (heterogeneous)"
+    },
+    "INDEPENDENT": {
+     "bloc": "other",
+     "why": "Independents (heterogeneous)"
+    },
+    "NONPARTISAN": {
+     "bloc": "other",
+     "why": "Non-partisan label"
+    }
+   }
+  },
+  "municipal_2025_boston": {
+   "description": "Boston mayor, general 2025-11-04 (Wu essentially unopposed; write-ins). Left/right is not very informative.",
+   "entries": {
+    "MICHELLE WU": {
+     "bloc": "left",
+     "why": "Incumbent Democrat, progressive (Warren ally; rent stabilisation, fare-free buses)"
+    },
+    "JOSH KRAFT (WRITE-IN)": {
+     "bloc": "other",
+     "why": "Businessman, withdrew after prelim; centrist/moderate Democrat positioning",
+     "uncertain": true
+    },
+    "DOMINGOS DAROSA (WRITE-IN)": {
+     "bloc": "other",
+     "why": "City councillor candidate in 2025 prelim, moderate/centrist; write-in",
+     "uncertain": true
+    },
+    "ROBERT CAPPUCCI (WRITE-IN)": {
+     "bloc": "other",
+     "why": "Minor write-in candidate"
+    },
+    "JOHN F HOUTON (WRITE-IN)": {
+     "bloc": "other",
+     "why": "Minor write-in candidate"
+    },
+    "WILLIAM J MORGAN JR (WRITE-IN)": {
+     "bloc": "other",
+     "why": "Minor write-in candidate"
+    },
+    "ALEX WINSTON (WRITE-IN)": {
+     "bloc": "other",
+     "why": "Minor write-in candidate"
+    },
+    "ALL OTHERS": {
+     "bloc": "other",
+     "why": "Scattered write-ins"
+    }
+   }
+  },
+  "municipal_2025_boston_prelim": {
+   "description": "Boston mayor, preliminary 2025-09-09",
+   "entries": {
+    "MICHELLE WU": {
+     "bloc": "left",
+     "why": "Incumbent Democrat, progressive"
+    },
+    "JOSH KRAFT": {
+     "bloc": "other",
+     "why": "Moderate/centrist Democrat businessman; Boston's 'moderate' alternative to Wu",
+     "uncertain": true
+    },
+    "DOMINGOS DAROSA": {
+     "bloc": "other",
+     "why": "Moderate/centrist city councillor",
+     "uncertain": true
+    },
+    "ROBERT CAPPUCCI": {
+     "bloc": "other",
+     "why": "Minor candidate"
+    },
+    "JOHN F HOUTON": {
+     "bloc": "other",
+     "why": "Minor candidate"
+    },
+    "WILLIAM J MORGAN JR": {
+     "bloc": "other",
+     "why": "Minor candidate"
+    },
+    "ALEX WINSTON": {
+     "bloc": "other",
+     "why": "Minor candidate"
+    },
+    "ALL OTHERS": {
+     "bloc": "other",
+     "why": "Scattered write-ins"
+    }
+   }
+  },
+  "municipal_2024_sf": {
+   "description": "SF mayor 2024-11-05 first-choice votes (ranked-choice). SF nonpartisan; all main candidates are Democrats. Left=progressive, centre/moderate=other (alternative: treat moderates as right).",
+   "entries": {
+    "AARON PESKIN": {
+     "bloc": "left",
+     "why": "Board president, leader of SF progressive bloc"
+    },
+    "DANIEL LURIE": {
+     "bloc": "other",
+     "why": "Moderate Democrat (winner); 'moderate' camp",
+     "uncertain": true
+    },
+    "LONDON BREED": {
+     "bloc": "other",
+     "why": "Incumbent moderate Democrat",
+     "uncertain": true
+    },
+    "MARK FARRELL": {
+     "bloc": "other",
+     "why": "Moderate Democrat, ex-supervisor",
+     "uncertain": true
+    },
+    "AHSHA SAFA": {
+     "bloc": "other",
+     "why": "Supervisor, moderate-leaning Democrat",
+     "uncertain": true
+    },
+    "DYLAN HIRSCH-SHELL": {
+     "bloc": "left",
+     "why": "Progressive-leaning tech/entrepreneur candidate",
+     "uncertain": true
+    },
+    "ELLEN LEE ZHOU": {
+     "bloc": "right",
+     "why": "Conservative Republican-aligned candidate"
+    },
+    "HENRY FLYNN": {
+     "bloc": "other",
+     "why": "Minor candidate",
+     "uncertain": true
+    },
+    "KEITH FREEDMAN": {
+     "bloc": "other",
+     "why": "Minor candidate",
+     "uncertain": true
+    },
+    "NELSON MEI": {
+     "bloc": "other",
+     "why": "Minor candidate",
+     "uncertain": true
+    },
+    "PAUL YBARRA ROBERTSON": {
+     "bloc": "other",
+     "why": "Minor candidate",
+     "uncertain": true
+    },
+    "SHAHRAM SHARIATI": {
+     "bloc": "other",
+     "why": "Minor candidate",
+     "uncertain": true
+    },
+    "JON SODERSTROM": {
+     "bloc": "other",
+     "why": "Minor candidate",
+     "uncertain": true
+    }
+   }
+  }
+ }
+}

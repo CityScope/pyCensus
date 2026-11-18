@@ -19,6 +19,7 @@ Source:
     https://www.eustat.eus/
 """
 
+from pycensus.cache import get_data_dir
 from typing import Dict, List
 
 # Historical Territories (Foru Aldundiak) - equivalent to provinces
@@ -168,7 +169,7 @@ CENSUS_2021_URLS: Dict[str, str] = {
 }
 
 # Default data directory (kept for backward compatibility, but cache is preferred)
-DEFAULT_DATA_DIR = "data/euskadi"
+DEFAULT_DATA_DIR = str(get_data_dir("euskadi"))  # env/temp default, resolved at import
 
 __all__ = [
     "TERRITORY_CODES",

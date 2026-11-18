@@ -8,6 +8,7 @@
     {
       "category": "population",
       "feature_name": "population",
+      "original_name": "pop_approx",
       "country": "israel",
       "source": "cbs",
       "codes": [
@@ -22,6 +23,7 @@
     {
       "category": "population",
       "feature_name": "households",
+      "original_name": "hh_total_approx",
       "country": "israel",
       "source": "cbs",
       "codes": [
@@ -36,6 +38,7 @@
     {
       "category": "population",
       "feature_name": "populationDensity",
+      "original_name": "pop_density",
       "country": "israel",
       "source": "cbs",
       "codes": [
@@ -49,6 +52,7 @@
     },
     {
       "feature_name": "populationChangeSince2008",
+      "original_name": "change_pcnt",
       "country": "israel",
       "source": "cbs",
       "codes": [
@@ -64,6 +68,7 @@
     },
     {
       "feature_name": "sexRatio",
+      "original_name": "sexRatio",
       "country": "israel",
       "source": "cbs",
       "codes": [
@@ -78,6 +83,7 @@
     },
     {
       "feature_name": "ageMedian",
+      "original_name": "age_median",
       "country": "israel",
       "source": "cbs",
       "codes": [
@@ -92,6 +98,7 @@
     },
     {
       "feature_name": "populationShare019",
+      "original_name": "age0_19_pcnt",
       "country": "israel",
       "source": "cbs",
       "codes": [
@@ -107,6 +114,7 @@
     },
     {
       "feature_name": "populationShare2064",
+      "original_name": "age20_64_pcnt",
       "country": "israel",
       "source": "cbs",
       "codes": [
@@ -122,6 +130,7 @@
     },
     {
       "feature_name": "populationShare65plus",
+      "original_name": "age65_pcnt",
       "country": "israel",
       "source": "cbs",
       "codes": [
@@ -137,6 +146,7 @@
     },
     {
       "feature_name": "dependencyRatio",
+      "original_name": "DependencyRatio",
       "country": "israel",
       "source": "cbs",
       "codes": [
@@ -151,6 +161,7 @@
     },
     {
       "feature_name": "householdSizeMean",
+      "original_name": "size_avg",
       "country": "israel",
       "source": "cbs",
       "codes": [
@@ -165,6 +176,7 @@
     },
     {
       "feature_name": "employmentRate",
+      "original_name": "Empl_pcnt",
       "country": "israel",
       "source": "cbs",
       "codes": [
@@ -179,6 +191,7 @@
     },
     {
       "feature_name": "selfEmployedRate",
+      "original_name": "SelfEmpl_pcnt",
       "country": "israel",
       "source": "cbs",
       "codes": [
@@ -193,6 +206,7 @@
     },
     {
       "feature_name": "employeesMedianAnnualWage",
+      "original_name": "employeesAnnual_medWage",
       "country": "israel",
       "source": "cbs",
       "codes": [
@@ -207,6 +221,7 @@
     },
     {
       "feature_name": "workOutsideLocalityRate",
+      "original_name": "WrkOutLoc_pcnt",
       "country": "israel",
       "source": "cbs",
       "codes": [
@@ -221,6 +236,7 @@
     },
     {
       "feature_name": "academicDegreeRate",
+      "original_name": "AcadmCert_pcnt",
       "country": "israel",
       "source": "cbs",
       "codes": [
@@ -235,6 +251,7 @@
     },
     {
       "feature_name": "householdsOwnerRate",
+      "original_name": "own_pcnt",
       "country": "israel",
       "source": "cbs",
       "codes": [
@@ -249,6 +266,7 @@
     },
     {
       "feature_name": "householdsRenterRate",
+      "original_name": "rent_pcnt",
       "country": "israel",
       "source": "cbs",
       "codes": [
@@ -263,6 +281,7 @@
     },
     {
       "feature_name": "householdsNoVehicleRate",
+      "original_name": "Vehicle0_pcnt",
       "country": "israel",
       "source": "cbs",
       "codes": [
@@ -277,6 +296,7 @@
     },
     {
       "feature_name": "households2plusVehicleRate",
+      "original_name": "Vehicle2up_pcnt",
       "country": "israel",
       "source": "cbs",
       "codes": [
@@ -291,6 +311,7 @@
     },
     {
       "feature_name": "foreignResidentRate",
+      "original_name": "Foreign_pcnt",
       "country": "israel",
       "source": "cbs",
       "codes": [
@@ -306,6 +327,7 @@
     },
     {
       "feature_name": "institutionalizedResidentRate",
+      "original_name": "inst_pcnt",
       "country": "israel",
       "source": "cbs",
       "codes": [
@@ -321,6 +343,7 @@
     },
     {
       "feature_name": "ageMedianMale",
+      "original_name": "m_age_median",
       "country": "israel",
       "source": "cbs",
       "codes": [
@@ -335,6 +358,7 @@
     },
     {
       "feature_name": "ageMedianFemale",
+      "original_name": "w_age_median",
       "country": "israel",
       "source": "cbs",
       "codes": [
@@ -349,6 +373,7 @@
     },
     {
       "feature_name": "laborForceParticipationRate",
+      "original_name": "WrkY_pcnt",
       "country": "israel",
       "source": "cbs",
       "codes": [
@@ -363,6 +388,7 @@
     },
     {
       "feature_name": "workHoursMeanWeekly",
+      "original_name": "HrsWrkWk_avg",
       "country": "israel",
       "source": "cbs",
       "codes": [
@@ -377,6 +403,7 @@
     },
     {
       "feature_name": "selfEmployedMedianAnnualWage",
+      "original_name": "SelfEmployedAnnual_medWage",
       "country": "israel",
       "source": "cbs",
       "codes": [
@@ -391,6 +418,7 @@
     },
     {
       "feature_name": "topWageDecileEmployeesRate",
+      "original_name": "EmployeesWage_decile9Up",
       "country": "israel",
       "source": "cbs",
       "codes": [
@@ -405,6 +433,7 @@
     },
     {
       "feature_name": "householdsWithYoungChildrenRate",
+      "original_name": "hh0_5_pcnt",
       "country": "israel",
       "source": "cbs",
       "codes": [
@@ -419,6 +448,7 @@
     },
     {
       "feature_name": "householdsWithYoungAdultsRate",
+      "original_name": "hh18_24_pcnt",
       "country": "israel",
       "source": "cbs",
       "codes": [
@@ -433,6 +463,7 @@
     },
     {
       "feature_name": "childrenBornMean",
+      "original_name": "ChldBorn_avg",
       "country": "israel",
       "source": "cbs",
       "codes": [
@@ -447,6 +478,7 @@
     },
     {
       "feature_name": "foreignBornPopulation",
+      "original_name": "Foreign_pcnt, pop_approx (derived)",
       "country": "israel",
       "source": "cbs",
       "codes": [],
@@ -460,6 +492,7 @@
     },
     {
       "feature_name": "householdsWithParkingRate",
+      "original_name": "Parking_pcnt",
       "country": "israel",
       "source": "cbs",
       "codes": [
@@ -474,6 +507,7 @@
     },
     {
       "feature_name": "religionCode",
+      "original_name": "Religion_Stat_Code, Religion_Code",
       "country": "israel",
       "source": "cbs",
       "codes": [
@@ -488,6 +522,7 @@
     },
     {
       "feature_name": "jewishPopulation",
+      "original_name": "pop_approx, religionCode (derived)",
       "country": "israel",
       "source": "cbs",
       "codes": [],
@@ -501,6 +536,7 @@
     },
     {
       "feature_name": "muslimPopulation",
+      "original_name": "pop_approx, religionCode (derived)",
       "country": "israel",
       "source": "cbs",
       "codes": [],
@@ -514,6 +550,7 @@
     },
     {
       "feature_name": "christianPopulation",
+      "original_name": "pop_approx, religionCode (derived)",
       "country": "israel",
       "source": "cbs",
       "codes": [],
@@ -527,6 +564,7 @@
     },
     {
       "feature_name": "druzePopulation",
+      "original_name": "pop_approx, religionCode (derived)",
       "country": "israel",
       "source": "cbs",
       "codes": [],
@@ -540,6 +578,7 @@
     },
     {
       "feature_name": "otherReligionPopulation",
+      "original_name": "pop_approx, religionCode (derived)",
       "country": "israel",
       "source": "cbs",
       "codes": [],
@@ -553,6 +592,7 @@
     },
     {
       "feature_name": "religiosityCode",
+      "original_name": "hh_MidatDatiyut",
       "country": "israel",
       "source": "cbs",
       "codes": [
@@ -566,6 +606,7 @@
     },
     {
       "feature_name": "secularPopulation",
+      "original_name": "pop_approx, religiosityCode (derived)",
       "country": "israel",
       "source": "cbs",
       "codes": [],
@@ -579,6 +620,7 @@
     },
     {
       "feature_name": "traditionalReligiosityPopulation",
+      "original_name": "pop_approx, religiosityCode (derived)",
       "country": "israel",
       "source": "cbs",
       "codes": [],
@@ -592,6 +634,7 @@
     },
     {
       "feature_name": "religiousObservantPopulation",
+      "original_name": "pop_approx, religiosityCode (derived)",
       "country": "israel",
       "source": "cbs",
       "codes": [],
@@ -605,6 +648,7 @@
     },
     {
       "feature_name": "haredimPopulation",
+      "original_name": "pop_approx, religiosityCode (derived)",
       "country": "israel",
       "source": "cbs",
       "codes": [],
@@ -618,10 +662,56 @@
     },
     {
       "feature_name": "otherReligiosityPopulation",
+      "original_name": "pop_approx, religiosityCode (derived)",
       "country": "israel",
       "source": "cbs",
       "codes": [],
       "definition": "Derived (not a native CBS ArcGIS field): population of areas whose religiosityCode == 6, i.e. pop_approx where the area's dominant religious-observance classification matches that code, else 0. Named distinctly from the global-schema canonical 'religiousPopulation' feature (a different concept -- 'has any religion affiliation' vs. this field's 'degree of observance among the Jewish population') to avoid a semantic collision on canonical-name matching. Computed by pycensus.countries.israel.cbs.loader.load() after fetching (never fetched from ArcGIS directly, hence empty 'codes').",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "divide_area_weighted",
+      "relative_to": "population",
+      "resampling_weight": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "over65Population",
+      "original_name": "age65_pcnt, pop_approx (derived)",
+      "definition": "Derived (no native CBS count): round(age65_pcnt / 100 * pop_approx), residents aged 65 and over -- age65_pcnt is a share of the same pop_approx.",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [],
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "divide_area_weighted",
+      "relative_to": "population",
+      "resampling_weight": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "malePopulation",
+      "original_name": "sexRatio, pop_approx (derived)",
+      "definition": "Derived (no native CBS count): round(pop_approx * sexRatio / (100 + sexRatio)), male residents -- sexRatio is males per 100 females of the same population.",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [],
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "divide_area_weighted",
+      "relative_to": "population",
+      "resampling_weight": "population"
+    },
+    {
+      "category": "population",
+      "feature_name": "femalePopulation",
+      "original_name": "sexRatio, pop_approx (derived)",
+      "definition": "Derived (no native CBS count): round(pop_approx * 100 / (100 + sexRatio)), female residents.",
+      "country": "israel",
+      "source": "cbs",
+      "codes": [],
       "type": "count",
       "unit": "",
       "resampling_up": "sum",

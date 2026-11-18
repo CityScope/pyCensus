@@ -56,11 +56,17 @@ def _fetch_missing(
 
     raw = api.fetch_variables("acs/acs5", year, level, state, codes, api_key)
     exprs = [
-        pl.sum_horizontal(
-            [pl.col(_acs_code(c)).cast(pl.Float64, strict=False) for c in col.codes],
-            # "mean"-kind columns (medians, rates) are usually a single
-            # code: a null there is a suppressed estimate, not a zero.
-            ignore_nulls=col.agg != "mean",
+        # 2026-11-15: a column whose codes are ALL null (a table the API does not publish at this level, e.g. B05002 nativity below the
+        # tract) stays null; polars' sum_horizontal(ignore_nulls=True) returned 0 there, which showed as a real zero count on every block group
+        pl.when(pl.all_horizontal([pl.col(_acs_code(c)).cast(pl.Float64, strict=False).is_null() for c in col.codes]))
+        .then(None)
+        .otherwise(
+            pl.sum_horizontal(
+                [pl.col(_acs_code(c)).cast(pl.Float64, strict=False) for c in col.codes],
+                # "mean"-kind columns (medians, rates) are usually a single
+                # code: a null there is a suppressed estimate, not a zero.
+                ignore_nulls=col.agg != "mean",
+            )
         ).alias(SCHEMA.column_label(col.name))
         for col in missing_defs
     ]

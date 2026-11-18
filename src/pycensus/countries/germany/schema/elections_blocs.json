@@ -1,0 +1,303 @@
+{
+ "_doc": "Key = party label as in the Statistik Nord Feldbezeichner. Unlisted = other.",
+ "national_2025": {
+  "default": "other",
+  "parties": {
+   "SPD": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": "Social democrats"
+   },
+   "GRÜNE": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": "Greens"
+   },
+   "CDU": {
+    "bloc": "right",
+    "uncertain": false,
+    "note": "Christian democrats, centre-right"
+   },
+   "FDP": {
+    "bloc": "right",
+    "uncertain": false,
+    "note": "Liberals (market-liberal); sometimes centre"
+   },
+   "Die Linke": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": "Left party"
+   },
+   "DIE LINKE": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": "Left party"
+   },
+   "AfD": {
+    "bloc": "right",
+    "uncertain": false,
+    "note": "Radical right"
+   },
+   "Volt": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Pro-EU liberal-progressive, no clear left/right; some count left"
+   },
+   "Tierschutzpartei": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Animal-welfare party, mixed"
+   },
+   "Die PARTEI": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Satire party"
+   },
+   "FREIE WÄHLER": {
+    "bloc": "right",
+    "uncertain": true,
+    "note": "Centre-right regionalist/conservative-liberal"
+   },
+   "MLPD": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": "Marxist-Leninist"
+   },
+   "BÜNDNIS DEUTSCHLAND": {
+    "bloc": "right",
+    "uncertain": true,
+    "note": "Conservative-liberal, Eurosceptic"
+   },
+   "BSW": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Left on economics, conservative on migration/culture: left as other"
+   },
+   "PIRATEN": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Pirates, digital-liberal"
+   },
+   "DieWahl - WFG": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Local list"
+   },
+   "DAVA-Hamburg": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Local migrant-interest party"
+   },
+   "ÖDP": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Ecological-conservative"
+   },
+   "NPD": {
+    "bloc": "right",
+    "uncertain": false,
+    "note": "Far right"
+   }
+  }
+ },
+ "state_2025": {
+  "default": "other",
+  "parties": {
+   "SPD": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": "Social democrats"
+   },
+   "GRÜNE": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": "Greens"
+   },
+   "CDU": {
+    "bloc": "right",
+    "uncertain": false,
+    "note": "Christian democrats, centre-right"
+   },
+   "FDP": {
+    "bloc": "right",
+    "uncertain": false,
+    "note": "Liberals (market-liberal); sometimes centre"
+   },
+   "Die Linke": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": "Left party"
+   },
+   "DIE LINKE": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": "Left party"
+   },
+   "AfD": {
+    "bloc": "right",
+    "uncertain": false,
+    "note": "Radical right"
+   },
+   "Volt": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Pro-EU liberal-progressive, no clear left/right; some count left"
+   },
+   "Tierschutzpartei": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Animal-welfare party, mixed"
+   },
+   "Die PARTEI": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Satire party"
+   },
+   "FREIE WÄHLER": {
+    "bloc": "right",
+    "uncertain": true,
+    "note": "Centre-right regionalist/conservative-liberal"
+   },
+   "MLPD": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": "Marxist-Leninist"
+   },
+   "BÜNDNIS DEUTSCHLAND": {
+    "bloc": "right",
+    "uncertain": true,
+    "note": "Conservative-liberal, Eurosceptic"
+   },
+   "BSW": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Left on economics, conservative on migration/culture: left as other"
+   },
+   "PIRATEN": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Pirates, digital-liberal"
+   },
+   "DieWahl - WFG": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Local list"
+   },
+   "DAVA-Hamburg": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Local migrant-interest party"
+   },
+   "ÖDP": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Ecological-conservative"
+   },
+   "NPD": {
+    "bloc": "right",
+    "uncertain": false,
+    "note": "Far right"
+   }
+  }
+ },
+ "municipal_2024": {
+  "default": "other",
+  "parties": {
+   "SPD": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": "Social democrats"
+   },
+   "GRÜNE": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": "Greens"
+   },
+   "CDU": {
+    "bloc": "right",
+    "uncertain": false,
+    "note": "Christian democrats, centre-right"
+   },
+   "FDP": {
+    "bloc": "right",
+    "uncertain": false,
+    "note": "Liberals (market-liberal); sometimes centre"
+   },
+   "Die Linke": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": "Left party"
+   },
+   "DIE LINKE": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": "Left party"
+   },
+   "AfD": {
+    "bloc": "right",
+    "uncertain": false,
+    "note": "Radical right"
+   },
+   "Volt": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Pro-EU liberal-progressive, no clear left/right; some count left"
+   },
+   "Tierschutzpartei": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Animal-welfare party, mixed"
+   },
+   "Die PARTEI": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Satire party"
+   },
+   "FREIE WÄHLER": {
+    "bloc": "right",
+    "uncertain": true,
+    "note": "Centre-right regionalist/conservative-liberal"
+   },
+   "MLPD": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": "Marxist-Leninist"
+   },
+   "BÜNDNIS DEUTSCHLAND": {
+    "bloc": "right",
+    "uncertain": true,
+    "note": "Conservative-liberal, Eurosceptic"
+   },
+   "BSW": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Left on economics, conservative on migration/culture: left as other"
+   },
+   "PIRATEN": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Pirates, digital-liberal"
+   },
+   "DieWahl - WFG": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Local list"
+   },
+   "DAVA-Hamburg": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Local migrant-interest party"
+   },
+   "ÖDP": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Ecological-conservative"
+   },
+   "NPD": {
+    "bloc": "right",
+    "uncertain": false,
+    "note": "Far right"
+   }
+  }
+ }
+}

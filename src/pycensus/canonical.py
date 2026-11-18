@@ -7,7 +7,7 @@ Technical aspects:
     country. Each country's ``schema.py`` already names its
     :class:`~pycensus.schema.ColumnDef` after the matching
     ``feature_name`` wherever a genuine equivalent exists (that is a
-    stated convention in ``IMPLEMENTING_A_COUNTRY.md``).
+    stated convention in ``AGENT_GUIDE_NEW_CITY_OR_COUNTRY.md``).
 
     On the GeoDataFrame, however, every column used to carry the source
     prefix (``inegi_population``). :func:`apply_canonical_names` is the
@@ -55,12 +55,23 @@ def global_feature_names() -> FrozenSet[str]:
 
 
 def is_canonical(name: str) -> bool:
-    """Whether a logical (unprefixed) column name is a global-schema feature."""
+    """Whether a logical (unprefixed) column name is a global-schema feature.
+
+    Args:
+        name: Logical column name.
+
+    Returns:
+        True for a global feature.
+    """
     return name in global_feature_names()
 
 
 def canonical_rename_map(schema: "ColumnSchema") -> Dict[str, str]:
-    """Return ``{prefixed_name: bare_name}`` for this schema's canonical columns."""
+    """Return ``{prefixed_name: bare_name}`` for this schema's canonical columns.
+
+    Args:
+        schema: A source's column schema.
+    """
     return {
         schema.prefixed(name): name
         for name in schema.columns

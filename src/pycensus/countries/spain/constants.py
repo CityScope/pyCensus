@@ -28,6 +28,7 @@ Source:
     https://www.ine.es/
 """
 
+from pycensus.cache import get_data_dir
 from typing import Dict, List
 
 # Spain autonomous community codes (INE uses 2-digit codes)
@@ -333,7 +334,7 @@ CENSUS_2021_URLS: Dict[str, str] = {
 }
 
 # Default data directory (kept for backward compatibility, but cache is preferred)
-DEFAULT_DATA_DIR = "data/spain"
+DEFAULT_DATA_DIR = str(get_data_dir("spain"))  # env/temp default, resolved at import
 
 # Mapping of autonomous communities to their provinces (real INE codification,
 # see module docstring). Every province appears in exactly one autonomous

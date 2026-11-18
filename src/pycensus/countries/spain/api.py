@@ -192,6 +192,12 @@ def fetch_padron_secciones(
     return _parse_secciones_csv(text)
 
 
+def _parse_count(values: pd.Series) -> pd.Series:
+    """Integer counts written with ANY thousands separator ("1.944", "1,944", "1 944", NBSP) -> float; blanks / "-" / "." -> NaN."""
+    cleaned = values.astype(str).str.replace("[\\s.,'\u00a0\u202f]", "", regex=True)
+    return pd.to_numeric(cleaned, errors="coerce")
+
+
 def _parse_secciones_csv(text: str) -> pd.DataFrame:
     """Reshape INE's per-province section CSV (Sexo/Seccion/Edad/Total rows) into one row per section."""
     from io import StringIO
@@ -199,7 +205,7 @@ def _parse_secciones_csv(text: str) -> pd.DataFrame:
     df = pd.read_csv(StringIO(text), sep="\t", dtype=str)
     df.columns = [c.strip() for c in df.columns]
     df = df[(df["Sección"] != "TOTAL") & (df["Edad (grupos quinquenales)"] == "Total")]
-    df["Total"] = df["Total"].str.replace(".", "", regex=False).astype(float)
+    df["Total"] = _parse_count(df["Total"])
 
     pivot = df.pivot_table(index="Sección", columns="Sexo", values="Total", aggfunc="first")
     result = pd.DataFrame({"GEOID": pivot.index.astype(str).str.zfill(10)})

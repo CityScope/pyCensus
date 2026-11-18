@@ -1,0 +1,17 @@
+{
+ "country": "mexico",
+ "source": "inegi_movilidad",
+ "full_name": "INEGI Censo de Poblacion y Vivienda 2020, Cuestionario Ampliado -- Movilidad cotidiana, tabulado 22 (modo o medio de traslado al lugar de trabajo, por municipio)",
+ "description": "Employed persons aged 12+ who travel to work, estimated from the extended-questionnaire sample, and the share using each means of transport (a person may report several, so the shares add to more than 100 %). Counts = estimated commuters x published percentage, i.e. persons using the mode; the transit share of the pipeline is mentions of public transport over mentions of public transport, private vehicle, walking and cycling. Published per municipality only.",
+ "source_url": "https://www.inegi.org.mx/contenidos/programas/ccpv/2020/tabulados/ampliado/cpv2020_a_{abbr}_10_movilidad_cotidiana.xlsx",
+ "years": [2020],
+ "levels": ["municipality"],
+ "features": [
+  {"category": "commuting", "feature_name": "commuteTotal", "original_name": "Poblacion de 12 anos y mas ocupada que se traslada al lugar de trabajo", "codes": ["total"], "definition": "Employed persons 12+ who travel to their place of work (estimate).", "type": "count", "unit": "persons", "resampling_up": "sum", "resampling_down": "divide_population_weighted"},
+  {"category": "commuting", "feature_name": "publicTransportCommuters", "original_name": "Camion, autobus, combi, colectivo o taxi", "codes": ["camion"], "definition": "Workers using a bus, minibus (combi), shared taxi (colectivo) or taxi, including Metro / BRT trips reported as such, to go to work.", "type": "count", "unit": "persons", "resampling_up": "sum", "resampling_down": "divide_population_weighted"},
+  {"category": "commuting", "feature_name": "carCommuters", "original_name": "Vehiculo particular", "codes": ["vehiculo"], "definition": "Workers using a private vehicle (car, van, motorcycle) to go to work.", "type": "count", "unit": "persons", "resampling_up": "sum", "resampling_down": "divide_population_weighted"},
+  {"category": "commuting", "feature_name": "walkCommuters", "original_name": "Caminando", "codes": ["caminando"], "definition": "Workers walking to work.", "type": "count", "unit": "persons", "resampling_up": "sum", "resampling_down": "divide_population_weighted"},
+  {"category": "commuting", "feature_name": "bikeCommuters", "original_name": "Bicicleta", "codes": ["bicicleta"], "definition": "Workers cycling to work.", "type": "count", "unit": "persons", "resampling_up": "sum", "resampling_down": "divide_population_weighted"},
+  {"category": "commuting", "feature_name": "otherModeCommuters", "original_name": "Otro", "codes": ["otro"], "definition": "Workers using another means (Metro, light rail, Metrobus and similar are reported here in some states, transport of personnel, etc.).", "type": "count", "unit": "persons", "resampling_up": "sum", "resampling_down": "divide_population_weighted"}
+ ]
+}

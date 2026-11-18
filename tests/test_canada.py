@@ -138,7 +138,7 @@ class TestSchema:
         # census-profile education/commute breakdowns are relative to their
         # own denominator fields -- every relative_to value must name a
         # feature that actually exists in this same schema (no dangling
-        # references, see IMPLEMENTING_A_COUNTRY.md's anti-pattern list).
+        # references, see AGENT_GUIDE_NEW_CITY_OR_COUNTRY.md's anti-pattern list).
         expected_relative_to = {
             "ownerHouseholds": "households",
             "renterHouseholds": "households",
@@ -340,7 +340,7 @@ class TestLoader:
         assert len(gdf) == 2
         assert sorted(gdf["population"].tolist()) == [480, 512]
         assert sorted(gdf["households"].tolist()) == [190, 200]
-        assert sorted(gdf["statcan_dwellings"].tolist()) == [198, 210]
+        assert sorted(gdf["dwellings"].tolist()) == [198, 210]
         assert gdf.geometry.name == "geometry"
         assert gdf.crs is not None
 
@@ -350,7 +350,7 @@ class TestLoader:
         assert len(gdf) == 2
         assert sorted(gdf["population"].tolist()) == [130, 284]
         assert sorted(gdf["households"].tolist()) == [55, 110]
-        assert sorted(gdf["statcan_dwellings"].tolist()) == [58, 115]
+        assert sorted(gdf["dwellings"].tolist()) == [58, 115]
         assert gdf.geometry.name == "geometry"
         assert gdf.crs is not None
 
@@ -467,7 +467,7 @@ class TestLoader:
         assert "population" in gdf.columns
         assert gdf["population"].iloc[0] == 14223942
         assert gdf["households"].iloc[0] == 5491201
-        assert gdf["statcan_dwellings"].iloc[0] == 5929250
+        assert gdf["dwellings"].iloc[0] == 5929250   # a global column: canonical name
         assert gdf.geometry.name == "geometry"
         assert gdf.crs is not None
 
@@ -486,9 +486,8 @@ class TestLoader:
 
         cached = gpd.read_parquet(cache_file)
         assert cached.crs is not None
-        # `apply_canonical_names` runs before the cache is written, so
-        # the cached file already has bare canonical names too.
-        assert "population" in cached.columns
+        # the cache keeps the source's own (prefixed) names; `load` applies the canonical names afterwards
+        assert "statcan_population" in cached.columns
         assert len(cached) == 1
 
     def test_load_second_call_does_not_refetch(self, monkeypatch, tmp_path):

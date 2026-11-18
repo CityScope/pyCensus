@@ -1,0 +1,89 @@
+{
+ "country": "eu",
+ "country_name": "European Union (Eurostat / GISCO, EU-27 + EFTA)",
+ "description": "EU-wide geography levels of the Eurostat and GISCO sources",
+ "native_levels": [
+  {
+   "level": "nation",
+   "description": "Country (NUTS 0), GISCO NUTS 2024",
+   "source": "nuts",
+   "geoid_pattern": "CC (Eurostat code, EL for Greece)",
+   "is_standard": true,
+   "resample_from": "nuts1",
+   "resample_to": "nuts1",
+   "resample_intersections": false
+  },
+  {
+   "level": "nuts1",
+   "description": "NUTS 1 major socio-economic regions, GISCO NUTS 2024",
+   "source": "nuts",
+   "geoid_pattern": "CCx",
+   "is_standard": true,
+   "resample_from": "nuts2",
+   "resample_to": "nuts2",
+   "resample_intersections": false
+  },
+  {
+   "level": "nuts2",
+   "description": "NUTS 2 basic regions (policy regions; e.g. Spanish autonomous communities), GISCO NUTS 2024",
+   "source": "nuts",
+   "geoid_pattern": "CCxx",
+   "is_standard": true,
+   "resample_from": "nuts3",
+   "resample_to": "nuts3",
+   "resample_intersections": false
+  },
+  {
+   "level": "nuts3",
+   "description": "NUTS 3 small regions (e.g. Spanish provinces), GISCO NUTS 2024",
+   "source": "nuts",
+   "geoid_pattern": "CCxxx",
+   "is_standard": true,
+   "resample_from": "municipality",
+   "resample_to": "municipality",
+   "resample_intersections": false
+  },
+  {
+   "level": "municipality",
+   "description": "LAU (local administrative units = municipalities), GISCO LAU 2021-2024",
+   "source": "lau",
+   "geoid_pattern": "CC_<national municipal code>",
+   "is_standard": true,
+   "resample_from": "grid_1km",
+   "resample_to": "grid_1km",
+   "resample_intersections": false
+  },
+  {
+   "level": "grid_1km",
+   "description": "Eurostat Census 2021 grid, 1 km x 1 km cells in ETRS89-LAEA",
+   "source": "census_grid",
+   "geoid_pattern": "CRS3035RES1000mN<northing>E<easting>",
+   "is_standard": false,
+   "resample_from": "grid_1km",
+   "resample_to": "grid_1km",
+   "resample_intersections": true
+  }
+ ],
+ "levels": [
+  "nation",
+  "nuts1",
+  "nuts2",
+  "nuts3",
+  "municipality",
+  "grid_1km"
+ ],
+ "global_to_country_mapping": {
+  "nation": "nation",
+  "state": "nuts1",
+  "province": "nuts3",
+  "municipality": "municipality",
+  "tract": "grid_1km",
+  "blockgroup": "grid_1km",
+  "block": "grid_1km"
+ },
+ "resolution": {
+  "census_grid": "high",
+  "lau": "low",
+  "eurostat": "low"
+ }
+}

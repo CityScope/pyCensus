@@ -56,6 +56,7 @@ Source:
 """
 
 from __future__ import annotations
+from pycensus.cache import get_data_dir
 
 import io
 import re
@@ -98,7 +99,7 @@ _TITLE_RE = re.compile(r"^(\d{8})\s+(.+?)\s*\(Gebietsstand", re.UNICODE)
 
 
 def _raw_dir(data_dir: Optional[str] = None) -> Path:
-    base = Path(data_dir) if data_dir else Path(constants.DEFAULT_DATA_DIR)
+    base = get_data_dir("germany", data_dir)
     raw_dir = base / "raw" / "ba_amk"
     raw_dir.mkdir(parents=True, exist_ok=True)
     return raw_dir
@@ -111,6 +112,13 @@ def kreis_ags_in_state(state: str, data_dir: Optional[str] = None) -> List[str]:
     up in :mod:`..geography` -- every German Gemeinde's 8-digit AGS
     (``GEOID``) starts with its containing Kreis's 5-digit AGS, so no
     separate keyless Kreis list is needed.
+
+    Args:
+        state: State name, abbreviation or code.
+        data_dir: Folder of the raw downloads; ``None`` = the pycensus cache.
+
+    Returns:
+        Sorted Kreis codes.
     """
     gdf = geography.load_boundaries("municipality", state, data_dir=data_dir)
     return sorted({str(g)[:5] for g in gdf["GEOID"]})

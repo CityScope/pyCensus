@@ -9,7 +9,7 @@ Technical aspects:
     (``basque_speakers``, ``households``, ``over64_population``, etc.)
     were never added to ``schema.json`` and were never fetched from any
     real source -- dead, speculative scaffolding for data this module
-    doesn't produce. Per ``IMPLEMENTING_A_COUNTRY.md``'s guidance to trim
+    doesn't produce. Per ``AGENT_GUIDE_NEW_CITY_OR_COUNTRY.md``'s guidance to trim
     dead computed fields, they were removed rather than kept "for
     completeness." Eustat's real Data Bank API does publish
     language-use/household/age-structure tables (see ``api.py``'s

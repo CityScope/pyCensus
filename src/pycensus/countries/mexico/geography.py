@@ -49,6 +49,7 @@ Source:
 """
 
 from __future__ import annotations
+from pycensus.cache import get_data_dir
 
 import zipfile
 from pathlib import Path
@@ -84,7 +85,7 @@ ERASE_WATER: dict = {
 
 
 def _raw_dir(data_dir: Optional[str] = None) -> Path:
-    base = Path(data_dir) if data_dir else Path(constants.DEFAULT_DATA_DIR)
+    base = get_data_dir("mexico", data_dir)
     raw_dir = base / "raw" / "marco_geoestadistico"
     raw_dir.mkdir(parents=True, exist_ok=True)
     return raw_dir
@@ -159,6 +160,13 @@ def states_in_aoi(aoi: gpd.GeoDataFrame, year: int = 2020) -> List[str]:
         with each one) down to the handful of states an AOI like a single
         city actually touches, without ever risking a false negative that
         would silently drop real data.
+
+    Args:
+        aoi: Area of interest (GeoDataFrame).
+        year: Boundary year.
+
+    Returns:
+        State codes.
     """
     aoi_union = aoi.to_crs(4326).union_all()
     minx, miny, maxx, maxy = aoi_union.bounds

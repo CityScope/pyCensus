@@ -7,6 +7,7 @@
     {
       "category": "population",
       "feature_name": "population",
+      "original_name": "POP_2021",
       "country": "euskadi",
       "source": "eustat",
       "codes": ["POP_2021"],
@@ -19,6 +20,7 @@
     {
       "category": "population",
       "feature_name": "areaKm2",
+      "original_name": "AREA_KM2",
       "country": "euskadi",
       "source": "eustat",
       "codes": ["AREA_KM2"],
@@ -31,6 +33,7 @@
     {
       "category": "population",
       "feature_name": "populationDensity",
+      "original_name": "POP_2021, AREA_KM2",
       "country": "euskadi",
       "source": "eustat",
       "codes": ["POP_2021", "AREA_KM2"],

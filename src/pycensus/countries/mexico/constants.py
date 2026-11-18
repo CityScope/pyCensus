@@ -17,6 +17,7 @@ Source:
     https://www.inegi.org.mx/temas/geografia/
 """
 
+from pycensus.cache import get_data_dir
 from typing import Dict, List
 
 # Mexico state codes (INEGI uses 2-digit codes)
@@ -120,6 +121,12 @@ def state_code(state_name_or_abbr: str) -> str:
 
     Note: This function is maintained for backward compatibility. New code should
     use utils.state_code() instead for consistency with the usa implementation.
+
+    Args:
+        state_name_or_abbr: State name or abbreviation.
+
+    Returns:
+        2-digit INEGI code.
     """
     return _state_code_from_lookups(state_name_or_abbr)
 
@@ -129,6 +136,12 @@ def state_abbr(state_name_or_code: str) -> str:
 
     Note: This function is maintained for backward compatibility. New code should
     use utils.state_abbr() instead for consistency with the usa implementation.
+
+    Args:
+        state_name_or_code: State name or code.
+
+    Returns:
+        The abbreviation.
     """
     if isinstance(state_name_or_code, str) and state_name_or_code in STATE_ABBR.values():
         return state_name_or_code
@@ -297,7 +310,7 @@ STATE_BBOX: Dict[str, tuple] = {
 STATE_BBOX_PADDING_DEG = 0.35
 
 # Default data directory
-DEFAULT_DATA_DIR = "data/mexico"
+DEFAULT_DATA_DIR = str(get_data_dir("mexico"))  # env/temp default, resolved at import
 
 __all__ = [
     "STATE_CODES",

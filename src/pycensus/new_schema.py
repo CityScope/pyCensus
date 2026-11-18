@@ -65,6 +65,14 @@ class FieldKey:
         token is `year` ("all" means "no year"), and if exactly two more
         leading tokens remain before what looks like a `feature_name`, they
         are treated as `country`, `source`.
+
+        Args:
+            column_name: Column name.
+            known_countries: Plausible country segments.
+            known_sources: Plausible source segments.
+
+        Returns:
+            The :class:`FieldKey`.
         """
         parts = column_name.split("_")
         year: Optional[int] = None
@@ -168,7 +176,15 @@ class NewColumnSchema:
     
     @classmethod
     def from_file(cls, filepath: str, global_mapping: Optional[Dict[str, str]] = None) -> "NewColumnSchema":
-        """Load a schema from a JSON file."""
+        """Load a schema from a JSON file.
+
+        Args:
+            filepath: Schema JSON.
+            global_mapping: ``{feature: global name}``.
+
+        Returns:
+            The schema.
+        """
         with open(filepath) as f:
             data = json.load(f)
         
@@ -208,7 +224,14 @@ class NewColumnSchema:
         )
     
     def get_feature(self, feature_name: str) -> Optional[FeatureDef]:
-        """Get a feature by its feature_name."""
+        """Get a feature by its feature_name.
+
+        Args:
+            feature_name: Feature name.
+
+        Returns:
+            The feature, or None.
+        """
         return self.features.get(feature_name)
     
     def prefixed(self, feature_name: str, year: Optional[int] = None) -> str:
@@ -216,36 +239,79 @@ class NewColumnSchema:
 
         If year is provided: year_country_source_feature_name
         If year is None: all_country_source_feature_name
+
+        Args:
+            feature_name: Feature name.
+            year: Year, or None.
+
+        Returns:
+            The column name.
         """
         return FieldKey(
             feature_name=feature_name, year=year, country=self.country, source=self.source
         ).format()
 
     def key(self, feature_name: str, year: Optional[int] = None) -> FieldKey:
-        """Return the structured :class:`FieldKey` for a feature (preferred over `prefixed`)."""
+        """Return the structured :class:`FieldKey` for a feature (preferred over `prefixed`).
+
+        Args:
+            feature_name: Feature name.
+            year: Year, or None.
+
+        Returns:
+            The key.
+        """
         return FieldKey(
             feature_name=feature_name, year=year, country=self.country, source=self.source
         )
 
     def parse_column(self, column_name: str) -> FieldKey:
-        """Parse a column name produced by this schema back into a :class:`FieldKey`."""
+        """Parse a column name produced by this schema back into a :class:`FieldKey`.
+
+        Args:
+            column_name: Column name.
+
+        Returns:
+            The key.
+        """
         return FieldKey.parse(
             column_name, known_countries={self.country}, known_sources={self.source}
         )
 
     def strip_prefix(self, column_name: str) -> str:
-        """Extract the feature name from a prefixed column name."""
+        """Extract the feature name from a prefixed column name.
+
+        Args:
+            column_name: Column name.
+
+        Returns:
+            The feature name.
+        """
         return self.parse_column(column_name).feature_name
 
     def get_feature_from_column(self, column_name: str) -> Optional[FeatureDef]:
-        """Get the feature definition for a column name."""
+        """Get the feature definition for a column name.
+
+        Args:
+            column_name: Column name.
+
+        Returns:
+            The feature, or None.
+        """
         parsed = self.parse_column(column_name)
         if parsed.country == self.country and parsed.source == self.source:
             return self.features.get(parsed.feature_name)
         return None
 
     def relative_to(self, column_name: str) -> Optional[str]:
-        """Resolve the denominator column for .relative, if any."""
+        """Resolve the denominator column for .relative, if any.
+
+        Args:
+            column_name: Column name.
+
+        Returns:
+            The denominator column, or None.
+        """
         feature = self.get_feature_from_column(column_name)
         if feature and feature.relative_to:
             parsed = self.parse_column(column_name)
@@ -353,7 +419,16 @@ class NewColumnSchema:
     def smooth_aggregations(
         self, k: int = 6, power: float = 2.0, intersection_mode: Optional[str] = None
     ) -> Dict[str, "gh.AggregationStrategy"]:
-        """Build a {column: AggregationStrategy} map using SmoothMean downscale."""
+        """Build a {column: AggregationStrategy} map using SmoothMean downscale.
+
+        Args:
+            k: Neighbours blended.
+            power: Inverse-distance exponent.
+            intersection_mode: Pairing mode of the upscale.
+
+        Returns:
+            ``{column: strategy}``.
+        """
         strategies: Dict[str, Any] = {}
         for feature in self.features.values():
             prefixed = self.prefixed(feature.feature_name)

@@ -1,0 +1,134 @@
+{
+ "country": "taiwan",
+ "source": "moi_realprice",
+ "full_name": "MOI real-price registry open data (實價登錄), plvr.land.moi.gov.tw, data.gov.tw 18703; pycensus.countries.taiwan.moi.realprice.load_realprice(year, level, cities)",
+ "years": [
+  2012,
+  2013,
+  2014,
+  2015,
+  2016,
+  2017,
+  2018,
+  2019,
+  2020,
+  2021,
+  2022,
+  2023,
+  2024,
+  2025,
+  2026
+ ],
+ "levels": [
+  "district",
+  "county_city",
+  "village"
+ ],
+ "features": [
+  {
+   "category": "housing",
+   "feature_name": "realPriceSaleM2",
+   "original_name": "realPriceSaleM2",
+   "country": "taiwan",
+   "source": "moi_realprice",
+   "codes": [
+    "realPriceSaleM2"
+   ],
+   "definition": "Median transaction price of residential (住家用) building sales, NTD per m2 of floor area (parking removed). Native: district (鄉鎮市區); village only where the address names the village (rare).",
+   "type": "median",
+   "unit": "NTD/m2",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "housing",
+   "feature_name": "realPriceSalePing",
+   "original_name": "realPriceSalePing",
+   "country": "taiwan",
+   "source": "moi_realprice",
+   "codes": [
+    "realPriceSalePing"
+   ],
+   "definition": "realPriceSaleM2 converted to NTD per ping (1 ping = 3.3058 m2).",
+   "type": "median",
+   "unit": "NTD/ping",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "housing",
+   "feature_name": "realPricePresaleM2",
+   "original_name": "realPricePresaleM2",
+   "country": "taiwan",
+   "source": "moi_realprice",
+   "codes": [
+    "realPricePresaleM2"
+   ],
+   "definition": "Median pre-sale (預售屋) price, NTD per m2, terminated contracts excluded.",
+   "type": "median",
+   "unit": "NTD/m2",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "housing",
+   "feature_name": "realRentM2",
+   "original_name": "realRentM2",
+   "country": "taiwan",
+   "source": "moi_realprice",
+   "codes": [
+    "realRentM2"
+   ],
+   "definition": "Median monthly rent of residential rentals, NTD per m2 per month.",
+   "type": "median",
+   "unit": "NTD/m2/month",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "housing",
+   "feature_name": "realPriceSaleCount",
+   "original_name": "realPriceSaleCount",
+   "country": "taiwan",
+   "source": "moi_realprice",
+   "codes": [
+    "realPriceSaleCount"
+   ],
+   "definition": "Number of usable residential sale records in the year.",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "housing",
+   "feature_name": "realPricePresaleCount",
+   "original_name": "realPricePresaleCount",
+   "country": "taiwan",
+   "source": "moi_realprice",
+   "codes": [
+    "realPricePresaleCount"
+   ],
+   "definition": "Number of usable pre-sale records in the year.",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "housing",
+   "feature_name": "realRentCount",
+   "original_name": "realRentCount",
+   "country": "taiwan",
+   "source": "moi_realprice",
+   "codes": [
+    "realRentCount"
+   ],
+   "definition": "Number of usable residential rental records in the year.",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  }
+ ]
+}

@@ -7,6 +7,7 @@
     {
       "category": "jobs",
       "feature_name": "pendlerJobsAtWorkplace",
+      "original_name": "Sozialversicherungspflichtig Beschaeftigte - Arbeitsort",
       "country": "germany",
       "source": "ba_pendler",
       "codes": ["Sozialversicherungspflichtig Beschaeftigte - Arbeitsort"],
@@ -19,6 +20,7 @@
     {
       "category": "jobs",
       "feature_name": "residentWorkers",
+      "original_name": "Sozialversicherungspflichtig Beschaeftigte - Wohnort",
       "country": "germany",
       "source": "ba_pendler",
       "codes": ["Sozialversicherungspflichtig Beschaeftigte - Wohnort"],
@@ -31,6 +33,7 @@
     {
       "category": "jobs",
       "feature_name": "sameGemeindeWorkers",
+      "original_name": "Wohnort gleich Arbeitsort",
       "country": "germany",
       "source": "ba_pendler",
       "codes": ["Wohnort gleich Arbeitsort"],
@@ -43,6 +46,7 @@
     {
       "category": "jobs",
       "feature_name": "einpendler",
+      "original_name": "Einpendler",
       "country": "germany",
       "source": "ba_pendler",
       "codes": ["Einpendler"],
@@ -55,6 +59,7 @@
     {
       "category": "jobs",
       "feature_name": "auspendler",
+      "original_name": "Auspendler",
       "country": "germany",
       "source": "ba_pendler",
       "codes": ["Auspendler"],

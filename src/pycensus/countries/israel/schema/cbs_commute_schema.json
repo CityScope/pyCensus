@@ -1,0 +1,19 @@
+{
+ "country": "israel",
+ "source": "cbs_commute",
+ "full_name": "CBS Census 2022 -- main means of transport to work (public-use file, weighted), by sub-quarter of the large cities and by locality elsewhere",
+ "description": "Weighted employed persons by usual main means of transport to work, Census 2022 public-use microdata file of the Central Bureau of Statistics, tabulated per sub-quarter (tat-rova) of the cities the file divides into quarters and per locality elsewhere, as published (with the geometry) at mulysan.github.io/html/transport_mode_israel.html. Counts = weighted workers x published percentage.",
+ "source_url": "https://mulysan.github.io/html/transport_mode_israel.html",
+ "years": [2022],
+ "levels": ["commute_area"],
+ "features": [
+  {"category": "commuting", "feature_name": "commuteTotal", "original_name": "n22", "codes": ["n22"], "definition": "Employed persons (weighted) with a reported main means of transport to work.", "type": "count", "unit": "persons", "resampling_up": "sum", "resampling_down": "divide_population_weighted"},
+  {"category": "commuting", "feature_name": "publicTransportCommuters", "original_name": "p22_bus + p22_light_rail + p22_train + p22_taxi_svc", "codes": ["p22_bus", "p22_light_rail", "p22_train", "p22_taxi_svc"], "definition": "Workers whose main means of transport to work is a bus, the light rail, the train or a shared service taxi (sherut).", "type": "count", "unit": "persons", "resampling_up": "sum", "resampling_down": "divide_population_weighted"},
+  {"category": "commuting", "feature_name": "carCommuters", "original_name": "p22_car_driver + p22_car_pass", "codes": ["p22_car_driver", "p22_car_pass"], "definition": "Workers going to work by private car, as driver or passenger.", "type": "count", "unit": "persons", "resampling_up": "sum", "resampling_down": "divide_population_weighted"},
+  {"category": "commuting", "feature_name": "walkCommuters", "original_name": "p22_walking", "codes": ["p22_walking"], "definition": "Workers walking to work.", "type": "count", "unit": "persons", "resampling_up": "sum", "resampling_down": "divide_population_weighted"},
+  {"category": "commuting", "feature_name": "bikeCommuters", "original_name": "p22_bicycle", "codes": ["p22_bicycle"], "definition": "Workers cycling to work.", "type": "count", "unit": "persons", "resampling_up": "sum", "resampling_down": "divide_population_weighted"},
+  {"category": "commuting", "feature_name": "employerShuttleCommuters", "original_name": "p22_employer", "codes": ["p22_employer"], "definition": "Workers going to work in transport organised by the employer.", "type": "count", "unit": "persons", "resampling_up": "sum", "resampling_down": "divide_population_weighted"},
+  {"category": "commuting", "feature_name": "motorcycleCommuters", "original_name": "p22_moto", "codes": ["p22_moto"], "definition": "Workers going to work by motorcycle or scooter.", "type": "count", "unit": "persons", "resampling_up": "sum", "resampling_down": "divide_population_weighted"},
+  {"category": "commuting", "feature_name": "otherModeCommuters", "original_name": "p22_taxi_sp + p22_truck + p22_other", "codes": ["p22_taxi_sp", "p22_truck", "p22_other"], "definition": "Workers going to work by special taxi, truck or another means.", "type": "count", "unit": "persons", "resampling_up": "sum", "resampling_down": "divide_population_weighted"}
+ ]
+}

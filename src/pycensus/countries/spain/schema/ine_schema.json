@@ -8,6 +8,7 @@
     {
       "category": "population",
       "feature_name": "population",
+      "original_name": "TOTAL_POB",
       "country": "spain",
       "source": "ine",
       "codes": ["TOTAL_POB"],
@@ -20,6 +21,7 @@
     {
       "category": "population",
       "feature_name": "malePopulation",
+      "original_name": "POB_HOMBRES",
       "country": "spain",
       "source": "ine",
       "codes": ["POB_HOMBRES"],
@@ -32,6 +34,7 @@
     {
       "category": "population",
       "feature_name": "femalePopulation",
+      "original_name": "POB_MUJERES",
       "country": "spain",
       "source": "ine",
       "codes": ["POB_MUJERES"],

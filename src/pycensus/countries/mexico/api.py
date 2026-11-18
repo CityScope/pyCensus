@@ -64,6 +64,7 @@ Source:
 """
 
 from __future__ import annotations
+from pycensus.cache import get_data_dir
 
 import zipfile
 from pathlib import Path
@@ -76,7 +77,7 @@ from . import constants, utils
 
 
 def _raw_dir(data_dir: Optional[str] = None) -> Path:
-    base = Path(data_dir) if data_dir else Path(constants.DEFAULT_DATA_DIR)
+    base = get_data_dir("mexico", data_dir)
     raw_dir = base / "raw" / "iter"
     raw_dir.mkdir(parents=True, exist_ok=True)
     return raw_dir
@@ -143,6 +144,10 @@ def fetch_state_totals(state: str, data_dir: Optional[str] = None) -> pd.DataFra
     Returns:
         One-row DataFrame with a ``GEOID`` column (the 2-digit state code)
         plus every raw ITER column.
+
+    Args:
+        state: State name, abbreviation or 2-digit code.
+        data_dir: Folder of the raw downloads; ``None`` = the pycensus cache.
     """
     df = _read_iter(state, data_dir)
     row = df[(df["MUN"] == "000") & (df["LOC"] == "0000")].copy()
@@ -157,6 +162,10 @@ def fetch_municipality_totals(state: str, data_dir: Optional[str] = None) -> pd.
         DataFrame with a ``GEOID`` column (5-digit ``ENTIDAD``+``MUN``, matching
         the Marco Geoestadistico ``CVEGEO`` for municipality boundaries)
         plus every raw ITER column.
+
+    Args:
+        state: State name, abbreviation or 2-digit code.
+        data_dir: Folder of the raw downloads; ``None`` = the pycensus cache.
     """
     df = _read_iter(state, data_dir)
     rows = df[(df["MUN"] != "000") & (df["LOC"] == "0000")].copy()
@@ -165,7 +174,7 @@ def fetch_municipality_totals(state: str, data_dir: Optional[str] = None) -> pd.
 
 
 def _resageburb_raw_dir(data_dir: Optional[str] = None) -> Path:
-    base = Path(data_dir) if data_dir else Path(constants.DEFAULT_DATA_DIR)
+    base = get_data_dir("mexico", data_dir)
     raw_dir = base / "raw" / "resageburb"
     raw_dir.mkdir(parents=True, exist_ok=True)
     return raw_dir
@@ -251,6 +260,10 @@ def fetch_ageb_totals(state: str, data_dir: Optional[str] = None) -> pd.DataFram
         DataFrame with a ``GEOID`` column (13-digit ``ENTIDAD``+``MUN``+
         ``LOC``+``AGEB``, matching the Marco Geoestadistico urban-AGEB
         ``CVEGEO``) plus every raw RESAGEBURB column.
+
+    Args:
+        state: State name, abbreviation or 2-digit code.
+        data_dir: Folder of the raw downloads; ``None`` = the pycensus cache.
     """
     df = _read_resageburb(state, data_dir)
     rows = df[(df["AGEB"] != "0000") & (df["MZA"] == "000")].copy()
@@ -270,6 +283,10 @@ def fetch_block_totals(state: str, data_dir: Optional[str] = None) -> pd.DataFra
         DataFrame with a ``GEOID`` column (16-digit ``ENTIDAD``+``MUN``+
         ``LOC``+``AGEB``+``MZA``, matching the Marco Geoestadistico block
         ``CVEGEO``) plus every raw RESAGEBURB column.
+
+    Args:
+        state: State name, abbreviation or 2-digit code.
+        data_dir: Folder of the raw downloads; ``None`` = the pycensus cache.
     """
     df = _read_resageburb(state, data_dir)
     rows = df[df["MZA"] != "000"].copy()

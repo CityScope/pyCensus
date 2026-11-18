@@ -120,6 +120,12 @@ def regions_in_aoi(aoi: gpd.GeoDataFrame) -> List[str]:
         against :data:`pycensus.chile.constants.REGION_BBOX`, padded by
         :data:`pycensus.chile.constants.REGION_BBOX_PADDING_DEG` to stay
         safely over-inclusive.
+
+    Args:
+        aoi: Area of interest (GeoDataFrame).
+
+    Returns:
+        Region codes.
     """
     aoi_union = aoi.to_crs(4326).union_all()
     minx, miny, maxx, maxy = aoi_union.bounds

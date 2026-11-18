@@ -6,6 +6,7 @@
     {
       "category": "population",
       "feature_name": "population",
+      "original_name": "B01003_001",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -21,6 +22,7 @@
     {
       "category": "population",
       "feature_name": "households",
+      "original_name": "B25044_001",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -35,6 +37,7 @@
     },
     {
       "feature_name": "householdsOwner",
+      "original_name": "B25003_002",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -49,6 +52,7 @@
     },
     {
       "feature_name": "householdsRenter",
+      "original_name": "B25003_003",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -63,6 +67,7 @@
     },
     {
       "feature_name": "householdSizeMean",
+      "original_name": "B25010_001",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -77,6 +82,7 @@
     },
     {
       "feature_name": "population16plus",
+      "original_name": "B23025_001",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -92,6 +98,7 @@
     {
       "category": "migration",
       "feature_name": "foreignBornPopulation",
+      "original_name": "B05002_013",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -106,6 +113,7 @@
     },
     {
       "feature_name": "medianHouseholdIncome",
+      "original_name": "B19013_001",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -120,6 +128,7 @@
     },
     {
       "feature_name": "incomeMeanCapita",
+      "original_name": "B19301_001",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -135,6 +144,7 @@
     {
       "category": "income",
       "feature_name": "povertyPopulation",
+      "original_name": "C17002_001",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -149,6 +159,7 @@
     },
     {
       "feature_name": "povertyBelow100",
+      "original_name": "C17002_002, C17002_003",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -164,6 +175,7 @@
     },
     {
       "feature_name": "laborForce",
+      "original_name": "B23025_003",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -178,6 +190,7 @@
     },
     {
       "feature_name": "unemployedResidents",
+      "original_name": "B23025_005",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -192,6 +205,7 @@
     },
     {
       "feature_name": "workers",
+      "original_name": "B08301_001",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -206,6 +220,7 @@
     },
     {
       "feature_name": "carCommuters",
+      "original_name": "B08301_002",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -220,6 +235,7 @@
     },
     {
       "feature_name": "publicTransportCommuters",
+      "original_name": "B08301_010",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -234,6 +250,7 @@
     },
     {
       "feature_name": "walkCommuters",
+      "original_name": "B08301_019",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -248,6 +265,7 @@
     },
     {
       "feature_name": "bikeCommuters",
+      "original_name": "B08301_018",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -262,6 +280,7 @@
     },
     {
       "feature_name": "commuteTimeMean",
+      "original_name": "B08303_001",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -276,6 +295,7 @@
     },
     {
       "feature_name": "vehiclesHouseholds0",
+      "original_name": "B25044_003, B25044_010",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -291,6 +311,7 @@
     },
     {
       "feature_name": "rentBurdenPopulation",
+      "original_name": "B25070_001",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -305,6 +326,7 @@
     },
     {
       "feature_name": "rentBurdened",
+      "original_name": "B25070_007, B25070_008, B25070_009, B25070_010",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -322,6 +344,7 @@
     },
     {
       "feature_name": "rentMedianGross",
+      "original_name": "B25064_001",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -336,6 +359,7 @@
     },
     {
       "feature_name": "population25plus",
+      "original_name": "B15003_001",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -350,6 +374,7 @@
     },
     {
       "feature_name": "medianAge",
+      "original_name": "B01002_001",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -364,6 +389,7 @@
     },
     {
       "feature_name": "educationLessThanHs",
+      "original_name": "B15003_002, B15003_003, B15003_004, B15003_005, B15003_006, B15003_007, B15003_008, B15003_009, B15003_010, B15003_011, B15003_012, B15003_013, B15003_014, B15003_015, B15003_016",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -392,6 +418,7 @@
     },
     {
       "feature_name": "educationBachelorsPlus",
+      "original_name": "B15003_022, B15003_023, B15003_024, B15003_025",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -409,6 +436,7 @@
     },
     {
       "feature_name": "educationHighSchool",
+      "original_name": "B15003_017, B15003_018",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -424,6 +452,7 @@
     },
     {
       "feature_name": "educationSomeCollege",
+      "original_name": "B15003_019, B15003_020, B15003_021",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -441,6 +470,7 @@
     {
       "category": "housing",
       "feature_name": "vehiclesHouseholds1",
+      "original_name": "B25044_004, B25044_011",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -457,6 +487,7 @@
     {
       "category": "housing",
       "feature_name": "vehiclesHouseholds2",
+      "original_name": "B25044_005, B25044_012",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -473,6 +504,7 @@
     {
       "category": "housing",
       "feature_name": "vehiclesHouseholds3Plus",
+      "original_name": "B25044_006, B25044_007, B25044_008, B25044_013, B25044_014, B25044_015",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -493,6 +525,7 @@
     {
       "category": "population",
       "feature_name": "householdsWithChildren",
+      "original_name": "B11005_002",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -508,6 +541,7 @@
     {
       "category": "population",
       "feature_name": "womenAge15to50",
+      "original_name": "B13016_001",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -523,6 +557,7 @@
     {
       "category": "population",
       "feature_name": "womenWithBirthPast12Months",
+      "original_name": "B13016_002",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -538,6 +573,7 @@
     {
       "category": "income",
       "feature_name": "incomeGini",
+      "original_name": "B19083_001",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -553,6 +589,7 @@
     {
       "category": "income",
       "feature_name": "incomeHouseholdsUnder10k",
+      "original_name": "B19001_002",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -568,6 +605,7 @@
     {
       "category": "income",
       "feature_name": "incomeHouseholds10kTo25k",
+      "original_name": "B19001_003, B19001_004, B19001_005",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -585,6 +623,7 @@
     {
       "category": "income",
       "feature_name": "incomeHouseholds25kTo50k",
+      "original_name": "B19001_006, B19001_007, B19001_008, B19001_009, B19001_010",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -604,6 +643,7 @@
     {
       "category": "income",
       "feature_name": "incomeHouseholds50kTo100k",
+      "original_name": "B19001_011, B19001_012, B19001_013",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -621,6 +661,7 @@
     {
       "category": "income",
       "feature_name": "incomeHouseholds100kTo200k",
+      "original_name": "B19001_014, B19001_015, B19001_016",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -638,6 +679,7 @@
     {
       "category": "income",
       "feature_name": "incomeHouseholds200kPlus",
+      "original_name": "B19001_017",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -653,6 +695,7 @@
     {
       "category": "education",
       "feature_name": "educationBachelorsDegree",
+      "original_name": "B15003_022",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -668,6 +711,7 @@
     {
       "category": "education",
       "feature_name": "educationMastersDegree",
+      "original_name": "B15003_023",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -683,6 +727,7 @@
     {
       "category": "education",
       "feature_name": "educationProfessionalDegree",
+      "original_name": "B15003_024",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -698,6 +743,7 @@
     {
       "category": "education",
       "feature_name": "educationDoctorateDegree",
+      "original_name": "B15003_025",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -713,6 +759,7 @@
     {
       "category": "employment",
       "feature_name": "employedPopulation16plus",
+      "original_name": "C24010_001",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -728,6 +775,7 @@
     {
       "category": "employment",
       "feature_name": "jobsManagementBusinessScienceArts",
+      "original_name": "C24010_003, C24010_039",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -744,6 +792,7 @@
     {
       "category": "employment",
       "feature_name": "jobsService",
+      "original_name": "C24010_019, C24010_055",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -760,6 +809,7 @@
     {
       "category": "employment",
       "feature_name": "jobsSalesOffice",
+      "original_name": "C24010_027, C24010_063",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -776,6 +826,7 @@
     {
       "category": "employment",
       "feature_name": "jobsNaturalResourcesConstructionMaintenance",
+      "original_name": "C24010_030, C24010_066",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -792,6 +843,7 @@
     {
       "category": "employment",
       "feature_name": "jobsProductionTransportationMaterialMoving",
+      "original_name": "C24010_034, C24010_070",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -808,6 +860,7 @@
     {
       "category": "employment",
       "feature_name": "employedMalePopulation16plus",
+      "original_name": "C24010_002",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -823,6 +876,7 @@
     {
       "category": "employment",
       "feature_name": "employedFemalePopulation16plus",
+      "original_name": "C24010_038",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -838,6 +892,7 @@
     {
       "category": "employment",
       "feature_name": "jobsManagementBusinessScienceArtsMale",
+      "original_name": "C24010_003",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -853,6 +908,7 @@
     {
       "category": "employment",
       "feature_name": "jobsManagementBusinessScienceArtsFemale",
+      "original_name": "C24010_039",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -868,6 +924,7 @@
     {
       "category": "employment",
       "feature_name": "jobsServiceMale",
+      "original_name": "C24010_019",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -883,6 +940,7 @@
     {
       "category": "employment",
       "feature_name": "jobsServiceFemale",
+      "original_name": "C24010_055",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -898,6 +956,7 @@
     {
       "category": "employment",
       "feature_name": "jobsSalesOfficeMale",
+      "original_name": "C24010_027",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -913,6 +972,7 @@
     {
       "category": "employment",
       "feature_name": "jobsSalesOfficeFemale",
+      "original_name": "C24010_063",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -928,6 +988,7 @@
     {
       "category": "employment",
       "feature_name": "jobsNaturalResourcesConstructionMaintenanceMale",
+      "original_name": "C24010_030",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -943,6 +1004,7 @@
     {
       "category": "employment",
       "feature_name": "jobsNaturalResourcesConstructionMaintenanceFemale",
+      "original_name": "C24010_066",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -958,6 +1020,7 @@
     {
       "category": "employment",
       "feature_name": "jobsProductionTransportationMaterialMovingMale",
+      "original_name": "C24010_034",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -973,6 +1036,7 @@
     {
       "category": "employment",
       "feature_name": "jobsProductionTransportationMaterialMovingFemale",
+      "original_name": "C24010_070",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -984,6 +1048,1038 @@
       "relative_to": "employedFemalePopulation16plus",
       "unit": "",
       "definition": "Employed female residents 16+ in production, transportation, and material moving occupations."
+    },
+    {
+      "feature_name": "carHouseholds",
+      "original_name": "B25044_004, B25044_005, B25044_006, B25044_007, B25044_008, B25044_011, B25044_012, B25044_013, B25044_014, B25044_015",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25044_004",
+        "B25044_005",
+        "B25044_006",
+        "B25044_007",
+        "B25044_008",
+        "B25044_011",
+        "B25044_012",
+        "B25044_013",
+        "B25044_014",
+        "B25044_015"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "households",
+      "unit": "",
+      "definition": "Households with at least one vehicle available. Global schema carHouseholds."
+    },
+    {
+      "feature_name": "twoCarHouseholds",
+      "original_name": "B25044_005, B25044_006, B25044_007, B25044_008, B25044_012, B25044_013, B25044_014, B25044_015",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25044_005",
+        "B25044_006",
+        "B25044_007",
+        "B25044_008",
+        "B25044_012",
+        "B25044_013",
+        "B25044_014",
+        "B25044_015"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "households",
+      "unit": "",
+      "definition": "Households with two or more vehicles available. Global schema twoCarHouseholds."
+    },
+    {
+      "feature_name": "cars",
+      "original_name": "B25046_001",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25046_001"
+      ],
+      "type": "count",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "unit": "",
+      "definition": "Aggregate number of vehicles available to occupied housing units. Global schema cars."
+    },
+    {
+      "feature_name": "employedResidents",
+      "original_name": "B23025_004",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B23025_004"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "population16plus",
+      "unit": "",
+      "definition": "Employed civilians aged 16+ living in the area. Global schema employedResidents."
+    },
+    {
+      "feature_name": "housingUnits",
+      "original_name": "B25002_001",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25002_001"
+      ],
+      "type": "count",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "unit": "",
+      "definition": "Total housing units."
+    },
+    {
+      "feature_name": "vacantHousingUnits",
+      "original_name": "B25002_003",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25002_003"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "housingUnits",
+      "unit": "",
+      "definition": "Vacant housing units."
+    },
+    {
+      "feature_name": "unitsDetached1",
+      "original_name": "B25024_002",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25024_002"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "housingUnits",
+      "unit": "",
+      "definition": "Housing units in 1-unit detached structures."
+    },
+    {
+      "feature_name": "unitsAttached1",
+      "original_name": "B25024_003",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25024_003"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "housingUnits",
+      "unit": "",
+      "definition": "Housing units in 1-unit attached structures."
+    },
+    {
+      "feature_name": "unitsSmallMulti2to9",
+      "original_name": "B25024_004, B25024_005, B25024_006",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25024_004",
+        "B25024_005",
+        "B25024_006"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "housingUnits",
+      "unit": "",
+      "definition": "Housing units in structures with 2-9 units."
+    },
+    {
+      "feature_name": "unitsMulti10to19",
+      "original_name": "B25024_007",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25024_007"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "housingUnits",
+      "unit": "",
+      "definition": "Housing units in structures with 10-19 units."
+    },
+    {
+      "feature_name": "unitsMulti20Plus",
+      "original_name": "B25024_008, B25024_009",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25024_008",
+        "B25024_009"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "housingUnits",
+      "unit": "",
+      "definition": "Housing units in structures with 20 or more units."
+    },
+    {
+      "feature_name": "unitsMobileHome",
+      "original_name": "B25024_010",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25024_010"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "housingUnits",
+      "unit": "",
+      "definition": "Housing units that are mobile homes."
+    },
+    {
+      "feature_name": "homeValueMedian",
+      "original_name": "B25077_001",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25077_001"
+      ],
+      "type": "median",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "unit": "",
+      "resampling_weight": "householdsOwner",
+      "definition": "Median value of owner-occupied housing units (USD)."
+    },
+    {
+      "feature_name": "contractRentMedian",
+      "original_name": "B25058_001",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25058_001"
+      ],
+      "type": "median",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "unit": "",
+      "resampling_weight": "householdsRenter",
+      "definition": "Median contract rent (USD)."
+    },
+    {
+      "feature_name": "rentBurdenMedian",
+      "original_name": "B25071_001",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25071_001"
+      ],
+      "type": "median",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "unit": "%",
+      "resampling_weight": "householdsRenter",
+      "definition": "Median gross rent as a percentage of household income."
+    },
+    {
+      "feature_name": "yearBuiltMedian",
+      "original_name": "B25035_001",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25035_001"
+      ],
+      "type": "median",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "unit": "",
+      "resampling_weight": "housingUnits",
+      "definition": "Median year the housing structure was built."
+    },
+    {
+      "feature_name": "roomsMedian",
+      "original_name": "B25018_001",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25018_001"
+      ],
+      "type": "median",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "unit": "",
+      "resampling_weight": "housingUnits",
+      "definition": "Median number of rooms per housing unit."
+    },
+    {
+      "feature_name": "familyHouseholds",
+      "original_name": "B11001_002",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B11001_002"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "households",
+      "unit": "",
+      "definition": "Family households."
+    },
+    {
+      "feature_name": "livingAloneHouseholds",
+      "original_name": "B11001_008",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B11001_008"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "households",
+      "unit": "",
+      "definition": "One-person (living alone) non-family households."
+    },
+    {
+      "feature_name": "snapHouseholds",
+      "original_name": "B22010_002",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B22010_002"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "households",
+      "unit": "",
+      "definition": "Households that received Food Stamps/SNAP in the past 12 months."
+    },
+    {
+      "feature_name": "broadbandHouseholds",
+      "original_name": "B28002_004",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B28002_004"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "households",
+      "unit": "",
+      "definition": "Households with a broadband internet subscription."
+    },
+    {
+      "feature_name": "noInternetHouseholds",
+      "original_name": "B28002_013",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B28002_013"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "households",
+      "unit": "",
+      "definition": "Households with no internet access."
+    },
+    {
+      "feature_name": "noComputerHouseholds",
+      "original_name": "B28001_011",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B28001_011"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "households",
+      "unit": "",
+      "definition": "Households with no computer."
+    },
+    {
+      "feature_name": "limitedEnglishHouseholds",
+      "original_name": "C16002_004, C16002_007, C16002_010, C16002_013",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "C16002_004",
+        "C16002_007",
+        "C16002_010",
+        "C16002_013"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "households",
+      "unit": "",
+      "definition": "Households where all members 14+ speak a non-English language and speak English less than very well (limited English)."
+    },
+    {
+      "feature_name": "civilianPopulation18plusVeterans",
+      "original_name": "B21001_001",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B21001_001"
+      ],
+      "type": "count",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "unit": "",
+      "definition": "Civilian population aged 18+ (universe of the veteran status table)."
+    },
+    {
+      "feature_name": "veteranPopulation",
+      "original_name": "B21001_002",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B21001_002"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "civilianPopulation18plusVeterans",
+      "unit": "",
+      "definition": "Civilian veterans aged 18+."
+    },
+    {
+      "feature_name": "disabilityUniverse",
+      "original_name": "B18101_001",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B18101_001"
+      ],
+      "type": "count",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "unit": "",
+      "definition": "Civilian noninstitutionalized population (universe of the disability table)."
+    },
+    {
+      "feature_name": "disabilityPopulation",
+      "original_name": "B18101_004, B18101_007, B18101_010, B18101_013, B18101_016, B18101_019, B18101_023, B18101_026, B18101_029, B18101_032, B18101_035, B18101_038",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B18101_004",
+        "B18101_007",
+        "B18101_010",
+        "B18101_013",
+        "B18101_016",
+        "B18101_019",
+        "B18101_023",
+        "B18101_026",
+        "B18101_029",
+        "B18101_032",
+        "B18101_035",
+        "B18101_038"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "disabilityUniverse",
+      "unit": "",
+      "definition": "People with a disability."
+    },
+    {
+      "feature_name": "healthInsuranceUniverse",
+      "original_name": "B27001_001",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B27001_001"
+      ],
+      "type": "count",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "unit": "",
+      "definition": "Civilian noninstitutionalized population (universe of the health-insurance table)."
+    },
+    {
+      "feature_name": "uninsuredPopulation",
+      "original_name": "B27001_005, B27001_008, B27001_011, B27001_014, B27001_017, B27001_020, B27001_023, B27001_026, B27001_029, B27001_033, B27001_036, B27001_039, B27001_042, B27001_045, B27001_048, B27001_051, B27001_054, B27001_057",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B27001_005",
+        "B27001_008",
+        "B27001_011",
+        "B27001_014",
+        "B27001_017",
+        "B27001_020",
+        "B27001_023",
+        "B27001_026",
+        "B27001_029",
+        "B27001_033",
+        "B27001_036",
+        "B27001_039",
+        "B27001_042",
+        "B27001_045",
+        "B27001_048",
+        "B27001_051",
+        "B27001_054",
+        "B27001_057"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "healthInsuranceUniverse",
+      "unit": "",
+      "definition": "People with no health insurance coverage."
+    },
+    {
+      "feature_name": "nativityUniverse",
+      "original_name": "B05001_001",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B05001_001"
+      ],
+      "type": "count",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "unit": "",
+      "definition": "Total population (universe of the citizenship table)."
+    },
+    {
+      "feature_name": "nonCitizenPopulation",
+      "original_name": "B05001_006",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B05001_006"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "nativityUniverse",
+      "unit": "",
+      "definition": "Residents who are not US citizens."
+    },
+    {
+      "feature_name": "naturalizedCitizenPopulation",
+      "original_name": "B05001_005",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B05001_005"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "nativityUniverse",
+      "unit": "",
+      "definition": "Naturalized US citizens."
+    },
+    {
+      "feature_name": "driveAloneCommuters",
+      "original_name": "B08301_003",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B08301_003"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "workers",
+      "unit": "",
+      "definition": "Workers who drive alone to work."
+    },
+    {
+      "feature_name": "carpoolCommuters",
+      "original_name": "B08301_004",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B08301_004"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "workers",
+      "unit": "",
+      "definition": "Workers who carpool to work."
+    },
+    {
+      "feature_name": "motorcycleCommuters",
+      "original_name": "B08301_017",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B08301_017"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "workers",
+      "unit": "",
+      "definition": "Workers who commute by motorcycle."
+    },
+    {
+      "feature_name": "workFromHome",
+      "original_name": "B08301_021",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B08301_021"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "workers",
+      "unit": "",
+      "definition": "Workers who work from home."
+    },
+    {
+      "feature_name": "commuteUnder15Minutes",
+      "original_name": "B08303_002, B08303_003, B08303_004",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B08303_002",
+        "B08303_003",
+        "B08303_004"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "commuteTimeMean",
+      "unit": "",
+      "definition": "Commuters with a travel time under 15 minutes."
+    },
+    {
+      "feature_name": "commute60PlusMinutes",
+      "original_name": "B08303_012, B08303_013",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B08303_012",
+        "B08303_013"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "commuteTimeMean",
+      "unit": "",
+      "definition": "Commuters with a travel time of 60 minutes or more."
+    },
+    {
+      "feature_name": "earningsMedianWorkers",
+      "original_name": "B20002_001",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B20002_001"
+      ],
+      "type": "median",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "unit": "",
+      "resampling_weight": "population16plus",
+      "definition": "Median earnings in the past 12 months of workers 16+ (USD)."
+    },
+    {
+      "feature_name": "familyIncomeMedian",
+      "original_name": "B19113_001",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B19113_001"
+      ],
+      "type": "median",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "unit": "",
+      "resampling_weight": "households",
+      "definition": "Median family income (USD)."
+    },
+    {
+      "feature_name": "industryAgriculture",
+      "original_name": "C24050_002",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "C24050_002"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "employedPopulation16plus",
+      "unit": "",
+      "definition": "Employed civilians 16+ working in agriculture, forestry, fishing, hunting and mining."
+    },
+    {
+      "feature_name": "industryConstruction",
+      "original_name": "C24050_003",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "C24050_003"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "employedPopulation16plus",
+      "unit": "",
+      "definition": "Employed civilians 16+ working in construction."
+    },
+    {
+      "feature_name": "industryManufacturing",
+      "original_name": "C24050_004",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "C24050_004"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "employedPopulation16plus",
+      "unit": "",
+      "definition": "Employed civilians 16+ working in manufacturing."
+    },
+    {
+      "feature_name": "industryWholesale",
+      "original_name": "C24050_005",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "C24050_005"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "employedPopulation16plus",
+      "unit": "",
+      "definition": "Employed civilians 16+ working in wholesale trade."
+    },
+    {
+      "feature_name": "industryRetail",
+      "original_name": "C24050_006",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "C24050_006"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "employedPopulation16plus",
+      "unit": "",
+      "definition": "Employed civilians 16+ working in retail trade."
+    },
+    {
+      "feature_name": "industryTransportUtilities",
+      "original_name": "C24050_007",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "C24050_007"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "employedPopulation16plus",
+      "unit": "",
+      "definition": "Employed civilians 16+ working in transportation, warehousing and utilities."
+    },
+    {
+      "feature_name": "industryInformation",
+      "original_name": "C24050_008",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "C24050_008"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "employedPopulation16plus",
+      "unit": "",
+      "definition": "Employed civilians 16+ working in information."
+    },
+    {
+      "feature_name": "industryFinanceRealEstate",
+      "original_name": "C24050_009",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "C24050_009"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "employedPopulation16plus",
+      "unit": "",
+      "definition": "Employed civilians 16+ working in finance, insurance and real estate."
+    },
+    {
+      "feature_name": "industryProfessionalServices",
+      "original_name": "C24050_010",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "C24050_010"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "employedPopulation16plus",
+      "unit": "",
+      "definition": "Employed civilians 16+ working in professional, scientific, management and administrative services."
+    },
+    {
+      "feature_name": "industryEducationHealth",
+      "original_name": "C24050_011",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "C24050_011"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "employedPopulation16plus",
+      "unit": "",
+      "definition": "Employed civilians 16+ working in educational, health care and social services."
+    },
+    {
+      "feature_name": "industryArtsFood",
+      "original_name": "C24050_012",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "C24050_012"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "employedPopulation16plus",
+      "unit": "",
+      "definition": "Employed civilians 16+ working in arts, entertainment, recreation, accommodation and food services."
+    },
+    {
+      "feature_name": "industryOtherServices",
+      "original_name": "C24050_013",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "C24050_013"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "employedPopulation16plus",
+      "unit": "",
+      "definition": "Employed civilians 16+ working in other services."
+    },
+    {
+      "feature_name": "industryPublicAdmin",
+      "original_name": "C24050_014",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "C24050_014"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "relative_to": "employedPopulation16plus",
+      "unit": "",
+      "definition": "Employed civilians 16+ working in public administration."
+    },
+    {
+      "category": "housing",
+      "feature_name": "dwellingsBuiltTotal",
+      "original_name": "B25034_001",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25034_001"
+      ],
+      "type": "count",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "unit": "",
+      "definition": "Total housing units (universe of the year-structure-built table) (ACS B25034, year structure built)."
+    },
+    {
+      "category": "housing",
+      "feature_name": "dwellingsBuilt2020OrLater",
+      "original_name": "B25034_002",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25034_002"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "unit": "",
+      "definition": "Housing units built 2020 or later (2014 or later in ACS vintages up to 2019; always after 2000) (ACS B25034, year structure built).",
+      "relative_to": "dwellingsBuiltTotal"
+    },
+    {
+      "category": "housing",
+      "feature_name": "dwellingsBuilt2010To2019",
+      "original_name": "B25034_003",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25034_003"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "unit": "",
+      "definition": "Housing units built 2010 to 2019 (2010 to 2013 in vintages up to 2019) (ACS B25034, year structure built).",
+      "relative_to": "dwellingsBuiltTotal"
+    },
+    {
+      "category": "housing",
+      "feature_name": "dwellingsBuilt2000To2009",
+      "original_name": "B25034_004",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25034_004"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "unit": "",
+      "definition": "Housing units built 2000 to 2009 (ACS B25034, year structure built).",
+      "relative_to": "dwellingsBuiltTotal"
+    },
+    {
+      "category": "housing",
+      "feature_name": "dwellingsBuilt1990To1999",
+      "original_name": "B25034_005",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25034_005"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "unit": "",
+      "definition": "Housing units built 1990 to 1999 (ACS B25034, year structure built).",
+      "relative_to": "dwellingsBuiltTotal"
+    },
+    {
+      "category": "housing",
+      "feature_name": "dwellingsBuilt1980To1989",
+      "original_name": "B25034_006",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25034_006"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "unit": "",
+      "definition": "Housing units built 1980 to 1989 (ACS B25034, year structure built).",
+      "relative_to": "dwellingsBuiltTotal"
+    },
+    {
+      "category": "housing",
+      "feature_name": "dwellingsBuilt1970To1979",
+      "original_name": "B25034_007",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25034_007"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "unit": "",
+      "definition": "Housing units built 1970 to 1979 (ACS B25034, year structure built).",
+      "relative_to": "dwellingsBuiltTotal"
+    },
+    {
+      "category": "housing",
+      "feature_name": "dwellingsBuilt1960To1969",
+      "original_name": "B25034_008",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25034_008"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "unit": "",
+      "definition": "Housing units built 1960 to 1969 (ACS B25034, year structure built).",
+      "relative_to": "dwellingsBuiltTotal"
+    },
+    {
+      "category": "housing",
+      "feature_name": "dwellingsBuilt1950To1959",
+      "original_name": "B25034_009",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25034_009"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "unit": "",
+      "definition": "Housing units built 1950 to 1959 (ACS B25034, year structure built).",
+      "relative_to": "dwellingsBuiltTotal"
+    },
+    {
+      "category": "housing",
+      "feature_name": "dwellingsBuilt1940To1949",
+      "original_name": "B25034_010",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25034_010"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "unit": "",
+      "definition": "Housing units built 1940 to 1949 (ACS B25034, year structure built).",
+      "relative_to": "dwellingsBuiltTotal"
+    },
+    {
+      "category": "housing",
+      "feature_name": "dwellingsBuilt1939OrEarlier",
+      "original_name": "B25034_011",
+      "country": "usa",
+      "source": "acs5",
+      "codes": [
+        "B25034_011"
+      ],
+      "type": "count",
+      "resampling_up": "relative",
+      "resampling_down": "relative",
+      "unit": "",
+      "definition": "Housing units built 1939 or earlier (ACS B25034, year structure built).",
+      "relative_to": "dwellingsBuiltTotal"
     }
   ],
   "years": [

@@ -48,7 +48,9 @@ Source:
 """
 
 from __future__ import annotations
+from pycensus.cache import get_data_dir
 
+import functools
 from pathlib import Path
 from typing import List, Optional, Union
 
@@ -66,14 +68,14 @@ _RAW_HOUSEHOLDS_FILENAME_TEMPLATE = "village_households_{yyymm}.json"
 
 
 def _raw_cache_path(yyymm: str, data_dir: Optional[str]) -> Path:
-    base = Path(data_dir) if data_dir else Path(constants.DEFAULT_DATA_DIR)
+    base = get_data_dir("taiwan", data_dir)
     raw_dir = base / "raw" / "moi_ris"
     raw_dir.mkdir(parents=True, exist_ok=True)
     return raw_dir / _RAW_FILENAME_TEMPLATE.format(yyymm=yyymm)
 
 
 def _raw_households_cache_path(yyymm: str, data_dir: Optional[str]) -> Path:
-    base = Path(data_dir) if data_dir else Path(constants.DEFAULT_DATA_DIR)
+    base = get_data_dir("taiwan", data_dir)
     raw_dir = base / "raw" / "moi_ris"
     raw_dir.mkdir(parents=True, exist_ok=True)
     return raw_dir / _RAW_HOUSEHOLDS_FILENAME_TEMPLATE.format(yyymm=yyymm)
@@ -138,6 +140,7 @@ def _add_derived_age_columns(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
+@functools.lru_cache(maxsize=2)
 def _fetch_all_villages(yyymm: str, data_dir: Optional[str]) -> pd.DataFrame:
     """Fetch (or read cached) the full nationwide village-level population table.
 
@@ -155,6 +158,45 @@ def _fetch_all_villages(yyymm: str, data_dir: Optional[str]) -> pd.DataFrame:
         yyymm, raw_cache_path=_raw_households_cache_path(yyymm, data_dir)
     )
     village_df = village_df.merge(households_df, on="district_code", how="left")
+
+    # Annual / yearly village tables (education, household types, births/deaths): the latest ROC year at or before `yyymm`'s.
+    base_year = int(str(yyymm)[:3])
+    base = get_data_dir("taiwan", data_dir)
+    raw_dir = base / "raw" / "moi_ris"
+    raw_dir.mkdir(parents=True, exist_ok=True)
+    for fetch, tag, years in (
+        (api.fetch_village_education, "village_education", range(base_year, base_year - 4, -1)),
+        (api.fetch_village_household_types, "village_household_types", range(base_year, base_year - 4, -1)),
+    ):
+        for year in years:
+            try:
+                extra = fetch(str(year), raw_cache_path=raw_dir / f"{tag}_{year}.json")
+            except (ValueError, KeyError):
+                continue
+            village_df = village_df.merge(extra, on="district_code", how="left")
+            break
+    try:   # registered temples per county and religion -> rate per 10,000 residents of the county (counts exist only by county)
+        temples = api.fetch_county_temples(base_year, raw_cache_path=raw_dir)
+        village_df["_county"] = village_df["site_id"].astype(str).str[:3]
+        pop = village_df.groupby("_county")["people_total"].sum().rename("_county_pop")
+        village_df = village_df.merge(temples.rename(columns={"county": "_county"}), on="_county", how="left").merge(pop, on="_county", how="left")
+        for col in [c for c in temples.columns if c.startswith("temples_")]:
+            village_df[f"{col}_per10k"] = village_df[col] / village_df["_county_pop"] * 1e4
+        village_df = village_df.drop(columns=["_county", "_county_pop"] + [c for c in temples.columns if c.startswith("temples_")])
+    except (requests.RequestException, ValueError, KeyError):
+        pass
+    try:   # taxable income per village (Ministry of Finance), joined on county+district name and village name
+        inc = api.fetch_village_income(base_year - 1, raw_cache_path=raw_dir)
+        village_df = village_df.merge(inc.drop_duplicates(["site_id", "village"]), on=["site_id", "village"], how="left")
+    except (requests.RequestException, ValueError, KeyError):
+        pass
+    for year in range(base_year - 1, base_year - 4, -1):   # last COMPLETE calendar year of births / deaths / marriages
+        try:
+            extra = api.fetch_village_year_dynamics(str(year), raw_dir=raw_dir)
+        except ValueError:
+            continue
+        village_df = village_df.merge(extra, on="district_code", how="left")
+        break
 
     indig_cols = [
         "aborigine_plain_total_m",
@@ -191,12 +233,16 @@ def _aggregate_to_level(village_df: pd.DataFrame, level: str, region: Optional[s
             "people_total_f",
             "household_no",
             "indigenous_total",
+            "edu_age_15up_total", "edu_primary_or_less_total", "edu_secondary_total", "edu_university_total", "edu_other_tertiary_total",
+            "household_ordinary_total", "household_business_total", "household_single_total",
+            "births_year", "deaths_year", "marriages_year", "taxpayer_units",
             *_AGE_TOTAL_COLS,
         )
         if c in df.columns
     ]
 
     if level == "village":
+        value_cols = value_cols + [c for c in ("income_mean", "income_median", "income_q1", "income_q3", "temples_total_per10k", "temples_buddhist_per10k", "temples_taoist_per10k", "temples_yiguandao_per10k") if c in df.columns]   # intensive: village level only
         out = df[["district_code", *value_cols]].rename(columns={"district_code": "GEOID"})
         if region:
             # region may be a full 11-digit village code, or a 5-/8-digit

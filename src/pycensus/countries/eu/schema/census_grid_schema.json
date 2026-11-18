@@ -1,0 +1,299 @@
+{
+ "country": "eu",
+ "source": "census_grid",
+ "full_name": "Eurostat Census 2021 population grid, 1 km (GEOSTAT / Census hub, V3)",
+ "url": "https://gisco-services.ec.europa.eu/census/2021/Eurostat_Census-GRID_2021_V3.zip",
+ "years": [
+  2021
+ ],
+ "levels": [
+  "grid_1km"
+ ],
+ "resolution": "high",
+ "features": [
+  {
+   "category": "population",
+   "feature_name": "population",
+   "original_name": "T",
+   "country": "eu",
+   "source": "census_grid",
+   "codes": [
+    "T"
+   ],
+   "definition": "Total usual resident population on census day 2021 (reference date 1 January 2021 in most countries). Eurostat Census 2021 population grid (1 km, EU regulation 1799/2018), value T; -8888 (confidential) and -9999 (not available) are read as missing.",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "resampling_weight": "population",
+   "constant_total": true,
+   "constant_density": false
+  },
+  {
+   "category": "population",
+   "feature_name": "malePopulation",
+   "original_name": "M",
+   "country": "eu",
+   "source": "census_grid",
+   "codes": [
+    "M"
+   ],
+   "definition": "Male usual residents. Eurostat Census 2021 population grid (1 km, EU regulation 1799/2018), value M; -8888 (confidential) and -9999 (not available) are read as missing.",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "resampling_weight": "population",
+   "constant_total": true,
+   "constant_density": false,
+   "relative_to": "population"
+  },
+  {
+   "category": "population",
+   "feature_name": "femalePopulation",
+   "original_name": "F",
+   "country": "eu",
+   "source": "census_grid",
+   "codes": [
+    "F"
+   ],
+   "definition": "Female usual residents. Eurostat Census 2021 population grid (1 km, EU regulation 1799/2018), value F; -8888 (confidential) and -9999 (not available) are read as missing.",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "resampling_weight": "population",
+   "constant_total": true,
+   "constant_density": false,
+   "relative_to": "population"
+  },
+  {
+   "category": "population",
+   "feature_name": "under15Population",
+   "original_name": "Y_LT15",
+   "country": "eu",
+   "source": "census_grid",
+   "codes": [
+    "Y_LT15"
+   ],
+   "definition": "Usual residents younger than 15 years. Eurostat Census 2021 population grid (1 km, EU regulation 1799/2018), value Y_LT15; -8888 (confidential) and -9999 (not available) are read as missing.",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "resampling_weight": "population",
+   "constant_total": true,
+   "constant_density": false,
+   "relative_to": "population"
+  },
+  {
+   "category": "population",
+   "feature_name": "population15to64",
+   "original_name": "Y_1564",
+   "country": "eu",
+   "source": "census_grid",
+   "codes": [
+    "Y_1564"
+   ],
+   "definition": "Usual residents aged 15 to 64 years. Eurostat Census 2021 population grid (1 km, EU regulation 1799/2018), value Y_1564; -8888 (confidential) and -9999 (not available) are read as missing.",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "resampling_weight": "population",
+   "constant_total": true,
+   "constant_density": false,
+   "relative_to": "population"
+  },
+  {
+   "category": "population",
+   "feature_name": "over65Population",
+   "original_name": "Y_GE65",
+   "country": "eu",
+   "source": "census_grid",
+   "codes": [
+    "Y_GE65"
+   ],
+   "definition": "Usual residents aged 65 years or more. Eurostat Census 2021 population grid (1 km, EU regulation 1799/2018), value Y_GE65; -8888 (confidential) and -9999 (not available) are read as missing.",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "resampling_weight": "population",
+   "constant_total": true,
+   "constant_density": false,
+   "relative_to": "population"
+  },
+  {
+   "category": "employment",
+   "feature_name": "employedResidents",
+   "original_name": "EMP",
+   "country": "eu",
+   "source": "census_grid",
+   "codes": [
+    "EMP"
+   ],
+   "definition": "Employed persons among the usual residents (place of residence). Disclosure control can make it exceed the total population of a cell. Eurostat Census 2021 population grid (1 km, EU regulation 1799/2018), value EMP; -8888 (confidential) and -9999 (not available) are read as missing.",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "resampling_weight": "population",
+   "constant_total": true,
+   "constant_density": false,
+   "relative_to": "population"
+  },
+  {
+   "category": "migration",
+   "feature_name": "nativeBornPopulation",
+   "original_name": "NAT",
+   "country": "eu",
+   "source": "census_grid",
+   "codes": [
+    "NAT"
+   ],
+   "definition": "Usual residents born in the reporting country. Eurostat Census 2021 population grid (1 km, EU regulation 1799/2018), value NAT; -8888 (confidential) and -9999 (not available) are read as missing.",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "resampling_weight": "population",
+   "constant_total": true,
+   "constant_density": false,
+   "relative_to": "population"
+  },
+  {
+   "category": "migration",
+   "feature_name": "bornOtherEUPopulation",
+   "original_name": "EU_OTH",
+   "country": "eu",
+   "source": "census_grid",
+   "codes": [
+    "EU_OTH"
+   ],
+   "definition": "Usual residents born in another EU Member State. Eurostat Census 2021 population grid (1 km, EU regulation 1799/2018), value EU_OTH; -8888 (confidential) and -9999 (not available) are read as missing.",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "resampling_weight": "population",
+   "constant_total": true,
+   "constant_density": false,
+   "relative_to": "population"
+  },
+  {
+   "category": "migration",
+   "feature_name": "bornOutsideEUPopulation",
+   "original_name": "OTH",
+   "country": "eu",
+   "source": "census_grid",
+   "codes": [
+    "OTH"
+   ],
+   "definition": "Usual residents born outside the EU (elsewhere). Eurostat Census 2021 population grid (1 km, EU regulation 1799/2018), value OTH; -8888 (confidential) and -9999 (not available) are read as missing.",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "resampling_weight": "population",
+   "constant_total": true,
+   "constant_density": false,
+   "relative_to": "population"
+  },
+  {
+   "category": "migration",
+   "feature_name": "sameResidenceLastYear",
+   "original_name": "SAME",
+   "country": "eu",
+   "source": "census_grid",
+   "codes": [
+    "SAME"
+   ],
+   "definition": "Usual residents whose place of usual residence one year before the census was unchanged. Eurostat Census 2021 population grid (1 km, EU regulation 1799/2018), value SAME; -8888 (confidential) and -9999 (not available) are read as missing.",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "resampling_weight": "population",
+   "constant_total": true,
+   "constant_density": false,
+   "relative_to": "population"
+  },
+  {
+   "category": "migration",
+   "feature_name": "movedWithinCountryLastYear",
+   "original_name": "CHG_IN",
+   "country": "eu",
+   "source": "census_grid",
+   "codes": [
+    "CHG_IN"
+   ],
+   "definition": "Usual residents who moved within the reporting country in the year before the census. Eurostat Census 2021 population grid (1 km, EU regulation 1799/2018), value CHG_IN; -8888 (confidential) and -9999 (not available) are read as missing.",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "resampling_weight": "population",
+   "constant_total": true,
+   "constant_density": false,
+   "relative_to": "population"
+  },
+  {
+   "category": "migration",
+   "feature_name": "movedFromAbroadLastYear",
+   "original_name": "CHG_OUT",
+   "country": "eu",
+   "source": "census_grid",
+   "codes": [
+    "CHG_OUT"
+   ],
+   "definition": "Usual residents who moved from outside the reporting country in the year before the census. Eurostat Census 2021 population grid (1 km, EU regulation 1799/2018), value CHG_OUT; -8888 (confidential) and -9999 (not available) are read as missing.",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "resampling_weight": "population",
+   "constant_total": true,
+   "constant_density": false,
+   "relative_to": "population"
+  },
+  {
+   "category": "population",
+   "feature_name": "foreignBornPopulation",
+   "original_name": "EU_OTH + OTH",
+   "country": "eu",
+   "source": "census_grid",
+   "codes": [
+    "EU_OTH",
+    "OTH"
+   ],
+   "definition": "Usual residents born outside the reporting country: sum of EU_OTH (another EU Member State) and OTH (outside the EU) of the Eurostat Census 2021 grid; missing if either part is missing.",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "resampling_weight": "population",
+   "relative_to": "population",
+   "constant_total": true,
+   "constant_density": false
+  },
+  {
+   "category": "geography",
+   "feature_name": "landAreaKm2",
+   "original_name": "LAND_SURFACE",
+   "country": "eu",
+   "source": "census_grid",
+   "codes": [
+    "LAND_SURFACE"
+   ],
+   "definition": "Land surface of the 1 km grid cell in km2 (0 to 1; less than 1 on coasts, lakes and borders), Eurostat Census 2021 grid.",
+   "type": "area",
+   "unit": "km2",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "resampling_weight": "area",
+   "constant_total": true,
+   "constant_density": false
+  }
+ ]
+}

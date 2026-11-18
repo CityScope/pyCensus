@@ -15,6 +15,7 @@
     {
       "category": "population",
       "feature_name": "population",
+      "original_name": "Population and dwelling counts (13): Population, 2021 [1], Population and dwelling counts (5): Population, 2021 [1], DBPOP2021_IDPOP2021",
       "country": "canada",
       "source": "statcan",
       "codes": [
@@ -32,6 +33,7 @@
     {
       "category": "housing",
       "feature_name": "households",
+      "original_name": "Population and dwelling counts (13): Private dwellings occupied by usual residents, 2021 [7], Population and dwelling counts (5): Private dwellings occupied by usual residents, 2021 [3], DBURDWELL2021_IDRHLOG2021",
       "country": "canada",
       "source": "statcan",
       "codes": [
@@ -49,6 +51,7 @@
     {
       "category": "housing",
       "feature_name": "dwellings",
+      "original_name": "Population and dwelling counts (13): Total private dwellings, 2021 [4], Population and dwelling counts (5): Total private dwellings, 2021 [2], DBTDWELL2021_IDTLOG2021",
       "country": "canada",
       "source": "statcan",
       "codes": [
@@ -66,6 +69,7 @@
     {
       "category": "housing",
       "feature_name": "householdSizeMean",
+      "original_name": "Average household size",
       "country": "canada",
       "source": "statcan",
       "codes": [
@@ -82,6 +86,7 @@
     {
       "category": "income",
       "feature_name": "medianHouseholdIncome",
+      "original_name": "Median total income of household in 2020 ($)",
       "country": "canada",
       "source": "statcan",
       "codes": [
@@ -98,6 +103,7 @@
     {
       "category": "income",
       "feature_name": "meanHouseholdIncome",
+      "original_name": "Average total income of household in 2020 ($)",
       "country": "canada",
       "source": "statcan",
       "codes": [
@@ -114,6 +120,7 @@
     {
       "category": "housing",
       "feature_name": "ownerHouseholds",
+      "original_name": "Owner",
       "country": "canada",
       "source": "statcan",
       "codes": [
@@ -130,6 +137,7 @@
     {
       "category": "housing",
       "feature_name": "renterHouseholds",
+      "original_name": "Renter",
       "country": "canada",
       "source": "statcan",
       "codes": [
@@ -146,6 +154,7 @@
     {
       "category": "education",
       "feature_name": "educationTotalPopulation",
+      "original_name": "Total - Highest certificate, diploma or degree for the population aged 15 years and over in private households - 25% sample data",
       "country": "canada",
       "source": "statcan",
       "codes": [
@@ -161,6 +170,7 @@
     {
       "category": "education",
       "feature_name": "educationPrimaryOrLessPopulation",
+      "original_name": "No certificate, diploma or degree",
       "country": "canada",
       "source": "statcan",
       "codes": [
@@ -178,6 +188,7 @@
     {
       "category": "education",
       "feature_name": "educationSecondaryPopulation",
+      "original_name": "High (secondary) school diploma or equivalency certificate",
       "country": "canada",
       "source": "statcan",
       "codes": [
@@ -195,6 +206,7 @@
     {
       "category": "education",
       "feature_name": "educationOtherTertiaryPopulation",
+      "original_name": "Postsecondary certificate or diploma below bachelor level",
       "country": "canada",
       "source": "statcan",
       "codes": [
@@ -212,6 +224,7 @@
     {
       "category": "education",
       "feature_name": "educationUniversityPopulation",
+      "original_name": "Bachelor's degree or higher",
       "country": "canada",
       "source": "statcan",
       "codes": [
@@ -229,6 +242,7 @@
     {
       "category": "transport",
       "feature_name": "commuteTotalPopulation",
+      "original_name": "Total - Main mode of commuting for the employed labour force aged 15 years and over with a usual place of work or no fixed workplace address - 25% sample data",
       "country": "canada",
       "source": "statcan",
       "codes": [
@@ -244,6 +258,7 @@
     {
       "category": "transport",
       "feature_name": "carCommuters",
+      "original_name": "Car, truck or van",
       "country": "canada",
       "source": "statcan",
       "codes": [
@@ -261,6 +276,7 @@
     {
       "category": "transport",
       "feature_name": "publicTransportCommuters",
+      "original_name": "Public transit",
       "country": "canada",
       "source": "statcan",
       "codes": [
@@ -278,6 +294,7 @@
     {
       "category": "transport",
       "feature_name": "walkCommuters",
+      "original_name": "Walked",
       "country": "canada",
       "source": "statcan",
       "codes": [
@@ -295,6 +312,7 @@
     {
       "category": "transport",
       "feature_name": "bikeCommuters",
+      "original_name": "Bicycle",
       "country": "canada",
       "source": "statcan",
       "codes": [
@@ -312,6 +330,7 @@
     {
       "category": "population",
       "feature_name": "foreignBornPopulation",
+      "original_name": "Immigrants",
       "country": "canada",
       "source": "statcan",
       "codes": [
@@ -329,6 +348,7 @@
     {
       "category": "employment",
       "feature_name": "jobsTotal",
+      "original_name": "StatCan 98-10-0459 jobs by workplace CSD (usual place of work)",
       "country": "canada",
       "source": "statcan",
       "codes": [

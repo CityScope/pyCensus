@@ -103,7 +103,7 @@ BUSINESSES_URL = "https://sig.govern.ad/server/rest/services/Estadistica/REE_Ubi
 
 # Real, keyless, bulk-published PDF bulletin -- found 2026-08-23 while
 # investigating foreign-resident data specifically (see this module's and
-# ``estadisticaad/README.md``'s notes: no queryable FeatureServer/table
+# the source survey: no queryable FeatureServer/table
 # carries a nationality breakdown, but the Departament d'Estadistica's
 # regular "Nota de premsa" bulletin does). Verified live by fetching this
 # exact URL and inspecting the actual PDF content (not just HTTP 200):
@@ -249,7 +249,14 @@ def _esri_geometry_to_shapely(geom: dict):
 
 
 def features_to_geodataframe(features: List[dict]) -> gpd.GeoDataFrame:
-    """Convert raw Esri JSON features (from :func:`query_features`) to a GeoDataFrame in EPSG:4326."""
+    """Convert raw Esri JSON features (from :func:`query_features`) to a GeoDataFrame in EPSG:4326.
+
+    Args:
+        features: Esri JSON features.
+
+    Returns:
+        GeoDataFrame in EPSG:4326 (empty when there are no features).
+    """
     if not features:
         return gpd.GeoDataFrame({}, geometry=[], crs=4326)
     rows = [f["attributes"] for f in features]
@@ -384,6 +391,9 @@ def fetch_population_by_nationality_and_parish(
         requests.HTTPError: If the PDF can't be downloaded.
         RuntimeError: If the expected table structure/cross-checks aren't
             found in the parsed PDF (layout drift from a future bulletin).
+
+    Args:
+        url: URL of the statistics bulletin PDF.
     """
     import io
 

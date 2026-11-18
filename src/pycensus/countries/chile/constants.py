@@ -35,6 +35,7 @@ Source:
 """
 
 from __future__ import annotations
+from pycensus.cache import get_data_dir
 
 from typing import Dict, Tuple
 
@@ -152,7 +153,7 @@ LATEST_YEAR: Dict[str, int] = {
 }
 
 # Default data directory for raw (non-parquet-cache) downloads.
-DEFAULT_DATA_DIR = "data/chile"
+DEFAULT_DATA_DIR = str(get_data_dir("chile"))  # env/temp default, resolved at import
 
 # Alias used by utils.py/geography.py -- REGION_CODES *is* the code->name
 # lookup (its name refers to "codes" being the keys, not the values); kept

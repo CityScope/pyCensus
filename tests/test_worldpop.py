@@ -17,7 +17,7 @@ from pycensus.countries.worldwide.worldpop import loader
 
 def _write_fake_raster(path: str, value: float, nodata: float = -99999.0, shape=(2, 2)) -> None:
     os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
-    transform = from_origin(0, 0, 0.01, 0.01)
+    transform = from_origin(1.49, 42.51, 0.01, 0.01)   # covers _fake_aoi (the loader crops the rasters to the AOI)
     arr = np.full(shape, value, dtype="float32")
     with rasterio.open(
         path, "w", driver="GTiff", height=shape[0], width=shape[1], count=1,
@@ -32,7 +32,7 @@ def _fake_aoi() -> gpd.GeoDataFrame:
 
 class TestGlobalSchemaFeatures:
     def test_feature_names_match_declared_tuple(self):
-        expected = {"population", "malePopulation", "femalePopulation", "under18Population", "over65Population", "adultPopulation"}
+        expected = {"population", "malePopulation", "femalePopulation", "under18Population", "over65Population", "adultPopulation", "urbanPopulation"}
         assert set(loader.GLOBAL_SCHEMA_FEATURES) == expected
 
     def test_schema_json_features_match(self):

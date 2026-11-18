@@ -56,6 +56,7 @@ Technical aspects:
 """
 
 from __future__ import annotations
+from pycensus.cache import get_data_dir
 
 import json
 from pathlib import Path
@@ -173,7 +174,7 @@ def _load_village_boundaries(county_code: str, data_dir: Optional[str] = None) -
     live village list for the same county -- see module docstring. Raises
     loudly (rather than silently using a partial/unverified match) if the
     match rate falls below 99%, mirroring the anti-fabrication standard
-    used for Mexico's block level (see IMPLEMENTING_A_COUNTRY.md).
+    used for Mexico's block level (see AGENT_GUIDE_NEW_CITY_OR_COUNTRY.md).
     """
     from . import api as moi_api
     from . import constants as _constants
@@ -219,7 +220,7 @@ def _load_village_boundaries(county_code: str, data_dir: Optional[str] = None) -
 
 
 def _raw_dir(data_dir: Optional[str] = None) -> Path:
-    base = Path(data_dir) if data_dir else Path(constants.DEFAULT_DATA_DIR)
+    base = get_data_dir("taiwan", data_dir)
     raw_dir = base / "raw" / "geoboundaries"
     raw_dir.mkdir(parents=True, exist_ok=True)
     return raw_dir
@@ -354,6 +355,17 @@ def load_boundaries_multi(
     All 22 counties/cities come back from a single :func:`load_boundaries`
     call (see its docstring), so there's no per-region download loop here
     -- ``regions``/``aoi`` only narrow the already-fetched result.
+
+    Args:
+        level: Geography level.
+        regions: County codes to keep.
+        year: Boundary year.
+        erase_water: Remove water areas.
+        aoi: Area of interest (GeoDataFrame).
+        data_dir: Folder of the raw downloads; ``None`` = the pycensus cache.
+
+    Returns:
+        GeoDataFrame (EPSG:4326).
     """
     gdf = load_boundaries(level, year=year, erase_water=erase_water, data_dir=data_dir)
 
@@ -368,14 +380,30 @@ def load_boundaries_multi(
 
 
 def counties_in_aoi(aoi: gpd.GeoDataFrame, data_dir: Optional[str] = None) -> List[str]:
-    """Return the county/city codes whose real boundary intersects ``aoi``."""
+    """Return the county/city codes whose real boundary intersects ``aoi``.
+
+    Args:
+        aoi: Area of interest (GeoDataFrame).
+        data_dir: Folder of the raw downloads; ``None`` = the pycensus cache.
+
+    Returns:
+        Codes.
+    """
     gdf = load_boundaries("county_city", data_dir=data_dir)
     aoi_union = aoi.to_crs(4326).union_all()
     return gdf.loc[gdf.intersects(aoi_union), "GEOID"].tolist()
 
 
 def districts_in_aoi(aoi: gpd.GeoDataFrame, data_dir: Optional[str] = None) -> List[str]:
-    """Return the 8-digit district codes whose real ADM2 boundary intersects ``aoi``."""
+    """Return the 8-digit district codes whose real ADM2 boundary intersects ``aoi``.
+
+    Args:
+        aoi: Area of interest (GeoDataFrame).
+        data_dir: Folder of the raw downloads; ``None`` = the pycensus cache.
+
+    Returns:
+        Codes.
+    """
     gdf = load_boundaries("district", data_dir=data_dir)
     aoi_union = aoi.to_crs(4326).union_all()
     return gdf.loc[gdf.intersects(aoi_union), "GEOID"].tolist()
@@ -388,6 +416,13 @@ def villages_in_aoi(aoi: gpd.GeoDataFrame, data_dir: Optional[str] = None) -> Li
     :func:`counties_in_aoi`, real geoBoundaries ADM1 geometry), then fetches
     village boundaries only for those counties -- avoiding a nationwide
     Overpass fetch for a typically-small city-scale AOI.
+
+    Args:
+        aoi: Area of interest (GeoDataFrame).
+        data_dir: Folder of the raw downloads; ``None`` = the pycensus cache.
+
+    Returns:
+        Codes.
     """
     aoi_4326 = aoi.to_crs(4326)
     aoi_union = aoi_4326.union_all()

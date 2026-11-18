@@ -1,0 +1,32 @@
+{
+ "country": "mexico",
+ "note": "Bloc = left | right | other. Keys are candidates; coalition votes are summed to the supported candidate. uncertain=true: please review.",
+ "sources": [
+  "Wikipedia: 2024 Mexican general election",
+  "INE candidatura catalog (PRES_CANDIDATURAS_2024.csv)"
+ ],
+ "elections": {
+  "national_2024": {
+   "description": "2024 President",
+   "entries": {
+    "Claudia Sheinbaum Pardo": {
+     "bloc": "left",
+     "why": "Coalition Sigamos Haciendo Historia (MORENA, PT, PVEM): left-wing/populist-left governing bloc"
+    },
+    "Bertha Xochitl Galvez Ruiz": {
+     "bloc": "right",
+     "why": "Coalition Fuerza y Corazon por Mexico (PAN, PRI, PRD): centre-right/right opposition"
+    },
+    "Jorge Alvarez Maynez": {
+     "bloc": "other",
+     "why": "Movimiento Ciudadano: centrist/social-democratic third option, self-described outside both blocs",
+     "uncertain": true
+    },
+    "Candidato no registrado": {
+     "bloc": "other",
+     "why": "Write-in / unregistered candidates"
+    }
+   }
+  }
+ }
+}

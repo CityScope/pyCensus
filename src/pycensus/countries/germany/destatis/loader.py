@@ -392,6 +392,19 @@ def load(
         ValueError: If neither ``regions`` nor ``aoi`` is given, or
             ``level`` has no implemented geography source (see
             :data:`pycensus.germany.geography.IMPLEMENTED_LEVELS`).
+
+    Args:
+        aoi: Area of interest (GeoDataFrame).
+        regions: State codes (instead of ``aoi``).
+        level: Geography level.
+        year: Year or ``"latest"``.
+        api_key: GENESIS token.
+        cache_dir: Cache folder; ``None`` = the pycensus cache.
+        cache: Use the cached result.
+        data_dir: Folder of the raw downloads; ``None`` = the pycensus cache.
+
+    Returns:
+        GeoDataFrame of the level with the census columns.
     """
     level = geometry_levels.resolve_level(level, constants.LEVEL_FALLBACK, country="germany")
     year = constants.LATEST_YEAR.get("census", 2022) if year == "latest" else int(year)

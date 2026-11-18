@@ -48,6 +48,7 @@ Technical aspects:
 """
 
 from __future__ import annotations
+from pycensus.cache import get_data_dir
 
 import json
 from pathlib import Path
@@ -92,7 +93,7 @@ GEOID_WIDTH = {
 
 
 def _raw_dir(data_dir: Optional[str] = None) -> Path:
-    base = Path(data_dir) if data_dir else Path(constants.DEFAULT_DATA_DIR)
+    base = get_data_dir("chile", data_dir)
     raw_dir = base / "raw" / "dpa_censal"
     raw_dir.mkdir(parents=True, exist_ok=True)
     return raw_dir
@@ -158,7 +159,15 @@ def fetch_features(level: str, region: str, data_dir: Optional[str] = None) -> d
 
 
 def build_geoid(level: str, raw_code) -> str:
-    """Zero-pad a raw DPA code (as returned by the API, e.g. "8" or "8101") to its real GEOID width."""
+    """Zero-pad a raw DPA code (as returned by the API, e.g. "8" or "8101") to its real GEOID width.
+
+    Args:
+        level: Geography level.
+        raw_code: Code as returned by the API.
+
+    Returns:
+        The zero-padded GEOID.
+    """
     width = GEOID_WIDTH[level]
     return str(raw_code).strip().zfill(width)
 

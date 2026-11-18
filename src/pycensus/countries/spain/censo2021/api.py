@@ -175,7 +175,7 @@ def _parse_section_breakdown(payload: dict, variable: Optional[str], metric: str
                 "value": row.get(metric),
             }
         )
-    return pd.DataFrame(rows)
+    return pd.DataFrame(rows, columns=["GEOID", "category", "value"])
 
 
 __all__ = [

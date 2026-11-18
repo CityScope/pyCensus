@@ -256,9 +256,8 @@ class TestLoader:
 
         cached = gpd.read_parquet(cache_file)
         assert cached.crs is not None
-        # `apply_canonical_names` runs before the cache is written, so
-        # the cached file already has bare canonical names too.
-        assert "population" in cached.columns
+        # the cache keeps the source's own (prefixed) names; `load` applies the canonical names afterwards
+        assert "cbs_population" in cached.columns
         assert len(cached) == 1
 
     def test_load_statistical_area_level_returns_real_verified_columns(self, tmp_path):
@@ -282,9 +281,8 @@ class TestLoader:
 
         cached = gpd.read_parquet(cache_file)
         assert cached.crs is not None
-        # `apply_canonical_names` runs before the cache is written, so
-        # the cached file already has bare canonical names too.
-        assert "population" in cached.columns
+        # the cache keeps the source's own (prefixed) names; `load` applies the canonical names afterwards
+        assert "cbs_population" in cached.columns
         assert len(cached) == len(_STAT_AREA_IDS)
 
     def test_load_tract_resolves_to_statistical_area(self, tmp_path):

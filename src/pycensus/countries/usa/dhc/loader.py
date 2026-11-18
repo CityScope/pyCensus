@@ -50,9 +50,14 @@ def _fetch_missing(
 
     raw = api.fetch_variables("dec/dhc", year, level, state, codes, api_key)
     exprs = [
-        pl.sum_horizontal(
-            [pl.col(c).cast(pl.Float64, strict=False) for c in col.codes],
-            ignore_nulls=col.agg != "mean",
+        # 2026-11-15: all codes null (a table not published at this level) -> null, not the 0 that sum_horizontal(ignore_nulls=True) gives
+        pl.when(pl.all_horizontal([pl.col(c).cast(pl.Float64, strict=False).is_null() for c in col.codes]))
+        .then(None)
+        .otherwise(
+            pl.sum_horizontal(
+                [pl.col(c).cast(pl.Float64, strict=False) for c in col.codes],
+                ignore_nulls=col.agg != "mean",
+            )
         ).alias(SCHEMA.column_label(col.name))
         for col in all_direct_defs
     ]

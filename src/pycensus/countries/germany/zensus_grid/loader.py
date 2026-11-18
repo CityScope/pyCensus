@@ -45,6 +45,7 @@ Technical aspects:
 """
 
 from __future__ import annotations
+from pycensus.cache import get_data_dir
 
 import io
 import zipfile
@@ -62,11 +63,11 @@ GRID_CSV_NAME = "Zensus2022_Bevoelkerungszahl_100m-Gitter.csv"
 GRID_CRS = 3035  # ETRS89-LAEA Europe, the real INSPIRE grid CRS Destatis publishes in.
 CELL_SIZE_M = 100
 
-DEFAULT_DATA_DIR = "data/germany"
+DEFAULT_DATA_DIR = str(get_data_dir("germany"))  # env/temp default, resolved at import
 
 
 def _raw_dir(data_dir: Optional[str] = None) -> Path:
-    base = Path(data_dir) if data_dir else Path(DEFAULT_DATA_DIR)
+    base = get_data_dir("germany", data_dir)
     raw_dir = base / "raw" / "zensus_grid"
     raw_dir.mkdir(parents=True, exist_ok=True)
     return raw_dir
@@ -96,6 +97,9 @@ def download_grid(data_dir: Optional[str] = None) -> gpd.GeoDataFrame:
     Returns:
         GeoDataFrame with ``GEOID`` (``GITTER_ID_100m``), ``population``
         (``Einwohner``), and ``geometry`` (100m square polygon, EPSG:4326).
+
+    Args:
+        data_dir: Folder of the raw downloads; ``None`` = the pycensus cache.
     """
     raw_dir = _raw_dir(data_dir)
     cached_path = raw_dir / "de_zensus_grid_100m.parquet"
@@ -141,4 +145,73 @@ def load(
     return gdf
 
 
-__all__ = ["download_grid", "load", "GRID_ZIP_URL", "GRID_CSV_NAME", "GRID_CRS", "CELL_SIZE_M"]
+#: Extra Zensus 2022 100 m grid tables (all from https://www.destatis.de/static/DE/zensus/gitterdaten/, verified live 2026-10-22):
+#: logical table -> (zip name, csv name inside, {csv column -> destatis schema feature}); `adultPopulation` is the sum of the 18+ columns.
+EXTRA_TABLES = {
+    "age": ("Alter_in_5_Altersklassen", "Zensus2022_Alter_in_5_Altersklassen_100m-Gitter.csv",
+            {"Unter18": "under18Population", "a18bis29": "population18to29", "a30bis49": "population30to49",
+             "a50bis64": "population50to64", "a65undaelter": "over65Population"}),
+    "birth_country": ("Zensus2022_Geburtsland_Gruppen_in_Gitterzellen", "Zensus2022_Geburtsland_Gruppen_100m-Gitter.csv",
+                      {"Ausland_Sonstige": "bornAbroadPopulation", "EU27_Land": "bornEU27Population",
+                       "Sonstiges_Europa": "bornOtherEuropePopulation", "Sonstige_Welt": "bornOtherWorldPopulation"}),
+    "household_size": ("Zensus2022_Groesse_des_privaten_Haushalts_in_Gitterzellen", "Zensus2022_Groesse_des_privaten_Haushalts_100m-Gitter.csv",
+                       {"Insgesamt_Haushalte": "households", "1_Person": "households1Person", "2_Personen": "households2Persons",
+                        "3_Personen": "households3Persons", "4_Personen": "households4Persons", "5_Personen": "households5Persons",
+                        "6_Personen_und_mehr": "households6PlusPersons"}),
+    "religion": ("Religion", "Zensus2022_Religion_100m-Gitter.csv",
+                 {"Roemisch_katholisch": "populationRomanCatholic", "Evangelisch": "populationProtestant",
+                  "Sonstige_keine_ohneAngabe": "populationOtherOrNoReligion"}),
+    "rent": ("Zensus2022_Durchschn_Nettokaltmiete", "Zensus2022_Durchschn_Nettokaltmiete_100m-Gitter.csv", {"durchschnMieteQM": "rentPerM2Mean"}),
+    "ownership": ("Eigentuemerquote_in_Gitterzellen", "Zensus2022_Eigentuemerquote_100m-Gitter.csv", {"Eigentuemerquote": "homeownerRate"}),
+    "vacancy": ("Leerstandsquote_in_Gitterzellen", "Zensus2022_Leerstandsquote_100m-Gitter.csv", {"Leerstandsquote": "vacancyRate"}),
+    "baujahr": ("Gebaeude_nach_Baujahr_in_Mikrozensus_Klassen", "Zensus2022_Gebaeude_nach_Baujahr_in_MZ_Klassen_100m-Gitter.csv",
+                {"Insgesamt_Gebaeude": "buildingsBuiltTotal", "Vor1919": "buildingsBuiltBefore1919", "a1919bis1948": "buildingsBuilt1919To1948",
+                 "a1949bis1978": "buildingsBuilt1949To1978", "a1979bis1990": "buildingsBuilt1979To1990", "a1991bis2000": "buildingsBuilt1991To2000",
+                 "a2001bis2010": "buildingsBuilt2001To2010", "a2011bis2019": "buildingsBuilt2011To2019", "a2020undspaeter": "buildingsBuilt2020OrLater"}),
+    "home_size": ("Durchschnittliche_Flaeche_je_Wohnung_in_Gitterzellen", "Zensus2022_Durchschn_Flaeche_je_Wohnung_100m-Gitter.csv", {"durchschnFlaechejeWohn": "homeSizeM2Mean"}),
+    "mean_age": ("Durchschnittsalter_in_Gitterzellen", "Zensus2022_Durchschnittsalter_100m-Gitter.csv", {"Durchschnittsalter": "ageMean"}),
+}
+
+
+def _extra_table(key: str, raw_dir: Path) -> pd.DataFrame:
+    """One extra grid table as a parquet-cached frame (GEOID + schema features); suppressed cells ('-') are NaN."""
+    zip_name, csv_name, mapping = EXTRA_TABLES[key]
+    cached = raw_dir / f"extra_{key}.parquet"
+    if cached.exists():
+        return pd.read_parquet(cached)
+    csv_path = raw_dir / csv_name
+    if not csv_path.exists():
+        r = requests.get(f"https://www.destatis.de/static/DE/zensus/gitterdaten/{zip_name}.zip", timeout=600)
+        r.raise_for_status()
+        with zipfile.ZipFile(io.BytesIO(r.content)) as zf:
+            member = next(n for n in zf.namelist() if n.endswith(csv_name))
+            with zf.open(member) as src, open(csv_path, "wb") as dst:
+                dst.write(src.read())
+    df = pd.read_csv(csv_path, sep=";", usecols=["GITTER_ID_100m", *mapping], na_values=["–", "-", ""], decimal=",", dtype={"GITTER_ID_100m": str})
+    df = df.rename(columns={"GITTER_ID_100m": "GEOID", **mapping})
+    for c in mapping.values():
+        df[c] = pd.to_numeric(df[c], errors="coerce").astype("float32")
+    df.to_parquet(cached)
+    return df
+
+
+def load_extra(aoi=None, data_dir: Optional[str] = None) -> gpd.GeoDataFrame:
+    """The base population grid cells in ``aoi`` joined with every `EXTRA_TABLES` column (``destatis_*`` schema names, no prefix).
+
+    Args:
+        aoi: Area of interest (GeoDataFrame).
+        data_dir: Folder of the raw downloads; ``None`` = the pycensus cache.
+
+    Returns:
+        GeoDataFrame of the cells.
+    """
+    raw_dir = _raw_dir(data_dir)
+    grid = load(aoi, data_dir)[["GEOID", "geometry"]]
+    for key in EXTRA_TABLES:
+        grid = grid.merge(_extra_table(key, raw_dir), on="GEOID", how="left")
+    age = ["population18to29", "population30to49", "population50to64", "over65Population"]
+    grid["adultPopulation"] = grid[age].sum(axis=1, min_count=1)
+    return grid
+
+
+__all__ = ["load_extra", "EXTRA_TABLES", "download_grid", "load", "GRID_ZIP_URL", "GRID_CSV_NAME", "GRID_CRS", "CELL_SIZE_M"]

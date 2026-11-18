@@ -1,0 +1,55 @@
+{
+ "country": "eu",
+ "source": "lau",
+ "full_name": "Eurostat GISCO Local Administrative Units (municipalities) with population",
+ "url": "https://gisco-services.ec.europa.eu/distribution/v2/lau/",
+ "years": [
+  2021,
+  2022,
+  2023,
+  2024
+ ],
+ "levels": [
+  "municipality"
+ ],
+ "resolution": "low",
+ "features": [
+  {
+   "category": "population",
+   "feature_name": "population",
+   "original_name": "POP_<year>",
+   "country": "eu",
+   "source": "lau",
+   "codes": [
+    "POP_2024",
+    "POP_2023",
+    "POP_2022",
+    "POP_2021"
+   ],
+   "definition": "Population of the LAU (municipality) as published by Eurostat GISCO with the LAU boundaries of that vintage (POP_<year>). Per country the loader takes the latest vintage in which the country reported population (LAU 2024 carries 0 for Spain and France, so they come from LAU 2023).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "resampling_weight": "population",
+   "constant_total": true,
+   "constant_density": false
+  },
+  {
+   "category": "geography",
+   "feature_name": "landAreaKm2",
+   "original_name": "(computed)",
+   "country": "eu",
+   "source": "lau",
+   "codes": [],
+   "definition": "Area of the LAU in km2, computed from the GISCO boundary in ETRS89-LAEA (EPSG:3035). GISCO's own AREA_KM2 is not used: it is wrong in LAU 2023 for Spain (97 % of LAUs off by more than 10 %).",
+   "type": "area",
+   "unit": "km2",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "resampling_weight": "area",
+   "constant_total": true,
+   "constant_density": false
+  }
+ ]
+}

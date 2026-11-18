@@ -33,3 +33,20 @@ def acs_gdf(two_tract_gdf) -> gpd.GeoDataFrame:
     gdf["acs_households_owner"] = [20.0, 50.0]
     gdf["acs_households_renter"] = [20.0, 40.0]
     return gdf
+
+
+def pytest_configure(config):
+    config.addinivalue_line(
+        "markers", "network: needs live servers, downloads or API keys (skipped by default; run with `-m network`)"
+    )
+
+
+def pytest_collection_modifyitems(config, items):
+    """`test_real_*` tests check real downloads against published figures: marked `network`, run only with `-m network`."""
+    run_network = "network" in (config.getoption("-m") or "")
+    skip = pytest.mark.skip(reason="needs live servers / downloads / keys: run with -m network")
+    for item in items:
+        if item.name.startswith("test_real_"):
+            item.add_marker(pytest.mark.network)
+            if not run_network:
+                item.add_marker(skip)

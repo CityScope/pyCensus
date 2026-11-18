@@ -1,0 +1,132 @@
+{
+ "country": "chile",
+ "source": "elections",
+ "full_name": "Chile Servel mesa-level election results (presidential 2025), Voronoi-of-geocoded-locales catchments, resampled to H3 res 8 and manzana/zona",
+ "years": [
+  2025
+ ],
+ "levels": [
+  "manzana",
+  "zona"
+ ],
+ "features": [
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_total_votes",
+   "original_name": "elec_national_2025_total_votes",
+   "country": "chile",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_total_votes"
+   ],
+   "native_level": "local",
+   "type": "count",
+   "unit": "votes",
+   "definition": "Valid votes cast (candidates + blank), 2025 presidential runoff",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_turnout_rate",
+   "original_name": "elec_national_2025_turnout_rate",
+   "country": "chile",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_turnout_rate"
+   ],
+   "native_level": "local",
+   "type": "rate",
+   "unit": "0-1",
+   "definition": "Ballots cast / registered electors, 2025 presidential runoff",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_national_2025_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_left_share",
+   "original_name": "elec_national_2025_left_share",
+   "country": "chile",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_left_share"
+   ],
+   "native_level": "local",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for bloc left, 2025 presidential runoff",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_national_2025_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_right_share",
+   "original_name": "elec_national_2025_right_share",
+   "country": "chile",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_right_share"
+   ],
+   "native_level": "local",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for bloc right, 2025 presidential runoff",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_national_2025_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_other_share",
+   "original_name": "elec_national_2025_other_share",
+   "country": "chile",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_other_share"
+   ],
+   "native_level": "local",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for bloc other, 2025 presidential runoff",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_national_2025_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_party_jeannette_jara_roman_share",
+   "original_name": "elec_national_2025_party_jeannette_jara_roman_share",
+   "country": "chile",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_party_jeannette_jara_roman_share"
+   ],
+   "native_level": "local",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for party/candidate party_jeannette_jara_roman, 2025 presidential runoff",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_national_2025_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2025_party_jose_antonio_kast_rist_share",
+   "original_name": "elec_national_2025_party_jose_antonio_kast_rist_share",
+   "country": "chile",
+   "source": "elections",
+   "codes": [
+    "elec_national_2025_party_jose_antonio_kast_rist_share"
+   ],
+   "native_level": "local",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for party/candidate party_jose_antonio_kast_rist, 2025 presidential runoff",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_national_2025_total_votes"
+  }
+ ]
+}

@@ -3,7 +3,7 @@
 Technical aspects:
     ``geography`` has real, keyless GISCO NUTS boundaries (nation/state/
     district). ``destatis`` (GENESIS-Online population) needs a real
-    registered account -- see ``destatis/README.md``. ``ba`` (Bundesagentur
+    registered account (key ``destatis_genesis``). ``ba`` (Bundesagentur
     fuer Arbeit jobs-by-workplace) is real and keyless -- see
     ``ba/loader.py``. ``ba_pendler`` (BA Pendlerstatistik: Wohnort/
     Arbeitsort/Einpendler/Auspendler per Gemeinde) is also real and

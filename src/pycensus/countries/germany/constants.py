@@ -13,6 +13,7 @@ Census/population data source: Destatis GENESIS-Online (see
 :mod:`pycensus.germany.api` and :mod:`pycensus.germany.destatis.README`).
 """
 
+from pycensus.cache import get_data_dir
 from typing import Dict, List
 
 # Germany state codes (16 states with 2-letter codes)
@@ -75,7 +76,7 @@ GISCO_NUTS_GEOJSON_URL = (
     "NUTS_RG_01M_2021_4326_LEVL_{levl}.geojson"
 )
 
-# --- Destatis GENESIS-Online API (see pycensus.germany.api / destatis/README.md) ---
+# --- Destatis GENESIS-Online API (see pycensus.germany.api) ---
 
 # api_keys.json's real Germany entry is a single personal API token under
 # this key name (not a username/password pair) -- GENESIS-Online's "User
@@ -174,7 +175,7 @@ GENESIS_FOREIGN_POPULATION_TABLES = {
 }
 
 # Default data directory (kept for backward compatibility, but cache is preferred)
-DEFAULT_DATA_DIR = "data/germany"
+DEFAULT_DATA_DIR = str(get_data_dir("germany"))  # env/temp default, resolved at import
 
 __all__ = [
     "STATE_CODES",

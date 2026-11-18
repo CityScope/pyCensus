@@ -8,6 +8,7 @@
     {
       "category": "population",
       "feature_name": "population",
+      "original_name": "T_POB",
       "country": "chile",
       "source": "ine",
       "codes": ["T_POB"],
@@ -23,6 +24,7 @@
     {
       "category": "population",
       "feature_name": "malePopulation",
+      "original_name": "T_HOM",
       "country": "chile",
       "source": "ine",
       "codes": ["T_HOM"],
@@ -39,6 +41,7 @@
     {
       "category": "population",
       "feature_name": "femalePopulation",
+      "original_name": "T_MUJ",
       "country": "chile",
       "source": "ine",
       "codes": ["T_MUJ"],
@@ -55,6 +58,7 @@
     {
       "category": "population",
       "feature_name": "urbanPopulation",
+      "original_name": "T_POB_U",
       "country": "chile",
       "source": "ine",
       "codes": ["T_POB_U"],
@@ -71,6 +75,7 @@
     {
       "category": "population",
       "feature_name": "ruralPopulation",
+      "original_name": "T_POB_R",
       "country": "chile",
       "source": "ine",
       "codes": ["T_POB_R"],
@@ -87,6 +92,7 @@
     {
       "category": "housing",
       "feature_name": "households",
+      "original_name": "T_VIV",
       "country": "chile",
       "source": "ine",
       "codes": ["T_VIV"],

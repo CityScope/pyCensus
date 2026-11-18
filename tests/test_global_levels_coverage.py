@@ -47,7 +47,7 @@ def test_levels_json_maps_every_global_level(path: Path):
         f"{path.relative_to(REPO_SRC)}'s global_to_country_mapping is missing "
         f"{sorted(missing)} -- every country/source must map all 7 canonical "
         f"global_levels.json levels, even to an unimplemented finest level as "
-        f"a documented fallback (see IMPLEMENTING_A_COUNTRY.md)."
+        f"a documented fallback (see AGENT_GUIDE_NEW_CITY_OR_COUNTRY.md)."
     )
 
 

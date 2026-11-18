@@ -69,6 +69,11 @@ def resolve_genesis_credentials(
 
     Raises:
         GenesisCredentialsError: If none of the above resolve.
+
+    Args:
+        api_key: Explicit GENESIS token.
+        username: Explicit user name.
+        password: Explicit password.
     """
     if username is not None or password is not None:
         return (username, password or "")
@@ -163,7 +168,14 @@ def fetch_table(
 
 
 def list_datasets(year: int = 2022) -> List[dict]:
-    """List the Destatis datasets pyCensus knows about (metadata only, no network call)."""
+    """List the Destatis datasets pyCensus knows about (metadata only, no network call).
+
+    Args:
+        year: Reference year.
+
+    Returns:
+        Dataset descriptions.
+    """
     return [
         {
             "name": "Fortschreibung des Bevoelkerungsstandes (Population)",

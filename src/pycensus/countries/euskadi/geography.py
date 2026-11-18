@@ -47,6 +47,7 @@ Source:
 """
 
 from __future__ import annotations
+from pycensus.cache import get_data_dir
 
 from pathlib import Path
 from typing import List, Optional, Union
@@ -80,7 +81,7 @@ ERASE_WATER: dict = {
 
 
 def _raw_dir(cache_dir: Optional[str] = None) -> Path:
-    base = Path(cache_dir) if cache_dir else Path(constants.DEFAULT_DATA_DIR)
+    base = get_data_dir("euskadi", cache_dir)
     raw_dir = base / "raw" / "euskadi_gisco_lau"
     raw_dir.mkdir(parents=True, exist_ok=True)
     return raw_dir
@@ -272,6 +273,14 @@ def states_in_aoi(aoi: gpd.GeoDataFrame, year: int = 2021, cache_dir: Optional[s
 
     This function is kept for interface parity with the USA implementation.
     In Euskadi, the equivalent of states are historical territories.
+
+    Args:
+        aoi: Area of interest (GeoDataFrame).
+        year: Boundary year.
+        cache_dir: Cache folder; ``None`` = the pycensus cache.
+
+    Returns:
+        Territory codes.
     """
     return territories_in_aoi(aoi, year, cache_dir)
 

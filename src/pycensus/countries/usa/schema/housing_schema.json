@@ -1,0 +1,666 @@
+{
+  "country": "usa",
+  "source": "housing",
+  "full_name": "U.S. housing prices and rents (ACS, Census 2000, FHFA HPI, HUD FMR/SAFMR)",
+  "years": [
+    2000,
+    2006,
+    2016,
+    2019,
+    2022,
+    2024,
+    2025,
+    2026
+  ],
+  "levels": [
+    "tract"
+  ],
+  "features": [
+    {
+      "category": "housing",
+      "feature_name": "home_value_median",
+      "original_name": "home_value_median",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "home_value_median"
+      ],
+      "definition": "Median value of owner-occupied units, USD (ACS 2020-24)",
+      "type": "median",
+      "unit": "USD",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "tract"
+    },
+    {
+      "category": "housing",
+      "feature_name": "rent_median",
+      "original_name": "rent_median",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "rent_median"
+      ],
+      "definition": "Median gross rent, USD/month (ACS 2020-24)",
+      "type": "median",
+      "unit": "USD",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "tract"
+    },
+    {
+      "category": "housing",
+      "feature_name": "rent_burden_median",
+      "original_name": "rent_burden_median",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "rent_burden_median"
+      ],
+      "definition": "Median gross rent as % of household income (ACS 2020-24)",
+      "type": "median",
+      "unit": "%",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "tract"
+    },
+    {
+      "category": "housing",
+      "feature_name": "owner_share",
+      "original_name": "owner_share",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "owner_share"
+      ],
+      "definition": "Owner-occupied share of occupied units, fraction (0-1) (ACS 2020-24)",
+      "type": "rate",
+      "unit": "",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "tract"
+    },
+    {
+      "category": "housing",
+      "feature_name": "renter_share",
+      "original_name": "renter_share",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "renter_share"
+      ],
+      "definition": "Renter-occupied share of occupied units, fraction (0-1) (ACS 2020-24)",
+      "type": "rate",
+      "unit": "",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "tract"
+    },
+    {
+      "category": "housing",
+      "feature_name": "rent_burdened_share",
+      "original_name": "rent_burdened_share",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "rent_burdened_share"
+      ],
+      "definition": "Renter households paying >=30fraction (0-1) of income on rent, fraction (0-1) (ACS 2020-24)",
+      "type": "rate",
+      "unit": "",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "tract"
+    },
+    {
+      "category": "housing",
+      "feature_name": "rooms_median",
+      "original_name": "rooms_median",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "rooms_median"
+      ],
+      "definition": "Median rooms per housing unit (ACS 2020-24)",
+      "type": "median",
+      "unit": "rooms",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "tract"
+    },
+    {
+      "category": "housing",
+      "feature_name": "rent_per_room_mean",
+      "original_name": "rent_per_room_mean",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "rent_per_room_mean"
+      ],
+      "definition": "Median gross rent divided by median rooms, USD/room/month (ACS 2020-24)",
+      "type": "mean",
+      "unit": "USD",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "tract"
+    },
+    {
+      "category": "housing",
+      "feature_name": "home_value_median_2016",
+      "original_name": "home_value_median_2016",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "home_value_median_2016"
+      ],
+      "definition": "Median value of owner-occupied units, USD (ACS 2012-16)",
+      "type": "median",
+      "unit": "USD",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "tract"
+    },
+    {
+      "category": "housing",
+      "feature_name": "rent_median_2016",
+      "original_name": "rent_median_2016",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "rent_median_2016"
+      ],
+      "definition": "Median gross rent, USD/month (ACS 2012-16)",
+      "type": "median",
+      "unit": "USD",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "tract"
+    },
+    {
+      "category": "housing",
+      "feature_name": "rent_burden_median_2016",
+      "original_name": "rent_burden_median_2016",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "rent_burden_median_2016"
+      ],
+      "definition": "Median gross rent as % of household income (ACS 2012-16)",
+      "type": "median",
+      "unit": "%",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "tract"
+    },
+    {
+      "category": "housing",
+      "feature_name": "owner_share_2016",
+      "original_name": "owner_share_2016",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "owner_share_2016"
+      ],
+      "definition": "Owner-occupied share of occupied units, % (ACS 2012-16)",
+      "type": "rate",
+      "unit": "%",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "tract"
+    },
+    {
+      "category": "housing",
+      "feature_name": "renter_share_2016",
+      "original_name": "renter_share_2016",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "renter_share_2016"
+      ],
+      "definition": "Renter-occupied share of occupied units, % (ACS 2012-16)",
+      "type": "rate",
+      "unit": "%",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "tract"
+    },
+    {
+      "category": "housing",
+      "feature_name": "rent_burdened_share_2016",
+      "original_name": "rent_burdened_share_2016",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "rent_burdened_share_2016"
+      ],
+      "definition": "Renter households paying >=30% of income on rent, % (ACS 2012-16)",
+      "type": "rate",
+      "unit": "%",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "tract"
+    },
+    {
+      "category": "housing",
+      "feature_name": "rooms_median_2016",
+      "original_name": "rooms_median_2016",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "rooms_median_2016"
+      ],
+      "definition": "Median rooms per housing unit (ACS 2012-16)",
+      "type": "median",
+      "unit": "rooms",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "tract"
+    },
+    {
+      "category": "housing",
+      "feature_name": "rent_per_room_mean_2016",
+      "original_name": "rent_per_room_mean_2016",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "rent_per_room_mean_2016"
+      ],
+      "definition": "Median gross rent divided by median rooms, USD/room/month (ACS 2012-16)",
+      "type": "mean",
+      "unit": "USD",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "tract"
+    },
+    {
+      "category": "housing",
+      "feature_name": "home_value_median_2000",
+      "original_name": "home_value_median_2000",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "home_value_median_2000"
+      ],
+      "definition": "Median value of owner-occupied units, USD (Census 2000 SF3 re-tabulated to 2020 tracts)",
+      "type": "median",
+      "unit": "USD",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "tract"
+    },
+    {
+      "category": "housing",
+      "feature_name": "rent_median_2000",
+      "original_name": "rent_median_2000",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "rent_median_2000"
+      ],
+      "definition": "Median gross rent, USD/month (Census 2000 SF3 re-tabulated to 2020 tracts)",
+      "type": "median",
+      "unit": "USD",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "tract"
+    },
+    {
+      "category": "housing",
+      "feature_name": "rent_burden_median_2000",
+      "original_name": "rent_burden_median_2000",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "rent_burden_median_2000"
+      ],
+      "definition": "Median gross rent as % of household income (Census 2000 SF3 re-tabulated to 2020 tracts)",
+      "type": "median",
+      "unit": "%",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "tract"
+    },
+    {
+      "category": "housing",
+      "feature_name": "owner_share_2000",
+      "original_name": "owner_share_2000",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "owner_share_2000"
+      ],
+      "definition": "Owner-occupied share of occupied units, % (Census 2000 SF3 re-tabulated to 2020 tracts)",
+      "type": "rate",
+      "unit": "%",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "tract"
+    },
+    {
+      "category": "housing",
+      "feature_name": "renter_share_2000",
+      "original_name": "renter_share_2000",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "renter_share_2000"
+      ],
+      "definition": "Renter-occupied share of occupied units, % (Census 2000 SF3 re-tabulated to 2020 tracts)",
+      "type": "rate",
+      "unit": "%",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "tract"
+    },
+    {
+      "category": "housing",
+      "feature_name": "rooms_median_2000",
+      "original_name": "rooms_median_2000",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "rooms_median_2000"
+      ],
+      "definition": "Median rooms per housing unit (Census 2000 SF3 re-tabulated to 2020 tracts)",
+      "type": "median",
+      "unit": "rooms",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "tract"
+    },
+    {
+      "category": "housing",
+      "feature_name": "rent_per_room_mean_2000",
+      "original_name": "rent_per_room_mean_2000",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "rent_per_room_mean_2000"
+      ],
+      "definition": "Median gross rent divided by median rooms, USD/room/month (Census 2000 SF3 re-tabulated to 2020 tracts)",
+      "type": "mean",
+      "unit": "USD",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "tract"
+    },
+    {
+      "category": "housing",
+      "feature_name": "house_price_index_fhfa",
+      "original_name": "house_price_index_fhfa",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "house_price_index_fhfa"
+      ],
+      "definition": "FHFA all-transactions house price index, 2000=100, tract (year 2025)",
+      "type": "index",
+      "unit": "index",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "tract"
+    },
+    {
+      "category": "housing",
+      "feature_name": "house_price_index_fhfa_zip",
+      "original_name": "house_price_index_fhfa_zip",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "house_price_index_fhfa_zip"
+      ],
+      "definition": "FHFA ZIP5 house price index, 2000=100, mapped to tracts via ZCTA (year 2025)",
+      "type": "index",
+      "unit": "index",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "zip5"
+    },
+    {
+      "category": "housing",
+      "feature_name": "house_price_index_fhfa_2016",
+      "original_name": "house_price_index_fhfa_2016",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "house_price_index_fhfa_2016"
+      ],
+      "definition": "FHFA all-transactions house price index, 2000=100, tract (year 2016)",
+      "type": "index",
+      "unit": "index",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "tract"
+    },
+    {
+      "category": "housing",
+      "feature_name": "house_price_index_fhfa_zip_2016",
+      "original_name": "house_price_index_fhfa_zip_2016",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "house_price_index_fhfa_zip_2016"
+      ],
+      "definition": "FHFA ZIP5 house price index, 2000=100, mapped to tracts via ZCTA (year 2016)",
+      "type": "index",
+      "unit": "index",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "zip5"
+    },
+    {
+      "category": "housing",
+      "feature_name": "house_price_index_fhfa_2006",
+      "original_name": "house_price_index_fhfa_2006",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "house_price_index_fhfa_2006"
+      ],
+      "definition": "FHFA all-transactions house price index, 2000=100, tract (year 2006)",
+      "type": "index",
+      "unit": "index",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "tract"
+    },
+    {
+      "category": "housing",
+      "feature_name": "house_price_index_fhfa_zip_2006",
+      "original_name": "house_price_index_fhfa_zip_2006",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "house_price_index_fhfa_zip_2006"
+      ],
+      "definition": "FHFA ZIP5 house price index, 2000=100, mapped to tracts via ZCTA (year 2006)",
+      "type": "index",
+      "unit": "index",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "zip5"
+    },
+    {
+      "category": "housing",
+      "feature_name": "house_price_cagr_2016_2025_rate",
+      "original_name": "house_price_cagr_2016_2025_rate",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "house_price_cagr_2016_2025_rate"
+      ],
+      "definition": "Annualised FHFA tract house price growth 2016-2025, fraction (0-1)/yr",
+      "type": "rate",
+      "unit": "",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "tract"
+    },
+    {
+      "category": "housing",
+      "feature_name": "hud_safmr_2br_rent_mean_FY2019",
+      "original_name": "hud_safmr_2br_rent_mean_FY2019",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "hud_safmr_2br_rent_mean_FY2019"
+      ],
+      "definition": "HUD Small Area FMR, 2-bedroom, USD/month (FY2019), ZIP mapped to tracts",
+      "type": "mean",
+      "unit": "USD",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "zip5"
+    },
+    {
+      "category": "housing",
+      "feature_name": "hud_fmr_2br_county_rent_mean_FY2019",
+      "original_name": "hud_fmr_2br_county_rent_mean_FY2019",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "hud_fmr_2br_county_rent_mean_FY2019"
+      ],
+      "definition": "HUD Fair Market Rent, 2-bedroom, USD/month (FY2019), county",
+      "type": "mean",
+      "unit": "USD",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "county"
+    },
+    {
+      "category": "housing",
+      "feature_name": "hud_safmr_2br_rent_mean_FY2022",
+      "original_name": "hud_safmr_2br_rent_mean_FY2022",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "hud_safmr_2br_rent_mean_FY2022"
+      ],
+      "definition": "HUD Small Area FMR, 2-bedroom, USD/month (FY2022), ZIP mapped to tracts",
+      "type": "mean",
+      "unit": "USD",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "zip5"
+    },
+    {
+      "category": "housing",
+      "feature_name": "hud_fmr_2br_county_rent_mean_FY2022",
+      "original_name": "hud_fmr_2br_county_rent_mean_FY2022",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "hud_fmr_2br_county_rent_mean_FY2022"
+      ],
+      "definition": "HUD Fair Market Rent, 2-bedroom, USD/month (FY2022), county",
+      "type": "mean",
+      "unit": "USD",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "county"
+    },
+    {
+      "category": "housing",
+      "feature_name": "hud_safmr_2br_rent_mean_FY2026",
+      "original_name": "hud_safmr_2br_rent_mean_FY2026",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "hud_safmr_2br_rent_mean_FY2026"
+      ],
+      "definition": "HUD Small Area FMR, 2-bedroom, USD/month (FY2026), ZIP mapped to tracts",
+      "type": "mean",
+      "unit": "USD",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "zip5"
+    },
+    {
+      "category": "housing",
+      "feature_name": "hud_fmr_2br_county_rent_mean_FY2026",
+      "original_name": "hud_fmr_2br_county_rent_mean_FY2026",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "hud_fmr_2br_county_rent_mean_FY2026"
+      ],
+      "definition": "HUD Fair Market Rent, 2-bedroom, USD/month (FY2026), county",
+      "type": "mean",
+      "unit": "USD",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "county"
+    },
+    {
+      "category": "housing",
+      "feature_name": "listing_price_per_m2",
+      "original_name": "listing_price_per_m2",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "listing_price_per_m2"
+      ],
+      "definition": "Median asking price per m2 of home listings, last 12 months (Realtor.com Research, by ZIP), USD/m2",
+      "type": "mean",
+      "unit": "USD",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "tract"
+    },
+    {
+      "category": "housing",
+      "feature_name": "listing_median_area_m2",
+      "original_name": "listing_median_area_m2",
+      "country": "usa",
+      "source": "housing",
+      "codes": [
+        "listing_median_area_m2"
+      ],
+      "definition": "Median floor area of home listings, last 12 months (Realtor.com Research, by ZIP), m2",
+      "type": "mean",
+      "unit": "m2",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population",
+      "native_level": "tract"
+    }
+  ]
+}

@@ -18,6 +18,7 @@ Source:
     https://www.cbs.gov.il/
 """
 
+from pycensus.cache import get_data_dir
 from typing import Dict, List
 
 # Israel district (machoz) codes -- CBS's 6 internationally-recognized
@@ -293,7 +294,7 @@ IPLAN_JURISDICTION_URL: str = (
 )
 
 # Default data directory (kept for backward compatibility, but cache is preferred)
-DEFAULT_DATA_DIR = "data/israel"
+DEFAULT_DATA_DIR = str(get_data_dir("israel"))  # env/temp default, resolved at import
 
 __all__ = [
     "DISTRICT_CODES",

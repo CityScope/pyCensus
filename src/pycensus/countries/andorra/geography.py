@@ -160,6 +160,13 @@ def parishes_in_aoi(aoi: gpd.GeoDataFrame, year: int = 2026) -> List[str]:
     Andorra is tiny enough (7 parishes total, one 7-row request) that no
     bounding-box pre-filter is needed before fetching real geometry --
     unlike larger countries' ``states_in_aoi`` helpers.
+
+    Args:
+        aoi: Area of interest (GeoDataFrame).
+        year: Boundary year.
+
+    Returns:
+        Parish codes.
     """
     parishes = load_boundaries("parish", None, year)
     if parishes.empty:
@@ -169,7 +176,15 @@ def parishes_in_aoi(aoi: gpd.GeoDataFrame, year: int = 2026) -> List[str]:
 
 
 def states_in_aoi(aoi: gpd.GeoDataFrame, year: int = 2026) -> List[str]:
-    """Alias of :func:`parishes_in_aoi`, kept for interface parity with other countries."""
+    """Alias of :func:`parishes_in_aoi`, kept for interface parity with other countries.
+
+    Args:
+        aoi: Area of interest (GeoDataFrame).
+        year: Boundary year.
+
+    Returns:
+        Parish codes.
+    """
     return parishes_in_aoi(aoi, year)
 
 

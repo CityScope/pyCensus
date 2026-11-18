@@ -1,0 +1,352 @@
+{
+ "country": "canada",
+ "note": "Bloc = left | right | other. other includes centre, regional, minor, independent, blank. uncertain=true: please review.",
+ "sources": [
+  "Wikipedia party articles",
+  "Elections Ontario political interest codes (results.elections.on.ca report 1094)",
+  "Toronto Star/CBC 2022 mayoral race guides"
+ ],
+ "elections": {
+  "national_2025": {
+   "description": "45th federal general election 2025, keyed by Elections Canada 'Political Affiliation Name_English'",
+   "entries": {
+    "Liberal": {
+     "bloc": "left",
+     "why": "Liberal Party of Canada: centrist/centre-left big tent; treated as the left-of-centre pole vs Conservatives (vote-splitting with NDP)",
+     "uncertain": true
+    },
+    "Conservative": {
+     "bloc": "right",
+     "why": "Conservative Party of Canada: centre-right/right"
+    },
+    "NDP-New Democratic Party": {
+     "bloc": "left",
+     "why": "NDP: social-democratic left"
+    },
+    "Green Party": {
+     "bloc": "left",
+     "why": "Green Party of Canada: ecologist, centre-left/left"
+    },
+    "People's Party - PPC": {
+     "bloc": "right",
+     "why": "PPC: right-populist, libertarian-leaning"
+    },
+    "Bloc Québécois": {
+     "bloc": "other",
+     "why": "Regional (Quebec sovereigntist) party; not on the Ontario ballot"
+    },
+    "Marxist-Leninist": {
+     "bloc": "left",
+     "why": "Marxist-Leninist Party of Canada: far left"
+    },
+    "Communist": {
+     "bloc": "left",
+     "why": "Communist Party of Canada: far left"
+    },
+    "Animal Protection Party": {
+     "bloc": "other",
+     "why": "Single-issue party (animal protection)"
+    },
+    "Centrist": {
+     "bloc": "other",
+     "why": "Centrist Party of Canada"
+    },
+    "Independent": {
+     "bloc": "other",
+     "why": "Independents (heterogeneous)"
+    },
+    "No Affiliation": {
+     "bloc": "other",
+     "why": "Candidates without affiliation"
+    },
+    "Marijuana Party": {
+     "bloc": "other",
+     "why": "Single-issue party (cannabis)"
+    },
+    "Canadian Future Party": {
+     "bloc": "other",
+     "why": "Minor centrist party"
+    },
+    "Libertarian": {
+     "bloc": "right",
+     "why": "Libertarian Party of Canada: economically right",
+     "uncertain": true
+    },
+    "Christian Heritage Party": {
+     "bloc": "right",
+     "why": "Social-conservative party",
+     "uncertain": true
+    },
+    "Rhinoceros": {
+     "bloc": "other",
+     "why": "Satirical party"
+    },
+    "Party for People with Special Needs": {
+     "bloc": "other",
+     "why": "Single-issue"
+    },
+    "Parti Rhinocéros Party": {
+     "bloc": "other",
+     "why": "Satirical party"
+    }
+   }
+  },
+  "state_2025_on": {
+   "description": "Ontario 2025 general election keyed by political-interest code",
+   "entries": {
+    "PCP": {
+     "bloc": "right",
+     "why": "Progressive Conservative Party of Ontario: centre-right"
+    },
+    "LIB": {
+     "bloc": "left",
+     "why": "Ontario Liberal Party: centrist/centre-left; treated as left-of-centre opposite to PC",
+     "uncertain": true
+    },
+    "NDP": {
+     "bloc": "left",
+     "why": "Ontario NDP: social-democratic left"
+    },
+    "GPO": {
+     "bloc": "left",
+     "why": "Green Party of Ontario: ecologist, centre-left"
+    },
+    "NBO": {
+     "bloc": "right",
+     "why": "New Blue Party of Ontario: right-populist"
+    },
+    "ONP": {
+     "bloc": "right",
+     "why": "Ontario Party: right-populist",
+     "uncertain": true
+    },
+    "FRE": {
+     "bloc": "right",
+     "why": "Freedom Party of Ontario: classical-liberal/libertarian right",
+     "uncertain": true
+    },
+    "LTN": {
+     "bloc": "right",
+     "why": "Ontario Libertarian Party: economically right",
+     "uncertain": true
+    },
+    "PPR": {
+     "bloc": "other",
+     "why": "Populist Party Ontario",
+     "uncertain": true
+    },
+    "COM": {
+     "bloc": "left",
+     "why": "Communist Party of Canada (Ontario)"
+    },
+    "IND": {
+     "bloc": "other",
+     "why": "Independents (heterogeneous)"
+    },
+    "CCP": {
+     "bloc": "other",
+     "why": "Canadians' Choice Party",
+     "uncertain": true
+    },
+    "SNS": {
+     "bloc": "other",
+     "why": "Stop the New Sex-Ed Agenda (social-conservative single issue)",
+     "uncertain": true
+    },
+    "ERP": {
+     "bloc": "other",
+     "why": "Electoral Reform Party (single issue)"
+    },
+    "NAP": {
+     "bloc": "other",
+     "why": "None of the Above Direct Democracy Party"
+    },
+    "PSN": {
+     "bloc": "other",
+     "why": "Party for People with Special Needs"
+    },
+    "NRT": {
+     "bloc": "other",
+     "why": "Northern Ontario Party (regional)"
+    },
+    "OAL": {
+     "bloc": "other",
+     "why": "Ontario Alliance",
+     "uncertain": true
+    },
+    "MOD": {
+     "bloc": "other",
+     "why": "Ontario Moderate Party (centrist)"
+    },
+    "PRP": {
+     "bloc": "other",
+     "why": "Progress Party Ontario",
+     "uncertain": true
+    },
+    "CEN": {
+     "bloc": "other",
+     "why": "Ontario Centrist Party (centrist)"
+    }
+   }
+  },
+  "municipal_2022_toronto": {
+   "description": "Toronto 2022 mayor, candidate names as 'Surname Given'",
+   "entries": {
+    "Tory John": {
+     "bloc": "right",
+     "why": "Incumbent mayor John Tory: fiscally conservative, former PC leader; centre-right",
+     "uncertain": true
+    },
+    "Penalosa Gil": {
+     "bloc": "left",
+     "why": "Progressive urbanist (ex-Bogota deputy mayor); endorsed by left/progressive groups"
+    },
+    "Brown Chloe-Marie": {
+     "bloc": "left",
+     "why": "Progressive/left council-style platform",
+     "uncertain": true
+    },
+    "Climenhaga Sarah": {
+     "bloc": "left",
+     "why": "Community-advocate, left platform",
+     "uncertain": true
+    },
+    "Singh Knia": {
+     "bloc": "left",
+     "why": "Lawyer/activist, left platform",
+     "uncertain": true
+    },
+    "Punwasi Stephen": {
+     "bloc": "other",
+     "why": "Housing-affordability analyst, non-partisan",
+     "uncertain": true
+    },
+    "Luk Tony": {
+     "bloc": "other",
+     "why": "Minor candidate",
+     "uncertain": true
+    },
+    "Yan Jack": {
+     "bloc": "other",
+     "why": "Minor candidate",
+     "uncertain": true
+    },
+    "Acton Blake": {
+     "bloc": "other",
+     "why": "Minor candidate",
+     "uncertain": true
+    },
+    "Clarke Kevin": {
+     "bloc": "other",
+     "why": "Minor candidate; no clear ideological placement",
+     "uncertain": true
+    },
+    "Tull Reginald": {
+     "bloc": "other",
+     "why": "Minor candidate; no clear ideological placement",
+     "uncertain": true
+    },
+    "Jamal Khadijah": {
+     "bloc": "other",
+     "why": "Minor candidate; no clear ideological placement",
+     "uncertain": true
+    },
+    "Gupta Arjun": {
+     "bloc": "other",
+     "why": "Minor candidate; no clear ideological placement",
+     "uncertain": true
+    },
+    "Atkinson Darren": {
+     "bloc": "other",
+     "why": "Minor candidate; no clear ideological placement",
+     "uncertain": true
+    },
+    "Srivastava Sandeep": {
+     "bloc": "other",
+     "why": "Minor candidate; no clear ideological placement",
+     "uncertain": true
+    },
+    "Hatton Robert": {
+     "bloc": "other",
+     "why": "Minor candidate; no clear ideological placement",
+     "uncertain": true
+    },
+    "Hossain Monowar": {
+     "bloc": "other",
+     "why": "Minor candidate; no clear ideological placement",
+     "uncertain": true
+    },
+    "D'Cruze Phillip": {
+     "bloc": "other",
+     "why": "Minor candidate; no clear ideological placement",
+     "uncertain": true
+    },
+    "Buckingham Drew": {
+     "bloc": "other",
+     "why": "Minor candidate; no clear ideological placement",
+     "uncertain": true
+    },
+    "Hossain Soaad": {
+     "bloc": "other",
+     "why": "Minor candidate; no clear ideological placement",
+     "uncertain": true
+    },
+    "Renée D!ONNE": {
+     "bloc": "other",
+     "why": "Minor candidate; no clear ideological placement",
+     "uncertain": true
+    },
+    "Schwartz Kyle": {
+     "bloc": "other",
+     "why": "Minor candidate; no clear ideological placement",
+     "uncertain": true
+    },
+    "Langenfeld Kris": {
+     "bloc": "other",
+     "why": "Minor candidate; no clear ideological placement",
+     "uncertain": true
+    },
+    "Caputolan Elvira": {
+     "bloc": "other",
+     "why": "Minor candidate; no clear ideological placement",
+     "uncertain": true
+    },
+    "Gamk Isabella": {
+     "bloc": "other",
+     "why": "Minor candidate; no clear ideological placement",
+     "uncertain": true
+    },
+    "Deville Cory": {
+     "bloc": "other",
+     "why": "Minor candidate; no clear ideological placement",
+     "uncertain": true
+    },
+    "Arrobas Avraham": {
+     "bloc": "other",
+     "why": "Minor candidate; no clear ideological placement",
+     "uncertain": true
+    },
+    "Malek Ferin": {
+     "bloc": "other",
+     "why": "Minor candidate; no clear ideological placement",
+     "uncertain": true
+    },
+    "Letonja John": {
+     "bloc": "other",
+     "why": "Minor candidate; no clear ideological placement",
+     "uncertain": true
+    },
+    "Efimovskikh Alexey": {
+     "bloc": "other",
+     "why": "Minor candidate; no clear ideological placement",
+     "uncertain": true
+    },
+    "Handjis Peter": {
+     "bloc": "other",
+     "why": "Minor candidate; no clear ideological placement",
+     "uncertain": true
+    }
+   }
+  }
+ }
+}

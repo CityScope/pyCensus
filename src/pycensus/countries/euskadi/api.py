@@ -119,12 +119,27 @@ BASE_URL = "https://www.eustat.eus/bankupx/api/v1"
 
 
 def list_tables_url(lang: str = "es") -> str:
-    """URL that lists every table in Eustat's Data Bank (verified: 2,324 tables, 2026-08-20)."""
+    """URL that lists every table in Eustat's Data Bank (verified: 2,324 tables, 2026-08-20).
+
+    Args:
+        lang: Language code.
+
+    Returns:
+        The URL.
+    """
     return f"{BASE_URL}/{lang}/DB"
 
 
 def table_url(table_id: str, lang: str = "es") -> str:
-    """URL for one table's metadata (``GET``) or data (``POST`` with a JSON ``{"query": [...]}`` body)."""
+    """URL for one table's metadata (``GET``) or data (``POST`` with a JSON ``{"query": [...]}`` body).
+
+    Args:
+        table_id: Eustat table id.
+        lang: Language code.
+
+    Returns:
+        The URL.
+    """
     return f"{BASE_URL}/{lang}/DB/{table_id}"
 
 

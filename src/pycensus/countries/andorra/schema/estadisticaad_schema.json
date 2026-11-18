@@ -8,6 +8,7 @@
     {
       "category": "population",
       "feature_name": "population",
+      "original_name": "pob_2003, pob_2010, pob_2011, pob_2012, pob_2013, pob_2014, pob_2015, pob_2016, pob_2017, pob_2018, pob_2019, pob_2020, pob_2021, pob_2022, pob_2023, pob_2024, pob_2025",
       "country": "andorra",
       "source": "estadisticaad",
       "codes": [
@@ -27,6 +28,7 @@
     {
       "category": "housing",
       "feature_name": "buildingCount",
+      "original_name": "edif_2019",
       "country": "andorra",
       "source": "estadisticaad",
       "codes": ["edif_2019"],
@@ -42,6 +44,7 @@
     {
       "category": "economy",
       "feature_name": "activeBusinessCount",
+      "original_name": "empreses_actives",
       "country": "andorra",
       "source": "estadisticaad",
       "codes": ["empreses_actives"],
@@ -57,6 +60,7 @@
     {
       "category": "migration",
       "feature_name": "foreignBornPopulation",
+      "original_name": "estrangera",
       "country": "andorra",
       "source": "estadisticaad",
       "codes": ["estrangera"],

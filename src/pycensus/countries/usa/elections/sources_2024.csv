@@ -1,0 +1,52 @@
+state,official_results,geometry,status
+AL,"Secretary of State: 2024 general precinct-level results (PDF, sos.alabama.gov/alabama-votes/voter/election-data)",none statewide (no official precinct file found),results PDF parsing; geometry unresolved
+AK,Division of Elections: results by precinct (elections.alaska.gov/election-results/),Division of Elections precinct shapefile (elections.alaska.gov/research/district-maps/),"official both; early/absentee reported by house district, apportioned"
+AZ,Secretary of State canvass + county canvass reports (azsos.gov),county GIS departments (no statewide file),"results official, geometry county by county"
+AR,Secretary of State election results (sos.arkansas.gov/elections/research/election-results); statewide precinct file by request (electionsemail@sos.arkansas.gov),none found,ask the office
+CA,"Statewide Database (UC Berkeley, state redistricting database): Statement of Vote by SRPREC",SWDB SRPREC polygons (statewidedatabase.org/pub/data/G24/state/),DONE (official loader ca.py)
+CO,Secretary of State historical election data (historicalelectiondata.coloradosos.gov); precinct file released every 2 years,county websites (no statewide official file),2024 precinct file not yet found
+CT,Secretary of the State electionhistory.ct.gov: results by town only,none (town-level),sub-town results not published statewide: exclude unless a state source appears
+DE,Department of Elections 2024 General Election Report by election district (elections.delaware.gov/reports/GE2024.html),FirstMap Election Districts (DE_Political_Boundaries layer 0),DONE (official loader de.py)
+DC,Board of Elections (electionresults.dcboe.org),Open Data DC voting precincts (opendata.dc.gov),"official both, not built"
+FL,Division of Elections precinct-level results zip (dos.fl.gov/elections/data-statistics/elections-data/precinct-level-election-results/),"county Supervisors of Elections shapefiles (about 60 counties, no statewide file)","results official, geometry county by county"
+GA,Secretary of State results.sos.ga.gov (county xlsx files),General Assembly Reapportionment Office precinct shapefile (some counties own GIS),"official both, not built"
+HI,Office of Elections results by precinct (elections.hawaii.gov/election-results/),Hawaii Statewide GIS Program Election Precincts 2024 (geoportal.hawaii.gov),"official both, not built (no Census VTDs in HI)"
+ID,"Secretary of State canvass per contest (canvass.sos.idaho.gov, PDF/precinct)",none statewide,geometry unresolved
+IL,State Board of Elections precinct-level vote totals (elections.il.gov/electionoperations/ElectionVoteTotals.aspx),"Census 2020 redistricting precincts plus county GIS (Cook, DuPage, Kane, Kendall, Lake, Madison, McHenry, Monroe, Peoria, St. Clair, Tazewell, Will)","results official, geometry federal+county"
+IN,Election Division ENR (enr.indianavoters.in.gov) plus county canvass reports,Election Division precinct shapefile (in.gov/sos/elections),"official both, not built"
+IA,Secretary of State results (sos.iowa.gov/elections/results/) plus county reports,Secretary of State precinct shapefiles (sos.iowa.gov/elections/maps/shapefiles.html),"official both, not built"
+KS,Secretary of State (unofficial statewide); precinct reports from counties,county GIS (Sedgwick etc.); Census VTD 2020,geometry unresolved
+KY,State Board of Elections (elect.ky.gov),Kentucky Geography Network precincts (not verified),to verify
+LA,Secretary of State voter portal,none official found,geometry unresolved
+ME,Secretary of State by municipality; wards from municipal reports,Census 2020 VTD and county subdivisions (MEGIS),town-level mostly: exclude unless ward data
+MD,State Board of Elections election data page (elections.maryland.gov/elections/2024/election_data/),MD iMAP Election Boundaries precincts 2022 plus county governments,"official both, not built"
+MA,Elections Division PD43 (electionstats.state.ma.us) precinct results,MassGIS Wards and Precincts (mass.gov/massgis),"official both, not built"
+MI,Secretary of State precinct results plus county canvass reports,Michigan GIS Open Data 2024 voting precincts (gis-michigan.opendata.arcgis.com),"official both, not built"
+MN,Secretary of State: results and precincts in one dataset (gisdata.mn.gov bdry-electionresults-2022-2030),same dataset,official; download not reachable by script (Geospatial Commons hub): manual download or API discovery
+MS,Secretary of State county PDFs,none statewide,"results PDF parsing, geometry unresolved"
+MO,Secretary of State results (county level); precinct via OpenElections,Census VTD 2020 based (non-official),geometry unresolved
+MT,Secretary of State (sosmt.gov/elections/results/),Montana State Library precincts (ftpgeoinfo.msl.mt.gov),"official both, not built"
+NE,Secretary of State results,Census VTD 2020,geometry federal
+NV,Secretary of State precinct-level results (nvsos.gov),Legislative Counsel Bureau precinct shapefile (nvlcb.maps.arcgis.com),"official both, not built"
+NH,Secretary of State (sos.nh.gov/elections/2024-election-results) by town/ward,NH GRANIT voting wards 2022,"official both, not built"
+NJ,County canvass reports (nj.gov/state/elections),NJ Division of Elections precinct shapefile,results per county
+NM,Secretary of State (sos.nm.gov),UNM RGIS precincts (rgis.unm.edu),state-hosted geometry
+NY,County boards of elections (no statewide precinct file),none official statewide,geometry unresolved
+NC,State Board of Elections (dl.ncsbe.gov),SBE precinct map,DONE (official loader nc.py)
+ND,Secretary of State results (results.sos.nd.gov),Secretary of State precinct shapefile (2026),"official both, not built"
+OH,Secretary of State past election results (data.ohiosos.gov),Census 2020 redistricting precincts (no state file),geometry federal
+OK,State Election Board (oklahoma.gov/elections),OU Center for Spatial Analysis (university),geometry non-governmental
+OR,"Secretary of State Abstracts of Votes (oregonvotes.gov), county precinct level",none statewide (no Census VTDs in OR),geometry unresolved
+PA,"Department of State precinct results bulk file (pa.gov/agencies/dos, prcres.txt)",Census 2020 redistricting precincts plus counties,"results official, geometry federal"
+RI,Board of Elections (elections.ri.gov),Department of State legislative districts downloader (precincts),"official both, not built"
+SC,State Election Commission (scvotes.gov),Revenue and Fiscal Affairs Office precincts (rfa.sc.gov),"official both, not built"
+SD,Secretary of State (county level; vote centers),none,exclude unless precinct data exists
+TN,Secretary of State (sos.tn.gov/elections/results),Comptroller of the Treasury precinct maps,"official both, not built"
+TX,"Texas Legislative Council (data.capitol.texas.gov), precinct and VTD data",TLC 2024 VTD shapefile,official; Cloudflare blocks scripted download: manual download
+UT,Lieutenant Governor (vote.utah.gov),UGRC voter precincts (gis.utah.gov/data/political/voter-precincts/),"official both, not built"
+VT,Secretary of State archive (electionarchive.vermont.gov) by town,Census county subdivisions split by legislative district,town-level mostly
+VA,Department of Elections ENR (enr.elections.virginia.gov),Department of Elections precinct GIS (elections.virginia.gov/casting-a-ballot/redistricting/gis/),"official both, not built"
+WA,Secretary of State results (results.vote.wa.gov),Secretary of State precinct shapefiles (sos.wa.gov precinct-shapefiles),"official both, not built"
+WV,Secretary of State (sos.wv.gov/elections),West Virginia GIS precinct shapefile (August 2024),"official both, not built"
+WI,Wisconsin Elections Commission (elections.wi.gov),Legislative Technology Services Bureau wards (gis-ltsb.hub.arcgis.com),official both; reporting units combine wards
+WY,Secretary of State (sos.wyo.gov/elections/electionresults.aspx),county GIS plus Census VTDs,geometry mixed

@@ -8,6 +8,7 @@
     {
       "category": "employment",
       "feature_name": "jobsTotal",
+      "original_name": "Número de Trabajadores Dependientes Informados",
       "country": "chile",
       "source": "sii",
       "codes": ["Número de Trabajadores Dependientes Informados"],

@@ -24,6 +24,7 @@ Source:
 """
 
 from __future__ import annotations
+from pycensus.cache import get_data_dir
 
 from pathlib import Path
 from typing import List, Optional, Union
@@ -41,7 +42,7 @@ _RAW_FILENAME = "padron_municipios.json"
 
 
 def _raw_cache_path(data_dir: Optional[str]) -> Path:
-    base = Path(data_dir) if data_dir else Path(constants.DEFAULT_DATA_DIR)
+    base = get_data_dir("spain", data_dir)
     raw_dir = base / "raw" / "ine_padron"
     raw_dir.mkdir(parents=True, exist_ok=True)
     return raw_dir / _RAW_FILENAME
@@ -53,7 +54,7 @@ def _fetch_all_municipios(data_dir: Optional[str]) -> pd.DataFrame:
 
 
 def _secciones_raw_cache_path(province_code: str, data_dir: Optional[str]) -> Path:
-    base = Path(data_dir) if data_dir else Path(constants.DEFAULT_DATA_DIR)
+    base = get_data_dir("spain", data_dir)
     raw_dir = base / "raw" / "ine_padron_secciones"
     raw_dir.mkdir(parents=True, exist_ok=True)
     return raw_dir / f"padron_secciones_{province_code}.csv"
@@ -204,6 +205,9 @@ def load(
     for r in regions:
         if isinstance(r, str) and len(r) == 5 and r.isdigit():
             region_codes.append(r)
+            continue
+        if isinstance(r, str) and r.lower().startswith("prov") and r[4:].isdigit():   # explicit province token (see utils.province_code)
+            region_codes.append(r.lower())
             continue
         try:
             region_codes.append(utils.autonomous_community_code(r))

@@ -55,6 +55,7 @@ Source:
 """
 
 from __future__ import annotations
+from pycensus.cache import get_data_dir
 
 import zipfile
 from pathlib import Path
@@ -75,9 +76,16 @@ LAU_MEMBER_NAME = "LAU_RG_01M_2021_4326.geojson"
 
 # INE's OGC API Features service, census-section ("Secciones censales")
 # collection -- verified live 2026-08-20 (see module docstring).
+# 2026-11-13: the section boundaries are those of the year of the section population (INE Padron by section, 2022 vintage), not the latest
+# (2025): sections split or created after 2022 have no 2022 data (they were dropped, leaving holes: 457 sections / 2,493 km2 in Spain,
+# e.g. Urbanizacion Huerta de Monroy in Albacete) while 2022 sections redrawn later lost their population. 2022 covers every populated
+# Madrid section code (2021: 22 missing). Override with PYCENSUS_ES_SECTIONS_YEAR.
+import os as _os
+
+SECTIONS_YEAR = int(_os.environ.get("PYCENSUS_ES_SECTIONS_YEAR", "2022"))
 INE_SECCIONES_COLLECTION_URL = (
     "https://www.ine.es/geoserver/ogc/features/v1/collections/"
-    "WMS_INE_SECCIONES_G01:Secciones_2025/items"
+    f"WMS_INE_SECCIONES_G01:Secciones_{SECTIONS_YEAR}/items"
 )
 
 # Geography hierarchy for census data queries: parent-child relationships.
@@ -104,7 +112,7 @@ ERASE_WATER: dict = {
 
 
 def _raw_dir(data_dir: Optional[str] = None) -> Path:
-    base = Path(data_dir) if data_dir else Path(constants.DEFAULT_DATA_DIR)
+    base = get_data_dir("spain", data_dir)
     raw_dir = base / "raw" / "gisco_lau"
     raw_dir.mkdir(parents=True, exist_ok=True)
     return raw_dir
@@ -162,7 +170,7 @@ def _load_spain_municipalities(data_dir: Optional[str] = None) -> gpd.GeoDataFra
 
 
 def _sections_raw_dir(data_dir: Optional[str] = None) -> Path:
-    base = Path(data_dir) if data_dir else Path(constants.DEFAULT_DATA_DIR)
+    base = get_data_dir("spain", data_dir)
     raw_dir = base / "raw" / "ine_secciones"
     raw_dir.mkdir(parents=True, exist_ok=True)
     return raw_dir
@@ -179,7 +187,7 @@ def _load_spain_sections_for_province(province_code: str, data_dir: Optional[str
     verification (544 real sections for Gipuzkoa, province "20").
     """
     raw_dir = _sections_raw_dir(data_dir)
-    cached_path = raw_dir / f"sections_{province_code}.parquet"
+    cached_path = raw_dir / f"sections_{SECTIONS_YEAR}_{province_code}.parquet"
     if cached_path.exists():
         return gpd.read_parquet(cached_path)
 
@@ -424,21 +432,48 @@ def load_boundaries_multi(
 
 
 def autonomous_communities_in_aoi(aoi: gpd.GeoDataFrame, year: int = 2021, data_dir: Optional[str] = None) -> List[str]:
-    """Return the INE codes of every autonomous community intersecting ``aoi``."""
+    """Return the INE codes of every autonomous community intersecting ``aoi``.
+
+    Args:
+        aoi: Area of interest (GeoDataFrame).
+        year: Boundary year.
+        data_dir: Folder of the raw downloads; ``None`` = the pycensus cache.
+
+    Returns:
+        Community codes.
+    """
     acs = load_boundaries("autonomous_community", None, year, data_dir=data_dir)
     hits = acs[acs.intersects(aoi.to_crs(4326).union_all())]
     return hits["GEOID"].tolist()
 
 
 def provinces_in_aoi(aoi: gpd.GeoDataFrame, year: int = 2021, data_dir: Optional[str] = None) -> List[str]:
-    """Return the INE codes of every province intersecting ``aoi``."""
+    """Return the INE codes of every province intersecting ``aoi``.
+
+    Args:
+        aoi: Area of interest (GeoDataFrame).
+        year: Boundary year.
+        data_dir: Folder of the raw downloads; ``None`` = the pycensus cache.
+
+    Returns:
+        Province codes.
+    """
     provs = load_boundaries("province", None, year, data_dir=data_dir)
     hits = provs[provs.intersects(aoi.to_crs(4326).union_all())]
     return hits["GEOID"].tolist()
 
 
 def states_in_aoi(aoi: gpd.GeoDataFrame, year: int = 2021, data_dir: Optional[str] = None) -> List[str]:
-    """Alias for :func:`autonomous_communities_in_aoi` (interface parity with ``usa``)."""
+    """Alias for :func:`autonomous_communities_in_aoi` (interface parity with ``usa``).
+
+    Args:
+        aoi: Area of interest (GeoDataFrame).
+        year: Boundary year.
+        data_dir: Folder of the raw downloads; ``None`` = the pycensus cache.
+
+    Returns:
+        Community codes.
+    """
     return autonomous_communities_in_aoi(aoi, year, data_dir)
 
 

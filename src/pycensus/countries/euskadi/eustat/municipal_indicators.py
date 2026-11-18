@@ -114,7 +114,14 @@ def _municipio_series(payload: dict) -> pd.Series:
 
 
 def fetch_establishments(period: str = ESTABLISHMENTS_PERIOD) -> pd.Series:
-    """Fetch real total establishment counts (all CNAE-2009 sectors) per municipality."""
+    """Fetch real total establishment counts (all CNAE-2009 sectors) per municipality.
+
+    Args:
+        period: Eustat period code.
+
+    Returns:
+        Counts indexed by 5-digit municipality code.
+    """
     payload = _query_table(
         ESTABLISHMENTS_TABLE,
         [
@@ -126,7 +133,14 @@ def fetch_establishments(period: str = ESTABLISHMENTS_PERIOD) -> pd.Series:
 
 
 def fetch_births(period: str = BIRTHS_DEATHS_PERIOD) -> pd.Series:
-    """Fetch real cumulative live-birth counts (all orders/maternal cohorts) per municipality for one 5-year period."""
+    """Fetch real cumulative live-birth counts (all orders/maternal cohorts) per municipality for one 5-year period.
+
+    Args:
+        period: Eustat period code.
+
+    Returns:
+        Counts indexed by 5-digit municipality code.
+    """
     payload = _query_table(
         BIRTHS_TABLE,
         [
@@ -142,7 +156,14 @@ def fetch_births(period: str = BIRTHS_DEATHS_PERIOD) -> pd.Series:
 
 
 def fetch_deaths(period: str = BIRTHS_DEATHS_PERIOD) -> pd.Series:
-    """Fetch real cumulative death counts (both sexes, all birth cohorts) per municipality for one 5-year period."""
+    """Fetch real cumulative death counts (both sexes, all birth cohorts) per municipality for one 5-year period.
+
+    Args:
+        period: Eustat period code.
+
+    Returns:
+        Counts indexed by 5-digit municipality code.
+    """
     payload = _query_table(
         DEATHS_TABLE,
         [
@@ -181,7 +202,113 @@ def load_municipal_indicators(region: Optional[str] = "20") -> pd.DataFrame:
     return result
 
 
+# ---------------------------------------------------------------------------------------------------------------------------
+# More municipal indicators (2026-10): age/sex, birthplace, nationality, education, activity, households, tenure, income. All come
+# from Eustat BDE tables whose ``ámbitos territoriales`` dimension carries every one of the 251 municipalities (5-digit INE code).
+# ---------------------------------------------------------------------------------------------------------------------------
+_AREA = "ámbitos territoriales"
+
+#: name -> (table, {variable code: [values]} selecting ONE series, aggregation of several value-lists is done via `parts`)
+#: Each entry: (feature name, table, [ {var: value, ...}, ... ]) -- the series of every selection dict are summed.
+_EXTRA = {
+    "malePopulation": ("PX_010154_cepv1_ep06b.px", [{"grandes grupos de edad cumplida": "10", "sexo": "20", "periodo": "20250101"}]),
+    "femalePopulation": ("PX_010154_cepv1_ep06b.px", [{"grandes grupos de edad cumplida": "10", "sexo": "30", "periodo": "20250101"}]),
+    "population0to19": ("PX_010154_cepv1_ep06b.px", [{"grandes grupos de edad cumplida": "20", "sexo": "10", "periodo": "20250101"}]),
+    "population20to64": ("PX_010154_cepv1_ep06b.px", [{"grandes grupos de edad cumplida": "30", "sexo": "10", "periodo": "20250101"}]),
+    "over65Population": ("PX_010154_cepv1_ep06b.px", [{"grandes grupos de edad cumplida": "40", "sexo": "10", "periodo": "20250101"}]),
+    "foreignBornPopulation": ("PX_010154_cepv1_ep16c.px", [{"lugar de nacimiento": "60", "periodo": "20250101"}]),
+    "bornInEuskadiPopulation": ("PX_010154_cepv1_ep16c.px", [{"lugar de nacimiento": "10", "periodo": "20250101"}]),
+    "bornElsewhereInSpainPopulation": ("PX_010154_cepv1_ep16c.px", [{"lugar de nacimiento": "50", "periodo": "20250101"}]),
+    "nationalitySpainPopulation": ("PX_010154_cepv1_ep18.px", [{"grupos de países por nacionalidad": "10", "periodo": "20250101"}]),
+    "nationalityEasternEuropePopulation": ("PX_010154_cepv1_ep18.px", [{"grupos de países por nacionalidad": "20", "periodo": "20250101"}]),
+    "nationalityOtherEuropePopulation": ("PX_010154_cepv1_ep18.px", [{"grupos de países por nacionalidad": "30", "periodo": "20250101"}]),
+    "nationalityMaghrebPopulation": ("PX_010154_cepv1_ep18.px", [{"grupos de países por nacionalidad": "40", "periodo": "20250101"}]),
+    "nationalityOtherAfricaPopulation": ("PX_010154_cepv1_ep18.px", [{"grupos de países por nacionalidad": "50", "periodo": "20250101"}]),
+    "nationalitySouthAmericaPopulation": ("PX_010154_cepv1_ep18.px", [{"grupos de países por nacionalidad": "60", "periodo": "20250101"}]),
+    "nationalityOtherAmericaPopulation": ("PX_010154_cepv1_ep18.px", [{"grupos de países por nacionalidad": "70", "periodo": "20250101"}]),
+    "nationalityAsiaOceaniaPopulation": ("PX_010154_cepv1_ep18.px", [{"grupos de países por nacionalidad": "80", "periodo": "20250101"}]),
+    "population10plus": ("PX_040606_ceme_ni03b.px", [{"nivel de instrucción": "10", "periodo": "2021"}]),
+    "educationPrimaryOrLessPopulation": ("PX_040606_ceme_ni03b.px", [{"nivel de instrucción": v, "periodo": "2021"} for v in ("20", "30", "40")]),
+    "educationSecondaryPopulation": ("PX_040606_ceme_ni03b.px", [{"nivel de instrucción": v, "periodo": "2021"} for v in ("50", "60")]),
+    "educationOtherTertiaryPopulation": ("PX_040606_ceme_ni03b.px", [{"nivel de instrucción": "70", "periodo": "2021"}]),
+    "educationUniversityPopulation": ("PX_040606_ceme_ni03b.px", [{"nivel de instrucción": "80", "periodo": "2021"}]),
+    "population16plus": ("PX_050407_cempa_empa_pa12.px", [{"relación con la actividad": "100", "sexo": "10", "periodo": "2025"}]),
+    "laborForce": ("PX_050407_cempa_empa_pa12.px", [{"relación con la actividad": "200", "sexo": "10", "periodo": "2025"}]),
+    "employedResidents": ("PX_050407_cempa_empa_pa12.px", [{"relación con la actividad": "300", "sexo": "10", "periodo": "2025"}]),
+    "unemployedResidents": ("PX_050407_cempa_empa_pa12.px", [{"relación con la actividad": "400", "sexo": "10", "periodo": "2025"}]),
+    "inactivePopulation": ("PX_050407_cempa_empa_pa12.px", [{"relación con la actividad": "700", "sexo": "10", "periodo": "2025"}]),
+    "households": ("PX_122404_cemv_viv08a.px", [{"número de residentes": "100", "periodo": "2024"}]),
+    "households1Person": ("PX_122404_cemv_viv08a.px", [{"número de residentes": "110", "periodo": "2024"}]),
+    "households2Persons": ("PX_122404_cemv_viv08a.px", [{"número de residentes": "120", "periodo": "2024"}]),
+    "households3to5Persons": ("PX_122404_cemv_viv08a.px", [{"número de residentes": "130", "periodo": "2024"}]),
+    "households6PlusPersons": ("PX_122404_cemv_viv08a.px", [{"número de residentes": v, "periodo": "2024"} for v in ("140", "150")]),
+    "householdSizeMean": ("PX_122404_cemv_viv08a.px", [{"número de residentes": "160", "periodo": "2024"}]),
+    "dwellingsOwned": ("PX_122404_cemv_viv09a.px", [{"régimen de tenencia": "110", "periodo": "2024"}]),
+    "dwellingsRented": ("PX_122404_cemv_viv09a.px", [{"régimen de tenencia": "120", "periodo": "2024"}]),
+    "dwellingsOtherTenure": ("PX_122404_cemv_viv09a.px", [{"régimen de tenencia": "130", "periodo": "2024"}]),
+    "incomePersonalMean": ("PX_173402_crpf_rpf_rp11s.px", [{"tipo de renta": "100", "sexo": "10", "periodo": "LATEST"}]),
+    "incomePersonalWorkMean": ("PX_173402_crpf_rpf_rp11s.px", [{"tipo de renta": "110", "sexo": "10", "periodo": "LATEST"}]),
+    "incomePersonalDisposableMean": ("PX_173402_crpf_rpf_rp11s.px", [{"tipo de renta": "160", "sexo": "10", "periodo": "LATEST"}]),
+    "incomeFamilyMean": ("PX_173402_crpf_rpf_rf18s.px", [{"tipo de renta": "100", "sexo": "10", "periodo": "LATEST"}]),
+}
+#: Features that are averages (not additive counts) -- everything else above is a count.
+EXTRA_MEANS = {"householdSizeMean", "incomePersonalMean", "incomePersonalWorkMean", "incomePersonalDisposableMean", "incomeFamilyMean"}
+
+
+def _area_query(table: str, selection: Dict[str, str]) -> pd.Series:
+    """One series over every area for single-valued selections of the table's other variables (``LATEST`` = newest period)."""
+    meta = requests.get(f"{_BDE_TABLE_URL_TMPL.format(table=table)}", timeout=_TIMEOUT).json()
+    query = []
+    for var in meta["variables"]:
+        code = var["code"]
+        if code == _AREA:
+            continue
+        want = selection.get(code)
+        if want == "LATEST":
+            want = var["values"][-1]
+        if want is None:
+            raise KeyError(f"{table}: no selection for variable {code!r}")
+        query.append({"code": code, "selection": {"filter": "item", "values": [want]}})
+    payload = _query_table(table, query)
+    cat = payload["dimension"][_AREA]["category"]["index"]
+    vals = payload["value"]
+    return pd.Series({k: vals[i] for k, i in cat.items() if vals[i] is not None}, dtype=float)
+
+
+def load_extra_indicators(region: Optional[str] = "20") -> pd.DataFrame:
+    """Every `_EXTRA` indicator for the municipalities (5-digit codes starting with ``region``; None = all), as ``eustat_<name>``
+    columns (bare names for global-schema features), plus ``GEOID``. A failing table is skipped with a warning, never fatal.
+
+    Args:
+        region: 2-digit province code prefix; ``None`` = all.
+
+    Returns:
+        One row per municipality.
+    """
+    import warnings
+
+    cols = {}
+    for name, (table, selections) in _EXTRA.items():
+        try:
+            parts = [_area_query(table, sel) for sel in selections]
+            series = parts[0]
+            for p in parts[1:]:
+                series = series.add(p, fill_value=0.0)
+            cols[name] = series
+        except Exception as exc:  # noqa: BLE001 -- one broken Eustat table must not lose the others
+            warnings.warn(f"Eustat {name} ({table}) skipped: {type(exc).__name__}: {str(exc)[:100]}")
+    df = pd.DataFrame(cols)
+    df.index = df.index.astype(str)
+    df = df[df.index.str.len() == 5]
+    if region is not None:
+        df = df[df.index.str.startswith(region)]
+    df = df.rename_axis("GEOID").reset_index()
+    return df
+
+
 __all__ = [
+    "load_extra_indicators",
+    "EXTRA_MEANS",
     "ESTABLISHMENTS_TABLE",
     "BIRTHS_TABLE",
     "DEATHS_TABLE",

@@ -25,6 +25,7 @@ Source:
 """
 
 from __future__ import annotations
+from pycensus.cache import get_data_dir
 
 from pathlib import Path
 from typing import List, Optional
@@ -90,7 +91,7 @@ LAU_POPULATION_YEAR = 2021
 
 
 def _raw_dir(data_dir: Optional[str] = None) -> Path:
-    base = Path(data_dir) if data_dir else Path(constants.DEFAULT_DATA_DIR)
+    base = get_data_dir("germany", data_dir)
     raw_dir = base / "raw" / "gisco_nuts"
     raw_dir.mkdir(parents=True, exist_ok=True)
     return raw_dir
@@ -159,6 +160,9 @@ def municipality_population(data_dir: Optional[str] = None) -> gpd.GeoDataFrame:
     ``municipality`` level -- unlike nation/state/district, this does not
     require a GENESIS-Online account since GISCO already publishes the
     population figure alongside the boundary.
+
+    Args:
+        data_dir: Folder of the raw downloads; ``None`` = the pycensus cache.
     """
     gdf = _load_germany_lau(data_dir)
     return gdf[["GEOID", "LAU_NAME", "POP_2021"]].copy()
@@ -231,13 +235,25 @@ def district_names(data_dir: Optional[str] = None) -> dict:
     used by :mod:`pycensus.countries.germany.destatis.crosswalk` to build a
     real, name-matched AGS-to-NUTS3 crosswalk -- do not guess this mapping
     arithmetically (see that module's docstring for why).
+
+    Args:
+        data_dir: Folder of the raw downloads; ``None`` = the pycensus cache.
     """
     gdf = _load_germany_nuts(_LEVEL_TO_NUTS["district"], data_dir)
     return dict(zip(gdf["GEOID"], gdf["NUTS_NAME"]))
 
 
 def states_in_aoi(aoi: gpd.GeoDataFrame, year: int = 2021, data_dir: Optional[str] = None) -> List[str]:
-    """Return the 2-letter state codes of every German state intersecting ``aoi``."""
+    """Return the 2-letter state codes of every German state intersecting ``aoi``.
+
+    Args:
+        aoi: Area of interest (GeoDataFrame).
+        year: Boundary year.
+        data_dir: Folder of the raw downloads; ``None`` = the pycensus cache.
+
+    Returns:
+        State codes.
+    """
     states = load_boundaries("state", None, year, data_dir=data_dir)
     hits = states[states.intersects(aoi.to_crs(4326).union_all())]
     return [constants.NUTS1_TO_STATE[nuts1] for nuts1 in hits["GEOID"] if nuts1 in constants.NUTS1_TO_STATE]

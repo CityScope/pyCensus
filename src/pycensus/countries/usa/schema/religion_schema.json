@@ -1,0 +1,365 @@
+{
+  "country": "usa",
+  "source": "religion",
+  "full_name": "2020 U.S. Religion Census (ASARB)",
+  "years": [
+    2020
+  ],
+  "levels": [
+    "county"
+  ],
+  "features": [
+    {
+      "category": "religion",
+      "feature_name": "congregations",
+      "original_name": "congregations",
+      "country": "usa",
+      "source": "religion",
+      "codes": [
+        "congregations"
+      ],
+      "definition": "Religious congregations",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "religion",
+      "feature_name": "adherents",
+      "original_name": "adherents",
+      "country": "usa",
+      "source": "religion",
+      "codes": [
+        "adherents"
+      ],
+      "definition": "Religious adherents (members counted by the congregations)",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "religion",
+      "feature_name": "congregations_per_100k_rate",
+      "original_name": "congregations_per_100k_rate",
+      "country": "usa",
+      "source": "religion",
+      "codes": [
+        "congregations_per_100k_rate"
+      ],
+      "definition": "Congregations per 100,000 residents",
+      "type": "mean",
+      "unit": "",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population"
+    },
+    {
+      "category": "religion",
+      "feature_name": "adherents_share",
+      "original_name": "adherents_share",
+      "country": "usa",
+      "source": "religion",
+      "codes": [
+        "adherents_share"
+      ],
+      "definition": "Adherents as a share of the population",
+      "type": "mean",
+      "unit": "",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population"
+    },
+    {
+      "category": "religion",
+      "feature_name": "catholicAdherents",
+      "original_name": "catholicAdherents",
+      "country": "usa",
+      "source": "religion",
+      "codes": [
+        "catholicAdherents"
+      ],
+      "definition": "Catholic adherents (2020 U.S. Religion Census).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "religion",
+      "feature_name": "catholic_share",
+      "original_name": "catholic_share",
+      "country": "usa",
+      "source": "religion",
+      "codes": [
+        "catholic_share"
+      ],
+      "definition": "Catholic adherents as a share of the population.",
+      "type": "mean",
+      "unit": "",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population"
+    },
+    {
+      "category": "religion",
+      "feature_name": "nondenominationalAdherents",
+      "original_name": "nondenominationalAdherents",
+      "country": "usa",
+      "source": "religion",
+      "codes": [
+        "nondenominationalAdherents"
+      ],
+      "definition": "Non-denominational Christian adherents (2020 U.S. Religion Census).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "religion",
+      "feature_name": "nondenominational_share",
+      "original_name": "nondenominational_share",
+      "country": "usa",
+      "source": "religion",
+      "codes": [
+        "nondenominational_share"
+      ],
+      "definition": "Non-denominational Christian adherents as a share of the population.",
+      "type": "mean",
+      "unit": "",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population"
+    },
+    {
+      "category": "religion",
+      "feature_name": "southernBaptistAdherents",
+      "original_name": "southernBaptistAdherents",
+      "country": "usa",
+      "source": "religion",
+      "codes": [
+        "southernBaptistAdherents"
+      ],
+      "definition": "Southern Baptist adherents (2020 U.S. Religion Census).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "religion",
+      "feature_name": "southernBaptist_share",
+      "original_name": "southernBaptist_share",
+      "country": "usa",
+      "source": "religion",
+      "codes": [
+        "southernBaptist_share"
+      ],
+      "definition": "Southern Baptist adherents as a share of the population.",
+      "type": "mean",
+      "unit": "",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population"
+    },
+    {
+      "category": "religion",
+      "feature_name": "ldsAdherents",
+      "original_name": "ldsAdherents",
+      "country": "usa",
+      "source": "religion",
+      "codes": [
+        "ldsAdherents"
+      ],
+      "definition": "Latter-day Saints adherents (2020 U.S. Religion Census).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "religion",
+      "feature_name": "lds_share",
+      "original_name": "lds_share",
+      "country": "usa",
+      "source": "religion",
+      "codes": [
+        "lds_share"
+      ],
+      "definition": "Latter-day Saints adherents as a share of the population.",
+      "type": "mean",
+      "unit": "",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population"
+    },
+    {
+      "category": "religion",
+      "feature_name": "muslimAdherents",
+      "original_name": "muslimAdherents",
+      "country": "usa",
+      "source": "religion",
+      "codes": [
+        "muslimAdherents"
+      ],
+      "definition": "Muslim adherents (2020 U.S. Religion Census).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "religion",
+      "feature_name": "muslim_share",
+      "original_name": "muslim_share",
+      "country": "usa",
+      "source": "religion",
+      "codes": [
+        "muslim_share"
+      ],
+      "definition": "Muslim adherents as a share of the population.",
+      "type": "mean",
+      "unit": "",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population"
+    },
+    {
+      "category": "religion",
+      "feature_name": "jewishAdherents",
+      "original_name": "jewishAdherents",
+      "country": "usa",
+      "source": "religion",
+      "codes": [
+        "jewishAdherents"
+      ],
+      "definition": "Jewish adherents (2020 U.S. Religion Census).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "religion",
+      "feature_name": "jewish_share",
+      "original_name": "jewish_share",
+      "country": "usa",
+      "source": "religion",
+      "codes": [
+        "jewish_share"
+      ],
+      "definition": "Jewish adherents as a share of the population.",
+      "type": "mean",
+      "unit": "",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population"
+    },
+    {
+      "category": "religion",
+      "feature_name": "hinduAdherents",
+      "original_name": "hinduAdherents",
+      "country": "usa",
+      "source": "religion",
+      "codes": [
+        "hinduAdherents"
+      ],
+      "definition": "Hindu adherents (2020 U.S. Religion Census).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "religion",
+      "feature_name": "hindu_share",
+      "original_name": "hindu_share",
+      "country": "usa",
+      "source": "religion",
+      "codes": [
+        "hindu_share"
+      ],
+      "definition": "Hindu adherents as a share of the population.",
+      "type": "mean",
+      "unit": "",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population"
+    },
+    {
+      "category": "religion",
+      "feature_name": "buddhistAdherents",
+      "original_name": "buddhistAdherents",
+      "country": "usa",
+      "source": "religion",
+      "codes": [
+        "buddhistAdherents"
+      ],
+      "definition": "Buddhist adherents (2020 U.S. Religion Census).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "religion",
+      "feature_name": "buddhist_share",
+      "original_name": "buddhist_share",
+      "country": "usa",
+      "source": "religion",
+      "codes": [
+        "buddhist_share"
+      ],
+      "definition": "Buddhist adherents as a share of the population.",
+      "type": "mean",
+      "unit": "",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population"
+    },
+    {
+      "category": "religion",
+      "feature_name": "orthodoxChristianAdherents",
+      "original_name": "orthodoxChristianAdherents",
+      "country": "usa",
+      "source": "religion",
+      "codes": [
+        "orthodoxChristianAdherents"
+      ],
+      "definition": "Orthodox Christian adherents (2020 U.S. Religion Census).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population"
+    },
+    {
+      "category": "religion",
+      "feature_name": "orthodoxChristian_share",
+      "original_name": "orthodoxChristian_share",
+      "country": "usa",
+      "source": "religion",
+      "codes": [
+        "orthodoxChristian_share"
+      ],
+      "definition": "Orthodox Christian adherents as a share of the population.",
+      "type": "mean",
+      "unit": "",
+      "resampling_up": "weighted_mean",
+      "resampling_down": "weighted_mean",
+      "resampling_weight": "population"
+    }
+  ]
+}

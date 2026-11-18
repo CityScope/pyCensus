@@ -11,3 +11,5 @@ Note:
     statement (``import pycensus.global.worldpop`` is a ``SyntaxError``),
     even though it is otherwise a legal filesystem/package directory name.
 """
+
+# Official metropolitan areas (UN Degree of Urbanisation): see :mod:`pycensus.worldwide.un_metro_areas`.

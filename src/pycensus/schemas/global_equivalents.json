@@ -1,0 +1,133 @@
+{
+ "_doc": "Census columns whose LOCAL name differs from the global_schema.json feature that means the same thing. Key = the column as the pipelines name it (source prefix + local feature name), value = global feature name. A column whose local name already IS the global name is simply renamed to the bare global name (one column); for these pairs both columns exist, the global one repeating the local value.",
+ "equivalents": {
+  "acs5_povertyBelow100": "povertyPopulation",
+  "acs3_povertyBelow100": "povertyPopulation",
+  "acs1_povertyBelow100": "povertyPopulation",
+  "acs5_educationLessThanHs": "educationPrimaryOrLessPopulation",
+  "acs5_educationHighSchool": "educationSecondaryPopulation",
+  "acs5_educationSomeCollege": "educationOtherTertiaryPopulation",
+  "acs5_educationBachelorsPlus": "educationUniversityPopulation",
+  "acs5_employedPopulation16plus": "employedResidents",
+  "acs5_incomeMedianHousehold": "medianHouseholdIncome",
+  "cbs_ageMedian": "medianAge",
+  "dhc_nonwhitePopulation": "minorityEthnicityPopulation",
+  "acs5_rentMedianGross": "rent_per_home_mean",
+  "acs5_homeValueMedian": "price_per_home_mean",
+  "statcan_ownerMedianValueOfDwellings": "price_per_home_mean",
+  "destatis_rentPerM2Mean": "rent_per_m2_mean",
+  "ine_eustat_dwellingAvgUsefulArea": "home_size_m2_mean",
+  "destatis_bornAbroadPopulation": "foreignBornPopulation",
+  "destatis_households1Person": "singlePersonHouseholds",
+  "destatis_homeSizeM2Mean": "home_size_m2_mean",
+  "ine_catastro_buildings": "buildingCount",
+  "ine_catastro_building_units": "buildingUnits",
+  "ine_catastro_footprint_m2_total": "buildingFootprintArea",
+  "ine_catastro_floor_area_m2_total": "builtFloorArea",
+  "ine_catastro_year_built_median": "yearBuiltMedian",
+  "ine_catastro_dwellings_per_building": "dwellingsPerBuilding",
+  "catastro_buildings": "buildingCount",
+  "catastro_building_units": "buildingUnits",
+  "catastro_footprint_m2_total": "buildingFootprintArea",
+  "catastro_floor_area_m2_total": "builtFloorArea",
+  "destatis_buildingsBuiltTotal": "residentialBuildingCount",
+  "gba_buildingCount": "buildingCount",
+  "gba_buildingFootprintArea": "buildingFootprintArea",
+  "gba_builtFloorArea": "builtFloorArea",
+  "gba_buildingHeightMedian": "buildingHeightMedian",
+  "worldpop_residents": "worldpopPopulationEstimate",
+  "population_overestimation_vs_census": "worldpopOverestimation",
+  "population_underestimation_vs_census": "worldpopUnderestimation",
+  "worldpop_overestimation_share": "worldpopOverestimationShare",
+  "worldpop_underestimation_share": "worldpopUnderestimationShare",
+  "gba_builtSurfacePopulation": "builtAreaPopulationEstimate",
+  "gba_population_overestimation_vs_census": "builtAreaOverestimation",
+  "gba_population_underestimation_vs_census": "builtAreaUnderestimation",
+  "gba_overestimation_share": "builtAreaOverestimationShare",
+  "gba_underestimation_share": "builtAreaUnderestimationShare"
+ },
+ "_doc_latest_patterns": "Columns that carry a year/period in their name: key = global feature, value = ordered regexes (re.fullmatch, an optional `<source>_` prefix is allowed). The first regex with matches wins and, among its matches, the LATEST period (an un-suffixed name = current period). Election patterns have scope-specific names so the global column holds the latest election of that scope (no year in the global name).",
+ "latest_patterns": {
+  "elec_national_left_share": [
+   "elec_national_(?:19|20)\\d\\d[A-Za-z]*_left_share",
+   "(?:19|20)\\d\\d_president_democrat_share"
+  ],
+  "elec_national_right_share": [
+   "elec_national_(?:19|20)\\d\\d[A-Za-z]*_right_share",
+   "(?:19|20)\\d\\d_president_republican_share"
+  ],
+  "elec_national_other_share": [
+   "elec_national_(?:19|20)\\d\\d[A-Za-z]*_other_share"
+  ],
+  "elec_national_turnout_rate": [
+   "elec_national_(?:19|20)\\d\\d[A-Za-z]*_turnout_rate"
+  ],
+  "elec_national_total_votes": [
+   "elec_national_(?:19|20)\\d\\d[A-Za-z]*_total_votes",
+   "(?:19|20)\\d\\d_president_total_votes"
+  ],
+  "elec_state_left_share": [
+   "elec_state_(?:19|20)\\d\\d[A-Za-z]*_left_share",
+   "(?:19|20)\\d\\d_senate_democrat_share"
+  ],
+  "elec_state_right_share": [
+   "elec_state_(?:19|20)\\d\\d[A-Za-z]*_right_share",
+   "(?:19|20)\\d\\d_senate_republican_share"
+  ],
+  "elec_state_other_share": [
+   "elec_state_(?:19|20)\\d\\d[A-Za-z]*_other_share"
+  ],
+  "elec_state_turnout_rate": [
+   "elec_state_(?:19|20)\\d\\d[A-Za-z]*_turnout_rate"
+  ],
+  "elec_state_total_votes": [
+   "elec_state_(?:19|20)\\d\\d[A-Za-z]*_total_votes",
+   "(?:19|20)\\d\\d_senate_total_votes"
+  ],
+  "elec_municipal_left_share": [
+   "elec_municipal_(?:19|20)\\d\\d[A-Za-z]*_left_share"
+  ],
+  "elec_municipal_right_share": [
+   "elec_municipal_(?:19|20)\\d\\d[A-Za-z]*_right_share"
+  ],
+  "elec_municipal_other_share": [
+   "elec_municipal_(?:19|20)\\d\\d[A-Za-z]*_other_share"
+  ],
+  "elec_municipal_turnout_rate": [
+   "elec_municipal_(?:19|20)\\d\\d[A-Za-z]*_turnout_rate"
+  ],
+  "elec_municipal_total_votes": [
+   "elec_municipal_(?:19|20)\\d\\d[A-Za-z]*_total_votes"
+  ],
+  "home_size_m2_mean": [
+   "ine_eustat_dwellingAvgUsefulArea",
+   "ine_serpavi_area_m2_median_vc_(?:19|20)\\d\\d"
+  ],
+  "rent_per_m2_mean": [
+   "ine_serpavi_rent_m2_median_vc_(?:19|20)\\d\\d",
+   "ine_emal_rent_m2_(?:19|20)\\d\\d",
+   "moi_realRentM2_(?:19|20)\\d\\d",
+   "destatis_rentPerM2Mean"
+  ],
+  "price_per_m2_mean": [
+   "ine_valor_tasado_total_eur_m2_(?:19|20)\\d\\d",
+   "moi_realPriceSaleM2_(?:19|20)\\d\\d"
+  ],
+  "rent_per_home_mean": [
+   "ine_serpavi_rent_total_median_vc_(?:19|20)\\d\\d",
+   "ine_emal_rent_monthly_(?:19|20)\\d\\d",
+   "(?:ushs_)?rent_median(?:_(?:19|20)\\d\\d)?",
+   "acs5_rentMedianGross"
+  ],
+  "price_per_home_mean": [
+   "(?:ushs_)?home_value_median(?:_(?:19|20)\\d\\d)?",
+   "acs5_homeValueMedian"
+  ]
+ },
+ "originals": {
+  "moi_minorityEthnicityPopulation": "moi_indigenousPopulation",
+  "inegi_minorityEthnicityPopulation": "inegi_indigenousLanguageSpeakers",
+  "ine_cl_minorityEthnicityPopulation": "ine_cl_indigenousPeoplePopulation"
+ },
+ "_doc_originals": "Global columns whose name has nothing in common with the census column they come from: the source column is ALSO kept under a name that says what it really is (key = prefixed global column as the pipelines name it, value = twin with the original meaning)."
+}

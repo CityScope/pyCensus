@@ -1,0 +1,539 @@
+{
+ "country": "usa",
+ "source": "elections_precinct",
+ "full_name": "US precinct-level election results (MEDSL, City of Boston), resampled to H3 res 8 and census tract/block group",
+ "years": [
+  2022,
+  2024,
+  2025
+ ],
+ "levels": [
+  "tract",
+  "blockgroup"
+ ],
+ "features": [
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2024_total_votes",
+   "original_name": "elec_national_2024_total_votes",
+   "country": "usa",
+   "source": "elections_precinct",
+   "codes": [
+    "elec_national_2024_total_votes"
+   ],
+   "native_level": "precinct",
+   "type": "count",
+   "unit": "votes",
+   "definition": "Valid votes cast (candidates + blank), latest national election (US President 2024)",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2024_left_share",
+   "original_name": "elec_national_2024_left_share",
+   "country": "usa",
+   "source": "elections_precinct",
+   "codes": [
+    "elec_national_2024_left_share"
+   ],
+   "native_level": "precinct",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for bloc left, latest national election (US President 2024)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_national_2024_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2024_right_share",
+   "original_name": "elec_national_2024_right_share",
+   "country": "usa",
+   "source": "elections_precinct",
+   "codes": [
+    "elec_national_2024_right_share"
+   ],
+   "native_level": "precinct",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for bloc right, latest national election (US President 2024)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_national_2024_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2024_other_share",
+   "original_name": "elec_national_2024_other_share",
+   "country": "usa",
+   "source": "elections_precinct",
+   "codes": [
+    "elec_national_2024_other_share"
+   ],
+   "native_level": "precinct",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for bloc other, latest national election (US President 2024)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_national_2024_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2024_party_democrat_share",
+   "original_name": "elec_national_2024_party_democrat_share",
+   "country": "usa",
+   "source": "elections_precinct",
+   "codes": [
+    "elec_national_2024_party_democrat_share"
+   ],
+   "native_level": "precinct",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for party/candidate party_democrat, latest national election (US President 2024)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_national_2024_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2024_party_other_share",
+   "original_name": "elec_national_2024_party_other_share",
+   "country": "usa",
+   "source": "elections_precinct",
+   "codes": [
+    "elec_national_2024_party_other_share"
+   ],
+   "native_level": "precinct",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for party/candidate party_other, latest national election (US President 2024)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_national_2024_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2024_party_republican_share",
+   "original_name": "elec_national_2024_party_republican_share",
+   "country": "usa",
+   "source": "elections_precinct",
+   "codes": [
+    "elec_national_2024_party_republican_share"
+   ],
+   "native_level": "precinct",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for party/candidate party_republican, latest national election (US President 2024)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_national_2024_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2022_total_votes",
+   "original_name": "elec_state_2022_total_votes",
+   "country": "usa",
+   "source": "elections_precinct",
+   "codes": [
+    "elec_state_2022_total_votes"
+   ],
+   "native_level": "precinct",
+   "type": "count",
+   "unit": "votes",
+   "definition": "Valid votes cast (candidates + blank), latest state election (Governor 2022)",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2022_left_share",
+   "original_name": "elec_state_2022_left_share",
+   "country": "usa",
+   "source": "elections_precinct",
+   "codes": [
+    "elec_state_2022_left_share"
+   ],
+   "native_level": "precinct",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for bloc left, latest state election (Governor 2022)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_state_2022_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2022_right_share",
+   "original_name": "elec_state_2022_right_share",
+   "country": "usa",
+   "source": "elections_precinct",
+   "codes": [
+    "elec_state_2022_right_share"
+   ],
+   "native_level": "precinct",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for bloc right, latest state election (Governor 2022)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_state_2022_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2022_other_share",
+   "original_name": "elec_state_2022_other_share",
+   "country": "usa",
+   "source": "elections_precinct",
+   "codes": [
+    "elec_state_2022_other_share"
+   ],
+   "native_level": "precinct",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for bloc other, latest state election (Governor 2022)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_state_2022_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2022_party_democrat_share",
+   "original_name": "elec_state_2022_party_democrat_share",
+   "country": "usa",
+   "source": "elections_precinct",
+   "codes": [
+    "elec_state_2022_party_democrat_share"
+   ],
+   "native_level": "precinct",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for party/candidate party_democrat, latest state election (Governor 2022)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_state_2022_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2022_party_republican_share",
+   "original_name": "elec_state_2022_party_republican_share",
+   "country": "usa",
+   "source": "elections_precinct",
+   "codes": [
+    "elec_state_2022_party_republican_share"
+   ],
+   "native_level": "precinct",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for party/candidate party_republican, latest state election (Governor 2022)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_state_2022_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2025_total_votes",
+   "original_name": "elec_municipal_2025_total_votes",
+   "country": "usa",
+   "source": "elections_precinct",
+   "codes": [
+    "elec_municipal_2025_total_votes"
+   ],
+   "native_level": "precinct",
+   "type": "count",
+   "unit": "votes",
+   "definition": "Valid votes cast (candidates + blank), latest municipal election (Mayor; Boston 2025, SF 2024)",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2025_turnout_rate",
+   "original_name": "elec_municipal_2025_turnout_rate",
+   "country": "usa",
+   "source": "elections_precinct",
+   "codes": [
+    "elec_municipal_2025_turnout_rate"
+   ],
+   "native_level": "precinct",
+   "type": "rate",
+   "unit": "0-1",
+   "definition": "Ballots cast / registered electors, latest municipal election (Mayor; Boston 2025, SF 2024)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_municipal_2025_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2025_left_share",
+   "original_name": "elec_municipal_2025_left_share",
+   "country": "usa",
+   "source": "elections_precinct",
+   "codes": [
+    "elec_municipal_2025_left_share"
+   ],
+   "native_level": "precinct",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for bloc left, latest municipal election (Mayor; Boston 2025, SF 2024)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_municipal_2025_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2025_right_share",
+   "original_name": "elec_municipal_2025_right_share",
+   "country": "usa",
+   "source": "elections_precinct",
+   "codes": [
+    "elec_municipal_2025_right_share"
+   ],
+   "native_level": "precinct",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for bloc right, latest municipal election (Mayor; Boston 2025, SF 2024)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_municipal_2025_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2025_other_share",
+   "original_name": "elec_municipal_2025_other_share",
+   "country": "usa",
+   "source": "elections_precinct",
+   "codes": [
+    "elec_municipal_2025_other_share"
+   ],
+   "native_level": "precinct",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for bloc other, latest municipal election (Mayor; Boston 2025, SF 2024)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_municipal_2025_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2025_party_all_others_share",
+   "original_name": "elec_municipal_2025_party_all_others_share",
+   "country": "usa",
+   "source": "elections_precinct",
+   "codes": [
+    "elec_municipal_2025_party_all_others_share"
+   ],
+   "native_level": "precinct",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for party/candidate party_all_others, latest municipal election (Mayor; Boston 2025, SF 2024)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_municipal_2025_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2025_party_michelle_wu_share",
+   "original_name": "elec_municipal_2025_party_michelle_wu_share",
+   "country": "usa",
+   "source": "elections_precinct",
+   "codes": [
+    "elec_municipal_2025_party_michelle_wu_share"
+   ],
+   "native_level": "precinct",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for party/candidate party_michelle_wu, latest municipal election (Mayor; Boston 2025, SF 2024)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_municipal_2025_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2025_party_blank_share",
+   "original_name": "elec_municipal_2025_party_blank_share",
+   "country": "usa",
+   "source": "elections_precinct",
+   "codes": [
+    "elec_municipal_2025_party_blank_share"
+   ],
+   "native_level": "precinct",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for party/candidate party_blank, latest municipal election (Mayor; Boston 2025, SF 2024)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_municipal_2025_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2024_turnout_rate",
+   "original_name": "elec_national_2024_turnout_rate",
+   "country": "usa",
+   "source": "elections_precinct",
+   "codes": [
+    "elec_national_2024_turnout_rate"
+   ],
+   "native_level": "precinct",
+   "type": "rate",
+   "unit": "0-1",
+   "definition": "Ballots cast / registered electors, latest national election (US President 2024)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_national_2024_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2024_total_votes",
+   "original_name": "elec_municipal_2024_total_votes",
+   "country": "usa",
+   "source": "elections_precinct",
+   "codes": [
+    "elec_municipal_2024_total_votes"
+   ],
+   "native_level": "precinct",
+   "type": "count",
+   "unit": "votes",
+   "definition": "Valid votes cast (candidates + blank), latest municipal election (Mayor; Boston 2025, SF 2024)",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2024_turnout_rate",
+   "original_name": "elec_municipal_2024_turnout_rate",
+   "country": "usa",
+   "source": "elections_precinct",
+   "codes": [
+    "elec_municipal_2024_turnout_rate"
+   ],
+   "native_level": "precinct",
+   "type": "rate",
+   "unit": "0-1",
+   "definition": "Ballots cast / registered electors, latest municipal election (Mayor; Boston 2025, SF 2024)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_municipal_2024_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2024_left_share",
+   "original_name": "elec_municipal_2024_left_share",
+   "country": "usa",
+   "source": "elections_precinct",
+   "codes": [
+    "elec_municipal_2024_left_share"
+   ],
+   "native_level": "precinct",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for bloc left, latest municipal election (Mayor; Boston 2025, SF 2024)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_municipal_2024_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2024_right_share",
+   "original_name": "elec_municipal_2024_right_share",
+   "country": "usa",
+   "source": "elections_precinct",
+   "codes": [
+    "elec_municipal_2024_right_share"
+   ],
+   "native_level": "precinct",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for bloc right, latest municipal election (Mayor; Boston 2025, SF 2024)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_municipal_2024_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2024_other_share",
+   "original_name": "elec_municipal_2024_other_share",
+   "country": "usa",
+   "source": "elections_precinct",
+   "codes": [
+    "elec_municipal_2024_other_share"
+   ],
+   "native_level": "precinct",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for bloc other, latest municipal election (Mayor; Boston 2025, SF 2024)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_municipal_2024_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2024_party_aaron_peskin_share",
+   "original_name": "elec_municipal_2024_party_aaron_peskin_share",
+   "country": "usa",
+   "source": "elections_precinct",
+   "codes": [
+    "elec_municipal_2024_party_aaron_peskin_share"
+   ],
+   "native_level": "precinct",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for party/candidate party_aaron_peskin, latest municipal election (Mayor; Boston 2025, SF 2024)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_municipal_2024_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2024_party_daniel_lurie_share",
+   "original_name": "elec_municipal_2024_party_daniel_lurie_share",
+   "country": "usa",
+   "source": "elections_precinct",
+   "codes": [
+    "elec_municipal_2024_party_daniel_lurie_share"
+   ],
+   "native_level": "precinct",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for party/candidate party_daniel_lurie, latest municipal election (Mayor; Boston 2025, SF 2024)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_municipal_2024_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2024_party_london_breed_share",
+   "original_name": "elec_municipal_2024_party_london_breed_share",
+   "country": "usa",
+   "source": "elections_precinct",
+   "codes": [
+    "elec_municipal_2024_party_london_breed_share"
+   ],
+   "native_level": "precinct",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for party/candidate party_london_breed, latest municipal election (Mayor; Boston 2025, SF 2024)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_municipal_2024_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2024_party_mark_farrell_share",
+   "original_name": "elec_municipal_2024_party_mark_farrell_share",
+   "country": "usa",
+   "source": "elections_precinct",
+   "codes": [
+    "elec_municipal_2024_party_mark_farrell_share"
+   ],
+   "native_level": "precinct",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for party/candidate party_mark_farrell, latest municipal election (Mayor; Boston 2025, SF 2024)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_municipal_2024_total_votes"
+  }
+ ]
+}

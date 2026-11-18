@@ -118,7 +118,12 @@ def province_code(province: str) -> str:
         ValueError: If ``province`` does not resolve to a known Spain province.
     """
     from .constants import PROVINCE_ABBR, PROVINCE_CODES
-    
+
+    # Explicit province token "prov01": a bare 2-digit code 01..19 is ambiguous with the autonomous-community codes (resolved first elsewhere),
+    # so callers that mean a PROVINCE (spain_study) pass "prov<NN>" -- it never matches a community.
+    if isinstance(province, str) and province.lower().startswith("prov") and province[4:] in PROVINCE_CODES:
+        return province[4:]
+
     # Try as code first
     if province in PROVINCE_CODES:
         return province

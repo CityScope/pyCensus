@@ -77,6 +77,7 @@ Source:
 """
 
 from __future__ import annotations
+from pycensus.cache import get_data_dir
 
 import zipfile
 from pathlib import Path
@@ -117,7 +118,7 @@ _HAS_PRUID_COLUMN = ("municipality", "dissemination-area", "dissemination-block"
 
 
 def _raw_dir(data_dir: Optional[str] = None) -> Path:
-    base = Path(data_dir) if data_dir else Path(constants.DEFAULT_DATA_DIR)
+    base = get_data_dir("canada", data_dir)
     raw_dir = base / "raw" / "statcan_boundaries"
     raw_dir.mkdir(parents=True, exist_ok=True)
     return raw_dir
@@ -169,10 +170,99 @@ def _extract_shapefile(level: str, data_dir: Optional[str] = None) -> Path:
     return shp_path
 
 
-def _load_national(level: str, data_dir: Optional[str] = None) -> gpd.GeoDataFrame:
-    """Load the full national boundary shapefile for one level, in EPSG:4326."""
-    shp_path = _extract_shapefile(level, data_dir)
-    gdf = gpd.read_file(shp_path)
+# StatCan's boundary-file site (www12.statcan.gc.ca) answers 403 to some networks; the same 2021 cartographic boundary files are
+# served by StatCan's ArcGIS REST service, which is the fallback (layer ids verified live 2026-10-22).
+_ARCGIS_BASE = "https://geo.statcan.gc.ca/geo_wa/rest/services/2021/Cartographic_boundary_files/MapServer"
+_ARCGIS_LAYER = {"province": 0, "municipality": 9, "dissemination-area": 12, "dissemination-block": 13}
+
+
+#: (west, south, east, north) of the AOI being loaded; the ArcGIS fallback only queries this envelope (province-wide queries are refused).
+_AOI_BBOX: Optional[tuple] = None
+
+
+def boundary_zip_available(level: str, data_dir: Optional[str] = None) -> bool:
+    """True when the national boundary zip of ``level`` is cached on disk or the file site answers (it 403s some networks).
+
+    Args:
+        level: Boundary level.
+        data_dir: Folder of the raw downloads; ``None`` = the pycensus cache.
+
+    Returns:
+        True if usable.
+    """
+    zip_path = _raw_dir(data_dir) / f"{level}.zip"
+    if zip_path.exists() and zip_path.stat().st_size > 0:
+        return True
+    try:
+        return requests.get(constants.BOUNDARY_URLS[level], stream=True, timeout=30).status_code == 200
+    except requests.RequestException:
+        return False
+
+
+def _arcgis_envelope(url: str, fields: str, where: str, bbox: tuple, level: str, depth: int = 0) -> list:
+    """Features intersecting ``bbox``; splits the envelope in four while the service answers too much / errors."""
+    params = {"where": where, "outFields": fields, "outSR": 4326, "f": "geojson", "returnGeometry": "true",
+              }
+    if bbox is not None:
+        params.update({"geometry": ",".join(f"{v:.6f}" for v in bbox), "geometryType": "esriGeometryEnvelope", "inSR": 4326,
+                       "spatialRel": "esriSpatialRelIntersects"})
+    if level == "province":
+        params["maxAllowableOffset"] = 0.005
+    ok, feats, more = False, [], False
+    try:
+        r = requests.get(url, params=params, timeout=300)
+        if r.status_code == 200:
+            j = r.json()
+            ok, feats, more = "features" in j, j.get("features", []), bool(j.get("exceededTransferLimit"))
+    except (requests.RequestException, ValueError):
+        pass
+    if ok and not more:
+        return feats
+    if bbox is None:
+        raise RuntimeError(f"StatCan ArcGIS refused the {level} query")
+    if depth >= 6:
+        if ok:
+            return feats
+        raise RuntimeError(f"StatCan ArcGIS refused the {level} query for {bbox}")
+    w, s_, e, n = bbox
+    mx, my = (w + e) / 2, (s_ + n) / 2
+    out = []
+    for q in ((w, s_, mx, my), (mx, s_, e, my), (w, my, mx, n), (mx, my, e, n)):
+        out += _arcgis_envelope(url, fields, where, q, level, depth + 1)
+    return out
+
+
+def _load_arcgis(level: str, pruid: Optional[str], data_dir: Optional[str] = None) -> gpd.GeoDataFrame:
+    """Boundaries of one level inside the AOI envelope from StatCan's ArcGIS service (cached as parquet per envelope)."""
+    import hashlib
+
+    bbox = None if level == "province" else _AOI_BBOX
+    key = hashlib.md5(f"{level}{pruid}{bbox}".encode()).hexdigest()[:10]
+    cache = _raw_dir(data_dir) / f"arcgis_{level}_{key}.parquet"
+    if cache.exists():
+        cached = gpd.read_parquet(cache)
+        cached["geometry"] = cached.geometry.buffer(0)
+        return cached
+    url = f"{_ARCGIS_BASE}/{_ARCGIS_LAYER[level]}/query"
+    id_col = _ID_COLUMN[level]
+    fields = ",".join([id_col] + (["PRUID"] if level in _HAS_PRUID_COLUMN else []))
+    where = f"PRUID='{pruid}'" if pruid and level != "province" else "1=1"
+    feats = _arcgis_envelope(url, fields, where, bbox, level)
+    if not feats:
+        raise RuntimeError(f"StatCan ArcGIS returned no {level} boundaries for {where} in {bbox}")
+    gdf = gpd.GeoDataFrame.from_features(feats, crs=4326).drop_duplicates(subset=[id_col]).reset_index(drop=True)
+    gdf["geometry"] = gdf.geometry.buffer(0)   # the service's polygons can self-touch; overlays on them raise TopologyException
+    gdf.to_parquet(cache)
+    return gdf
+
+
+def _load_national(level: str, data_dir: Optional[str] = None, pruid: Optional[str] = None) -> gpd.GeoDataFrame:
+    """Load the full national boundary shapefile for one level, in EPSG:4326 (ArcGIS fallback when the file site refuses)."""
+    try:
+        shp_path = _extract_shapefile(level, data_dir)
+        gdf = gpd.read_file(shp_path)
+    except requests.RequestException:
+        gdf = _load_arcgis(level, pruid, data_dir)
     id_col = _ID_COLUMN[level]
     gdf = gdf.rename(columns={id_col: "GEOID"})
     gdf["GEOID"] = gdf["GEOID"].astype(str)
@@ -188,6 +278,14 @@ def provinces_in_aoi(aoi: gpd.GeoDataFrame, year: int = 2021, data_dir: Optional
     this tests against the real national province boundary file (already
     a single, already-cached national download -- see module docstring),
     so the result is exact rather than approximate.
+
+    Args:
+        aoi: Area of interest (GeoDataFrame).
+        year: Boundary year.
+        data_dir: Folder of the raw downloads; ``None`` = the pycensus cache.
+
+    Returns:
+        PRUIDs.
     """
     provinces = _load_national("province", data_dir)
     aoi_union = aoi.to_crs(4326).union_all()
@@ -241,7 +339,7 @@ def load_boundaries(
         raise ValueError("'province' is required: StatCan boundaries are filtered per province")
 
     pruid = constants.province_code(province)
-    national = _load_national(level, data_dir)
+    national = _load_national(level, data_dir, pruid)
 
     if level == "province":
         gdf = national[national["GEOID"] == pruid]

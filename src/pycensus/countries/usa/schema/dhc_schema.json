@@ -6,6 +6,7 @@
     {
       "category": "population",
       "feature_name": "population",
+      "original_name": "P1_001N",
       "country": "usa",
       "source": "dhc",
       "codes": [
@@ -22,6 +23,7 @@
     {
       "category": "population",
       "feature_name": "housingUnits",
+      "original_name": "H1_001N",
       "country": "usa",
       "source": "dhc",
       "codes": [
@@ -38,6 +40,7 @@
     {
       "category": "population",
       "feature_name": "malePopulation",
+      "original_name": "P12_002N",
       "country": "usa",
       "source": "dhc",
       "codes": [
@@ -54,6 +57,7 @@
     {
       "category": "population",
       "feature_name": "femalePopulation",
+      "original_name": "P12_026N",
       "country": "usa",
       "source": "dhc",
       "codes": [
@@ -70,6 +74,7 @@
     {
       "category": "population",
       "feature_name": "under18Population",
+      "original_name": "P12_003N, P12_004N, P12_005N, P12_006N, P12_027N, P12_028N, P12_029N, P12_030N",
       "country": "usa",
       "source": "dhc",
       "codes": [
@@ -93,6 +98,7 @@
     {
       "category": "population",
       "feature_name": "age18to64Population",
+      "original_name": "P12_007N, P12_008N, P12_009N, P12_010N, P12_011N, P12_012N, P12_013N, P12_014N, P12_015N, P12_016N, P12_017N, P12_018N, P12_019N, P12_031N, P12_032N, P12_033N, P12_034N, P12_035N, P12_036N, P12_037N, P12_038N, P12_039N, P12_040N, P12_041N, P12_042N, P12_043N",
       "country": "usa",
       "source": "dhc",
       "codes": [
@@ -134,6 +140,7 @@
     {
       "category": "population",
       "feature_name": "over65Population",
+      "original_name": "P12_020N, P12_021N, P12_022N, P12_023N, P12_024N, P12_025N, P12_044N, P12_045N, P12_046N, P12_047N, P12_048N, P12_049N",
       "country": "usa",
       "source": "dhc",
       "codes": [
@@ -159,8 +166,26 @@
       "absolute_field": ""
     },
     {
+      "feature_name": "urbanPopulation",
+      "original_name": "P2_002N",
+      "country": "usa",
+      "source": "dhc",
+      "codes": [
+        "P2_002N"
+      ],
+      "definition": "Residents of 2020 Census urban areas (table P2 URBAN AND RURAL, !!Total:!!Urban).",
+      "type": "count",
+      "unit": "",
+      "resampling_up": "sum",
+      "resampling_down": "weighted_divide",
+      "relative_to": "population",
+      "absolute_field": "",
+      "category": "population"
+    },
+    {
       "category": "population",
       "feature_name": "whitePopulation",
+      "original_name": "P3_002N",
       "country": "usa",
       "source": "dhc",
       "codes": [
@@ -177,6 +202,7 @@
     {
       "category": "population",
       "feature_name": "blackPopulation",
+      "original_name": "P3_003N",
       "country": "usa",
       "source": "dhc",
       "codes": [
@@ -193,6 +219,7 @@
     {
       "category": "population",
       "feature_name": "nativePopulation",
+      "original_name": "P3_004N",
       "country": "usa",
       "source": "dhc",
       "codes": [
@@ -209,6 +236,7 @@
     {
       "category": "population",
       "feature_name": "asianPopulation",
+      "original_name": "P3_005N",
       "country": "usa",
       "source": "dhc",
       "codes": [
@@ -225,6 +253,7 @@
     {
       "category": "population",
       "feature_name": "otherRacePopulation",
+      "original_name": "P3_006N, P3_007N, P3_008N",
       "country": "usa",
       "source": "dhc",
       "codes": [
@@ -243,6 +272,7 @@
     {
       "category": "population",
       "feature_name": "hispanicPopulation",
+      "original_name": "P5_010N",
       "country": "usa",
       "source": "dhc",
       "codes": [
@@ -259,6 +289,7 @@
     {
       "category": "raceEthnicity",
       "feature_name": "nonwhitePopulation",
+      "original_name": "computed from population, whitePopulation",
       "country": "usa",
       "source": "dhc",
       "codes": [],

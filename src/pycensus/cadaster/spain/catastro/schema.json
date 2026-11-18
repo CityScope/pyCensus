@@ -1,0 +1,22 @@
+{
+  "source": "es_catastro",
+  "country": "ESP",
+  "name": "Dirección General del Catastro, INSPIRE Buildings (ATOM, per municipality)",
+  "url": "https://www.catastro.hacienda.gob.es/INSPIRE/buildings/ES.SDGC.BU.atom.xml",
+  "license": "Free of charge; credit the D. G. del Catastro (Ministerio de Hacienda) as author and owner",
+  "coverage": "Spain except the foral cadasters (Basque Country, Navarra); updated twice a year",
+  "api_key": false,
+  "fields": {
+    "building_id": "gml_id (building)",
+    "footprint_m2": "area of the building footprint polygon",
+    "floors_above": "numberOfFloorsAboveGround of the building parts (footprint-weighted mean)",
+    "floors_below": "numberOfFloorsBelowGround of the building parts (footprint-weighted mean)",
+    "built_area_m2": "value where officialAreaReference = grossFloorArea (official); else sum over parts of part area x numberOfFloorsAboveGround",
+    "use_original": "currentUse",
+    "dwellings": "numberOfDwellings",
+    "units": "numberOfBuildingUnits",
+    "year_built": "beginning (year)"
+  },
+  "use_map": {"1_residential": "residential", "2_agriculture": "agricultural", "3_industrial": "industrial", "4_1_office": "office",
+              "4_2_retail": "commercial", "4_3_publicServices": "public"}
+}

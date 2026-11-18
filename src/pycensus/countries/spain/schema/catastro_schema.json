@@ -1,0 +1,253 @@
+{
+ "country": "spain",
+ "source": "catastro",
+ "full_name": "Direccion General del Catastro INSPIRE Buildings (+ Gipuzkoa foral cadastre, B5M)",
+ "years": [
+  2026
+ ],
+ "levels": [
+  "section"
+ ],
+ "features": [
+  {
+   "category": "housing",
+   "feature_name": "catastro_buildings",
+   "original_name": "catastro_buildings",
+   "country": "spain",
+   "source": "catastro",
+   "codes": [
+    "catastro_buildings"
+   ],
+   "definition": "Buildings (cadastral building footprints, annexes included) whose centroid lies in the section. (Catastro INSPIRE buildings / foral cadastre, aggregated by building centroid.)",
+   "type": "count",
+   "unit": "buildings",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "housing",
+   "feature_name": "catastro_dwellings",
+   "original_name": "catastro_dwellings",
+   "country": "spain",
+   "source": "catastro",
+   "codes": [
+    "catastro_dwellings"
+   ],
+   "definition": "Dwellings registered in the cadastre (sum of numberOfDwellings). State Catastro, NaN in Gipuzkoa. (Catastro INSPIRE buildings / foral cadastre, aggregated by building centroid.)",
+   "type": "count",
+   "unit": "dwellings",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "housing",
+   "feature_name": "catastro_building_units",
+   "original_name": "catastro_building_units",
+   "country": "spain",
+   "source": "catastro",
+   "codes": [
+    "catastro_building_units"
+   ],
+   "definition": "Building units (dwellings, shops, offices, garages...) registered in the cadastre. NaN in Gipuzkoa. (Catastro INSPIRE buildings / foral cadastre, aggregated by building centroid.)",
+   "type": "count",
+   "unit": "units",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "housing",
+   "feature_name": "catastro_floor_area_m2_total",
+   "original_name": "catastro_floor_area_m2_total",
+   "country": "spain",
+   "source": "catastro",
+   "codes": [
+    "catastro_floor_area_m2_total"
+   ],
+   "definition": "Total gross floor area of the buildings (m2, cadastral 'value'). NaN in Gipuzkoa (no floor area published). (Catastro INSPIRE buildings / foral cadastre, aggregated by building centroid.)",
+   "type": "count",
+   "unit": "m2",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "housing",
+   "feature_name": "catastro_footprint_m2_total",
+   "original_name": "catastro_footprint_m2_total",
+   "country": "spain",
+   "source": "catastro",
+   "codes": [
+    "catastro_footprint_m2_total"
+   ],
+   "definition": "Total building footprint area (m2) of the buildings of the section. (Catastro INSPIRE buildings / foral cadastre, aggregated by building centroid.)",
+   "type": "count",
+   "unit": "m2",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "housing",
+   "feature_name": "catastro_year_built_median",
+   "original_name": "catastro_year_built_median",
+   "country": "spain",
+   "source": "catastro",
+   "codes": [
+    "catastro_year_built_median"
+   ],
+   "definition": "Median year of construction of the buildings with a known year (1900 is often a catch-all for older buildings). (Catastro INSPIRE buildings / foral cadastre, aggregated by building centroid.)",
+   "type": "median",
+   "unit": "year",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "catastro_buildings"
+  },
+  {
+   "category": "housing",
+   "feature_name": "catastro_share_built_before_1960",
+   "original_name": "catastro_share_built_before_1960",
+   "country": "spain",
+   "source": "catastro",
+   "codes": [
+    "catastro_share_built_before_1960"
+   ],
+   "definition": "Fraction of the buildings with a known construction year built before 1960. (Catastro INSPIRE buildings / foral cadastre, aggregated by building centroid.)",
+   "type": "mean",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "catastro_buildings"
+  },
+  {
+   "category": "housing",
+   "feature_name": "catastro_share_built_since_2000",
+   "original_name": "catastro_share_built_since_2000",
+   "country": "spain",
+   "source": "catastro",
+   "codes": [
+    "catastro_share_built_since_2000"
+   ],
+   "definition": "Fraction of the buildings with a known construction year built in 2000 or later. (Catastro INSPIRE buildings / foral cadastre, aggregated by building centroid.)",
+   "type": "mean",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "catastro_buildings"
+  },
+  {
+   "category": "housing",
+   "feature_name": "catastro_share_built_1970_1999",
+   "original_name": "catastro_share_built_1970_1999",
+   "country": "spain",
+   "source": "catastro",
+   "codes": [
+    "catastro_share_built_1970_1999"
+   ],
+   "definition": "Fraction of the buildings with a known construction year built from 1970 to 1999. (Catastro INSPIRE buildings / foral cadastre, aggregated by building centroid.)",
+   "type": "mean",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "catastro_buildings"
+  },
+  {
+   "category": "housing",
+   "feature_name": "catastro_share_built_1945_1969",
+   "original_name": "catastro_share_built_1945_1969",
+   "country": "spain",
+   "source": "catastro",
+   "codes": [
+    "catastro_share_built_1945_1969"
+   ],
+   "definition": "Fraction of the buildings with a known construction year built from 1945 to 1969. (Catastro INSPIRE buildings / foral cadastre, aggregated by building centroid.)",
+   "type": "mean",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "catastro_buildings"
+  },
+  {
+   "category": "housing",
+   "feature_name": "catastro_share_built_before_1945",
+   "original_name": "catastro_share_built_before_1945",
+   "country": "spain",
+   "source": "catastro",
+   "codes": [
+    "catastro_share_built_before_1945"
+   ],
+   "definition": "Fraction of the buildings with a known construction year built before 1945. (Catastro INSPIRE buildings / foral cadastre, aggregated by building centroid.)",
+   "type": "mean",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "catastro_buildings"
+  },
+  {
+   "category": "housing",
+   "feature_name": "catastro_residential_share",
+   "original_name": "catastro_residential_share",
+   "country": "spain",
+   "source": "catastro",
+   "codes": [
+    "catastro_residential_share"
+   ],
+   "definition": "Fraction of the buildings whose current use is residential. NaN in Gipuzkoa (no use published). (Catastro INSPIRE buildings / foral cadastre, aggregated by building centroid.)",
+   "type": "mean",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "catastro_buildings"
+  },
+  {
+   "category": "housing",
+   "feature_name": "catastro_dwellings_per_building",
+   "original_name": "catastro_dwellings_per_building",
+   "country": "spain",
+   "source": "catastro",
+   "codes": [
+    "catastro_dwellings_per_building"
+   ],
+   "definition": "Mean number of dwellings per residential building. NaN in Gipuzkoa. (Catastro INSPIRE buildings / foral cadastre, aggregated by building centroid.)",
+   "type": "mean",
+   "unit": "dwellings",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "catastro_buildings"
+  },
+  {
+   "category": "housing",
+   "feature_name": "catastro_height_mean_m",
+   "original_name": "catastro_height_mean_m",
+   "country": "spain",
+   "source": "catastro",
+   "codes": [
+    "catastro_height_mean_m"
+   ],
+   "definition": "Mean building height (m): Gipuzkoa (B5M average height), Araba and Navarra (cadastral height); NaN elsewhere. (Catastro INSPIRE buildings / foral cadastre, aggregated by building centroid.)",
+   "type": "mean",
+   "unit": "m",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "catastro_buildings"
+  },
+  {
+   "category": "housing",
+   "feature_name": "catastro_floors_mean",
+   "original_name": "catastro_floors_mean",
+   "country": "spain",
+   "source": "catastro",
+   "codes": [
+    "catastro_floors_mean"
+   ],
+   "definition": "Mean number of floors above ground (Araba, Bizkaia, Navarra and the state Catastro where populated). (Catastro INSPIRE buildings / foral cadastre, aggregated by building centroid.)",
+   "type": "mean",
+   "unit": "floors",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "catastro_buildings"
+  }
+ ]
+}

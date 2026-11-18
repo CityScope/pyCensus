@@ -1,0 +1,253 @@
+{
+ "country": "eu",
+ "source": "eurostat",
+ "full_name": "Eurostat regional statistics (dissemination API, NUTS 2 / NUTS 3)",
+ "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data",
+ "levels": [
+  "nuts2",
+  "nuts3"
+ ],
+ "resolution": "low",
+ "features": [
+  {
+   "category": "population",
+   "feature_name": "population",
+   "original_name": "demo_r_pjangrp3",
+   "country": "eu",
+   "source": "eurostat",
+   "codes": [
+    "demo_r_pjangrp3"
+   ],
+   "definition": "Population on 1 January (Eurostat demo_r_pjangrp3, sex T, age TOTAL, NUTS 3).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "resampling_weight": "population",
+   "constant_total": true,
+   "constant_density": false,
+   "eurostat": {
+    "dataset": "demo_r_pjangrp3",
+    "filters": {
+     "sex": "T",
+     "age": "TOTAL",
+     "unit": "NR"
+    },
+    "nuts_level": 3,
+    "scale": 1
+   }
+  },
+  {
+   "category": "population",
+   "feature_name": "populationDensityKm2",
+   "original_name": "demo_r_d3dens",
+   "country": "eu",
+   "source": "eurostat",
+   "codes": [
+    "demo_r_d3dens"
+   ],
+   "definition": "Population density, residents per km2 of land (Eurostat demo_r_d3dens, NUTS 3).",
+   "type": "mean",
+   "unit": "residents/km2",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "area",
+   "constant_total": false,
+   "constant_density": false,
+   "eurostat": {
+    "dataset": "demo_r_d3dens",
+    "filters": {},
+    "nuts_level": 3,
+    "scale": 1
+   }
+  },
+  {
+   "category": "income",
+   "feature_name": "gdpPerCapitaPps",
+   "original_name": "nama_10r_3gdp",
+   "country": "eu",
+   "source": "eurostat",
+   "codes": [
+    "nama_10r_3gdp"
+   ],
+   "definition": "Gross domestic product at current market prices per inhabitant in purchasing power standards (EU27 from 2020), by place of production (Eurostat nama_10r_3gdp, NUTS 3).",
+   "type": "mean",
+   "unit": "PPS (EU27 2020)/person/year",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "population",
+   "constant_total": false,
+   "constant_density": false,
+   "eurostat": {
+    "dataset": "nama_10r_3gdp",
+    "filters": {
+     "unit": "PPS_EU27_2020_HAB"
+    },
+    "nuts_level": 3,
+    "scale": 1
+   }
+  },
+  {
+   "category": "income",
+   "feature_name": "householdDisposableIncomePerCapitaPps",
+   "original_name": "nama_10r_2hhinc",
+   "country": "eu",
+   "source": "eurostat",
+   "codes": [
+    "nama_10r_2hhinc"
+   ],
+   "definition": "Net disposable income of private households per inhabitant, purchasing power standards based on final consumption (Eurostat nama_10r_2hhinc, B6N, NUTS 2).",
+   "type": "mean",
+   "unit": "PPS (EU27 2020)/person/year",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "population",
+   "constant_total": false,
+   "constant_density": false,
+   "eurostat": {
+    "dataset": "nama_10r_2hhinc",
+    "filters": {
+     "unit": "PPS_EU27_2020_HAB",
+     "na_item": "B6N",
+     "direct": "BAL"
+    },
+    "nuts_level": 2,
+    "scale": 1
+   }
+  },
+  {
+   "category": "employment",
+   "feature_name": "unemploymentRate",
+   "original_name": "lfst_r_lfu3rt",
+   "country": "eu",
+   "source": "eurostat",
+   "codes": [
+    "lfst_r_lfu3rt"
+   ],
+   "definition": "Unemployed persons as a share of the labour force aged 15-74 (Eurostat lfst_r_lfu3rt, Labour Force Survey, NUTS 2; published in % and stored as a 0-1 share).",
+   "type": "mean",
+   "unit": "share (0-1, shown as %)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "population",
+   "constant_total": false,
+   "constant_density": false,
+   "eurostat": {
+    "dataset": "lfst_r_lfu3rt",
+    "filters": {
+     "sex": "T",
+     "age": "Y15-74",
+     "isced11": "TOTAL"
+    },
+    "nuts_level": 2,
+    "scale": 0.01
+   }
+  },
+  {
+   "category": "employment",
+   "feature_name": "employmentRate20to64",
+   "original_name": "lfst_r_lfe2emprt",
+   "country": "eu",
+   "source": "eurostat",
+   "codes": [
+    "lfst_r_lfe2emprt"
+   ],
+   "definition": "Employed persons aged 20-64 as a share of the population aged 20-64 (Eurostat lfst_r_lfe2emprt, Labour Force Survey, NUTS 2; stored as a 0-1 share).",
+   "type": "mean",
+   "unit": "share (0-1, shown as %)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "population",
+   "constant_total": false,
+   "constant_density": false,
+   "eurostat": {
+    "dataset": "lfst_r_lfe2emprt",
+    "filters": {
+     "sex": "T",
+     "age": "Y20-64"
+    },
+    "nuts_level": 2,
+    "scale": 0.01
+   }
+  },
+  {
+   "category": "income",
+   "feature_name": "atRiskOfPovertyRate",
+   "original_name": "ilc_li41",
+   "country": "eu",
+   "source": "eurostat",
+   "codes": [
+    "ilc_li41"
+   ],
+   "definition": "Share of persons with an equivalised disposable income below 60 % of the national median (Eurostat ilc_li41, EU-SILC, NUTS 2; stored as a 0-1 share).",
+   "type": "mean",
+   "unit": "share (0-1, shown as %)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "population",
+   "constant_total": false,
+   "constant_density": false,
+   "eurostat": {
+    "dataset": "ilc_li41",
+    "filters": {},
+    "nuts_level": 2,
+    "scale": 0.01
+   }
+  },
+  {
+   "category": "education",
+   "feature_name": "tertiaryEducationShare25to64",
+   "original_name": "edat_lfse_04",
+   "country": "eu",
+   "source": "eurostat",
+   "codes": [
+    "edat_lfse_04"
+   ],
+   "definition": "Share of the population aged 25-64 with tertiary education, ISCED 5-8 (Eurostat edat_lfse_04, Labour Force Survey, NUTS 2; stored as a 0-1 share).",
+   "type": "mean",
+   "unit": "share (0-1, shown as %)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "population",
+   "constant_total": false,
+   "constant_density": false,
+   "eurostat": {
+    "dataset": "edat_lfse_04",
+    "filters": {
+     "sex": "T",
+     "age": "Y25-64",
+     "isced11": "ED5-8"
+    },
+    "nuts_level": 2,
+    "scale": 0.01
+   }
+  },
+  {
+   "category": "transport",
+   "feature_name": "carsPerThousandInhabitants",
+   "original_name": "tran_r_vehst",
+   "country": "eu",
+   "source": "eurostat",
+   "codes": [
+    "tran_r_vehst"
+   ],
+   "definition": "Registered passenger cars per thousand inhabitants (Eurostat tran_r_vehst, NUTS 2).",
+   "type": "mean",
+   "unit": "cars/1000 residents",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "population",
+   "constant_total": false,
+   "constant_density": false,
+   "eurostat": {
+    "dataset": "tran_r_vehst",
+    "filters": {
+     "vehicle": "CAR",
+     "unit": "P_THAB"
+    },
+    "nuts_level": 2,
+    "scale": 1
+   }
+  }
+ ]
+}

@@ -113,12 +113,11 @@ class TestSchema:
         # AZR-derived GENESIS statistic 12521, table 12521-0040,
         # district-only, verified 2026-08-23 -- see
         # constants.GENESIS_FOREIGN_POPULATION_TABLES).
-        assert list(SCHEMA.columns) == [
-            "population",
-            "malePopulation",
-            "femalePopulation",
-            "foreignBornPopulation",
-        ]
+        cols = list(SCHEMA.columns)
+        assert cols[:4] == ["population", "malePopulation", "femalePopulation", "foreignBornPopulation"]
+        # none of the fabricated codes of the first schema came back (every later field was added with its verified table)
+        assert not {"POP_MALE", "HH_TOTAL", "INC_MED_HH"} & set(cols)
+        assert not any(c.isupper() for c in cols)
 
 
 class TestGeography:

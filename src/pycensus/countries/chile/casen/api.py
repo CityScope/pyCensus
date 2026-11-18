@@ -51,6 +51,7 @@ Technical aspects:
 """
 
 from __future__ import annotations
+from pycensus.cache import get_data_dir
 
 from pathlib import Path
 from typing import Optional
@@ -76,7 +77,7 @@ TABLES = {
 def _raw_dir(data_dir: Optional[str] = None) -> Path:
     from .. import constants
 
-    base = Path(data_dir) if data_dir else Path(constants.DEFAULT_DATA_DIR)
+    base = get_data_dir("chile", data_dir)
     raw_dir = base / "raw" / "casen_sae"
     raw_dir.mkdir(parents=True, exist_ok=True)
     return raw_dir

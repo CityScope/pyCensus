@@ -30,6 +30,7 @@ Source:
 """
 
 from __future__ import annotations
+from pycensus.cache import get_data_dir
 
 from typing import Dict, List
 
@@ -615,7 +616,7 @@ LATEST_YEAR: Dict[str, str] = {
 OVERPASS_API_URL = "https://overpass-api.de/api/interpreter"
 
 # Default data directory.
-DEFAULT_DATA_DIR = "data/taiwan"
+DEFAULT_DATA_DIR = str(get_data_dir("taiwan"))  # env/temp default, resolved at import
 
 __all__ = [
     "COUNTY_CODES",

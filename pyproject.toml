@@ -8,7 +8,7 @@ authors = [
     { name = "Miguel Ureña Pliego" }
 ]
 dependencies = [
-    "geohierarchy",
+    "geohierarchy @ git+https://github.com/CityScope/geohierarchy.git",
     "polars>=1.0.0",
     "geopandas>=0.14.0",
     "pandas>=2.3.3",
@@ -42,11 +42,19 @@ dev-dependencies = [
     "nbclient>=0.10.0",
 ]
 
-[tool.uv.sources]
-geohierarchy = { path = "../geohierarchy", editable = true }
-
 [tool.setuptools]
 package-dir = {"" = "src"}
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[project.optional-dependencies]
+# GPU is OPTIONAL: nothing here is installed by default and every code path falls back to the CPU when CuPy / a CUDA device is missing (TRANSITLOS_DEVICE=cpu forces it).
+gpu = ["cupy-cuda12x>=13.0"]
+# RAPIDS (cuDF / cuGraph) is big and pins its own dependency versions: install it in a SEPARATE environment, e.g.
+#   python -m venv .venv-rapids && .venv-rapids/bin/pip install cudf-cu12 cugraph-cu12 --extra-index-url=https://pypi.nvidia.com
+# and point TRANSITLOS_RAPIDS_PYTHON at that environment's python; the pipeline calls it in a subprocess only when it exists.
+rapids = ["cudf-cu12", "cugraph-cu12"]
+
+[tool.hatch.metadata]
+allow-direct-references = true   # the sibling packages are git dependencies (github.com/CityScope)

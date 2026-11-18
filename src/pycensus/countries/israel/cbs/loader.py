@@ -240,6 +240,14 @@ def load(
         rate = pd.to_numeric(result.get("cbs_foreignResidentRate"), errors="coerce")
         pop = pd.to_numeric(result.get("cbs_population"), errors="coerce")
         result["cbs_foreignBornPopulation"] = (rate / 100.0 * pop).round()
+    # 65+ and male / female residents from the same population (age65_pcnt; sexRatio = males per 100 females) -- exact reconstructions.
+    _pop = pd.to_numeric(result.get("cbs_population"), errors="coerce")
+    if "cbs_over65Population" in result.columns:
+        result["cbs_over65Population"] = (pd.to_numeric(result.get("cbs_populationShare65plus"), errors="coerce") / 100.0 * _pop).round()
+    if "cbs_malePopulation" in result.columns or "cbs_femalePopulation" in result.columns:
+        _r = pd.to_numeric(result.get("cbs_sexRatio"), errors="coerce")
+        result["cbs_malePopulation"] = (_pop * _r / (100.0 + _r)).round()
+        result["cbs_femalePopulation"] = (_pop * 100.0 / (100.0 + _r)).round()
 
     # Religion population columns -- CBS reports religion as a single
     # per-area dominant-religion classification code (1=Jewish, 2=Muslim,

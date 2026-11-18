@@ -44,6 +44,7 @@ Source:
 """
 
 from __future__ import annotations
+from pycensus.cache import get_data_dir
 
 import io
 from pathlib import Path
@@ -81,7 +82,7 @@ _COL_AUSPENDLER = 13
 
 
 def _raw_dir(data_dir: Optional[str] = None) -> Path:
-    base = Path(data_dir) if data_dir else Path(constants.DEFAULT_DATA_DIR)
+    base = get_data_dir("germany", data_dir)
     raw_dir = base / "raw" / "ba_pendler"
     raw_dir.mkdir(parents=True, exist_ok=True)
     return raw_dir

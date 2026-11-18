@@ -1,0 +1,543 @@
+{
+ "country": "spain",
+ "source": "adrh",
+ "full_name": "INE Atlas de Distribución de Renta de los Hogares",
+ "years": [
+  2024
+ ],
+ "levels": [
+  "section",
+  "district",
+  "municipality"
+ ],
+ "features": [
+  {
+   "category": "income",
+   "feature_name": "incomeNetPersonMean",
+   "original_name": "incomeNetPersonMean",
+   "country": "spain",
+   "source": "adrh",
+   "codes": [
+    "incomeNetPersonMean"
+   ],
+   "definition": "Renta neta media por persona (EUR/year). (INE Atlas de Distribución de Renta de los Hogares, latest year.)",
+   "type": "mean",
+   "unit": "EUR",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "households"
+  },
+  {
+   "category": "income",
+   "feature_name": "meanHouseholdIncome",
+   "original_name": "meanHouseholdIncome",
+   "country": "spain",
+   "source": "adrh",
+   "codes": [
+    "meanHouseholdIncome"
+   ],
+   "definition": "Renta neta media por hogar (EUR/year). (INE Atlas de Distribución de Renta de los Hogares, latest year.)",
+   "type": "mean",
+   "unit": "EUR",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "households"
+  },
+  {
+   "category": "income",
+   "feature_name": "incomePerConsumptionUnitMean",
+   "original_name": "incomePerConsumptionUnitMean",
+   "country": "spain",
+   "source": "adrh",
+   "codes": [
+    "incomePerConsumptionUnitMean"
+   ],
+   "definition": "Media de la renta por unidad de consumo (EUR/year). (INE Atlas de Distribución de Renta de los Hogares, latest year.)",
+   "type": "mean",
+   "unit": "EUR",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "households"
+  },
+  {
+   "category": "income",
+   "feature_name": "incomePerConsumptionUnitMedian",
+   "original_name": "incomePerConsumptionUnitMedian",
+   "country": "spain",
+   "source": "adrh",
+   "codes": [
+    "incomePerConsumptionUnitMedian"
+   ],
+   "definition": "Mediana de la renta por unidad de consumo (EUR/year). (INE Atlas de Distribución de Renta de los Hogares, latest year.)",
+   "type": "mean",
+   "unit": "EUR",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "households"
+  },
+  {
+   "category": "income",
+   "feature_name": "incomeGrossPersonMean",
+   "original_name": "incomeGrossPersonMean",
+   "country": "spain",
+   "source": "adrh",
+   "codes": [
+    "incomeGrossPersonMean"
+   ],
+   "definition": "Renta bruta media por persona (EUR/year). (INE Atlas de Distribución de Renta de los Hogares, latest year.)",
+   "type": "mean",
+   "unit": "EUR",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "households"
+  },
+  {
+   "category": "income",
+   "feature_name": "incomeGrossHouseholdMean",
+   "original_name": "incomeGrossHouseholdMean",
+   "country": "spain",
+   "source": "adrh",
+   "codes": [
+    "incomeGrossHouseholdMean"
+   ],
+   "definition": "Renta bruta media por hogar (EUR/year). (INE Atlas de Distribución de Renta de los Hogares, latest year.)",
+   "type": "mean",
+   "unit": "EUR",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "households"
+  },
+  {
+   "category": "income",
+   "feature_name": "incomeSourceSalaryShare",
+   "original_name": "incomeSourceSalaryShare",
+   "country": "spain",
+   "source": "adrh",
+   "codes": [
+    "incomeSourceSalaryShare"
+   ],
+   "definition": "Fuente de ingreso: salario (% of income). (INE Atlas de Distribución de Renta de los Hogares, latest year.)",
+   "type": "mean",
+   "unit": "%",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "population"
+  },
+  {
+   "category": "income",
+   "feature_name": "incomeSourcePensionsShare",
+   "original_name": "incomeSourcePensionsShare",
+   "country": "spain",
+   "source": "adrh",
+   "codes": [
+    "incomeSourcePensionsShare"
+   ],
+   "definition": "Fuente de ingreso: pensiones (% of income). (INE Atlas de Distribución de Renta de los Hogares, latest year.)",
+   "type": "mean",
+   "unit": "%",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "population"
+  },
+  {
+   "category": "income",
+   "feature_name": "incomeSourceUnemploymentBenefitsShare",
+   "original_name": "incomeSourceUnemploymentBenefitsShare",
+   "country": "spain",
+   "source": "adrh",
+   "codes": [
+    "incomeSourceUnemploymentBenefitsShare"
+   ],
+   "definition": "Fuente de ingreso: prestaciones por desempleo (% of income). (INE Atlas de Distribución de Renta de los Hogares, latest year.)",
+   "type": "mean",
+   "unit": "%",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "population"
+  },
+  {
+   "category": "income",
+   "feature_name": "incomeSourceOtherBenefitsShare",
+   "original_name": "incomeSourceOtherBenefitsShare",
+   "country": "spain",
+   "source": "adrh",
+   "codes": [
+    "incomeSourceOtherBenefitsShare"
+   ],
+   "definition": "Fuente de ingreso: otras prestaciones (% of income). (INE Atlas de Distribución de Renta de los Hogares, latest year.)",
+   "type": "mean",
+   "unit": "%",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "population"
+  },
+  {
+   "category": "income",
+   "feature_name": "incomeSourceOtherShare",
+   "original_name": "incomeSourceOtherShare",
+   "country": "spain",
+   "source": "adrh",
+   "codes": [
+    "incomeSourceOtherShare"
+   ],
+   "definition": "Fuente de ingreso: otros ingresos (% of income). (INE Atlas de Distribución de Renta de los Hogares, latest year.)",
+   "type": "mean",
+   "unit": "%",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "population"
+  },
+  {
+   "category": "income",
+   "feature_name": "giniIndex",
+   "original_name": "giniIndex",
+   "country": "spain",
+   "source": "adrh",
+   "codes": [
+    "giniIndex"
+   ],
+   "definition": "Índice de Gini. (INE Atlas de Distribución de Renta de los Hogares, latest year.)",
+   "type": "mean",
+   "unit": "",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "population"
+  },
+  {
+   "category": "income",
+   "feature_name": "incomeP80P20Ratio",
+   "original_name": "incomeP80P20Ratio",
+   "country": "spain",
+   "source": "adrh",
+   "codes": [
+    "incomeP80P20Ratio"
+   ],
+   "definition": "Distribución de la renta P80/P20. (INE Atlas de Distribución de Renta de los Hogares, latest year.)",
+   "type": "mean",
+   "unit": "",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "population"
+  },
+  {
+   "category": "income",
+   "feature_name": "belowHalfMedianShare40",
+   "original_name": "belowHalfMedianShare40",
+   "country": "spain",
+   "source": "adrh",
+   "codes": [
+    "belowHalfMedianShare40"
+   ],
+   "definition": "Población con ingresos por unidad de consumo por debajo 40% de la mediana (% of population). (INE Atlas de Distribución de Renta de los Hogares, latest year.)",
+   "type": "mean",
+   "unit": "%",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "population"
+  },
+  {
+   "category": "income",
+   "feature_name": "belowMedianShare50",
+   "original_name": "belowMedianShare50",
+   "country": "spain",
+   "source": "adrh",
+   "codes": [
+    "belowMedianShare50"
+   ],
+   "definition": "Población con ingresos por unidad de consumo por debajo 50% de la mediana (% of population). (INE Atlas de Distribución de Renta de los Hogares, latest year.)",
+   "type": "mean",
+   "unit": "%",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "population"
+  },
+  {
+   "category": "income",
+   "feature_name": "belowMedianShare60",
+   "original_name": "belowMedianShare60",
+   "country": "spain",
+   "source": "adrh",
+   "codes": [
+    "belowMedianShare60"
+   ],
+   "definition": "Población con ingresos por unidad de consumo por debajo 60% de la mediana (% of population). (INE Atlas de Distribución de Renta de los Hogares, latest year.)",
+   "type": "mean",
+   "unit": "%",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "population"
+  },
+  {
+   "category": "income",
+   "feature_name": "aboveMedianShare140",
+   "original_name": "aboveMedianShare140",
+   "country": "spain",
+   "source": "adrh",
+   "codes": [
+    "aboveMedianShare140"
+   ],
+   "definition": "Población con ingresos por unidad de consumo por encima 140% de la mediana (% of population). (INE Atlas de Distribución de Renta de los Hogares, latest year.)",
+   "type": "mean",
+   "unit": "%",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "population"
+  },
+  {
+   "category": "income",
+   "feature_name": "aboveMedianShare160",
+   "original_name": "aboveMedianShare160",
+   "country": "spain",
+   "source": "adrh",
+   "codes": [
+    "aboveMedianShare160"
+   ],
+   "definition": "Población con ingresos por unidad de consumo por encima 160% de la mediana (% of population). (INE Atlas de Distribución de Renta de los Hogares, latest year.)",
+   "type": "mean",
+   "unit": "%",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "population"
+  },
+  {
+   "category": "income",
+   "feature_name": "aboveMedianShare200",
+   "original_name": "aboveMedianShare200",
+   "country": "spain",
+   "source": "adrh",
+   "codes": [
+    "aboveMedianShare200"
+   ],
+   "definition": "Población con ingresos por unidad de consumo por encima 200% de la mediana (% of population). (INE Atlas de Distribución de Renta de los Hogares, latest year.)",
+   "type": "mean",
+   "unit": "%",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "population"
+  },
+  {
+   "category": "population",
+   "feature_name": "ageMean",
+   "original_name": "ageMean",
+   "country": "spain",
+   "source": "adrh",
+   "codes": [
+    "ageMean"
+   ],
+   "definition": "Mean age of the population. (INE Atlas de Distribución de Renta de los Hogares, latest year.)",
+   "type": "mean",
+   "unit": "years",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "population"
+  },
+  {
+   "category": "population",
+   "feature_name": "householdSizeMean",
+   "original_name": "householdSizeMean",
+   "country": "spain",
+   "source": "adrh",
+   "codes": [
+    "householdSizeMean"
+   ],
+   "definition": "Mean household size. (INE Atlas de Distribución de Renta de los Hogares, latest year.)",
+   "type": "mean",
+   "unit": "",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "households"
+  },
+  {
+   "category": "population",
+   "feature_name": "singlePersonHouseholdsShare",
+   "original_name": "singlePersonHouseholdsShare",
+   "country": "spain",
+   "source": "adrh",
+   "codes": [
+    "singlePersonHouseholdsShare"
+   ],
+   "definition": "Share of single-person households (%). (INE Atlas de Distribución de Renta de los Hogares, latest year.)",
+   "type": "mean",
+   "unit": "%",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "households"
+  },
+  {
+   "category": "population",
+   "feature_name": "under18Population",
+   "original_name": "under18Population",
+   "country": "spain",
+   "source": "adrh",
+   "codes": [
+    "under18Population"
+   ],
+   "definition": "Residents under 18 (share of the section's registered population). (INE Atlas de Distribución de Renta de los Hogares, latest year.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "population",
+   "feature_name": "over65Population",
+   "original_name": "over65Population",
+   "country": "spain",
+   "source": "adrh",
+   "codes": [
+    "over65Population"
+   ],
+   "definition": "Residents aged 65 and over. (INE Atlas de Distribución de Renta de los Hogares, latest year.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "population",
+   "feature_name": "foreignNationalPopulation",
+   "original_name": "foreignNationalPopulation",
+   "country": "spain",
+   "source": "adrh",
+   "codes": [
+    "foreignNationalPopulation"
+   ],
+   "definition": "Residents without Spanish nationality. (INE Atlas de Distribución de Renta de los Hogares, latest year.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "population",
+   "feature_name": "households",
+   "original_name": "households",
+   "country": "spain",
+   "source": "adrh",
+   "codes": [
+    "households"
+   ],
+   "definition": "Households (population / mean household size). (INE Atlas de Distribución de Renta de los Hogares, latest year.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "population",
+   "feature_name": "povertyPopulation",
+   "original_name": "povertyPopulation",
+   "country": "spain",
+   "source": "adrh",
+   "codes": [
+    "povertyPopulation"
+   ],
+   "definition": "Residents below 60% of the median income per consumption unit (relative poverty). (INE Atlas de Distribución de Renta de los Hogares, latest year.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "population",
+   "feature_name": "malePopulation",
+   "original_name": "malePopulation",
+   "country": "spain",
+   "source": "adrh",
+   "codes": [
+    "malePopulation"
+   ],
+   "definition": "Men (Eustat, census section, 2025-01-01).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "population",
+   "feature_name": "femalePopulation",
+   "original_name": "femalePopulation",
+   "country": "spain",
+   "source": "adrh",
+   "codes": [
+    "femalePopulation"
+   ],
+   "definition": "Women.",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "population",
+   "feature_name": "population0to19",
+   "original_name": "population0to19",
+   "country": "spain",
+   "source": "adrh",
+   "codes": [
+    "population0to19"
+   ],
+   "definition": "Residents aged 0-19.",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "population",
+   "feature_name": "population20to64",
+   "original_name": "population20to64",
+   "country": "spain",
+   "source": "adrh",
+   "codes": [
+    "population20to64"
+   ],
+   "definition": "Residents aged 20-64.",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "population",
+   "feature_name": "foreignEU27Population",
+   "original_name": "foreignEU27Population",
+   "country": "spain",
+   "source": "adrh",
+   "codes": [
+    "foreignEU27Population"
+   ],
+   "definition": "Residents with another EU27 nationality.",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "population",
+   "feature_name": "foreignOtherPopulation",
+   "original_name": "foreignOtherPopulation",
+   "country": "spain",
+   "source": "adrh",
+   "codes": [
+    "foreignOtherPopulation"
+   ],
+   "definition": "Residents with a non-EU27 foreign nationality.",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  }
+ ]
+}

@@ -85,11 +85,15 @@ def _fetch_missing(
     result = pd.DataFrame({"GEOID": raw["GEOID"]})
     for col in all_direct_defs:
         prefixed = SCHEMA.column_label(col.name)
-        raw_col = next((c for c in col.codes if c in raw.columns), None)
-        if raw_col is None:
+        present = [c for c in col.codes if c in raw.columns]
+        if not present:
             result[prefixed] = pd.Series(dtype="float64", index=raw.index)
+        elif len(col.codes) > 1 and col.agg == "sum":
+            # several INEGI codes make one logical count (e.g. primary incomplete + complete): all of them must exist
+            result[prefixed] = (sum(pd.to_numeric(raw[c], errors="coerce") for c in present)
+                                if len(present) == len(col.codes) else pd.Series(float("nan"), index=raw.index))
         else:
-            result[prefixed] = pd.to_numeric(raw[raw_col], errors="coerce")
+            result[prefixed] = pd.to_numeric(raw[present[0]], errors="coerce")
 
     for col in computed_defs:
         left = SCHEMA.column_label(col.computed_from[0])
@@ -192,7 +196,16 @@ def load(
     if aoi is not None:
         result = result[result.intersects(aoi.to_crs(4326).union_all())].reset_index(drop=True)
 
-    return apply_canonical_names(result, SCHEMA)
+    result = apply_canonical_names(result, SCHEMA)
+    if level in ("ageb", "block") and len(result):
+        try:   # CONEVAL deprivation (rezago social) grade of the AGEB, 1 (very low) .. 5 (very high); blocks inherit their AGEB's grade
+            from ..coneval import deprivation_by_ageb
+
+            grade = deprivation_by_ageb(data_dir)
+            result["deprivationIndex"] = result["GEOID"].astype(str).str[:13].map(grade).to_numpy()
+        except Exception:  # noqa: BLE001 -- a failed download must not break the census load
+            pass
+    return result
 
 
 __all__ = ["load"]

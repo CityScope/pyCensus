@@ -1,0 +1,23 @@
+{
+  "description": "Unified building (cadaster) schema: every source in pycensus.cadaster returns one row per building with these columns (EPSG:4326 geometry: footprint polygon, or a point where the source has only points). Unknown values are null, never invented.",
+  "version": 1,
+  "fields": [
+    {"name": "building_id", "type": "string", "definition": "Source identifier of the building (unique within source)."},
+    {"name": "source", "type": "string", "definition": "Source key, e.g. 'es_catastro', 'us_nsi', 'gba'."},
+    {"name": "country", "type": "string", "definition": "ISO 3166-1 alpha-3 code."},
+    {"name": "footprint_m2", "type": "float", "unit": "m2", "definition": "Ground footprint area (true area, not projected)."},
+    {"name": "floors_above", "type": "float", "definition": "Floors above ground (for buildings made of parts: footprint-weighted mean of the parts)."},
+    {"name": "floors_below", "type": "float", "definition": "Floors below ground."},
+    {"name": "height_m", "type": "float", "unit": "m", "definition": "Height above ground."},
+    {"name": "built_area_m2", "type": "float", "unit": "m2", "definition": "Gross floor area above ground: the source's official floor area when it has one, else sum over parts of part footprint x floors, else footprint x height / floor_height_m (see built_area_method)."},
+    {"name": "built_area_method", "type": "category", "values": ["official", "floors_x_footprint", "height_x_footprint", "reported_floor_area", "footprint_only"], "definition": "How built_area_m2 was obtained."},
+    {"name": "use_class", "type": "category", "values": ["residential", "mixed", "commercial", "office", "industrial", "public", "education", "religious", "agricultural", "other", "unknown"], "definition": "Unified main use (see each source schema's use_map)."},
+    {"name": "use_original", "type": "string", "definition": "The source's own use / occupancy code."},
+    {"name": "dwellings", "type": "float", "definition": "Number of dwellings (housing units)."},
+    {"name": "units", "type": "float", "definition": "Number of building units (dwellings + premises) where the source counts them."},
+    {"name": "population_night", "type": "float", "definition": "Residents estimated by the source for the building (night-time), if the source has it."},
+    {"name": "population_day", "type": "float", "definition": "People in the building during the day, if the source has it."},
+    {"name": "year_built", "type": "float", "definition": "Year of construction (start of lifespan where that is what the source records)."}
+  ],
+  "floor_height_m": 3.0
+}

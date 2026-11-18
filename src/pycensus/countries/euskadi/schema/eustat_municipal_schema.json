@@ -1,0 +1,671 @@
+{
+ "country": "euskadi",
+ "source": "eustat_municipal",
+ "full_name": "Eustat municipal statistics (BDE PXWeb)",
+ "years": [
+  2021,
+  2024,
+  2025
+ ],
+ "levels": [
+  "municipality"
+ ],
+ "features": [
+  {
+   "category": "population",
+   "feature_name": "malePopulation",
+   "original_name": "PX_010154_cepv1_ep06b.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_010154_cepv1_ep06b.px"
+   ],
+   "definition": "Eustat municipal statistic 'malePopulation' (BDE table PX_010154_cepv1_ep06b.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "population",
+   "feature_name": "femalePopulation",
+   "original_name": "PX_010154_cepv1_ep06b.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_010154_cepv1_ep06b.px"
+   ],
+   "definition": "Eustat municipal statistic 'femalePopulation' (BDE table PX_010154_cepv1_ep06b.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "population",
+   "feature_name": "population0to19",
+   "original_name": "PX_010154_cepv1_ep06b.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_010154_cepv1_ep06b.px"
+   ],
+   "definition": "Eustat municipal statistic 'population0to19' (BDE table PX_010154_cepv1_ep06b.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "population",
+   "feature_name": "population20to64",
+   "original_name": "PX_010154_cepv1_ep06b.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_010154_cepv1_ep06b.px"
+   ],
+   "definition": "Eustat municipal statistic 'population20to64' (BDE table PX_010154_cepv1_ep06b.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "population",
+   "feature_name": "over65Population",
+   "original_name": "PX_010154_cepv1_ep06b.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_010154_cepv1_ep06b.px"
+   ],
+   "definition": "Eustat municipal statistic 'over65Population' (BDE table PX_010154_cepv1_ep06b.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "migration",
+   "feature_name": "foreignBornPopulation",
+   "original_name": "PX_010154_cepv1_ep16c.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_010154_cepv1_ep16c.px"
+   ],
+   "definition": "Eustat municipal statistic 'foreignBornPopulation' (BDE table PX_010154_cepv1_ep16c.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "migration",
+   "feature_name": "bornInEuskadiPopulation",
+   "original_name": "PX_010154_cepv1_ep16c.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_010154_cepv1_ep16c.px"
+   ],
+   "definition": "Eustat municipal statistic 'bornInEuskadiPopulation' (BDE table PX_010154_cepv1_ep16c.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "migration",
+   "feature_name": "bornElsewhereInSpainPopulation",
+   "original_name": "PX_010154_cepv1_ep16c.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_010154_cepv1_ep16c.px"
+   ],
+   "definition": "Eustat municipal statistic 'bornElsewhereInSpainPopulation' (BDE table PX_010154_cepv1_ep16c.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "migration",
+   "feature_name": "nationalitySpainPopulation",
+   "original_name": "PX_010154_cepv1_ep18.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_010154_cepv1_ep18.px"
+   ],
+   "definition": "Eustat municipal statistic 'nationalitySpainPopulation' (BDE table PX_010154_cepv1_ep18.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "migration",
+   "feature_name": "nationalityEasternEuropePopulation",
+   "original_name": "PX_010154_cepv1_ep18.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_010154_cepv1_ep18.px"
+   ],
+   "definition": "Eustat municipal statistic 'nationalityEasternEuropePopulation' (BDE table PX_010154_cepv1_ep18.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "migration",
+   "feature_name": "nationalityOtherEuropePopulation",
+   "original_name": "PX_010154_cepv1_ep18.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_010154_cepv1_ep18.px"
+   ],
+   "definition": "Eustat municipal statistic 'nationalityOtherEuropePopulation' (BDE table PX_010154_cepv1_ep18.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "migration",
+   "feature_name": "nationalityMaghrebPopulation",
+   "original_name": "PX_010154_cepv1_ep18.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_010154_cepv1_ep18.px"
+   ],
+   "definition": "Eustat municipal statistic 'nationalityMaghrebPopulation' (BDE table PX_010154_cepv1_ep18.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "migration",
+   "feature_name": "nationalityOtherAfricaPopulation",
+   "original_name": "PX_010154_cepv1_ep18.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_010154_cepv1_ep18.px"
+   ],
+   "definition": "Eustat municipal statistic 'nationalityOtherAfricaPopulation' (BDE table PX_010154_cepv1_ep18.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "migration",
+   "feature_name": "nationalitySouthAmericaPopulation",
+   "original_name": "PX_010154_cepv1_ep18.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_010154_cepv1_ep18.px"
+   ],
+   "definition": "Eustat municipal statistic 'nationalitySouthAmericaPopulation' (BDE table PX_010154_cepv1_ep18.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "migration",
+   "feature_name": "nationalityOtherAmericaPopulation",
+   "original_name": "PX_010154_cepv1_ep18.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_010154_cepv1_ep18.px"
+   ],
+   "definition": "Eustat municipal statistic 'nationalityOtherAmericaPopulation' (BDE table PX_010154_cepv1_ep18.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "migration",
+   "feature_name": "nationalityAsiaOceaniaPopulation",
+   "original_name": "PX_010154_cepv1_ep18.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_010154_cepv1_ep18.px"
+   ],
+   "definition": "Eustat municipal statistic 'nationalityAsiaOceaniaPopulation' (BDE table PX_010154_cepv1_ep18.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "population",
+   "feature_name": "population10plus",
+   "original_name": "PX_040606_ceme_ni03b.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_040606_ceme_ni03b.px"
+   ],
+   "definition": "Eustat municipal statistic 'population10plus' (BDE table PX_040606_ceme_ni03b.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "education",
+   "feature_name": "educationPrimaryOrLessPopulation",
+   "original_name": "PX_040606_ceme_ni03b.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_040606_ceme_ni03b.px"
+   ],
+   "definition": "Eustat municipal statistic 'educationPrimaryOrLessPopulation' (BDE table PX_040606_ceme_ni03b.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "education",
+   "feature_name": "educationSecondaryPopulation",
+   "original_name": "PX_040606_ceme_ni03b.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_040606_ceme_ni03b.px"
+   ],
+   "definition": "Eustat municipal statistic 'educationSecondaryPopulation' (BDE table PX_040606_ceme_ni03b.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "education",
+   "feature_name": "educationOtherTertiaryPopulation",
+   "original_name": "PX_040606_ceme_ni03b.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_040606_ceme_ni03b.px"
+   ],
+   "definition": "Eustat municipal statistic 'educationOtherTertiaryPopulation' (BDE table PX_040606_ceme_ni03b.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "education",
+   "feature_name": "educationUniversityPopulation",
+   "original_name": "PX_040606_ceme_ni03b.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_040606_ceme_ni03b.px"
+   ],
+   "definition": "Eustat municipal statistic 'educationUniversityPopulation' (BDE table PX_040606_ceme_ni03b.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "employment",
+   "feature_name": "population16plus",
+   "original_name": "PX_050407_cempa_empa_pa12.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_050407_cempa_empa_pa12.px"
+   ],
+   "definition": "Eustat municipal statistic 'population16plus' (BDE table PX_050407_cempa_empa_pa12.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "employment",
+   "feature_name": "laborForce",
+   "original_name": "PX_050407_cempa_empa_pa12.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_050407_cempa_empa_pa12.px"
+   ],
+   "definition": "Eustat municipal statistic 'laborForce' (BDE table PX_050407_cempa_empa_pa12.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "employment",
+   "feature_name": "employedResidents",
+   "original_name": "PX_050407_cempa_empa_pa12.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_050407_cempa_empa_pa12.px"
+   ],
+   "definition": "Eustat municipal statistic 'employedResidents' (BDE table PX_050407_cempa_empa_pa12.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "employment",
+   "feature_name": "unemployedResidents",
+   "original_name": "PX_050407_cempa_empa_pa12.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_050407_cempa_empa_pa12.px"
+   ],
+   "definition": "Eustat municipal statistic 'unemployedResidents' (BDE table PX_050407_cempa_empa_pa12.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "employment",
+   "feature_name": "inactivePopulation",
+   "original_name": "PX_050407_cempa_empa_pa12.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_050407_cempa_empa_pa12.px"
+   ],
+   "definition": "Eustat municipal statistic 'inactivePopulation' (BDE table PX_050407_cempa_empa_pa12.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "housing",
+   "feature_name": "households",
+   "original_name": "PX_122404_cemv_viv08a.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_122404_cemv_viv08a.px"
+   ],
+   "definition": "Eustat municipal statistic 'households' (BDE table PX_122404_cemv_viv08a.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "housing",
+   "feature_name": "households1Person",
+   "original_name": "PX_122404_cemv_viv08a.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_122404_cemv_viv08a.px"
+   ],
+   "definition": "Eustat municipal statistic 'households1Person' (BDE table PX_122404_cemv_viv08a.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "housing",
+   "feature_name": "households2Persons",
+   "original_name": "PX_122404_cemv_viv08a.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_122404_cemv_viv08a.px"
+   ],
+   "definition": "Eustat municipal statistic 'households2Persons' (BDE table PX_122404_cemv_viv08a.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "housing",
+   "feature_name": "households3to5Persons",
+   "original_name": "PX_122404_cemv_viv08a.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_122404_cemv_viv08a.px"
+   ],
+   "definition": "Eustat municipal statistic 'households3to5Persons' (BDE table PX_122404_cemv_viv08a.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "housing",
+   "feature_name": "households6PlusPersons",
+   "original_name": "PX_122404_cemv_viv08a.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_122404_cemv_viv08a.px"
+   ],
+   "definition": "Eustat municipal statistic 'households6PlusPersons' (BDE table PX_122404_cemv_viv08a.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "housing",
+   "feature_name": "householdSizeMean",
+   "original_name": "PX_122404_cemv_viv08a.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_122404_cemv_viv08a.px"
+   ],
+   "definition": "Eustat municipal statistic 'householdSizeMean' (BDE table PX_122404_cemv_viv08a.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "mean",
+   "unit": "",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "population"
+  },
+  {
+   "category": "housing",
+   "feature_name": "dwellingsOwned",
+   "original_name": "PX_122404_cemv_viv09a.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_122404_cemv_viv09a.px"
+   ],
+   "definition": "Eustat municipal statistic 'dwellingsOwned' (BDE table PX_122404_cemv_viv09a.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "housing",
+   "feature_name": "dwellingsRented",
+   "original_name": "PX_122404_cemv_viv09a.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_122404_cemv_viv09a.px"
+   ],
+   "definition": "Eustat municipal statistic 'dwellingsRented' (BDE table PX_122404_cemv_viv09a.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "housing",
+   "feature_name": "dwellingsOtherTenure",
+   "original_name": "PX_122404_cemv_viv09a.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_122404_cemv_viv09a.px"
+   ],
+   "definition": "Eustat municipal statistic 'dwellingsOtherTenure' (BDE table PX_122404_cemv_viv09a.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "income",
+   "feature_name": "incomePersonalMean",
+   "original_name": "PX_173402_crpf_rpf_rp11s.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_173402_crpf_rpf_rp11s.px"
+   ],
+   "definition": "Eustat municipal statistic 'incomePersonalMean' (BDE table PX_173402_crpf_rpf_rp11s.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "mean",
+   "unit": "EUR",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "population"
+  },
+  {
+   "category": "income",
+   "feature_name": "incomePersonalWorkMean",
+   "original_name": "PX_173402_crpf_rpf_rp11s.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_173402_crpf_rpf_rp11s.px"
+   ],
+   "definition": "Eustat municipal statistic 'incomePersonalWorkMean' (BDE table PX_173402_crpf_rpf_rp11s.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "mean",
+   "unit": "EUR",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "population"
+  },
+  {
+   "category": "income",
+   "feature_name": "incomePersonalDisposableMean",
+   "original_name": "PX_173402_crpf_rpf_rp11s.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_173402_crpf_rpf_rp11s.px"
+   ],
+   "definition": "Eustat municipal statistic 'incomePersonalDisposableMean' (BDE table PX_173402_crpf_rpf_rp11s.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "mean",
+   "unit": "EUR",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "population"
+  },
+  {
+   "category": "income",
+   "feature_name": "incomeFamilyMean",
+   "original_name": "PX_173402_crpf_rpf_rf18s.px",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "PX_173402_crpf_rpf_rf18s.px"
+   ],
+   "definition": "Eustat municipal statistic 'incomeFamilyMean' (BDE table PX_173402_crpf_rpf_rf18s.px, latest vintage: age/sex/birthplace/nationality 2025-01-01, education Census 2021, activity 2025, households & tenure 2024, income latest year).",
+   "type": "mean",
+   "unit": "EUR",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "population"
+  },
+  {
+   "category": "migration",
+   "feature_name": "foreignEU27Population",
+   "original_name": "foreignEU27Population",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "foreignEU27Population"
+   ],
+   "definition": "Residents with the nationality of another EU27 country. (Eustat, by census section, 2025-01-01.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  },
+  {
+   "category": "migration",
+   "feature_name": "foreignOtherPopulation",
+   "original_name": "foreignOtherPopulation",
+   "country": "euskadi",
+   "source": "eustat_municipal",
+   "codes": [
+    "foreignOtherPopulation"
+   ],
+   "definition": "Residents with a non-EU27 foreign nationality. (Eustat, by census section, 2025-01-01.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population"
+  }
+ ]
+}

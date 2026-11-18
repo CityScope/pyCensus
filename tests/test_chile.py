@@ -182,9 +182,8 @@ class TestLoader:
 
         cached = gpd.read_parquet(cache_file)
         assert cached.crs is not None
-        # `apply_canonical_names` runs before the cache is written, so
-        # the cached file already has bare canonical names too.
-        assert "population" in cached.columns
+        # the cache keeps the source's own (prefixed) names; `load` applies the canonical names afterwards
+        assert "ine_cl_population" in cached.columns
         assert len(cached) == 1
 
     def test_load_second_call_does_not_refetch(self, monkeypatch, tmp_path):

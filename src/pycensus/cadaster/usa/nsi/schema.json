@@ -1,0 +1,24 @@
+{
+  "source": "us_nsi",
+  "country": "USA",
+  "name": "USACE National Structure Inventory (NSI) 2022, one point per structure",
+  "url": "https://nsi.sec.usace.army.mil/nsiapi/structures?fips=<county FIPS>",
+  "license": "Public (US federal)",
+  "coverage": "United States (all structures; footprints from Bing / USA Structures)",
+  "api_key": false,
+  "geometry": "point",
+  "fields": {
+    "building_id": "bid (fd_id when missing)",
+    "footprint_m2": "ftprntsqft x 0.092903",
+    "floors_above": "num_story",
+    "height_m": "bldheight (m)",
+    "built_area_m2": "sqft x 0.092903 (reported total floor area)",
+    "use_original": "occtype",
+    "dwellings": "resunits",
+    "population_night": "pop2amu65 + pop2amo65",
+    "population_day": "pop2pmu65 + pop2pmo65",
+    "year_built": "med_yr_blt"
+  },
+  "use_map": {"RES4": "commercial", "RES6": "public", "RES": "residential", "COM4": "office", "COM6": "public", "COM7": "public", "COM": "commercial",
+              "IND": "industrial", "AGR": "agricultural", "REL": "religious", "GOV": "public", "EDU": "education"}
+}

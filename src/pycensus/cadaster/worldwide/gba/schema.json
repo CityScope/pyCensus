@@ -1,0 +1,12 @@
+{
+  "source": "gba",
+  "country": "*",
+  "name": "GlobalBuildingAtlas LoD1 (Zhu et al. 2025, ESSD 17, 6647): footprints with heights, worldwide",
+  "url": "https://huggingface.co/datasets/zhu-xlab/GBA.LoD1",
+  "license": "Polygons from OSM / Microsoft: ODbL; other polygons and heights: CC BY-NC 4.0",
+  "coverage": "worldwide",
+  "api_key": false,
+  "fields": {"building_id": "source + id + region", "footprint_m2": "footprint area", "height_m": "LoD1 height (filled with the res-8 median where missing)",
+             "built_area_m2": "footprint x max(height / 3, 1)"},
+  "use_map": {}
+}

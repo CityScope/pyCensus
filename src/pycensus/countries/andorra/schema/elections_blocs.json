@@ -1,0 +1,113 @@
+{
+ "_doc": "Key = pycensus.countries.andorra.elections.loader.norm(list name) (ascii upper); Comunals keys are '<parish code>|<list>'. Comunals lists are local coalitions that cross party lines: bloc is a judgement, all uncertain.",
+ "national_2023": {
+  "default": "other",
+  "parties": {
+   "LIBERALS D'ANDORRA": {
+    "bloc": "right",
+    "uncertain": false,
+    "note": "Liberal party (PLA), centre-right"
+   },
+   "CONCORDIA": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Centrist/social-liberal (ex-PS dissidents + Christian-democrat); many sources centre-right, kept other"
+   },
+   "DEMOCRATES + CIUTADANS COMPROMESOS + ACCIO COMUNAL D'ORDINO + UN": {
+    "bloc": "right",
+    "uncertain": true,
+    "note": "Demòcrates per Andorra (liberal-conservative, in government) coalition"
+   },
+   "ACCIO": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Acció, new centrist/liberal list; ideology unclear"
+   },
+   "ANDORRA ENDAVANT": {
+    "bloc": "left",
+    "uncertain": true,
+    "note": "Centre-left/progressive-green list"
+   },
+   "PS SDP +": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": "Partit Socialdemòcrata + Progressistes, social democrats"
+   }
+  }
+ },
+ "municipal_2023": {
+  "default": "other",
+  "parties": {
+   "AD-01|DEMOCRATES + INDEPENDENTS": {
+    "bloc": "right",
+    "uncertain": true,
+    "note": "Demòcrates-led"
+   },
+   "AD-02|UNITS PER AL PROGRES+DEMOCRATES+INDEPENDENTS": {
+    "bloc": "right",
+    "uncertain": true,
+    "note": "Demòcrates-led coalition"
+   },
+   "AD-02|AVANCEM": {
+    "bloc": "left",
+    "uncertain": true,
+    "note": "PS/Encampada-linked list"
+   },
+   "AD-03|ACCIO COMUNAL D'ORDINO+DEMOCRATES+INDEPENDENTS+PROGRESSISTES SDP": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Cross-party local list (Demòcrates + SDP)"
+   },
+   "AD-03|UNITS PER ORDINO": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Local list"
+   },
+   "AD-04|CIUTADANS COMPROMESOS + DA + INDEPENDENTS": {
+    "bloc": "right",
+    "uncertain": true,
+    "note": "Ciutadans Compromesos + Demòcrates"
+   },
+   "AD-04|AMB SENY": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Local list"
+   },
+   "AD-05|ENCLAR": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Local list, ideology unclear"
+   },
+   "AD-05|DEMOCRATES + PROGRESSISTES SDP + INDEPENDENTS": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Cross-party (Demòcrates + SDP)"
+   },
+   "AD-06|DESPERTA LAUREDIA": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Local list (allied with Concordia nationally)"
+   },
+   "AD-06|UNIO LAUREDIANA + DEMOCRATES + ACCIO + INDEPENDENTS": {
+    "bloc": "right",
+    "uncertain": true,
+    "note": "Demòcrates + Acció local coalition"
+   },
+   "AD-06|PER SANT JULIA": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Local list"
+   },
+   "AD-07|CONSENS PER ESCALDES-ENGORDANY": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Local list"
+   },
+   "AD-07|DEMOCRATES + ACCIO + SDP + INDEPENDENTS": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Cross-party (Demòcrates + Acció + SDP)"
+   }
+  }
+ }
+}

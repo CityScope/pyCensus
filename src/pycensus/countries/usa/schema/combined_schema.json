@@ -150,6 +150,7 @@
     {
       "category": "population",
       "feature_name": "population",
+      "original_name": "B01003_001",
       "country": "usa",
       "source": "acs1",
       "codes": [
@@ -165,6 +166,7 @@
     {
       "category": "population",
       "feature_name": "households",
+      "original_name": "B25044_001",
       "country": "usa",
       "source": "acs1",
       "codes": [
@@ -180,6 +182,8 @@
     },
     {
       "feature_name": "householdsOwner",
+      "original_name": "B25003_002",
+      "definition": "Number of households occupied by their owner.",
       "country": "usa",
       "source": "acs1",
       "codes": [
@@ -193,6 +197,8 @@
     },
     {
       "feature_name": "householdsRenter",
+      "original_name": "B25003_003",
+      "definition": "Number of households occupied by a renter.",
       "country": "usa",
       "source": "acs1",
       "codes": [
@@ -206,6 +212,8 @@
     },
     {
       "feature_name": "householdSizeMean",
+      "original_name": "B25010_001",
+      "definition": "Average number of people per household.",
       "country": "usa",
       "source": "acs1",
       "codes": [
@@ -220,6 +228,8 @@
     },
     {
       "feature_name": "population16plus",
+      "original_name": "B23025_001",
+      "definition": "Number of residents aged 16 years or older.",
       "country": "usa",
       "source": "acs1",
       "codes": [
@@ -233,6 +243,8 @@
     },
     {
       "feature_name": "incomeMedianHousehold",
+      "original_name": "B19013_001",
+      "definition": "Median household income in the past 12 months (inflation-adjusted dollars).",
       "country": "usa",
       "source": "acs1",
       "codes": [
@@ -246,6 +258,8 @@
     },
     {
       "feature_name": "incomeMeanCapita",
+      "original_name": "B19301_001",
+      "definition": "Mean annual per-capita income.",
       "country": "usa",
       "source": "acs1",
       "codes": [
@@ -260,6 +274,7 @@
     {
       "category": "income",
       "feature_name": "povertyPopulation",
+      "original_name": "C17002_001",
       "country": "usa",
       "source": "acs1",
       "codes": [
@@ -275,6 +290,8 @@
     },
     {
       "feature_name": "povertyBelow100",
+      "original_name": "C17002_002, C17002_003",
+      "definition": "Number of people with income below 100% of the poverty threshold.",
       "country": "usa",
       "source": "acs1",
       "codes": [
@@ -289,6 +306,8 @@
     },
     {
       "feature_name": "laborForce",
+      "original_name": "B23025_003",
+      "definition": "Number of residents aged 16+ who are in the civilian labor force (employed or unemployed and seeking work).",
       "country": "usa",
       "source": "acs1",
       "codes": [
@@ -303,6 +322,8 @@
     },
     {
       "feature_name": "unemployed",
+      "original_name": "B23025_005",
+      "definition": "Civilian labor force aged 16 and over that is unemployed.",
       "country": "usa",
       "source": "acs1",
       "codes": [
@@ -316,6 +337,7 @@
     },
     {
       "feature_name": "employedResidents",
+      "original_name": "B23025_002",
       "country": "usa",
       "source": "acs1",
       "codes": [
@@ -331,6 +353,8 @@
     },
     {
       "feature_name": "workers",
+      "original_name": "B08301_001",
+      "definition": "Number of employed residents aged 16+ who commute to work (workers who did not work from home).",
       "country": "usa",
       "source": "acs1",
       "codes": [
@@ -345,6 +369,8 @@
     },
     {
       "feature_name": "workersCar",
+      "original_name": "B08301_002",
+      "definition": "Workers aged 16 and over who commute by car, truck or van.",
       "country": "usa",
       "source": "acs1",
       "codes": [
@@ -358,6 +384,8 @@
     },
     {
       "feature_name": "workersTransit",
+      "original_name": "B08301_010",
+      "definition": "Workers aged 16 and over who commute by public transportation (excluding taxicab).",
       "country": "usa",
       "source": "acs1",
       "codes": [
@@ -371,6 +399,8 @@
     },
     {
       "feature_name": "workersWalk",
+      "original_name": "B08301_019",
+      "definition": "Workers aged 16 and over who commute on foot.",
       "country": "usa",
       "source": "acs1",
       "codes": [
@@ -384,6 +414,8 @@
     },
     {
       "feature_name": "workersBike",
+      "original_name": "B08301_018",
+      "definition": "Workers aged 16 and over who commute by bicycle.",
       "country": "usa",
       "source": "acs1",
       "codes": [
@@ -397,6 +429,8 @@
     },
     {
       "feature_name": "commuteTimeMean",
+      "original_name": "B08303_001",
+      "definition": "Mean travel time to work, in minutes, for workers who do not work from home.",
       "country": "usa",
       "source": "acs1",
       "codes": [
@@ -410,6 +444,8 @@
     },
     {
       "feature_name": "vehiclesHouseholds0",
+      "original_name": "B25044_003, B25044_010",
+      "definition": "Number of households with no vehicles available.",
       "country": "usa",
       "source": "acs1",
       "codes": [
@@ -424,6 +460,7 @@
     },
     {
       "feature_name": "carHouseholds",
+      "original_name": "B25044_003, B25044_004, B25044_005, B25044_006, B25044_007, B25044_008, B25044_009, B25044_010",
       "country": "usa",
       "source": "acs1",
       "codes": [
@@ -446,6 +483,7 @@
     },
     {
       "feature_name": "twoCarHouseholds",
+      "original_name": "B25044_004, B25044_005, B25044_006, B25044_007, B25044_008, B25044_009, B25044_010",
       "country": "usa",
       "source": "acs1",
       "codes": [
@@ -467,6 +505,8 @@
     },
     {
       "feature_name": "rentBurdenPopulation",
+      "original_name": "B25070_001",
+      "definition": "Number of renter-occupied housing units for which gross rent as a percentage of household income is computed.",
       "country": "usa",
       "source": "acs1",
       "codes": [
@@ -481,6 +521,8 @@
     },
     {
       "feature_name": "rentBurdened",
+      "original_name": "B25070_007, B25070_008, B25070_009, B25070_010",
+      "definition": "Number of renter households paying 35% or more of household income toward gross rent.",
       "country": "usa",
       "source": "acs1",
       "codes": [
@@ -497,6 +539,8 @@
     },
     {
       "feature_name": "rentMedianGross",
+      "original_name": "B25064_001",
+      "definition": "Median gross rent (contract rent plus utilities) of renter-occupied housing units.",
       "country": "usa",
       "source": "acs1",
       "codes": [
@@ -510,6 +554,8 @@
     },
     {
       "feature_name": "population25plus",
+      "original_name": "B15003_001",
+      "definition": "Population aged 25 years or older (denominator for educational attainment breakdowns).",
       "country": "usa",
       "source": "acs1",
       "codes": [
@@ -523,6 +569,8 @@
     },
     {
       "feature_name": "educationLessThanHs",
+      "original_name": "B15003_002, B15003_003, B15003_004, B15003_005, B15003_006, B15003_007, B15003_008, B15003_009, B15003_010, B15003_011, B15003_012, B15003_013, B15003_014, B15003_015, B15003_016",
+      "definition": "Number of adults 25+ whose highest completed education is below a high school diploma.",
       "country": "usa",
       "source": "acs1",
       "codes": [
@@ -550,6 +598,7 @@
     },
     {
       "feature_name": "educationHighSchool",
+      "original_name": "B15003_017, B15003_018",
       "country": "usa",
       "source": "acs1",
       "codes": [
@@ -565,6 +614,7 @@
     },
     {
       "feature_name": "educationSomeCollege",
+      "original_name": "B15003_019, B15003_020, B15003_021",
       "country": "usa",
       "source": "acs1",
       "codes": [
@@ -581,6 +631,8 @@
     },
     {
       "feature_name": "educationBachelorsPlus",
+      "original_name": "B15003_022, B15003_023, B15003_024, B15003_025",
+      "definition": "Number of adults 25+ whose highest completed education is a bachelor's degree or higher.",
       "country": "usa",
       "source": "acs1",
       "codes": [
@@ -598,6 +650,7 @@
     {
       "category": "population",
       "feature_name": "medianAge",
+      "original_name": "B01002_001",
       "country": "usa",
       "source": "acs1",
       "codes": [
@@ -613,6 +666,7 @@
     {
       "category": "migration",
       "feature_name": "foreignBornPopulation",
+      "original_name": "B05002_013",
       "country": "usa",
       "source": "acs1",
       "codes": [
@@ -629,6 +683,7 @@
     {
       "category": "transport",
       "feature_name": "cars",
+      "original_name": "B25044_001",
       "country": "usa",
       "source": "acs1",
       "codes": [
@@ -645,6 +700,7 @@
     {
       "category": "transport",
       "feature_name": "bicycleHouseholds",
+      "original_name": "B08006_007",
       "country": "usa",
       "source": "acs1",
       "codes": [
@@ -661,6 +717,7 @@
     {
       "category": "transport",
       "feature_name": "motorcycleHouseholds",
+      "original_name": "B25044_002",
       "country": "usa",
       "source": "acs1",
       "codes": [
@@ -677,6 +734,7 @@
     {
       "category": "population",
       "feature_name": "population",
+      "original_name": "B01003_001",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -692,6 +750,7 @@
     {
       "category": "population",
       "feature_name": "households",
+      "original_name": "B25044_001",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -708,6 +767,7 @@
     {
       "category": "population",
       "feature_name": "malePopulation",
+      "original_name": "B01003_026",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -724,6 +784,7 @@
     {
       "category": "population",
       "feature_name": "femalePopulation",
+      "original_name": "B01003_027",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -740,6 +801,7 @@
     {
       "category": "population",
       "feature_name": "under18Population",
+      "original_name": "B09001_002",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -756,6 +818,7 @@
     {
       "category": "population",
       "feature_name": "age18to64Population",
+      "original_name": "B09001_003, B09001_004, B09001_005, B09001_006, B09001_007, B09001_008, B09001_009, B09001_010, B09001_011, B09001_012, B09001_013, B09001_014, B09001_015",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -773,7 +836,7 @@
         "B09001_014",
         "B09001_015"
       ],
-      "definition": "",
+      "definition": "People aged 18 to 64.",
       "type": "count",
       "unit": "",
       "resampling_up": "sum",
@@ -784,6 +847,7 @@
     {
       "category": "population",
       "feature_name": "over65Population",
+      "original_name": "B09001_016, B09001_017, B09001_018, B09001_019, B09001_020, B09001_021, B09001_022, B09001_023, B09001_024, B09001_025, B09001_026",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -810,12 +874,13 @@
     {
       "category": "population",
       "feature_name": "whitePopulation",
+      "original_name": "B02001_002",
       "country": "usa",
       "source": "acs5",
       "codes": [
         "B02001_002"
       ],
-      "definition": "",
+      "definition": "People identifying as White alone.",
       "type": "count",
       "unit": "",
       "resampling_up": "sum",
@@ -826,12 +891,13 @@
     {
       "category": "population",
       "feature_name": "blackPopulation",
+      "original_name": "B02001_003",
       "country": "usa",
       "source": "acs5",
       "codes": [
         "B02001_003"
       ],
-      "definition": "",
+      "definition": "People identifying as Black or African American alone.",
       "type": "count",
       "unit": "",
       "resampling_up": "sum",
@@ -842,12 +908,13 @@
     {
       "category": "population",
       "feature_name": "nativePopulation",
+      "original_name": "B02001_004",
       "country": "usa",
       "source": "acs5",
       "codes": [
         "B02001_004"
       ],
-      "definition": "",
+      "definition": "People identifying as American Indian and Alaska Native alone.",
       "type": "count",
       "unit": "",
       "resampling_up": "sum",
@@ -858,12 +925,13 @@
     {
       "category": "population",
       "feature_name": "asianPopulation",
+      "original_name": "B02001_005",
       "country": "usa",
       "source": "acs5",
       "codes": [
         "B02001_005"
       ],
-      "definition": "",
+      "definition": "People identifying as Asian alone.",
       "type": "count",
       "unit": "",
       "resampling_up": "sum",
@@ -874,6 +942,7 @@
     {
       "category": "population",
       "feature_name": "otherRacePopulation",
+      "original_name": "B02001_006, B02001_007, B02001_008",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -881,7 +950,7 @@
         "B02001_007",
         "B02001_008"
       ],
-      "definition": "",
+      "definition": "People identifying as Native Hawaiian and Other Pacific Islander alone, some other race alone, or two or more races.",
       "type": "count",
       "unit": "",
       "resampling_up": "sum",
@@ -892,12 +961,13 @@
     {
       "category": "population",
       "feature_name": "hispanicPopulation",
+      "original_name": "B03002_012",
       "country": "usa",
       "source": "acs5",
       "codes": [
         "B03002_012"
       ],
-      "definition": "",
+      "definition": "People of Hispanic or Latino origin (of any race).",
       "type": "count",
       "unit": "",
       "resampling_up": "sum",
@@ -908,6 +978,7 @@
     {
       "category": "population",
       "feature_name": "nonwhitePopulation",
+      "original_name": "computed from population, whitePopulation",
       "country": "usa",
       "source": "acs5",
       "codes": [],
@@ -925,6 +996,8 @@
     },
     {
       "feature_name": "householdsOwner",
+      "original_name": "B25003_002",
+      "definition": "Number of households occupied by their owner.",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -938,6 +1011,8 @@
     },
     {
       "feature_name": "householdsRenter",
+      "original_name": "B25003_003",
+      "definition": "Number of households occupied by a renter.",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -951,6 +1026,8 @@
     },
     {
       "feature_name": "householdSizeMean",
+      "original_name": "B25010_001",
+      "definition": "Average number of people per household.",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -965,6 +1042,8 @@
     },
     {
       "feature_name": "population16plus",
+      "original_name": "B23025_001",
+      "definition": "Number of residents aged 16 years or older.",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -978,6 +1057,8 @@
     },
     {
       "feature_name": "incomeMedianHousehold",
+      "original_name": "B19013_001",
+      "definition": "Median household income in the past 12 months (inflation-adjusted dollars).",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -991,6 +1072,8 @@
     },
     {
       "feature_name": "incomeMeanCapita",
+      "original_name": "B19301_001",
+      "definition": "Mean annual per-capita income.",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -1005,6 +1088,7 @@
     {
       "category": "income",
       "feature_name": "povertyPopulation",
+      "original_name": "C17002_001",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -1020,6 +1104,8 @@
     },
     {
       "feature_name": "povertyBelow100",
+      "original_name": "C17002_002, C17002_003",
+      "definition": "Number of people with income below 100% of the poverty threshold.",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -1034,6 +1120,8 @@
     },
     {
       "feature_name": "laborForce",
+      "original_name": "B23025_003",
+      "definition": "Number of residents aged 16+ who are in the civilian labor force (employed or unemployed and seeking work).",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -1048,6 +1136,8 @@
     },
     {
       "feature_name": "unemployed",
+      "original_name": "B23025_005",
+      "definition": "Civilian labor force aged 16 and over that is unemployed.",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -1061,6 +1151,7 @@
     },
     {
       "feature_name": "employedResidents",
+      "original_name": "B23025_002",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -1076,6 +1167,8 @@
     },
     {
       "feature_name": "workers",
+      "original_name": "B08301_001",
+      "definition": "Number of employed residents aged 16+ who commute to work (workers who did not work from home).",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -1090,6 +1183,8 @@
     },
     {
       "feature_name": "workersCar",
+      "original_name": "B08301_002",
+      "definition": "Workers aged 16 and over who commute by car, truck or van.",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -1103,6 +1198,8 @@
     },
     {
       "feature_name": "workersTransit",
+      "original_name": "B08301_010",
+      "definition": "Workers aged 16 and over who commute by public transportation (excluding taxicab).",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -1116,6 +1213,8 @@
     },
     {
       "feature_name": "workersWalk",
+      "original_name": "B08301_019",
+      "definition": "Workers aged 16 and over who commute on foot.",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -1129,6 +1228,8 @@
     },
     {
       "feature_name": "workersBike",
+      "original_name": "B08301_018",
+      "definition": "Workers aged 16 and over who commute by bicycle.",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -1142,6 +1243,8 @@
     },
     {
       "feature_name": "commuteTimeMean",
+      "original_name": "B08303_001",
+      "definition": "Mean travel time to work, in minutes, for workers who do not work from home.",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -1155,6 +1258,8 @@
     },
     {
       "feature_name": "vehiclesHouseholds0",
+      "original_name": "B25044_003, B25044_010",
+      "definition": "Number of households with no vehicles available.",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -1169,6 +1274,7 @@
     },
     {
       "feature_name": "carHouseholds",
+      "original_name": "B25044_003, B25044_004, B25044_005, B25044_006, B25044_007, B25044_008, B25044_009, B25044_010",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -1191,6 +1297,7 @@
     },
     {
       "feature_name": "twoCarHouseholds",
+      "original_name": "B25044_004, B25044_005, B25044_006, B25044_007, B25044_008, B25044_009, B25044_010",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -1212,6 +1319,8 @@
     },
     {
       "feature_name": "rentBurdenPopulation",
+      "original_name": "B25070_001",
+      "definition": "Number of renter-occupied housing units for which gross rent as a percentage of household income is computed.",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -1226,6 +1335,8 @@
     },
     {
       "feature_name": "rentBurdened",
+      "original_name": "B25070_007, B25070_008, B25070_009, B25070_010",
+      "definition": "Number of renter households paying 35% or more of household income toward gross rent.",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -1242,6 +1353,8 @@
     },
     {
       "feature_name": "rentMedianGross",
+      "original_name": "B25064_001",
+      "definition": "Median gross rent (contract rent plus utilities) of renter-occupied housing units.",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -1255,6 +1368,8 @@
     },
     {
       "feature_name": "population25plus",
+      "original_name": "B15003_001",
+      "definition": "Population aged 25 years or older (denominator for educational attainment breakdowns).",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -1268,6 +1383,8 @@
     },
     {
       "feature_name": "educationLessThanHs",
+      "original_name": "B15003_002, B15003_003, B15003_004, B15003_005, B15003_006, B15003_007, B15003_008, B15003_009, B15003_010, B15003_011, B15003_012, B15003_013, B15003_014, B15003_015, B15003_016",
+      "definition": "Number of adults 25+ whose highest completed education is below a high school diploma.",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -1295,6 +1412,7 @@
     },
     {
       "feature_name": "educationHighSchool",
+      "original_name": "B15003_017, B15003_018",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -1310,6 +1428,7 @@
     },
     {
       "feature_name": "educationSomeCollege",
+      "original_name": "B15003_019, B15003_020, B15003_021",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -1326,6 +1445,8 @@
     },
     {
       "feature_name": "educationBachelorsPlus",
+      "original_name": "B15003_022, B15003_023, B15003_024, B15003_025",
+      "definition": "Number of adults 25+ whose highest completed education is a bachelor's degree or higher.",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -1343,6 +1464,7 @@
     {
       "category": "population",
       "feature_name": "medianAge",
+      "original_name": "B01002_001",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -1358,6 +1480,7 @@
     {
       "category": "migration",
       "feature_name": "foreignBornPopulation",
+      "original_name": "B05002_013",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -1374,6 +1497,7 @@
     {
       "category": "transport",
       "feature_name": "cars",
+      "original_name": "B25044_001",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -1390,6 +1514,7 @@
     {
       "category": "transport",
       "feature_name": "bicycleHouseholds",
+      "original_name": "B08006_007",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -1406,6 +1531,7 @@
     {
       "category": "transport",
       "feature_name": "motorcycleHouseholds",
+      "original_name": "B25044_002",
       "country": "usa",
       "source": "acs5",
       "codes": [
@@ -1422,6 +1548,7 @@
     {
       "category": "population",
       "feature_name": "population",
+      "original_name": "P1_001N",
       "country": "usa",
       "source": "dhc",
       "codes": [
@@ -1438,12 +1565,13 @@
     {
       "category": "population",
       "feature_name": "housingUnits",
+      "original_name": "H1_001N",
       "country": "usa",
       "source": "dhc",
       "codes": [
         "H1_001N"
       ],
-      "definition": "",
+      "definition": "Total number of housing units (occupied and vacant) in the geographic area.",
       "type": "count",
       "unit": "",
       "resampling_up": "relative",
@@ -1455,12 +1583,13 @@
     {
       "category": "population",
       "feature_name": "malePopulation",
+      "original_name": "P12_002N",
       "country": "usa",
       "source": "dhc",
       "codes": [
         "P12_002N"
       ],
-      "definition": "",
+      "definition": "Number of residents who are male.",
       "type": "count",
       "unit": "",
       "resampling_up": "relative",
@@ -1472,12 +1601,13 @@
     {
       "category": "population",
       "feature_name": "femalePopulation",
+      "original_name": "P12_026N",
       "country": "usa",
       "source": "dhc",
       "codes": [
         "P12_026N"
       ],
-      "definition": "",
+      "definition": "Number of residents who are female.",
       "type": "count",
       "unit": "",
       "resampling_up": "relative",
@@ -1489,6 +1619,7 @@
     {
       "category": "population",
       "feature_name": "under18Population",
+      "original_name": "P12_003N, P12_004N, P12_005N, P12_006N, P12_027N, P12_028N, P12_029N, P12_030N",
       "country": "usa",
       "source": "dhc",
       "codes": [
@@ -1501,7 +1632,7 @@
         "P12_029N",
         "P12_030N"
       ],
-      "definition": "",
+      "definition": "Number of residents younger than 18 years old.",
       "type": "count",
       "unit": "",
       "resampling_up": "relative",
@@ -1513,6 +1644,7 @@
     {
       "category": "population",
       "feature_name": "age18to64Population",
+      "original_name": "P12_007N, P12_008N, P12_009N, P12_010N, P12_011N, P12_012N, P12_013N, P12_014N, P12_015N, P12_016N, P12_017N, P12_018N, P12_019N, P12_031N, P12_032N, P12_033N, P12_034N, P12_035N, P12_036N, P12_037N, P12_038N, P12_039N, P12_040N, P12_041N, P12_042N, P12_043N",
       "country": "usa",
       "source": "dhc",
       "codes": [
@@ -1543,7 +1675,7 @@
         "P12_042N",
         "P12_043N"
       ],
-      "definition": "",
+      "definition": "Number of residents aged 18 to 64 years.",
       "type": "count",
       "unit": "",
       "resampling_up": "relative",
@@ -1554,6 +1686,7 @@
     {
       "category": "population",
       "feature_name": "over65Population",
+      "original_name": "P12_020N, P12_021N, P12_022N, P12_023N, P12_024N, P12_025N, P12_044N, P12_045N, P12_046N, P12_047N, P12_048N, P12_049N",
       "country": "usa",
       "source": "dhc",
       "codes": [
@@ -1570,7 +1703,7 @@
         "P12_048N",
         "P12_049N"
       ],
-      "definition": "",
+      "definition": "Number of residents aged 65 years or older.",
       "type": "count",
       "unit": "",
       "resampling_up": "relative",
@@ -1582,12 +1715,13 @@
     {
       "category": "population",
       "feature_name": "whitePopulation",
+      "original_name": "P3_002N",
       "country": "usa",
       "source": "dhc",
       "codes": [
         "P3_002N"
       ],
-      "definition": "",
+      "definition": "Number of residents identifying as White alone (not Hispanic or Latino origin questions notwithstanding).",
       "type": "count",
       "unit": "",
       "resampling_up": "relative",
@@ -1598,12 +1732,13 @@
     {
       "category": "population",
       "feature_name": "blackPopulation",
+      "original_name": "P3_003N",
       "country": "usa",
       "source": "dhc",
       "codes": [
         "P3_003N"
       ],
-      "definition": "",
+      "definition": "Number of residents identifying as Black or African American alone.",
       "type": "count",
       "unit": "",
       "resampling_up": "relative",
@@ -1614,12 +1749,13 @@
     {
       "category": "population",
       "feature_name": "nativePopulation",
+      "original_name": "P3_004N",
       "country": "usa",
       "source": "dhc",
       "codes": [
         "P3_004N"
       ],
-      "definition": "",
+      "definition": "Number of residents identifying as American Indian or Alaska Native alone.",
       "type": "count",
       "unit": "",
       "resampling_up": "relative",
@@ -1630,12 +1766,13 @@
     {
       "category": "population",
       "feature_name": "asianPopulation",
+      "original_name": "P3_005N",
       "country": "usa",
       "source": "dhc",
       "codes": [
         "P3_005N"
       ],
-      "definition": "",
+      "definition": "Number of residents identifying as Asian alone.",
       "type": "count",
       "unit": "",
       "resampling_up": "relative",
@@ -1646,6 +1783,7 @@
     {
       "category": "population",
       "feature_name": "otherRacePopulation",
+      "original_name": "P3_006N, P3_007N, P3_008N",
       "country": "usa",
       "source": "dhc",
       "codes": [
@@ -1653,7 +1791,7 @@
         "P3_007N",
         "P3_008N"
       ],
-      "definition": "",
+      "definition": "Number of residents identifying as Native Hawaiian/Other Pacific Islander alone, some other race alone, or two or more races.",
       "type": "count",
       "unit": "",
       "resampling_up": "relative",
@@ -1664,12 +1802,13 @@
     {
       "category": "population",
       "feature_name": "hispanicPopulation",
+      "original_name": "P5_010N",
       "country": "usa",
       "source": "dhc",
       "codes": [
         "P5_010N"
       ],
-      "definition": "",
+      "definition": "Number of residents of Hispanic or Latino origin (of any race).",
       "type": "count",
       "unit": "",
       "resampling_up": "relative",
@@ -1680,6 +1819,7 @@
     {
       "category": "population",
       "feature_name": "medianAge",
+      "original_name": "P15_001N",
       "country": "usa",
       "source": "dhc",
       "codes": [
@@ -1696,6 +1836,7 @@
     {
       "category": "migration",
       "feature_name": "foreignBornPopulation",
+      "original_name": "P14_010N",
       "country": "usa",
       "source": "dhc",
       "codes": [
@@ -1713,6 +1854,7 @@
     {
       "category": "population",
       "feature_name": "nonwhitePopulation",
+      "original_name": "computed from population, whitePopulation",
       "country": "usa",
       "source": "dhc",
       "codes": [],
@@ -1731,6 +1873,8 @@
     },
     {
       "feature_name": "jobsTotal",
+      "original_name": "C000",
+      "definition": "Total number of jobs.",
       "country": "usa",
       "source": "lodes_wac",
       "codes": [
@@ -1743,6 +1887,8 @@
     },
     {
       "feature_name": "jobsIncomeLow",
+      "original_name": "CE01",
+      "definition": "Number of jobs with earnings $1,250/month or less.",
       "country": "usa",
       "source": "lodes_wac",
       "codes": [
@@ -1755,6 +1901,8 @@
     },
     {
       "feature_name": "jobsIncomeMid",
+      "original_name": "CE02",
+      "definition": "Number of jobs with earnings $1,251/month to $3,333/month.",
       "country": "usa",
       "source": "lodes_wac",
       "codes": [
@@ -1767,6 +1915,8 @@
     },
     {
       "feature_name": "jobsIncomeHigh",
+      "original_name": "CE03",
+      "definition": "Number of jobs with earnings greater than $3,333/month.",
       "country": "usa",
       "source": "lodes_wac",
       "codes": [
@@ -1779,6 +1929,8 @@
     },
     {
       "feature_name": "jobsAgeYoung",
+      "original_name": "CA01",
+      "definition": "Number of jobs held by workers aged 29 or younger.",
       "country": "usa",
       "source": "lodes_wac",
       "codes": [
@@ -1791,6 +1943,8 @@
     },
     {
       "feature_name": "jobsAgePrime",
+      "original_name": "CA02",
+      "definition": "Number of jobs held by workers aged 30 to 54.",
       "country": "usa",
       "source": "lodes_wac",
       "codes": [
@@ -1803,6 +1957,8 @@
     },
     {
       "feature_name": "jobsAgeOlder",
+      "original_name": "CA03",
+      "definition": "Number of jobs held by workers aged 55 or older.",
       "country": "usa",
       "source": "lodes_wac",
       "codes": [
@@ -1815,6 +1971,7 @@
     },
     {
       "feature_name": "populationAndJobs",
+      "original_name": "computed from population, workplaceJobs",
       "country": "usa",
       "source": "computed",
       "codes": [],

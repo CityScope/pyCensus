@@ -1,0 +1,21 @@
+{
+  "source": "es_navarra",
+  "country": "ESP",
+  "name": "Gobierno de Navarra, Registro de la Riqueza Territorial, INSPIRE Buildings (ATOM, per municipality)",
+  "url": "https://filescartografia.navarra.es/2_CARTOGRAFIA_TEMATICA/2_7_CATASTRO/2_7_3_INSPIRE_ATOM/2_7_3_2_BU/Buildings_DatasetATOM_Navarra.xml",
+  "license": "Open data of the foral administration (INSPIRE)",
+  "coverage": "Navarra (foral cadaster: not in the state Catastro)",
+  "api_key": false,
+  "use_map": {},
+  "fields": {
+    "building_id": "localId",
+    "footprint_m2": "area of the building footprint polygon",
+    "floors_above": "numberOfFloorsAboveGround (0 = unknown)",
+    "height_m": "value (uom m)",
+    "built_area_m2": "footprint x floors_above; footprint x height / 3 where the floors are missing",
+    "dwellings": "numberOfDwellings",
+    "units": "numberOfBuildingUnits",
+    "year_built": "date of construction (year)",
+    "use_class": "residential where numberOfDwellings > 0, else unknown (no use attribute)"
+  }
+}

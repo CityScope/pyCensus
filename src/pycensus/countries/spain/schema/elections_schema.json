@@ -1,0 +1,1020 @@
+{
+ "country": "spain",
+ "source": "elections",
+ "full_name": "Spain election results (Interior ministry mesa files aggregated to census section; Gobierno Vasco Parlamento Vasco 2024)",
+ "years": [
+  2023,
+  2024
+ ],
+ "levels": [
+  "section",
+  "h3"
+ ],
+ "features": [
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_total_votes",
+   "original_name": "elec_national_2023_total_votes",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_total_votes"
+   ],
+   "definition": "national election 2023: total votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_votes_cast",
+   "original_name": "elec_national_2023_votes_cast",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_votes_cast"
+   ],
+   "definition": "national election 2023: votes cast (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_electors",
+   "original_name": "elec_national_2023_electors",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_electors"
+   ],
+   "definition": "national election 2023: electors (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_turnout_rate",
+   "original_name": "elec_national_2023_turnout_rate",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_turnout_rate"
+   ],
+   "definition": "national election 2023: turnout rate (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "rate",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_left_votes",
+   "original_name": "elec_national_2023_left_votes",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_left_votes"
+   ],
+   "definition": "national election 2023: left votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_right_votes",
+   "original_name": "elec_national_2023_right_votes",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_right_votes"
+   ],
+   "definition": "national election 2023: right votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_party_eaj_pnv_votes",
+   "original_name": "elec_national_2023_party_eaj_pnv_votes",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_party_eaj_pnv_votes"
+   ],
+   "definition": "national election 2023: party eaj pnv votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_party_eh_bildu_votes",
+   "original_name": "elec_national_2023_party_eh_bildu_votes",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_party_eh_bildu_votes"
+   ],
+   "definition": "national election 2023: party eh bildu votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_party_escanos_en_blanco_votes",
+   "original_name": "elec_national_2023_party_escanos_en_blanco_votes",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_party_escanos_en_blanco_votes"
+   ],
+   "definition": "national election 2023: party escanos en blanco votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_party_fo_votes",
+   "original_name": "elec_national_2023_party_fo_votes",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_party_fo_votes"
+   ],
+   "definition": "national election 2023: party fo votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_party_pacma_votes",
+   "original_name": "elec_national_2023_party_pacma_votes",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_party_pacma_votes"
+   ],
+   "definition": "national election 2023: party pacma votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_party_pp_votes",
+   "original_name": "elec_national_2023_party_pp_votes",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_party_pp_votes"
+   ],
+   "definition": "national election 2023: party pp votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_party_psoe_votes",
+   "original_name": "elec_national_2023_party_psoe_votes",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_party_psoe_votes"
+   ],
+   "definition": "national election 2023: party psoe votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_party_recortes_cero_votes",
+   "original_name": "elec_national_2023_party_recortes_cero_votes",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_party_recortes_cero_votes"
+   ],
+   "definition": "national election 2023: party recortes cero votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_party_sumar_votes",
+   "original_name": "elec_national_2023_party_sumar_votes",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_party_sumar_votes"
+   ],
+   "definition": "national election 2023: party sumar votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_party_vox_votes",
+   "original_name": "elec_national_2023_party_vox_votes",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_party_vox_votes"
+   ],
+   "definition": "national election 2023: party vox votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_left_share",
+   "original_name": "elec_national_2023_left_share",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_left_share"
+   ],
+   "definition": "national election 2023: left share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_right_share",
+   "original_name": "elec_national_2023_right_share",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_right_share"
+   ],
+   "definition": "national election 2023: right share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_other_share",
+   "original_name": "elec_national_2023_other_share",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_other_share"
+   ],
+   "definition": "national election 2023: other share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_party_eaj_pnv_share",
+   "original_name": "elec_national_2023_party_eaj_pnv_share",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_party_eaj_pnv_share"
+   ],
+   "definition": "national election 2023: party eaj pnv share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_party_eh_bildu_share",
+   "original_name": "elec_national_2023_party_eh_bildu_share",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_party_eh_bildu_share"
+   ],
+   "definition": "national election 2023: party eh bildu share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_party_escanos_en_blanco_share",
+   "original_name": "elec_national_2023_party_escanos_en_blanco_share",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_party_escanos_en_blanco_share"
+   ],
+   "definition": "national election 2023: party escanos en blanco share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_party_fo_share",
+   "original_name": "elec_national_2023_party_fo_share",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_party_fo_share"
+   ],
+   "definition": "national election 2023: party fo share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_party_pacma_share",
+   "original_name": "elec_national_2023_party_pacma_share",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_party_pacma_share"
+   ],
+   "definition": "national election 2023: party pacma share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_party_pp_share",
+   "original_name": "elec_national_2023_party_pp_share",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_party_pp_share"
+   ],
+   "definition": "national election 2023: party pp share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_party_psoe_share",
+   "original_name": "elec_national_2023_party_psoe_share",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_party_psoe_share"
+   ],
+   "definition": "national election 2023: party psoe share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_party_recortes_cero_share",
+   "original_name": "elec_national_2023_party_recortes_cero_share",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_party_recortes_cero_share"
+   ],
+   "definition": "national election 2023: party recortes cero share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_party_sumar_share",
+   "original_name": "elec_national_2023_party_sumar_share",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_party_sumar_share"
+   ],
+   "definition": "national election 2023: party sumar share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2023_party_vox_share",
+   "original_name": "elec_national_2023_party_vox_share",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_national_2023_party_vox_share"
+   ],
+   "definition": "national election 2023: party vox share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_total_votes",
+   "original_name": "elec_municipal_2023_total_votes",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_total_votes"
+   ],
+   "definition": "municipal election 2023: total votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_votes_cast",
+   "original_name": "elec_municipal_2023_votes_cast",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_votes_cast"
+   ],
+   "definition": "municipal election 2023: votes cast (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_electors",
+   "original_name": "elec_municipal_2023_electors",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_electors"
+   ],
+   "definition": "municipal election 2023: electors (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_turnout_rate",
+   "original_name": "elec_municipal_2023_turnout_rate",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_turnout_rate"
+   ],
+   "definition": "municipal election 2023: turnout rate (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "rate",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_left_votes",
+   "original_name": "elec_municipal_2023_left_votes",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_left_votes"
+   ],
+   "definition": "municipal election 2023: left votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_right_votes",
+   "original_name": "elec_municipal_2023_right_votes",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_right_votes"
+   ],
+   "definition": "municipal election 2023: right votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_eaj_pnv_votes",
+   "original_name": "elec_municipal_2023_party_eaj_pnv_votes",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_eaj_pnv_votes"
+   ],
+   "definition": "municipal election 2023: party eaj pnv votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_eh_bildu_votes",
+   "original_name": "elec_municipal_2023_party_eh_bildu_votes",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_eh_bildu_votes"
+   ],
+   "definition": "municipal election 2023: party eh bildu votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_podemos_ezker_anitza_iu_berdeak_equo_alianza_votes",
+   "original_name": "elec_municipal_2023_party_podemos_ezker_anitza_iu_berdeak_equo_alianza_votes",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_podemos_ezker_anitza_iu_berdeak_equo_alianza_votes"
+   ],
+   "definition": "municipal election 2023: party podemos ezker anitza iu berdeak equo alianza votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_pp_votes",
+   "original_name": "elec_municipal_2023_party_pp_votes",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_pp_votes"
+   ],
+   "definition": "municipal election 2023: party pp votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_psoe_votes",
+   "original_name": "elec_municipal_2023_party_psoe_votes",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_psoe_votes"
+   ],
+   "definition": "municipal election 2023: party psoe votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_left_share",
+   "original_name": "elec_municipal_2023_left_share",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_left_share"
+   ],
+   "definition": "municipal election 2023: left share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_right_share",
+   "original_name": "elec_municipal_2023_right_share",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_right_share"
+   ],
+   "definition": "municipal election 2023: right share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_other_share",
+   "original_name": "elec_municipal_2023_other_share",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_other_share"
+   ],
+   "definition": "municipal election 2023: other share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_eaj_pnv_share",
+   "original_name": "elec_municipal_2023_party_eaj_pnv_share",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_eaj_pnv_share"
+   ],
+   "definition": "municipal election 2023: party eaj pnv share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_eh_bildu_share",
+   "original_name": "elec_municipal_2023_party_eh_bildu_share",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_eh_bildu_share"
+   ],
+   "definition": "municipal election 2023: party eh bildu share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_podemos_ezker_anitza_iu_berdeak_equo_alianza_share",
+   "original_name": "elec_municipal_2023_party_podemos_ezker_anitza_iu_berdeak_equo_alianza_share",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_podemos_ezker_anitza_iu_berdeak_equo_alianza_share"
+   ],
+   "definition": "municipal election 2023: party podemos ezker anitza iu berdeak equo alianza share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_pp_share",
+   "original_name": "elec_municipal_2023_party_pp_share",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_pp_share"
+   ],
+   "definition": "municipal election 2023: party pp share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_municipal_2023_party_psoe_share",
+   "original_name": "elec_municipal_2023_party_psoe_share",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_municipal_2023_party_psoe_share"
+   ],
+   "definition": "municipal election 2023: party psoe share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2024_total_votes",
+   "original_name": "elec_state_2024_total_votes",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_state_2024_total_votes"
+   ],
+   "definition": "state election 2024: total votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2024_votes_cast",
+   "original_name": "elec_state_2024_votes_cast",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_state_2024_votes_cast"
+   ],
+   "definition": "state election 2024: votes cast (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2024_electors",
+   "original_name": "elec_state_2024_electors",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_state_2024_electors"
+   ],
+   "definition": "state election 2024: electors (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2024_turnout_rate",
+   "original_name": "elec_state_2024_turnout_rate",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_state_2024_turnout_rate"
+   ],
+   "definition": "state election 2024: turnout rate (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "rate",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2024_left_votes",
+   "original_name": "elec_state_2024_left_votes",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_state_2024_left_votes"
+   ],
+   "definition": "state election 2024: left votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2024_right_votes",
+   "original_name": "elec_state_2024_right_votes",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_state_2024_right_votes"
+   ],
+   "definition": "state election 2024: right votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2024_party_eaj_pnv_votes",
+   "original_name": "elec_state_2024_party_eaj_pnv_votes",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_state_2024_party_eaj_pnv_votes"
+   ],
+   "definition": "state election 2024: party eaj pnv votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2024_party_eh_bildu_votes",
+   "original_name": "elec_state_2024_party_eh_bildu_votes",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_state_2024_party_eh_bildu_votes"
+   ],
+   "definition": "state election 2024: party eh bildu votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2024_party_pp_votes",
+   "original_name": "elec_state_2024_party_pp_votes",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_state_2024_party_pp_votes"
+   ],
+   "definition": "state election 2024: party pp votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2024_party_pse_ee_psoe_votes",
+   "original_name": "elec_state_2024_party_pse_ee_psoe_votes",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_state_2024_party_pse_ee_psoe_votes"
+   ],
+   "definition": "state election 2024: party pse ee psoe votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2024_party_sumar_votes",
+   "original_name": "elec_state_2024_party_sumar_votes",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_state_2024_party_sumar_votes"
+   ],
+   "definition": "state election 2024: party sumar votes (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; votes count)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2024_left_share",
+   "original_name": "elec_state_2024_left_share",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_state_2024_left_share"
+   ],
+   "definition": "state election 2024: left share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2024_right_share",
+   "original_name": "elec_state_2024_right_share",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_state_2024_right_share"
+   ],
+   "definition": "state election 2024: right share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2024_other_share",
+   "original_name": "elec_state_2024_other_share",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_state_2024_other_share"
+   ],
+   "definition": "state election 2024: other share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2024_party_eaj_pnv_share",
+   "original_name": "elec_state_2024_party_eaj_pnv_share",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_state_2024_party_eaj_pnv_share"
+   ],
+   "definition": "state election 2024: party eaj pnv share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2024_party_eh_bildu_share",
+   "original_name": "elec_state_2024_party_eh_bildu_share",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_state_2024_party_eh_bildu_share"
+   ],
+   "definition": "state election 2024: party eh bildu share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2024_party_pp_share",
+   "original_name": "elec_state_2024_party_pp_share",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_state_2024_party_pp_share"
+   ],
+   "definition": "state election 2024: party pp share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2024_party_pse_ee_psoe_share",
+   "original_name": "elec_state_2024_party_pse_ee_psoe_share",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_state_2024_party_pse_ee_psoe_share"
+   ],
+   "definition": "state election 2024: party pse ee psoe share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_state_2024_party_sumar_share",
+   "original_name": "elec_state_2024_party_sumar_share",
+   "country": "spain",
+   "source": "elections",
+   "codes": [
+    "elec_state_2024_party_sumar_share"
+   ],
+   "definition": "state election 2024: party sumar share (shares 0-1 of valid votes incl. blank; left/right/other from schema/elections_blocs.json; party columns only for parties above 3% of the loaded area; weighted by total_votes)",
+   "type": "share",
+   "unit": "fraction",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  }
+ ]
+}

@@ -1,0 +1,25 @@
+{
+  "source": "de_hamburg_lod2",
+  "country": "DEU",
+  "name": "Freie und Hansestadt Hamburg, LGV: 3D-Gebäudemodell LoD2-DE (latest release, CityGML 1.0, ETRS89 / UTM 32N)",
+  "url": "https://suche.transparenz.hamburg.de/dataset?q=LoD2-DE%20Hamburg",
+  "license": "Datenlizenz Deutschland Namensnennung 2.0 (dl-de/by-2-0)",
+  "coverage": "Hamburg (city state); the rest of the metro area (Schleswig-Holstein, Lower Saxony): GBA",
+  "api_key": false,
+  "fields": {
+    "building_id": "gml:id of bldg:Building (ALKIS object id)",
+    "footprint_m2": "area of the union of the building's GroundSurface polygons",
+    "floors_above": "bldg:storeysAboveGround",
+    "height_m": "bldg:measuredHeight",
+    "built_area_m2": "footprint x storeys; footprint x height / 3 where the storeys are missing",
+    "use_original": "ALKIS Gebaeudefunktion code (bldg:function 31001_<code>)",
+    "use_class": "use_map by code prefix (longest prefix wins)"
+  },
+  "use_map": {
+    "10": "residential", "11": "mixed", "12": "mixed", "13": "residential",
+    "2000": "commercial", "201": "commercial", "202": "office", "203": "office", "204": "office", "205": "commercial", "206": "commercial",
+    "207": "commercial", "208": "commercial", "209": "commercial", "21": "industrial", "22": "industrial", "23": "mixed", "24": "other",
+    "25": "industrial", "26": "industrial", "27": "agricultural",
+    "30": "public", "302": "education", "304": "religious", "31": "public", "32": "other", "9998": "unknown"
+  }
+}

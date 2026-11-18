@@ -231,11 +231,11 @@ class TestLoader:
 
     def test_load_building_count_by_parish(self, tmp_path):
         gdf = loader.load(regions="AD-01", level="parish", year=2023, cache_dir=str(tmp_path))
-        assert gdf["estadisticaad_buildingCount"].iloc[0] == 10
+        assert gdf["buildingCount"].iloc[0] == 10
 
     def test_load_building_count_nation_sums_parishes(self, tmp_path):
         gdf = loader.load(level="nation", year=2023, cache_dir=str(tmp_path))
-        assert gdf["estadisticaad_buildingCount"].iloc[0] == 60  # 10 + 20 + 30
+        assert gdf["buildingCount"].iloc[0] == 60  # 10 + 20 + 30
 
     def test_load_active_business_count_by_parish(self, tmp_path):
         gdf = loader.load(regions="AD-05", level="parish", year=2023, cache_dir=str(tmp_path))

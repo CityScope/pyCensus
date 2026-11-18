@@ -45,6 +45,7 @@ Source:
 """
 
 from __future__ import annotations
+from pycensus.cache import get_data_dir
 
 import io
 import json
@@ -88,7 +89,7 @@ _GAF_USECOLS = [
 
 
 def _raw_dir(data_dir: Optional[str] = None) -> Path:
-    base = Path(data_dir) if data_dir else Path(constants.DEFAULT_DATA_DIR)
+    base = get_data_dir("canada", data_dir)
     raw_dir = base / "raw" / "full_table"
     raw_dir.mkdir(parents=True, exist_ok=True)
     return raw_dir
@@ -119,6 +120,9 @@ def download_full_table_csv(pid: str, data_dir: Optional[str] = None) -> Path:
 
     response = requests.get(url, stream=True, timeout=180)
     response.raise_for_status()
+    if "zip" not in response.headers.get("content-type", "").lower() and "octet" not in response.headers.get("content-type", "").lower():
+        # StatCan serves an HTML "website unavailable" page with status 200 during outages: never cache that as a table.
+        raise requests.HTTPError(f"StatCan returned {response.headers.get('content-type')} instead of a zip for {url} (site outage?)")
     with open(zip_path, "wb") as f:
         for chunk in response.iter_content(chunk_size=1 << 16):
             if chunk:
@@ -154,6 +158,9 @@ def download_geographic_attribute_file(data_dir: Optional[str] = None) -> Path:
     Raises:
         requests.HTTPError: If the download fails.
         FileNotFoundError: If the zip doesn't contain the expected CSV.
+
+    Args:
+        data_dir: Folder of the raw downloads; ``None`` = the pycensus cache.
     """
     raw_dir = _raw_dir(data_dir)
     csv_name = constants.GEOGRAPHIC_ATTRIBUTE_FILE_CSV_NAME
@@ -208,6 +215,10 @@ def fetch_province_totals(province: str, data_dir: Optional[str] = None) -> pd.D
     Returns:
         One-row DataFrame with a ``GEOID`` column (2-digit PRUID) plus
         every raw column from the downloaded CSV.
+
+    Args:
+        province: Province name, abbreviation or PRUID.
+        data_dir: Folder of the raw downloads; ``None`` = the pycensus cache.
     """
     pruid = constants.province_code(province)
     df = _read_census_profile(data_dir)
@@ -224,6 +235,10 @@ def fetch_municipality_totals(province: str, data_dir: Optional[str] = None) -> 
         DataFrame with a ``GEOID`` column (7-digit CSDUID, matching the
         boundary shapefile's ``CSDUID``) plus every raw column from the
         downloaded CSV.
+
+    Args:
+        province: Province name, abbreviation or PRUID.
+        data_dir: Folder of the raw downloads; ``None`` = the pycensus cache.
     """
     pruid = constants.province_code(province)
     df = _read_census_profile(data_dir)
@@ -243,6 +258,10 @@ def fetch_dissemination_area_totals(province: str, data_dir: Optional[str] = Non
         convention as the CSDUID/DAUID StatCan numbering scheme -- used
         here to filter to one province (no per-region query exists, same
         as :func:`fetch_municipality_totals`).
+
+    Args:
+        province: Province name, abbreviation or PRUID.
+        data_dir: Folder of the raw downloads; ``None`` = the pycensus cache.
     """
     pruid = constants.province_code(province)
     df = _read_dissemination_area_table(data_dir)
@@ -263,6 +282,10 @@ def fetch_block_totals(province: str, data_dir: Optional[str] = None) -> pd.Data
         DBUID's first 2 characters are its PRUID (same convention as
         CSDUID/DAUID) -- used here to filter to one province, same as
         :func:`fetch_dissemination_area_totals`.
+
+    Args:
+        province: Province name, abbreviation or PRUID.
+        data_dir: Folder of the raw downloads; ``None`` = the pycensus cache.
     """
     pruid = constants.province_code(province)
     df = _read_geographic_attribute_file(data_dir)
@@ -319,7 +342,7 @@ def _census_profile_zip_path(province: str, data_dir: Optional[str] = None) -> P
             f"CENSUS_PROFILE_GEONO_BY_PROVINCE, then live-verified the same way Ontario was."
         )
 
-    base = Path(data_dir) if data_dir else Path(constants.DEFAULT_DATA_DIR)
+    base = get_data_dir("canada", data_dir)
     raw_dir = base / "raw" / "census_profile"
     raw_dir.mkdir(parents=True, exist_ok=True)
     zip_path = raw_dir / f"98-401-X2021006_{region_name}_eng_CSV.zip"
@@ -348,7 +371,7 @@ def _census_profile_zip_path(province: str, data_dir: Optional[str] = None) -> P
         # `pycensus.api_keys._KEYS_FILE`), so this fallback works
         # regardless of the caller's working directory.
         pycensus_root = Path(__file__).resolve().parents[4]
-        default_zip_path = pycensus_root / constants.DEFAULT_DATA_DIR / "raw" / "census_profile" / zip_path.name
+        default_zip_path = pycensus_root / "data/canada" / "raw" / "census_profile" / zip_path.name
         if default_zip_path.exists() and default_zip_path.stat().st_size > 0:
             return default_zip_path
 

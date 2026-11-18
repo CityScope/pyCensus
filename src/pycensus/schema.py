@@ -122,7 +122,14 @@ class ColumnSchema:
         return self
 
     def prefixed(self, name: str) -> str:
-        """Return the on-GeoDataFrame column name for a logical name."""
+        """Return the on-GeoDataFrame column name for a logical name.
+
+        Args:
+            name: Logical column name.
+
+        Returns:
+            ``<prefix>_<name>``.
+        """
         return f"{self.prefix}_{name}"
 
     # Alias kept for existing call sites (e.g. chile/casen, chile/ine,
@@ -131,12 +138,26 @@ class ColumnSchema:
     column_label = prefixed
 
     def strip_prefix(self, prefixed_name: str) -> str:
-        """Return the logical (unprefixed) name for an on-GeoDataFrame column name."""
+        """Return the logical (unprefixed) name for an on-GeoDataFrame column name.
+
+        Args:
+            prefixed_name: Column name.
+
+        Returns:
+            The logical name.
+        """
         head = self.prefix + "_"
         return prefixed_name[len(head):] if prefixed_name.startswith(head) else prefixed_name
 
     def relative_to(self, prefixed_name: str) -> Optional[str]:
-        """Resolve the prefixed denominator column for ``.relative``, if any."""
+        """Resolve the prefixed denominator column for ``.relative``, if any.
+
+        Args:
+            prefixed_name: Column name.
+
+        Returns:
+            The denominator column, or None.
+        """
         col = self.columns.get(self.strip_prefix(prefixed_name))
         if col is None or col.relative_to is None:
             return None

@@ -1,0 +1,149 @@
+{
+ "country": "mexico",
+ "source": "elections",
+ "full_name": "Mexico INE casilla-level election results (federal 2024), resampled to H3 res 8 and AGEB/manzana",
+ "years": [
+  2024
+ ],
+ "levels": [
+  "ageb",
+  "block"
+ ],
+ "features": [
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2024_total_votes",
+   "original_name": "elec_national_2024_total_votes",
+   "country": "mexico",
+   "source": "elections",
+   "codes": [
+    "elec_national_2024_total_votes"
+   ],
+   "native_level": "seccion",
+   "type": "count",
+   "unit": "votes",
+   "definition": "Valid votes cast (candidates + blank), 2024 federal election, President",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2024_turnout_rate",
+   "original_name": "elec_national_2024_turnout_rate",
+   "country": "mexico",
+   "source": "elections",
+   "codes": [
+    "elec_national_2024_turnout_rate"
+   ],
+   "native_level": "seccion",
+   "type": "rate",
+   "unit": "0-1",
+   "definition": "Ballots cast / registered electors, 2024 federal election, President",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_national_2024_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2024_left_share",
+   "original_name": "elec_national_2024_left_share",
+   "country": "mexico",
+   "source": "elections",
+   "codes": [
+    "elec_national_2024_left_share"
+   ],
+   "native_level": "seccion",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for bloc left, 2024 federal election, President",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_national_2024_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2024_right_share",
+   "original_name": "elec_national_2024_right_share",
+   "country": "mexico",
+   "source": "elections",
+   "codes": [
+    "elec_national_2024_right_share"
+   ],
+   "native_level": "seccion",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for bloc right, 2024 federal election, President",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_national_2024_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2024_other_share",
+   "original_name": "elec_national_2024_other_share",
+   "country": "mexico",
+   "source": "elections",
+   "codes": [
+    "elec_national_2024_other_share"
+   ],
+   "native_level": "seccion",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for bloc other, 2024 federal election, President",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_national_2024_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2024_party_bertha_xochitl_galvez_ruiz_share",
+   "original_name": "elec_national_2024_party_bertha_xochitl_galvez_ruiz_share",
+   "country": "mexico",
+   "source": "elections",
+   "codes": [
+    "elec_national_2024_party_bertha_xochitl_galvez_ruiz_share"
+   ],
+   "native_level": "seccion",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for party/candidate party_bertha_xochitl_galvez_ruiz, 2024 federal election, President",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_national_2024_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2024_party_claudia_sheinbaum_pardo_share",
+   "original_name": "elec_national_2024_party_claudia_sheinbaum_pardo_share",
+   "country": "mexico",
+   "source": "elections",
+   "codes": [
+    "elec_national_2024_party_claudia_sheinbaum_pardo_share"
+   ],
+   "native_level": "seccion",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for party/candidate party_claudia_sheinbaum_pardo, 2024 federal election, President",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_national_2024_total_votes"
+  },
+  {
+   "category": "elections",
+   "feature_name": "elec_national_2024_party_jorge_alvarez_maynez_share",
+   "original_name": "elec_national_2024_party_jorge_alvarez_maynez_share",
+   "country": "mexico",
+   "source": "elections",
+   "codes": [
+    "elec_national_2024_party_jorge_alvarez_maynez_share"
+   ],
+   "native_level": "seccion",
+   "type": "share",
+   "unit": "0-1",
+   "definition": "Share of total votes for party/candidate party_jorge_alvarez_maynez, 2024 federal election, President",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "resampling_weight": "elec_national_2024_total_votes"
+  }
+ ]
+}

@@ -71,6 +71,7 @@ Source:
 from __future__ import annotations
 
 import json
+import time
 from pathlib import Path
 from typing import Optional
 
@@ -100,9 +101,16 @@ def _fetch_paginated(dataset: str, yyymm: str, raw_cache_path: Optional[Path], t
     total_pages = 1
     while page <= total_pages:
         url = f"{RIS_OPENDATA_BASE_URL}/{dataset}/{yyymm}"
-        response = requests.get(url, params={"page": page}, timeout=timeout)
-        response.raise_for_status()
-        payload = response.json()
+        for attempt in range(8):   # the MOI service answers 502/503 now and then: retry with a growing pause
+            try:
+                response = requests.get(url, params={"page": page}, timeout=timeout)
+                response.raise_for_status()
+                payload = response.json()
+                break
+            except (requests.RequestException, ValueError):
+                if attempt == 7:
+                    raise
+                time.sleep(3 * (attempt + 1))
         if payload.get("responseData") is None:
             raise ValueError(
                 f"MOI RIS returned no data for {dataset}/{yyymm} "
@@ -226,7 +234,202 @@ def fetch_village_households(
     return df[keep]
 
 
+#: ODRP020 (village education, annual), ODRP019 (households by type, annual), ODRP012 (monthly dynamics: births/deaths/marriages).
+VILLAGE_EDUCATION_DATASET = "ODRP020"
+VILLAGE_HOUSEHOLD_TYPES_DATASET = "ODRP019"
+VILLAGE_DYNAMICS_DATASET = "ODRP012"
+
+#: Highest-level groups of ODRP020's ``edu_*_{graduated,ungraduated}_{m,f}`` fields, mapped onto the global schema's education classes:
+#: primary or less = illiterate + self-taught + primary; secondary = junior/senior high (+vocational); university = completed
+#: bachelor, master, doctor; other tertiary = junior college (completed or not) + incomplete university-level studies.
+EDU_GROUPS = {
+    "edu_primary_or_less_total": ["illiterate", "selftaughtl", "primary_graduated", "primary_ungraduated"],
+    "edu_secondary_total": ["junior_graduated", "junior_ungraduated", "juniorvocational_graduated", "juniorvocational_ungraduated",
+                            "senior_graduated", "senior_ungraduated", "seniorvocational_graduated", "seniorvocational_ungraduated",
+                            "juniorcollege_5ys_first3y_ungraduated"],
+    "edu_university_total": ["university_graduated", "master_graduated", "doctor_graduated"],
+    "edu_other_tertiary_total": ["juniorcollege_2ys_graduated", "juniorcollege_2ys_ungraduated", "juniorcollege_5ys_final2y_graduated",
+                                 "juniorcollege_5ys_final2y_ungraduated", "university_ungraduated", "master_ungraduated", "doctor_ungraduated"],
+}
+
+
+def _rows(dataset: str, period: str, raw_cache_path: Optional[Path], timeout: int = 90) -> pd.DataFrame:
+    pages = _fetch_paginated(dataset, period, raw_cache_path, timeout)
+    rows = []
+    for payload in pages:
+        rows.extend(payload["responseData"])
+    return pd.DataFrame(rows)
+
+
+def fetch_village_education(yyy: str, raw_cache_path: Optional[Path] = None) -> pd.DataFrame:
+    """Annual village-level education of residents aged 15+ (ODRP020): ``edu_age_15up_total`` + the four global education classes.
+
+    Args:
+        yyy: ROC year (3 digits).
+        raw_cache_path: Optional cache file.
+
+    Returns:
+        One row per village.
+    """
+    df = _rows(VILLAGE_EDUCATION_DATASET, yyy, raw_cache_path)
+    out = pd.DataFrame({"district_code": df["district_code"], "edu_age_15up_total": pd.to_numeric(df["edu_age_15up_total"], errors="coerce")})
+    for name, parts in EDU_GROUPS.items():
+        cols = []
+        for part in parts:
+            cols += [f"edu_{part}_{sex}" if part in ("illiterate", "selftaughtl") else f"edu_{part}_{sex}" for sex in ("m", "f")]
+        out[name] = sum(pd.to_numeric(df[c], errors="coerce") for c in cols if c in df.columns)
+    return out
+
+
+def fetch_village_household_types(yyy: str, raw_cache_path: Optional[Path] = None) -> pd.DataFrame:
+    """Annual households by type (ODRP019): ordinary / business / single-person households per village.
+
+    Args:
+        yyy: ROC year (3 digits).
+        raw_cache_path: Optional cache file.
+
+    Returns:
+        One row per village.
+    """
+    df = _rows(VILLAGE_HOUSEHOLD_TYPES_DATASET, yyy, raw_cache_path)
+    keep = {"district_code": df["district_code"]}
+    for c in ("household_ordinary_total", "household_business_total", "household_single_total"):
+        keep[c] = pd.to_numeric(df[c], errors="coerce")
+    return pd.DataFrame(keep)
+
+
+def fetch_village_year_dynamics(yyy: str, raw_dir: Optional[Path] = None) -> pd.DataFrame:
+    """Births, deaths and marriages per village summed over the 12 monthly ODRP012 tables of ROC year ``yyy`` (missing months skipped).
+
+    Args:
+        yyy: ROC year (3 digits).
+        raw_dir: Optional cache folder.
+
+    Returns:
+        One row per village.
+    """
+    total = None
+    for month in range(1, 13):
+        period = f"{yyy}{month:02d}"
+        cache = None if raw_dir is None else Path(raw_dir) / f"village_dynamics_{period}.json"
+        try:
+            df = _rows(VILLAGE_DYNAMICS_DATASET, period, cache)
+        except ValueError:
+            continue
+        part = pd.DataFrame({"district_code": df["district_code"],
+                             "births_year": pd.to_numeric(df["birth_total"], errors="coerce"),
+                             "deaths_year": pd.to_numeric(df["death_m"], errors="coerce") + pd.to_numeric(df["death_f"], errors="coerce"),
+                             "marriages_year": pd.to_numeric(df["marry_pair"], errors="coerce")})
+        total = part if total is None else total.merge(part, on="district_code", how="outer", suffixes=("", "_n")).pipe(
+            lambda m: m.assign(**{c: m[c].fillna(0) + m[c + "_n"].fillna(0) for c in ("births_year", "deaths_year", "marriages_year")}).drop(columns=[c + "_n" for c in ("births_year", "deaths_year", "marriages_year")]))
+    if total is None:
+        raise ValueError(f"MOI RIS has no ODRP012 monthly table for ROC year {yyy}")
+    return total
+
+
+
+FIA_INCOME_URL = "https://www.fia.gov.tw/WEB/fia/ias/ias{roc}/{roc}_165-9.csv"
+
+
+def fetch_village_income(roc_year: int, raw_cache_path: Optional[Path] = None) -> pd.DataFrame:
+    """Taxable income per village from the Ministry of Finance (FIA) "綜稅綜合所得總額全國各縣市鄉鎮村里統計分析表" (CSV, thousand TWD).
+
+    Returns ``site_id`` (county+district), ``village``, ``taxpayer_units`` and the mean / median / 1st and 3rd quartile / std of the
+    total income per taxpayer unit in TWD (the source lists thousands). The latest tax year at or before ``roc_year`` is used.
+
+    Args:
+        roc_year: ROC year.
+        raw_cache_path: Optional cache folder.
+
+    Raises:
+        ValueError: If no tax year in the six years up to ``roc_year`` is published.
+    """
+    last = None
+    for year in range(roc_year, roc_year - 6, -1):
+        path = Path(raw_cache_path or ".") / f"fia_income_{year}.csv" if raw_cache_path else None
+        try:
+            if path is not None and path.exists():
+                text = path.read_text(encoding="utf-8-sig")
+            else:
+                r = requests.get(FIA_INCOME_URL.format(roc=year), timeout=120)
+                r.raise_for_status()
+                text = r.content.decode("utf-8-sig")
+                if path is not None:
+                    path.parent.mkdir(parents=True, exist_ok=True)
+                    path.write_text(text, encoding="utf-8")
+            break
+        except requests.RequestException as exc:
+            last = exc
+    else:
+        raise last or ValueError("no FIA income table found")
+    import io
+
+    df = pd.read_csv(io.StringIO(text))
+    df.columns = ["site_id", "village", "taxpayer_units", "income_total", "income_mean", "income_median", "income_q1", "income_q3", "income_std", "income_cv"]
+    for c in df.columns[2:]:
+        df[c] = pd.to_numeric(df[c], errors="coerce")
+    for c in ("income_mean", "income_median", "income_q1", "income_q3"):
+        df[c] = df[c] * 1000.0
+    return df[df["village"].notna()][["site_id", "village", "taxpayer_units", "income_mean", "income_median", "income_q1", "income_q3", "income_std"]]
+
+
+#: MOI statistics query (registered temples by county and religion, "寺廟登記概況─按區域別、宗教別分"; keyless CSV).
+TEMPLES_URL = ("https://statis.moi.gov.tw/micst/webMain.aspx?sys=220&kind=21&type=1&funid=c0210102&cycle=4&outmode=12&utf=1&compmode=0&outkind=3"
+               "&fldlst=111&codspc0=0,2,3,2,6,1,9,1,12,1,15,16,&codspc1=0,18,&rdm=tekyiklq&ym={ym}&ymt={ym}")
+_TEMPLE_RELIGIONS = {"宗教別總計": "total", "佛教": "buddhist", "道教": "taoist", "一貫道": "yiguandao"}
+
+
+def fetch_county_temples(roc_year: int, raw_cache_path: Optional[Path] = None) -> pd.DataFrame:
+    """Registered temples per county / religion (latest ROC year at or before ``roc_year``): ``county`` + ``temples_<religion>`` columns.
+
+    Temples are only published by county and religion (no township level), so the loader turns them into a per-10,000-residents rate.
+
+    Args:
+        roc_year: ROC year.
+        raw_cache_path: Optional cache folder.
+
+    Raises:
+        ValueError: If no year in the six years up to ``roc_year`` is published.
+    """
+    import io
+
+    last = None
+    for year in range(roc_year, roc_year - 6, -1):
+        path = Path(raw_cache_path) / f"temples_{year}.csv" if raw_cache_path else None
+        try:
+            if path is not None and path.exists():
+                text = path.read_text(encoding="utf-8-sig")
+            else:
+                r = requests.get(TEMPLES_URL.format(ym=f"{year}00"), timeout=90)
+                r.raise_for_status()
+                text = r.content.decode("utf-8-sig")
+                if path is not None:
+                    path.parent.mkdir(parents=True, exist_ok=True)
+                    path.write_text(text, encoding="utf-8")
+            df = pd.read_csv(io.StringIO(text))
+            if len(df) > 5:
+                break
+        except requests.RequestException as exc:
+            last = exc
+    else:
+        raise last or ValueError("no MOI temple table found")
+    rows = {}
+    for label, n in zip(df.iloc[:, 0], df.iloc[:, 1]):
+        parts = [p.strip() for p in str(label).split("/")]
+        if len(parts) < 3 or parts[1] == "區域別總計":
+            continue
+        key = _TEMPLE_RELIGIONS.get(parts[2])
+        if key:
+            rows.setdefault(parts[1], {})[f"temples_{key}"] = pd.to_numeric(str(n).replace("-", "0"), errors="coerce")
+    out = pd.DataFrame.from_dict(rows, orient="index").rename_axis("county").reset_index()
+    return out
+
 __all__ = [
+    "fetch_county_temples",
+    "fetch_village_income",
+    "fetch_village_education",
+    "fetch_village_household_types",
+    "fetch_village_year_dynamics",
     "fetch_resident_population",
     "fetch_village_households",
     "AGE_BUCKET_SUFFIXES",

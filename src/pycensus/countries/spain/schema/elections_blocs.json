@@ -1,0 +1,466 @@
+{
+ "_doc": "Left/right/other bloc per party. Key = upper-case siglas with dots removed (pycensus.countries.spain.elections.loader.norm). Unlisted parties (mostly local lists) = other. uncertain=true: user should review.",
+ "national_2023": {
+  "description": "Congreso 23-07-2023, keyed by national accumulation head",
+  "default": "other",
+  "parties": {
+   "PP": {
+    "bloc": "right",
+    "uncertain": false,
+    "note": "Conservative / Christian-democrat, centre-right"
+   },
+   "PSOE": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": "Social democrats"
+   },
+   "VOX": {
+    "bloc": "right",
+    "uncertain": false,
+    "note": "Radical right"
+   },
+   "EH BILDU": {
+    "bloc": "left",
+    "uncertain": true,
+    "note": "Basque-independentist left coalition; classified left on economic axis, nationalist axis ignored"
+   },
+   "EAJ-PNV": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Basque Christian-democrat nationalist, centre-right economics but part of the progressive investiture bloc; left as other"
+   },
+   "B N G": {
+    "bloc": "left",
+    "uncertain": true,
+    "note": "Galician nationalist left (BNG)"
+   },
+   "PACMA": {
+    "bloc": "left",
+    "uncertain": true,
+    "note": "Animalist/green, usually grouped with the left"
+   },
+   "CCA": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Canarian regionalist, centre-right; kept other"
+   },
+   "UPN": {
+    "bloc": "right",
+    "uncertain": false,
+    "note": "Navarrese regionalist conservative, allied with PP"
+   },
+   "UPL": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Leonese regionalist"
+   },
+   "GBAI": {
+    "bloc": "left",
+    "uncertain": true,
+    "note": "Navarrese nationalist-left coalition (Geroa Bai, PNV-led); uncertain"
+   },
+   "ADELANTE ANDALUCIA": {
+    "bloc": "left",
+    "uncertain": true,
+    "note": "Andalusian nationalist-left (Adelante Andalucia)"
+   },
+   "FE DE LAS JONS": {
+    "bloc": "right",
+    "uncertain": false,
+    "note": "Falangist, far right"
+   },
+   "PCTE": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": "Communist"
+   },
+   "PUM+J": {
+    "bloc": "left",
+    "uncertain": true,
+    "note": "Por un Mundo Mas Justo, left/alternative"
+   },
+   "ESCANOS EN BLANCO": {
+    "bloc": "other",
+    "uncertain": false,
+    "note": "Protest/blank-seats party"
+   },
+   "SUMAR": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": "Sumar, left coalition"
+   },
+   "ERC": {
+    "bloc": "left",
+    "uncertain": true,
+    "note": "Catalan independentist left (ERC)"
+   },
+   "JXCAT - JUNTS": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Catalan independentist centre-right (Junts); explicit judgement: other"
+   },
+   "CUP-PR": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": "Catalan independentist radical left"
+   },
+   "FO": {
+    "bloc": "left",
+    "uncertain": true,
+    "note": "Frente Obrero, Marxist-Leninist"
+   },
+   "NC-BC": {
+    "bloc": "left",
+    "uncertain": true,
+    "note": "Nueva Canarias, progressive Canarian nationalist"
+   },
+   "PDECAT-E-CIU": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Catalan liberal-nationalist, centre-right"
+   },
+   "RECORTES CERO": {
+    "bloc": "left",
+    "uncertain": true,
+    "note": "Anti-austerity, often with left/green coalition"
+   },
+   "EXISTE": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Aragon Existe, territorial/rural platform"
+   },
+   "SY": {
+    "bloc": "other",
+    "uncertain": false,
+    "note": "Soria Ya, territorial platform"
+   },
+   "JM+": {
+    "bloc": "other",
+    "uncertain": false,
+    "note": "Jaen Merece Mas, local platform"
+   },
+   "XAV": {
+    "bloc": "other",
+    "uncertain": false,
+    "note": "Por Avila, local"
+   },
+   "BQEX": {
+    "bloc": "left",
+    "uncertain": true,
+    "note": "Bloque Extremeño, regionalist left"
+   },
+   "CJ": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Caminando Juntos"
+   }
+  }
+ },
+ "municipal_2023": {
+  "description": "Municipales 28-05-2023; local lists default to other (bloc unknown)",
+  "default": "other",
+  "parties": {
+   "PP": {
+    "bloc": "right",
+    "uncertain": false,
+    "note": "Conservative / Christian-democrat, centre-right"
+   },
+   "PSOE": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": "Social democrats"
+   },
+   "VOX": {
+    "bloc": "right",
+    "uncertain": false,
+    "note": "Radical right"
+   },
+   "EH BILDU": {
+    "bloc": "left",
+    "uncertain": true,
+    "note": "Basque-independentist left coalition; classified left on economic axis, nationalist axis ignored"
+   },
+   "EAJ-PNV": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Basque Christian-democrat nationalist, centre-right economics but part of the progressive investiture bloc; left as other"
+   },
+   "B N G": {
+    "bloc": "left",
+    "uncertain": true,
+    "note": "Galician nationalist left (BNG)"
+   },
+   "PACMA": {
+    "bloc": "left",
+    "uncertain": true,
+    "note": "Animalist/green, usually grouped with the left"
+   },
+   "CCA": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Canarian regionalist, centre-right; kept other"
+   },
+   "UPN": {
+    "bloc": "right",
+    "uncertain": false,
+    "note": "Navarrese regionalist conservative, allied with PP"
+   },
+   "UPL": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Leonese regionalist"
+   },
+   "GBAI": {
+    "bloc": "left",
+    "uncertain": true,
+    "note": "Navarrese nationalist-left coalition (Geroa Bai, PNV-led); uncertain"
+   },
+   "ADELANTE ANDALUCIA": {
+    "bloc": "left",
+    "uncertain": true,
+    "note": "Andalusian nationalist-left (Adelante Andalucia)"
+   },
+   "FE DE LAS JONS": {
+    "bloc": "right",
+    "uncertain": false,
+    "note": "Falangist, far right"
+   },
+   "PCTE": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": "Communist"
+   },
+   "PUM+J": {
+    "bloc": "left",
+    "uncertain": true,
+    "note": "Por un Mundo Mas Justo, left/alternative"
+   },
+   "ESCANOS EN BLANCO": {
+    "bloc": "other",
+    "uncertain": false,
+    "note": "Protest/blank-seats party"
+   },
+   "MM-VQ": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": "Mas Madrid-Verdes Equo"
+   },
+   "ACORD PER GUANYAR": {
+    "bloc": "left",
+    "uncertain": true,
+    "note": "Compromis, valencian left"
+   },
+   "CON ANDALUCIA": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": "Left alliance Andalucia"
+   },
+   "CS": {
+    "bloc": "right",
+    "uncertain": true,
+    "note": "Ciudadanos, liberal centre/centre-right"
+   },
+   "PODEMOS-IU": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": ""
+   },
+   "UNIDAS-PODEMOS-IZQUIERDA UNIDA": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": ""
+   },
+   "IU": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": "Izquierda Unida"
+   },
+   "NC-FAC": {
+    "bloc": "left",
+    "uncertain": true,
+    "note": "Nueva Canarias-Frente Amplio Canarista"
+   },
+   "IU-MAS PAIS-IAS": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": ""
+   },
+   "PARA LA GENTE": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Mallorca local list"
+   },
+   "PRC": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Cantabrian regionalist, centre"
+   },
+   "UA": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Union Andalucista, regionalist"
+   },
+   "PODEMOS, EZKER ANITZA / IU, BERDEAK EQUO, ALIANZA": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": "Elkarrekin"
+   },
+   "ARA PL": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Ara Pacte Local, Mallorca"
+   },
+   "FORO ASTURIAS": {
+    "bloc": "right",
+    "uncertain": true,
+    "note": "Foro Asturias, centre-right regionalist"
+   },
+   "PODEMOS-AV": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": ""
+   },
+   "MES": {
+    "bloc": "left",
+    "uncertain": true,
+    "note": "MES per Mallorca, nationalist left"
+   },
+   "PODEMOS": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": ""
+   },
+   "VALENTS": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Valents, Valencian local/regionalist right-leaning"
+   },
+   "CHA": {
+    "bloc": "left",
+    "uncertain": true,
+    "note": "Chunta Aragonesista, nationalist left"
+   },
+   "USP": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": "Unidas Si Podemos"
+   },
+   "EUPV: ENDAVANT": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": "Esquerra Unida del Pais Valencia"
+   },
+   "ZGZ": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": "Zaragoza: IU-Ganemos"
+   },
+   "AV": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Alternativa dos Veciños, local"
+   },
+   "UCIN": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "local Ceuta"
+   },
+   "CM": {
+    "bloc": "left",
+    "uncertain": true,
+    "note": "Compromis Municipal (Valencian), left-nationalist"
+   },
+   "AM": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Acord Municipal (local list)"
+   },
+   "C": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Confluencia (local list)"
+   },
+   "AMUNT": {
+    "bloc": "left",
+    "uncertain": true,
+    "note": "Amunt: Compromis-linked list, uncertain"
+   }
+  }
+ },
+ "state_2024": {
+  "description": "Parlamento Vasco 21-04-2024",
+  "default": "other",
+  "parties": {
+   "EAJ-PNV": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Basque Christian-democrat nationalist, centre-right economics but part of the progressive investiture bloc; left as other"
+   },
+   "EH BILDU": {
+    "bloc": "left",
+    "uncertain": true,
+    "note": "Basque-independentist left coalition; classified left on economic axis, nationalist axis ignored"
+   },
+   "PSE-EE/PSOE": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": "Basque PSOE"
+   },
+   "PP": {
+    "bloc": "right",
+    "uncertain": false,
+    "note": "Conservative / Christian-democrat, centre-right"
+   },
+   "SUMAR": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": "Sumar"
+   },
+   "PODEMOS-AHAL DUGU - ALIANZA VERDE": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": "Podemos-Alianza Verde"
+   },
+   "VOX": {
+    "bloc": "right",
+    "uncertain": false,
+    "note": "Radical right"
+   },
+   "PACMA": {
+    "bloc": "left",
+    "uncertain": true,
+    "note": "Animalist/green, usually grouped with the left"
+   },
+   "EB-AZ": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": "Ezker Batua-Berdeak"
+   },
+   "PUM+J": {
+    "bloc": "left",
+    "uncertain": true,
+    "note": "Por un Mundo Mas Justo, left/alternative"
+   },
+   "IZAN": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Izan, small Basque party (liberal/centrist)"
+   },
+   "PCTE / ELAK": {
+    "bloc": "left",
+    "uncertain": false,
+    "note": "Communist"
+   },
+   "PH": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Partido Humanista / local"
+   },
+   "O.E.": {
+    "bloc": "other",
+    "uncertain": true,
+    "note": "Other"
+   }
+  }
+ }
+}

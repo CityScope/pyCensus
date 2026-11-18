@@ -108,22 +108,20 @@ Technical aspects:
 from __future__ import annotations
 
 import os
-import tempfile
 import warnings
 import zipfile
 from datetime import date, datetime
-from difflib import get_close_matches
 from typing import Dict, List, Optional, Tuple, Union
 
 import geopandas as gpd
 import numpy as np
 import py7zr
-import pycountry
 import rasterio
 import rasterio.warp
 import rasterio.windows
 import requests
 from tqdm import tqdm
+from geohierarchy.geocoding import get_country_region  # noqa: F401  (one implementation, in geohierarchy)
 
 # Age bin code -> (lower_bound_years, under18_weight). under18_weight is the
 # fraction of that bin's population assumed to be under 18, using a linear-
@@ -170,115 +168,6 @@ fallback.
 """
 
 
-def get_country_region(
-    lat: float,
-    lon: float,
-    code_format: str = "alpha_2",
-    get_region: bool = True,
-) -> Union[str, Tuple[Optional[str], Optional[str]]]:
-    """Reverse-geocode a lat/lon pair to a country (and optional subdivision) code.
-
-    Uses Nominatim (OpenStreetMap) reverse geocoding to resolve the address
-    at the given coordinates, then maps the returned ISO 3166-1 alpha-2
-    country code to the requested format via :mod:`pycountry`. If a region
-    (state/province) name is also present in the address, it is matched
-    against ``pycountry``'s subdivisions for that country (exact match,
-    falling back to fuzzy matching).
-
-    Args:
-        lat: Latitude of the point to reverse-geocode.
-        lon: Longitude of the point to reverse-geocode.
-        code_format: Which country code representation to return. One of
-            ``"alpha_2"`` (default), ``"alpha_3"``, ``"numeric"``, or
-            ``"name"``.
-        get_region: If ``True`` (default), also resolve and return the
-            ISO 3166-2 subdivision code for the address' state/region. If
-            ``False``, only the country code is returned.
-
-    Returns:
-        If ``get_region`` is ``False``: the country code string (in the
-        requested ``code_format``), or ``""`` if it could not be resolved.
-        If ``get_region`` is ``True``: a tuple ``(country_code,
-        subdivision_code)``, where either element may be ``None`` if it
-        could not be resolved.
-
-    Raises:
-        requests.HTTPError: If the Nominatim reverse-geocoding request fails.
-    """
-    url = "https://nominatim.openstreetmap.org/reverse"
-    headers = {"User-Agent": "pyGTFSHandler/0.1.0 (https://blogs.upm.es/aga/en/)"}
-    params = {"lat": lat, "lon": lon, "format": "json", "zoom": 10, "addressdetails": 1}
-
-    resp = requests.get(url, headers=headers, params=params)
-    resp.raise_for_status()
-    data = resp.json().get("address", {})
-
-    # Start with ISO2 code from Nominatim
-    country_code = data.get("country_code", "").upper()
-    region_name = data.get("state") or data.get("region")
-    subdivision_code = None
-
-    # Convert to requested format
-    if country_code:
-        country = pycountry.countries.get(alpha_2=country_code)
-        if country:
-            if code_format == "alpha_3":
-                country_code = country.alpha_3
-            elif code_format == "numeric":
-                country_code = country.numeric
-            elif code_format == "name":
-                country_code = country.name
-            else:  # default is alpha_2
-                country_code = country.alpha_2
-
-    if not get_region:
-        return country_code
-
-    if country_code and region_name:
-        try:
-            subdivisions = list(pycountry.subdivisions.get(country_code=data.get("country_code", "").upper()))
-            subdivision_names = [subdiv.name for subdiv in subdivisions]
-
-            # Exact match (case-insensitive)
-            for subdiv in subdivisions:
-                if subdiv.name.lower() == region_name.lower():
-                    subdivision_code = subdiv.code
-                    break
-
-            # If no exact match, try fuzzy matching on subdivision names
-            if subdivision_code is None:
-                close_matches = get_close_matches(region_name, subdivision_names, n=3, cutoff=0.6)
-                if close_matches:
-                    for match_name in close_matches:
-                        for subdiv in subdivisions:
-                            if subdiv.name == match_name:
-                                subdivision_code = subdiv.code
-                                break
-                        if subdivision_code:
-                            break
-                    if subdivision_code:
-                        warnings.warn(
-                            f"Fuzzy match used for region '{region_name}'. Matched with '{match_name}'.",
-                            UserWarning,
-                        )
-
-            # fallback: pycountry's search_fuzzy
-            if subdivision_code is None:
-                fuzzy_matches = pycountry.subdivisions.search_fuzzy(region_name)
-                for match in fuzzy_matches:
-                    if match.country_code == data.get("country_code", "").upper():
-                        subdivision_code = match.code
-                        warnings.warn(
-                            f"Fuzzy match used via pycountry.search_fuzzy for region '{region_name}'. "
-                            f"Matched with '{match.name}'.",
-                            UserWarning,
-                        )
-                        break
-
-        except LookupError:
-            subdivision_code = None
-
-    return country_code, subdivision_code
 
 
 def _resolve_iso3(aoi: gpd.GeoDataFrame) -> str:
@@ -299,10 +188,71 @@ def _resolve_year(value: Union[date, datetime, int]) -> int:
     return value.year
 
 
-def _download_to(url: str, dest_path: str, overwrite: bool, chunk_size: int = 1048576) -> str:
-    """Stream ``url`` to ``dest_path`` with a progress bar, reusing an existing file unless ``overwrite``."""
+def _requests_get(url: str, retries: int = 6, **kwargs):
+    """`requests.get` with a timeout and retries on connection errors / 429 / 5xx (the WorldPop REST API is flaky)."""
+    import time
+
+    kwargs.setdefault("timeout", 60)
+    last: Optional[Exception] = None
+    for attempt in range(1, retries + 1):
+        try:
+            r = requests.get(url, **kwargs)
+            if r.status_code in (429, 500, 502, 503, 504) and attempt < retries:
+                time.sleep(min(10 * attempt, 60))
+                continue
+            return r
+        except requests.RequestException as exc:
+            last = exc
+            if attempt == retries:
+                raise
+            time.sleep(min(10 * attempt, 60))
+    raise last  # pragma: no cover
+
+
+def _download_to(url: str, dest_path: str, overwrite: bool, chunk_size: int = 1048576, retries: int = 6) -> str:
+    """Stream ``url`` to ``dest_path`` with a progress bar, reusing an existing file unless ``overwrite``.
+
+    WorldPop's server drops connections and rate-limits (dozens of age/sex rasters are fetched per country), so the download has a
+    timeout, resumes a partial ``.part`` file with an HTTP Range request and retries with backoff instead of failing the whole run.
+    """
+    import time
+
     if os.path.isfile(dest_path) and not overwrite:
         return dest_path
+
+    os.makedirs(os.path.dirname(dest_path) or ".", exist_ok=True)
+    tmp_path = dest_path + ".part"
+    if overwrite and os.path.exists(tmp_path):
+        os.remove(tmp_path)
+    last_exc: Optional[Exception] = None
+    for attempt in range(1, retries + 1):
+        try:
+            done = os.path.getsize(tmp_path) if os.path.exists(tmp_path) else 0
+            headers = {"Range": f"bytes={done}-"} if done else {}
+            with requests.get(url, stream=True, timeout=120, headers=headers) as r:
+                if r.status_code == 416:  # the .part file already holds the whole file
+                    break
+                if r.status_code in (429, 500, 502, 503, 504):
+                    raise requests.HTTPError(f"{r.status_code} from {url}")
+                r.raise_for_status()
+                resumed = bool(done) and r.status_code == 206
+                total_size = int(r.headers.get("content-length", 0)) + (done if resumed else 0)
+                with open(tmp_path, "ab" if resumed else "wb") as f, tqdm(
+                    total=total_size, initial=done if resumed else 0, unit="B", unit_scale=True,
+                    desc=os.path.basename(dest_path), ncols=100
+                ) as pbar:
+                    for chunk in r.iter_content(chunk_size=chunk_size):
+                        if chunk:
+                            f.write(chunk)
+                            pbar.update(len(chunk))
+            break
+        except (requests.RequestException, OSError) as exc:
+            last_exc = exc
+            if attempt == retries:
+                raise
+            time.sleep(min(10 * attempt, 60))
+    os.replace(tmp_path, dest_path)
+    return dest_path
 
     os.makedirs(os.path.dirname(dest_path) or ".", exist_ok=True)
     with requests.get(url, stream=True) as r:
@@ -481,7 +431,9 @@ def download_worldpop_population(
     if folder == "":
         folder = os.getcwd()
     elif folder is None:
-        folder = tempfile.gettempdir()
+        from pycensus.cache import get_worldpop_dir as _gcd
+
+        folder = str(_gcd())
 
     iso3 = _resolve_iso3(aoi)
     year = _resolve_year(date)
@@ -520,7 +472,7 @@ def download_worldpop_population(
     else:
         raise ValueError(f"Unknown WorldPop dataset family '{dataset}'")
 
-    r = requests.get(url)
+    r = _requests_get(url)
     r.raise_for_status()
     data = r.json()["data"]
 
@@ -540,7 +492,7 @@ def _fetch_age_structure_listing(iso3: str, year: int, resolution: str) -> Dict[
     """Return ``{filename: url}`` for every real ``age_structures`` file for ``iso3``/``year``."""
     subset = f"G2_CN_Age_R25A_{resolution}"
     url = f"https://hub.worldpop.org/rest/data/age_structures/{subset}?iso3={iso3}"
-    r = requests.get(url)
+    r = _requests_get(url)
     r.raise_for_status()
     data = r.json()["data"]
     row = next((d for d in data if str(d.get("popyear")) == str(year)), None)
@@ -663,7 +615,7 @@ def _fetch_single_country_dataset_row(alias: str, subset: str, iso3: str, year: 
     verified live 2026-08-25), just with different row-selection rules.
     """
     url = f"https://hub.worldpop.org/rest/data/{alias}/{subset}?iso3={iso3}"
-    r = requests.get(url)
+    r = _requests_get(url)
     r.raise_for_status()
     data = r.json()["data"]
     if not data:
@@ -793,7 +745,9 @@ def download_worldpop_layer(
         raise ValueError(f"Unknown feature '{feature}' -- must be one of {GLOBAL_SCHEMA_FEATURES}")
 
     if folder is None:
-        folder = tempfile.gettempdir()
+        from pycensus.cache import get_worldpop_dir as _gcd
+
+        folder = str(_gcd())
     elif folder == "":
         folder = os.getcwd()
     os.makedirs(folder, exist_ok=True)
@@ -812,9 +766,22 @@ def download_worldpop_layer(
     # below actually needs a filename out of it.
     _listing_cache: Dict[str, str] = {}
 
-    def _local(fname: str) -> str:
-        if not _listing_cache:
+    def _fill_listing() -> None:
+        if _listing_cache:
+            return
+        try:
             _listing_cache.update(_fetch_age_structure_listing(iso3, year, resolution))
+        except requests.RequestException:
+            # The WorldPop hub is unreachable (it resets connections now and then): fall back to the age-structure files already
+            # downloaded for this country/year/resolution, which `_download_to` reuses as they are.
+            local_dir = os.path.join(folder, "raw_age_structures", iso3, str(year), resolution)
+            if not os.path.isdir(local_dir):
+                raise
+            _listing_cache.update({f: "" for f in os.listdir(local_dir) if f.endswith(".tif")})
+            warnings.warn(f"WorldPop hub unreachable: using the {len(_listing_cache)} cached age-structure files in {local_dir}.", UserWarning)
+
+    def _local(fname: str) -> str:
+        _fill_listing()
         raw_dir = os.path.join(folder, "raw_age_structures", iso3, str(year), resolution)
         url = _listing_cache[fname]
         full_path = _download_to(url, os.path.join(raw_dir, fname), overwrite)
@@ -822,8 +789,7 @@ def download_worldpop_layer(
         return _clip_to_aoi(full_path, aoi, os.path.join(clipped_dir, fname), overwrite)
 
     def _matching(predicate) -> str:
-        if not _listing_cache:
-            _listing_cache.update(_fetch_age_structure_listing(iso3, year, resolution))
+        _fill_listing()
         return next(f for f in _listing_cache if predicate(f))
 
     if feature == "malePopulation":
@@ -882,6 +848,9 @@ def download_worldpop_layer(
         return _download_and_extract_7z(row["files"][0], preg_dir, overwrite, prefer_substring="_pregs_")
 
     if feature == "urbanPopulation":
+        cached_out = os.path.join(folder, f"{iso3.lower()}_urban_population_{year}_{resolution}.tif")
+        if os.path.exists(cached_out) and not overwrite:   # derived earlier: reuse (also when the WorldPop hub is unreachable)
+            return cached_out
         dug_row = _fetch_single_country_dataset_row("dug", "dug_g2_v1", iso3, year=year)
         l1_url = next((f for f in dug_row["files"] if "_GRID_L1_" in f), None)
         if l1_url is None:

@@ -21,6 +21,7 @@ Source:
 """
 
 from __future__ import annotations
+from pycensus.cache import get_data_dir
 
 from typing import Dict
 
@@ -91,7 +92,14 @@ def province_code(province: str) -> str:
 
 
 def province_abbr(province: str) -> str:
-    """Normalize a province name, abbreviation, or PRUID to its postal abbreviation."""
+    """Normalize a province name, abbreviation, or PRUID to its postal abbreviation.
+
+    Args:
+        province: Province name, abbreviation or PRUID.
+
+    Returns:
+        Postal abbreviation.
+    """
     code = province_code(province)
     return PROVINCE_ABBR[PROVINCE_CODES[code]]
 
@@ -221,7 +229,7 @@ GEOGRAPHIC_ATTRIBUTE_FILE_CSV_NAME = "2021_92-151_X.csv"
 WORKPLACE_JOBS_PID = "98100459"
 WORKPLACE_JOBS_MEMBER_ID_TO_CSDUID_FILE = "workplace_jobs_csduid_by_member_id.json"
 
-DEFAULT_DATA_DIR = "data/canada"
+DEFAULT_DATA_DIR = str(get_data_dir("canada"))  # env/temp default, resolved at import
 
 # Census Profile, 2021 -- comprehensive bulk CSV (catalogue 98-401-X2021006),
 # a *different* real StatCan product from the Full Table Download cube
@@ -237,7 +245,7 @@ DEFAULT_DATA_DIR = "data/canada"
 # "98-401-X2021006_Ontario_eng_CSV.zip", confirmed by Content-Disposition
 # header and by successfully unzipping a 8,780,436,336-byte CSV). Only
 # Ontario has been downloaded/wired up in this codebase so far -- see
-# statcan/README.md and statcan/census_profile.py for the documented scope
+# statcan/census_profile.py for the documented scope
 # limitation (StatCan does publish the same product for every other
 # province/territory at the same URL pattern, just not yet fetched here).
 CENSUS_PROFILE_GEONO_BY_PROVINCE: Dict[str, str] = {

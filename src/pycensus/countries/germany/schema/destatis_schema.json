@@ -1,59 +1,649 @@
 {
-  "country": "germany",
-  "source": "destatis",
-  "full_name": "Destatis GENESIS-Online (Fortschreibung des Bevoelkerungsstandes)",
-  "_note": "Only 'population' is included. Live-verified 2026-08-21 against real authenticated GENESIS-Online responses (not the GAST guest account): the real value variable for statistic 12411 is 'BEVSTD' ('Bevoelkerungsstand'), not the earlier placeholder 'BEVZ01' -- BEVZ01 ('Bevoelkerung (Zensus)') is a real GENESIS variable name (found via find/find on 2026-08-19) but belongs to the separate Zensus2022 database, not GENESIS-Online's public statistic 12411 (catalogue/tables2variable?name=BEVZ01 returns 'no objects' here). See pycensus.germany.constants.GENESIS_POPULATION_TABLES and pycensus.germany.destatis.README for the exact live-verified numbers (Germany 31.12.2022 = 83,118,501; Bavaria 31.12.2022 = 13,105,221). Nation/state levels are wired in loader.py; district (Kreise) has a real, live-verified table (12411-0015) but no AGS-to-NUTS3 crosswalk yet -- see the TODO in loader.py._fetch_missing. Other fields from an earlier version of this file (POP_MALE, HH_TOTAL, INC_MED_HH, etc.) were fabricated placeholder codes never verified against any real Destatis source and have been removed rather than kept as guesses.",
-  "features": [
-    {
-      "category": "population",
-      "feature_name": "population",
-      "country": "germany",
-      "source": "destatis",
-      "codes": ["BEVSTD"],
-      "definition": "Number of people residing in the geographic area (Bevoelkerungsstand, Fortschreibung des Bevoelkerungsstandes, statistic 12411).",
-      "type": "count",
-      "unit": "",
-      "resampling_up": "sum",
-      "resampling_down": "divide_area_weighted"
-    },
-    {
-      "category": "population",
-      "feature_name": "malePopulation",
-      "country": "germany",
-      "source": "destatis",
-      "codes": ["BEVSTD_MAENNLICH"],
-      "definition": "Male population (Bevoelkerungsstand nach Geschlecht: maennlich), statistic 12411, tables 12411-0003/0011/0016 (nation/state/district). Not available for municipality (GISCO LAU has no sex breakdown). Live-verified 2026-08-22.",
-      "type": "count",
-      "unit": "",
-      "resampling_up": "sum",
-      "resampling_down": "divide_area_weighted"
-    },
-    {
-      "category": "population",
-      "feature_name": "femalePopulation",
-      "country": "germany",
-      "source": "destatis",
-      "codes": ["BEVSTD_WEIBLICH"],
-      "definition": "Female population (Bevoelkerungsstand nach Geschlecht: weiblich), statistic 12411, tables 12411-0003/0011/0016 (nation/state/district). Not available for municipality (GISCO LAU has no sex breakdown). Live-verified 2026-08-22.",
-      "type": "count",
-      "unit": "",
-      "resampling_up": "sum",
-      "resampling_down": "divide_area_weighted"
-    },
-    {
-      "category": "migration",
-      "feature_name": "foreignBornPopulation",
-      "country": "germany",
-      "source": "destatis",
-      "codes": ["AUSLAENDER_INSGESAMT"],
-      "definition": "Number of foreign nationals (Auslaender) registered in the Auslaenderzentralregister (AZR), statistic 12521 ('Auslaenderstatistik'), table 12521-0040 ('Auslaender: Kreise, Stichtag, Geschlecht') -- district level only. Not the same legal concept as 'born outside the country' (a citizen born abroad is not counted; a person born in Germany without German citizenship is), but this is the real, independent AZR-derived foreign-population figure GENESIS-Online actually publishes, and is used as pyCensus's canonical foreignBornPopulation field for Germany. Live-verified 2026-08-23: Muenchen (Kreis AGS 09162), 31.12.2022, male=260,335 + female=245,420 = 505,760.",
-      "type": "count",
-      "unit": "",
-      "resampling_up": "sum",
-      "resampling_down": "divide_area_weighted",
-      "relative_to": "population"
-    }
-  ],
-  "years": [2022],
-  "levels": ["nation", "state", "district"]
+ "country": "germany",
+ "source": "destatis",
+ "full_name": "Destatis GENESIS-Online (Fortschreibung des Bevoelkerungsstandes)",
+ "_note": "Only 'population' is included. Live-verified 2026-08-21 against real authenticated GENESIS-Online responses (not the GAST guest account): the real value variable for statistic 12411 is 'BEVSTD' ('Bevoelkerungsstand'), not the earlier placeholder 'BEVZ01' -- BEVZ01 ('Bevoelkerung (Zensus)') is a real GENESIS variable name (found via find/find on 2026-08-19) but belongs to the separate Zensus2022 database, not GENESIS-Online's public statistic 12411 (catalogue/tables2variable?name=BEVZ01 returns 'no objects' here). See pycensus.germany.constants.GENESIS_POPULATION_TABLES and pycensus.germany.destatis.README for the exact live-verified numbers (Germany 31.12.2022 = 83,118,501; Bavaria 31.12.2022 = 13,105,221). Nation/state levels are wired in loader.py; district (Kreise) has a real, live-verified table (12411-0015) but no AGS-to-NUTS3 crosswalk yet -- see the TODO in loader.py._fetch_missing. Other fields from an earlier version of this file (POP_MALE, HH_TOTAL, INC_MED_HH, etc.) were fabricated placeholder codes never verified against any real Destatis source and have been removed rather than kept as guesses.",
+ "features": [
+  {
+   "category": "population",
+   "feature_name": "population",
+   "original_name": "BEVSTD",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "BEVSTD"
+   ],
+   "definition": "Number of people residing in the geographic area (Bevoelkerungsstand, Fortschreibung des Bevoelkerungsstandes, statistic 12411).",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "divide_area_weighted"
+  },
+  {
+   "category": "population",
+   "feature_name": "malePopulation",
+   "original_name": "BEVSTD_MAENNLICH",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "BEVSTD_MAENNLICH"
+   ],
+   "definition": "Male population (Bevoelkerungsstand nach Geschlecht: maennlich), statistic 12411, tables 12411-0003/0011/0016 (nation/state/district). Not available for municipality (GISCO LAU has no sex breakdown). Live-verified 2026-08-22.",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "divide_area_weighted"
+  },
+  {
+   "category": "population",
+   "feature_name": "femalePopulation",
+   "original_name": "BEVSTD_WEIBLICH",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "BEVSTD_WEIBLICH"
+   ],
+   "definition": "Female population (Bevoelkerungsstand nach Geschlecht: weiblich), statistic 12411, tables 12411-0003/0011/0016 (nation/state/district). Not available for municipality (GISCO LAU has no sex breakdown). Live-verified 2026-08-22.",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "divide_area_weighted"
+  },
+  {
+   "category": "migration",
+   "feature_name": "foreignBornPopulation",
+   "original_name": "AUSLAENDER_INSGESAMT",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "AUSLAENDER_INSGESAMT"
+   ],
+   "definition": "Number of foreign nationals (Auslaender) registered in the Auslaenderzentralregister (AZR), statistic 12521 ('Auslaenderstatistik'), table 12521-0040 ('Auslaender: Kreise, Stichtag, Geschlecht') -- district level only. Not the same legal concept as 'born outside the country' (a citizen born abroad is not counted; a person born in Germany without German citizenship is), but this is the real, independent AZR-derived foreign-population figure GENESIS-Online actually publishes, and is used as pyCensus's canonical foreignBornPopulation field for Germany. Live-verified 2026-08-23: Muenchen (Kreis AGS 09162), 31.12.2022, male=260,335 + female=245,420 = 505,760.",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "divide_area_weighted",
+   "relative_to": "population"
+  },
+  {
+   "category": "population",
+   "feature_name": "under18Population",
+   "original_name": "Unter18",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "Unter18"
+   ],
+   "definition": "Population under 18. (Zensus 2022 100 m grid; small cells are suppressed/perturbed by Destatis.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population",
+   "grid": true
+  },
+  {
+   "category": "population",
+   "feature_name": "population18to29",
+   "original_name": "a18bis29",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "a18bis29"
+   ],
+   "definition": "Population aged 18-29. (Zensus 2022 100 m grid; small cells are suppressed/perturbed by Destatis.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population",
+   "grid": true
+  },
+  {
+   "category": "population",
+   "feature_name": "population30to49",
+   "original_name": "a30bis49",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "a30bis49"
+   ],
+   "definition": "Population aged 30-49. (Zensus 2022 100 m grid; small cells are suppressed/perturbed by Destatis.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population",
+   "grid": true
+  },
+  {
+   "category": "population",
+   "feature_name": "population50to64",
+   "original_name": "a50bis64",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "a50bis64"
+   ],
+   "definition": "Population aged 50-64. (Zensus 2022 100 m grid; small cells are suppressed/perturbed by Destatis.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population",
+   "grid": true
+  },
+  {
+   "category": "population",
+   "feature_name": "over65Population",
+   "original_name": "a65undaelter",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "a65undaelter"
+   ],
+   "definition": "Population aged 65 and over. (Zensus 2022 100 m grid; small cells are suppressed/perturbed by Destatis.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population",
+   "grid": true
+  },
+  {
+   "category": "population",
+   "feature_name": "adultPopulation",
+   "original_name": "a18bis29+a30bis49+a50bis64+a65undaelter",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "a18bis29+a30bis49+a50bis64+a65undaelter"
+   ],
+   "definition": "Population aged 18 and over. (Zensus 2022 100 m grid; small cells are suppressed/perturbed by Destatis.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population",
+   "grid": true
+  },
+  {
+   "category": "migration",
+   "feature_name": "bornAbroadPopulation",
+   "original_name": "Ausland_Sonstige",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "Ausland_Sonstige"
+   ],
+   "definition": "Population born abroad. (Zensus 2022 100 m grid; small cells are suppressed/perturbed by Destatis.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population",
+   "grid": true
+  },
+  {
+   "category": "migration",
+   "feature_name": "bornEU27Population",
+   "original_name": "EU27_Land",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "EU27_Land"
+   ],
+   "definition": "Population born in another EU27 country. (Zensus 2022 100 m grid; small cells are suppressed/perturbed by Destatis.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population",
+   "grid": true
+  },
+  {
+   "category": "migration",
+   "feature_name": "bornOtherEuropePopulation",
+   "original_name": "Sonstiges_Europa",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "Sonstiges_Europa"
+   ],
+   "definition": "Population born in a non-EU European country. (Zensus 2022 100 m grid; small cells are suppressed/perturbed by Destatis.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population",
+   "grid": true
+  },
+  {
+   "category": "migration",
+   "feature_name": "bornOtherWorldPopulation",
+   "original_name": "Sonstige_Welt",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "Sonstige_Welt"
+   ],
+   "definition": "Population born outside Europe. (Zensus 2022 100 m grid; small cells are suppressed/perturbed by Destatis.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population",
+   "grid": true
+  },
+  {
+   "category": "housing",
+   "feature_name": "households",
+   "original_name": "Insgesamt_Haushalte",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "Insgesamt_Haushalte"
+   ],
+   "definition": "Private households. (Zensus 2022 100 m grid; small cells are suppressed/perturbed by Destatis.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": null,
+   "grid": true
+  },
+  {
+   "category": "housing",
+   "feature_name": "households1Person",
+   "original_name": "1_Person",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "1_Person"
+   ],
+   "definition": "One-person households. (Zensus 2022 100 m grid; small cells are suppressed/perturbed by Destatis.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "households",
+   "grid": true
+  },
+  {
+   "category": "housing",
+   "feature_name": "households2Persons",
+   "original_name": "2_Personen",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "2_Personen"
+   ],
+   "definition": "Two-person households. (Zensus 2022 100 m grid; small cells are suppressed/perturbed by Destatis.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "households",
+   "grid": true
+  },
+  {
+   "category": "housing",
+   "feature_name": "households3Persons",
+   "original_name": "3_Personen",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "3_Personen"
+   ],
+   "definition": "Three-person households. (Zensus 2022 100 m grid; small cells are suppressed/perturbed by Destatis.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "households",
+   "grid": true
+  },
+  {
+   "category": "housing",
+   "feature_name": "households4Persons",
+   "original_name": "4_Personen",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "4_Personen"
+   ],
+   "definition": "Four-person households. (Zensus 2022 100 m grid; small cells are suppressed/perturbed by Destatis.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "households",
+   "grid": true
+  },
+  {
+   "category": "housing",
+   "feature_name": "households5Persons",
+   "original_name": "5_Personen",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "5_Personen"
+   ],
+   "definition": "Five-person households. (Zensus 2022 100 m grid; small cells are suppressed/perturbed by Destatis.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "households",
+   "grid": true
+  },
+  {
+   "category": "housing",
+   "feature_name": "households6PlusPersons",
+   "original_name": "6_Personen_und_mehr",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "6_Personen_und_mehr"
+   ],
+   "definition": "Households with six or more persons. (Zensus 2022 100 m grid; small cells are suppressed/perturbed by Destatis.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "households",
+   "grid": true
+  },
+  {
+   "category": "religion",
+   "feature_name": "populationRomanCatholic",
+   "original_name": "Roemisch_katholisch",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "Roemisch_katholisch"
+   ],
+   "definition": "Population that is Roman Catholic. (Zensus 2022 100 m grid; small cells are suppressed/perturbed by Destatis.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population",
+   "grid": true
+  },
+  {
+   "category": "religion",
+   "feature_name": "populationProtestant",
+   "original_name": "Evangelisch",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "Evangelisch"
+   ],
+   "definition": "Population that is Protestant (Evangelical Church). (Zensus 2022 100 m grid; small cells are suppressed/perturbed by Destatis.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population",
+   "grid": true
+  },
+  {
+   "category": "religion",
+   "feature_name": "populationOtherOrNoReligion",
+   "original_name": "Sonstige_keine_ohneAngabe",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "Sonstige_keine_ohneAngabe"
+   ],
+   "definition": "Population with other religion, none or no information. (Zensus 2022 100 m grid; small cells are suppressed/perturbed by Destatis.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "population",
+   "grid": true
+  },
+  {
+   "category": "housing",
+   "feature_name": "rentPerM2Mean",
+   "original_name": "durchschnMieteQM",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "durchschnMieteQM"
+   ],
+   "definition": "Average net cold rent per m2 (EUR) of rented dwellings in the 100 m cell. (Zensus 2022; suppressed for small cells.)",
+   "type": "mean",
+   "unit": "EUR/m2",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "grid": true
+  },
+  {
+   "category": "housing",
+   "feature_name": "homeownerRate",
+   "original_name": "Eigentuemerquote",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "Eigentuemerquote"
+   ],
+   "definition": "Share (%) of dwellings occupied by their owners. (Zensus 2022 100 m grid.)",
+   "type": "mean",
+   "unit": "%",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "grid": true
+  },
+  {
+   "category": "housing",
+   "feature_name": "vacancyRate",
+   "original_name": "Leerstandsquote",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "Leerstandsquote"
+   ],
+   "definition": "Share (%) of dwellings that are vacant. (Zensus 2022 100 m grid.)",
+   "type": "mean",
+   "unit": "%",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "grid": true
+  },
+  {
+   "category": "demographics",
+   "feature_name": "ageMean",
+   "original_name": "Durchschnittsalter",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "Durchschnittsalter"
+   ],
+   "definition": "Average age of the population in the cell. (Zensus 2022 100 m grid.)",
+   "type": "mean",
+   "unit": "years",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "grid": true
+  },
+  {
+   "category": "housing",
+   "feature_name": "buildingsBuiltTotal",
+   "original_name": "Insgesamt_Gebaeude",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "Insgesamt_Gebaeude"
+   ],
+   "definition": "Total buildings with residential space (denominator of the year-built bands). (Zensus 2022 100 m grid \"Gebaeude nach Baujahr in Mikrozensus-Klassen\"; small cells are suppressed/perturbed by Destatis.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "grid": true
+  },
+  {
+   "category": "housing",
+   "feature_name": "buildingsBuiltBefore1919",
+   "original_name": "Vor1919",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "Vor1919"
+   ],
+   "definition": "Buildings built before 1919. (Zensus 2022 100 m grid \"Gebaeude nach Baujahr in Mikrozensus-Klassen\"; small cells are suppressed/perturbed by Destatis.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "buildingsBuiltTotal",
+   "grid": true
+  },
+  {
+   "category": "housing",
+   "feature_name": "buildingsBuilt1919To1948",
+   "original_name": "a1919bis1948",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "a1919bis1948"
+   ],
+   "definition": "Buildings built 1919 to 1948. (Zensus 2022 100 m grid \"Gebaeude nach Baujahr in Mikrozensus-Klassen\"; small cells are suppressed/perturbed by Destatis.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "buildingsBuiltTotal",
+   "grid": true
+  },
+  {
+   "category": "housing",
+   "feature_name": "buildingsBuilt1949To1978",
+   "original_name": "a1949bis1978",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "a1949bis1978"
+   ],
+   "definition": "Buildings built 1949 to 1978. (Zensus 2022 100 m grid \"Gebaeude nach Baujahr in Mikrozensus-Klassen\"; small cells are suppressed/perturbed by Destatis.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "buildingsBuiltTotal",
+   "grid": true
+  },
+  {
+   "category": "housing",
+   "feature_name": "buildingsBuilt1979To1990",
+   "original_name": "a1979bis1990",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "a1979bis1990"
+   ],
+   "definition": "Buildings built 1979 to 1990. (Zensus 2022 100 m grid \"Gebaeude nach Baujahr in Mikrozensus-Klassen\"; small cells are suppressed/perturbed by Destatis.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "buildingsBuiltTotal",
+   "grid": true
+  },
+  {
+   "category": "housing",
+   "feature_name": "buildingsBuilt1991To2000",
+   "original_name": "a1991bis2000",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "a1991bis2000"
+   ],
+   "definition": "Buildings built 1991 to 2000. (Zensus 2022 100 m grid \"Gebaeude nach Baujahr in Mikrozensus-Klassen\"; small cells are suppressed/perturbed by Destatis.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "buildingsBuiltTotal",
+   "grid": true
+  },
+  {
+   "category": "housing",
+   "feature_name": "buildingsBuilt2001To2010",
+   "original_name": "a2001bis2010",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "a2001bis2010"
+   ],
+   "definition": "Buildings built 2001 to 2010. (Zensus 2022 100 m grid \"Gebaeude nach Baujahr in Mikrozensus-Klassen\"; small cells are suppressed/perturbed by Destatis.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "buildingsBuiltTotal",
+   "grid": true
+  },
+  {
+   "category": "housing",
+   "feature_name": "buildingsBuilt2011To2019",
+   "original_name": "a2011bis2019",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "a2011bis2019"
+   ],
+   "definition": "Buildings built 2011 to 2019. (Zensus 2022 100 m grid \"Gebaeude nach Baujahr in Mikrozensus-Klassen\"; small cells are suppressed/perturbed by Destatis.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "buildingsBuiltTotal",
+   "grid": true
+  },
+  {
+   "category": "housing",
+   "feature_name": "buildingsBuilt2020OrLater",
+   "original_name": "a2020undspaeter",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "a2020undspaeter"
+   ],
+   "definition": "Buildings built 2020 or later. (Zensus 2022 100 m grid \"Gebaeude nach Baujahr in Mikrozensus-Klassen\"; small cells are suppressed/perturbed by Destatis.)",
+   "type": "count",
+   "unit": "",
+   "resampling_up": "sum",
+   "resampling_down": "weighted_divide",
+   "relative_to": "buildingsBuiltTotal",
+   "grid": true
+  },
+  {
+   "category": "housing",
+   "feature_name": "homeSizeM2Mean",
+   "original_name": "durchschnFlaechejeWohn",
+   "country": "germany",
+   "source": "destatis",
+   "codes": [
+    "durchschnFlaechejeWohn"
+   ],
+   "definition": "Average floor area per dwelling in square metres (Zensus 2022, 100 m grid).",
+   "type": "mean",
+   "unit": "m2",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean",
+   "grid": true
+  }
+ ],
+ "years": [
+  2022
+ ],
+ "levels": [
+  "nation",
+  "state",
+  "district"
+ ]
 }

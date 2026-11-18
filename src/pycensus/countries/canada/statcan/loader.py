@@ -35,11 +35,14 @@ Source:
 """
 
 from __future__ import annotations
+from pycensus.cache import get_data_dir
+from pathlib import Path
 
 from typing import List, Optional, Union
 
 import geopandas as gpd
 import pandas as pd
+import requests
 
 from .... import cache as cache_store
 from .... import geometry_levels
@@ -122,7 +125,7 @@ def _fetch_missing(
             try:
                 profile = api.fetch_census_profile_da_totals(province, needed_profile_names, data_dir)
                 raw = raw.merge(profile, on="GEOID", how="left")
-            except NotImplementedError:
+            except (NotImplementedError, requests.RequestException):
                 # Real source not downloaded/verified for this province yet
                 # (only Ontario is) -- columns fall through to the
                 # missing-column NaN branch below, never fabricated.
@@ -193,6 +196,16 @@ def load(
 
     pruids = [constants.province_code(p) for p in provinces]
     columns = [SCHEMA.column_label(name) for name in SCHEMA.columns]
+
+    # The file site (www12.statcan.gc.ca) refuses some networks: boundaries then come from StatCan's ArcGIS service, which only
+    # answers envelope queries -- restricted to the AOI, with the regional cache kept apart per envelope.
+    geography._AOI_BBOX = None
+    if aoi is not None and level != "province" and not geography.boundary_zip_available(level, data_dir):
+        w, s_, e, n = aoi.to_crs(4326).total_bounds
+        geography._AOI_BBOX = (float(w) - 0.02, float(s_) - 0.02, float(e) + 0.02, float(n) + 0.02)
+        import hashlib
+
+        cache_dir = str(get_data_dir("canada", cache_dir) / ("aoi_" + hashlib.md5(str(geography._AOI_BBOX).encode()).hexdigest()[:8]))
 
     province_frames = []
     for pruid in pruids:
