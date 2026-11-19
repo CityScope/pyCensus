@@ -1,5 +1,7 @@
 site_name: pyCensus
 site_description: Census and building data in one shared schema
+site_url: https://cityscope.github.io/pyCensus/
+repo_url: https://github.com/CityScope/pyCensus
 docs_dir: docs
 theme:
   name: material

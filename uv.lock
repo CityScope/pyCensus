@@ -2126,7 +2126,7 @@ http = [
 [[package]]
 name = "geohierarchy"
 version = "1.0.0"
-source = { git = "https://github.com/CityScope/geohierarchy.git#72d43be9a3c2a4cb40ce25ef07f82fcfb5e4f6db" }
+source = { git = "https://github.com/CityScope/geohierarchy.git#3929f4c564a188a4721089236ace52591cf093bb" }
 dependencies = [
     { name = "branca" },
     { name = "fiona" },
@@ -2136,6 +2136,8 @@ dependencies = [
     { name = "h3" },
     { name = "h3ronpy" },
     { name = "mapbox-vector-tile" },
+    { name = "matplotlib", version = "3.10.9", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
+    { name = "matplotlib", version = "3.11.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
     { name = "mercantile" },
     { name = "numpy", version = "2.2.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
     { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version == '3.11.*'" },
@@ -2145,10 +2147,12 @@ dependencies = [
     { name = "pmtiles" },
     { name = "polars" },
     { name = "pyarrow" },
+    { name = "pycountry" },
     { name = "pyproj", version = "3.7.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
     { name = "pyproj", version = "3.7.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
     { name = "rasterio", version = "1.4.4", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
     { name = "rasterio", version = "1.5.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "requests" },
     { name = "scipy", version = "1.15.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
     { name = "scipy", version = "1.17.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version == '3.11.*'" },
     { name = "scipy", version = "1.18.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
