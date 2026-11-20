@@ -75,7 +75,8 @@ def best_h3_resolution_for_cell_size(
     Args:
         cell_size_m: The raster/grid's native cell edge length in meters
             (e.g. ``100.0`` for a 100m x 100m grid, ``1000.0`` for 1km).
-        min_res, max_res: H3 resolutions to consider (real H3 range: 0-15).
+        min_res: Lowest (coarsest) H3 resolution to consider (real H3 range: 0-15).
+        max_res: Highest (finest) H3 resolution to consider (real H3 range: 0-15).
         allow_finer: If ``False`` (the default), only resolutions whose
             average area is **>=** the source cell's own area are
             considered -- i.e. this never claims more spatial precision

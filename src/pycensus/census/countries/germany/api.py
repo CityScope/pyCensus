@@ -139,9 +139,10 @@ def fetch_table(
         table_code: GENESIS table code, e.g. ``"12411-0010"``.
         area: GENESIS ``area`` parameter (``"all"``/``"Alle"`` for the full
             table).
-        startyear/endyear: Restrict to a single ``Stichtag``/``Jahr``
-            column when equal -- verified live to return a single-year
-            column instead of the table's full multi-year matrix.
+        startyear: First ``Stichtag``/``Jahr`` column to return; equal to
+            ``endyear`` restricts to a single year -- verified live to return a
+            single-year column instead of the table's full multi-year matrix.
+        endyear: Last ``Stichtag``/``Jahr`` column to return (see ``startyear``).
         regionalvariable: The table's regional dimension code (e.g.
             ``"DLAND"`` for states, ``"KREISE"`` for districts).
         regionalkey: A region code (or ``"<prefix>*"`` wildcard) to filter
