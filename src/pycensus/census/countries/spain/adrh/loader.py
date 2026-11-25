@@ -183,5 +183,9 @@ def load_attributes(provinces: Iterable[str], level: str = "section", data_dir: 
                 merged["households"] = pop / merged["ine_householdSizeMean"].where(merged["ine_householdSizeMean"] > 0)
             if "ine_belowMedianShare60" in merged:
                 merged["povertyPopulation"] = pop * merged["ine_belowMedianShare60"] / 100.0
+        merged = merged[merged["GEOID"].astype(str).str[:2] == str(province).zfill(2)]   # INE's file for Álava (01) holds the whole country
         frames.append(merged.drop(columns=[c for c in merged.columns if c.startswith("_")]))
-    return pd.concat(frames, ignore_index=True) if frames else pd.DataFrame({"GEOID": []})
+    if not frames:
+        return pd.DataFrame({"GEOID": []})
+    # one row per unit: a unit twice (two provinces' files) doubled every count of the census join (Gipuzkoa 2026-11-20: 1.45 M residents for 0.72 M)
+    return pd.concat(frames, ignore_index=True).drop_duplicates("GEOID")

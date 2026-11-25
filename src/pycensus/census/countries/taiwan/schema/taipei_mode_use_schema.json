@@ -1,0 +1,185 @@
+{
+ "country": "taiwan",
+ "source": "taipei_mode_use",
+ "full_name": "Taipei Department of Transportation, 107年臺北市居民日常使用運具狀況調查 (2018): shares of transport modes per district",
+ "description": "Telephone survey of 1,867 residents aged 15+ (October 2018). Shares of the vehicles used on yesterday's (weekday) trips, every vehicle of a trip counted (the survey's 市占率). Commute = commuting / school trips (表 5-4-2-2); trip shares from 表Ⅱ. traffic_zone level: New Taipei's 7 traffic zones from the Taipei DOT report 102-03 (MOTC survey 2010, 附表 8-2), commute shares only.",
+ "source_url": "https://data.taipei/api/getDatasetInfo/downloadResource?id=86c4e5f9-211e-41e1-91f1-84a65a99eca3&rid=95621ebf-b3d6-4389-87c8-7a97767b63f6",
+ "years": [
+  2018
+ ],
+ "levels": [
+  "district",
+  "traffic_zone"
+ ],
+ "features": [
+  {
+   "category": "commuting",
+   "feature_name": "transit_commute_share",
+   "original_name": "公共運具 (通勤學)",
+   "codes": [
+    "公共運具 (通勤學)"
+   ],
+   "definition": "Public transport share of vehicle uses on commuting / school trips.",
+   "type": "percentage",
+   "unit": "share (0-1)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "commuting",
+   "feature_name": "green_commute_share",
+   "original_name": "綠運輸 (通勤學)",
+   "codes": [
+    "綠運輸 (通勤學)"
+   ],
+   "definition": "Public transport + non-motorised share on commuting / school trips.",
+   "type": "percentage",
+   "unit": "share (0-1)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "commuting",
+   "feature_name": "nonmotorised_commute_share",
+   "original_name": "非機動運具 (通勤學)",
+   "codes": [
+    "非機動運具 (通勤學)"
+   ],
+   "definition": "Walking and cycling share on commuting / school trips.",
+   "type": "percentage",
+   "unit": "share (0-1)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "commuting",
+   "feature_name": "private_motorised_commute_share",
+   "original_name": "私人機動運具 (通勤學)",
+   "codes": [
+    "私人機動運具 (通勤學)"
+   ],
+   "definition": "Private motorcycle and car share on commuting / school trips.",
+   "type": "percentage",
+   "unit": "share (0-1)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "commuting",
+   "feature_name": "transit_trip_share",
+   "original_name": "公共運具",
+   "codes": [
+    "公共運具"
+   ],
+   "definition": "Public transport share of vehicle uses on all trips.",
+   "type": "percentage",
+   "unit": "share (0-1)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "commuting",
+   "feature_name": "mrt_trip_share",
+   "original_name": "捷運",
+   "codes": [
+    "捷運"
+   ],
+   "definition": "MRT share on all trips.",
+   "type": "percentage",
+   "unit": "share (0-1)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "commuting",
+   "feature_name": "bus_trip_share",
+   "original_name": "市區公車",
+   "codes": [
+    "市區公車"
+   ],
+   "definition": "City bus share on all trips.",
+   "type": "percentage",
+   "unit": "share (0-1)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "commuting",
+   "feature_name": "taxi_trip_share",
+   "original_name": "計程車",
+   "codes": [
+    "計程車"
+   ],
+   "definition": "Taxi share on all trips.",
+   "type": "percentage",
+   "unit": "share (0-1)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "commuting",
+   "feature_name": "walk_trip_share",
+   "original_name": "步行",
+   "codes": [
+    "步行"
+   ],
+   "definition": "Walking share on all trips.",
+   "type": "percentage",
+   "unit": "share (0-1)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "commuting",
+   "feature_name": "motorcycle_trip_share",
+   "original_name": "私人機車",
+   "codes": [
+    "私人機車"
+   ],
+   "definition": "Private motorcycle share on all trips.",
+   "type": "percentage",
+   "unit": "share (0-1)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "commuting",
+   "feature_name": "car_trip_share",
+   "original_name": "自用小客車",
+   "codes": [
+    "自用小客車"
+   ],
+   "definition": "Private car share on all trips.",
+   "type": "percentage",
+   "unit": "share (0-1)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "commuting",
+   "feature_name": "sample_out_yesterday",
+   "original_name": "樣本數 (昨天有外出者)",
+   "codes": [
+    "樣本數 (昨天有外出者)"
+   ],
+   "definition": "Surveyed residents who went out the day before.",
+   "type": "count",
+   "unit": "persons",
+   "resampling_up": "sum",
+   "resampling_down": "divide_population_weighted"
+  },
+  {
+   "category": "commuting",
+   "feature_name": "sample_commute_trips",
+   "original_name": "樣本數 (通勤學旅次)",
+   "codes": [
+    "樣本數"
+   ],
+   "definition": "Surveyed commuting / school trips behind the traffic-zone shares (2010).",
+   "type": "count",
+   "unit": "trips",
+   "resampling_up": "sum",
+   "resampling_down": "divide_population_weighted"
+  }
+ ]
+}

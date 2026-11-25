@@ -254,6 +254,7 @@ MARCO_GEO_SHAPEFILE_SUFFIX: Dict[str, str] = {
     "state": "ent",
     "municipality": "mun",
     "ageb": "a",
+    "ageb_rural": "ar",   # rural AGEBs (9-character CVEGEO: state + municipality + AGEB)
     "block": "m",
 }
 

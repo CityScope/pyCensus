@@ -1,0 +1,106 @@
+{
+ "country": "spain",
+ "source": "donostia_pmus",
+ "full_name": "Donostia / San Sebastian PMUS 2024-2029 neighbourhood sheets -- weekday trips starting in each neighbourhood by mode (EM CAPV 2021 + 2022 oversample)",
+ "description": "Trips of every purpose that start in the neighbourhood (residents and visitors), weekday, by mode, as tabulated in the neighbourhood sheets of the city's sustainable mobility plan. 15 neighbourhoods (Igeldo, Zubieta, Landarbaso and Oarain have no sheet).",
+ "source_url": "https://www.euskadi.eus/contenidos/informacion/eaes_649inet_pmus_dss/es_def/adjuntos/PMUS-SS-2024-2029.pdf",
+ "years": [
+  2021
+ ],
+ "levels": [
+  "auzoa"
+ ],
+ "features": [
+  {
+   "category": "commuting",
+   "feature_name": "tripsTotal",
+   "original_name": "Total",
+   "codes": [
+    "Total"
+   ],
+   "definition": "Weekday trips starting in the neighbourhood.",
+   "type": "count",
+   "unit": "trips",
+   "resampling_up": "sum",
+   "resampling_down": "divide_population_weighted"
+  },
+  {
+   "category": "commuting",
+   "feature_name": "publicTransportTrips",
+   "original_name": "colectivos",
+   "codes": [
+    "colectivos"
+   ],
+   "definition": "Trips by public transport.",
+   "type": "count",
+   "unit": "trips",
+   "resampling_up": "sum",
+   "resampling_down": "divide_population_weighted"
+  },
+  {
+   "category": "commuting",
+   "feature_name": "walkTrips",
+   "original_name": "andando",
+   "codes": [
+    "andando"
+   ],
+   "definition": "Trips on foot.",
+   "type": "count",
+   "unit": "trips",
+   "resampling_up": "sum",
+   "resampling_down": "divide_population_weighted"
+  },
+  {
+   "category": "commuting",
+   "feature_name": "bikeTrips",
+   "original_name": "bicicleta",
+   "codes": [
+    "bicicleta"
+   ],
+   "definition": "Trips by bicycle.",
+   "type": "count",
+   "unit": "trips",
+   "resampling_up": "sum",
+   "resampling_down": "divide_population_weighted"
+  },
+  {
+   "category": "commuting",
+   "feature_name": "carTrips",
+   "original_name": "automovil",
+   "codes": [
+    "automovil"
+   ],
+   "definition": "Trips by car.",
+   "type": "count",
+   "unit": "trips",
+   "resampling_up": "sum",
+   "resampling_down": "divide_population_weighted"
+  },
+  {
+   "category": "commuting",
+   "feature_name": "motorcycleTrips",
+   "original_name": "moto",
+   "codes": [
+    "moto"
+   ],
+   "definition": "Trips by motorcycle.",
+   "type": "count",
+   "unit": "trips",
+   "resampling_up": "sum",
+   "resampling_down": "divide_population_weighted"
+  },
+  {
+   "category": "commuting",
+   "feature_name": "multimodalTrips",
+   "original_name": "multimodal",
+   "codes": [
+    "multimodal"
+   ],
+   "definition": "Trips combining modes.",
+   "type": "count",
+   "unit": "trips",
+   "resampling_up": "sum",
+   "resampling_down": "divide_population_weighted"
+  }
+ ]
+}

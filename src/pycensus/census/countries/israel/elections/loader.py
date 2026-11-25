@@ -167,6 +167,54 @@ def load_knesset(election: int = 25, localities: Iterable[int] = (9000,), data_d
     return ElectionResult(census, h3df)
 
 
+def load_knesset_localities(election: int = 25, localities: Iterable[int] = (9000,), data_dir: Optional[str] = None,
+                            party_threshold: float = 0.03) -> pd.DataFrame:
+    """Knesset results summed over each locality's ballot boxes (no geocoding): one row per CBS locality symbol (``GEOID``), the same
+    ``elec_national_<year>_*`` columns as :func:`load_knesset`. For the localities without statistical areas (most of them) and as the
+    fallback of those with them. A locality with no ballot-box rows is left out.
+
+    Args:
+        election: Knesset number (e.g. 25).
+        localities: CBS locality symbols.
+        data_dir: Folder of the raw downloads; ``None`` = the pycensus cache.
+        party_threshold: Parties above this share (of the localities together) get their own columns.
+
+    Returns:
+        DataFrame keyed by ``GEOID`` (locality symbol as text).
+
+    Raises:
+        ValueError: For a Knesset not wired.
+    """
+    if election not in RESOURCES:
+        raise ValueError(f"Knesset {election} not wired (available: {sorted(RESOURCES)})")
+    year = ELECTION_YEAR[election]
+    blocs = electoral.load_blocs(BLOCS_PATH)
+    kb = blocs[f"knesset_{election}"]
+    rows = []
+    for loc in localities:
+        res = _ckan(RESOURCES[election], loc, data_dir)
+        if res.empty:
+            continue
+        cl = list(res.columns)
+        letters = cl[cl.index("אמת"):cl.index("ת") + 1]
+        r = {"GEOID": str(int(loc)), "eligible": res["בזב"].sum(), "ballots": res["מצביעים"].sum(), "valid": res["כשרים"].sum()}
+        for bl in ("left", "right", "other"):
+            r[bl] = sum(res[c].sum() for c in letters if kb.get(c, {}).get("bloc", blocs["default_bloc"]) == bl)
+        for c in letters:
+            r[f"L_{c}"] = res[c].sum()
+        rows.append(r)
+    k = pd.DataFrame(rows).fillna(0.0)
+    if k.empty:
+        return k
+    letters = [c for c in k.columns if c.startswith("L_")]
+    shares = k[letters].sum() / k["valid"].sum()
+    keepL = [c[2:] for c in shares[shares >= party_threshold].index]
+    slug = {c: LETTER_SLUG.get(c, f"list_{zlib.crc32(c.encode()) % 10**4}") for c in keepL}
+    for c in keepL:
+        k[f"party_{slug[c]}"] = k[f"L_{c}"]
+    return electoral.finalize(k, f"national_{year}", "GEOID", sorted(slug.values()))
+
+
 def load_local_authorities(*args, **kw):
     """Not available: the Interior Ministry / Central Elections Committee local-authority (mayor + council) results by ballot box
     (Feb 2024 round) are only on gov.il / bechirot.gov.il pages that answer scripted clients with an HTTP 403 WAF block, and data.gov.il has

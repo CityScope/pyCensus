@@ -72,7 +72,7 @@ GEO_HIERARCHIES = {
 }
 
 # Levels with a real, verified boundary source wired up (see module docstring).
-IMPLEMENTED_LEVELS = ("state", "municipality", "ageb", "block")
+IMPLEMENTED_LEVELS = ("state", "municipality", "ageb", "ageb_rural", "block")
 
 ERASE_WATER: dict = {
     "nation": False,

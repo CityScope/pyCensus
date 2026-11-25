@@ -1,0 +1,119 @@
+{
+ "country": "spain",
+ "source": "em_capv",
+ "full_name": "Estudio de la Movilidad de la CAPV 2021 -- weekday trips by mode per comarca of origin (capitals apart)",
+ "description": "Row totals of the study's origin-destination matrices (Tablas 120-141, absolute values): weekday trips of the population aged 7+ that start in each zone, all purposes, by mode. Zones: the 20 comarcas of the Basque Country, with Vitoria-Gasteiz, Bilbao and Donostia / San Sebastian as zones of their own.",
+ "source_url": "https://www.euskadi.eus/contenidos/documentacion/em2021/es_def/adjuntos/Informe_encuesta+telefonia-CAST.pdf",
+ "years": [
+  2021
+ ],
+ "levels": [
+  "eustat_zone"
+ ],
+ "features": [
+  {
+   "category": "commuting",
+   "feature_name": "tripsTotal",
+   "original_name": "Tabla 120",
+   "codes": [
+    "Tabla 120"
+   ],
+   "definition": "Weekday trips starting in the zone.",
+   "type": "count",
+   "unit": "trips",
+   "resampling_up": "sum",
+   "resampling_down": "divide_population_weighted"
+  },
+  {
+   "category": "commuting",
+   "feature_name": "carTrips",
+   "original_name": "Tabla 123",
+   "codes": [
+    "Tabla 123"
+   ],
+   "definition": "By car.",
+   "type": "count",
+   "unit": "trips",
+   "resampling_up": "sum",
+   "resampling_down": "divide_population_weighted"
+  },
+  {
+   "category": "commuting",
+   "feature_name": "publicTransportTrips",
+   "original_name": "Tabla 126",
+   "codes": [
+    "Tabla 126"
+   ],
+   "definition": "By public transport (transporte colectivo).",
+   "type": "count",
+   "unit": "trips",
+   "resampling_up": "sum",
+   "resampling_down": "divide_population_weighted"
+  },
+  {
+   "category": "commuting",
+   "feature_name": "walkTrips",
+   "original_name": "Tabla 129",
+   "codes": [
+    "Tabla 129"
+   ],
+   "definition": "On foot.",
+   "type": "count",
+   "unit": "trips",
+   "resampling_up": "sum",
+   "resampling_down": "divide_population_weighted"
+  },
+  {
+   "category": "commuting",
+   "feature_name": "bikeTrips",
+   "original_name": "Tabla 132",
+   "codes": [
+    "Tabla 132"
+   ],
+   "definition": "By bicycle.",
+   "type": "count",
+   "unit": "trips",
+   "resampling_up": "sum",
+   "resampling_down": "divide_population_weighted"
+  },
+  {
+   "category": "commuting",
+   "feature_name": "multimodalTrips",
+   "original_name": "Tabla 135",
+   "codes": [
+    "Tabla 135"
+   ],
+   "definition": "Multimodal.",
+   "type": "count",
+   "unit": "trips",
+   "resampling_up": "sum",
+   "resampling_down": "divide_population_weighted"
+  },
+  {
+   "category": "commuting",
+   "feature_name": "motorcycleTrips",
+   "original_name": "Tabla 138",
+   "codes": [
+    "Tabla 138"
+   ],
+   "definition": "By motorcycle.",
+   "type": "count",
+   "unit": "trips",
+   "resampling_up": "sum",
+   "resampling_down": "divide_population_weighted"
+  },
+  {
+   "category": "commuting",
+   "feature_name": "otherTrips",
+   "original_name": "Tabla 141",
+   "codes": [
+    "Tabla 141"
+   ],
+   "definition": "Other modes.",
+   "type": "count",
+   "unit": "trips",
+   "resampling_up": "sum",
+   "resampling_down": "divide_population_weighted"
+  }
+ ]
+}

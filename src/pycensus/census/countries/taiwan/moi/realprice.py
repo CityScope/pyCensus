@@ -68,7 +68,11 @@ def download_season(roc: int, q: int, data_dir: Optional[str] = None, timeout: i
 def _read(zf: zipfile.ZipFile, name: str) -> Optional[pd.DataFrame]:
     if name not in zf.namelist():
         return None
-    df = pd.read_csv(zf.open(name), dtype=str, encoding="utf-8-sig")
+    bad: list = []
+    # a few registry rows carry a stray extra field (e.g. a comma in the notes); they are skipped and counted, not fatal for the whole file
+    df = pd.read_csv(zf.open(name), dtype=str, encoding="utf-8-sig", engine="python", on_bad_lines=lambda row: bad.append(row) and None)
+    if bad:
+        print(f"[realprice] {name}: skipped {len(bad)} malformed row(s) of {len(df) + len(bad)}")
     return df[~df.iloc[:, 0].str.contains("villages and towns", na=False)]  # drop english header row
 
 

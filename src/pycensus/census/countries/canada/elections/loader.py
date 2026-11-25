@@ -89,9 +89,16 @@ def _pdkey(s: str) -> str:
 
 
 # ----------------------------------------------------------------------- federal
-def _federal(raw: Path):
+def _area(raw: Path, area):
+    """The study area (a shapely geometry in EPSG:4326) or, by default, the City of Toronto."""
+    if area is not None:
+        return area
     city = _city(raw)
-    cu = city.union_all() if hasattr(city, "union_all") else city.unary_union
+    return city.union_all() if hasattr(city, "union_all") else city.unary_union
+
+
+def _federal(raw: Path, area=None):
+    cu = _area(raw, area)
     shp_zip = download(PD_FED, raw / "pd2025_shp.zip")
     d = raw / "pd2025"
     if not d.exists():
@@ -132,8 +139,8 @@ def _federal(raw: Path):
     return keep, long, electors, rejected, "fed"
 
 
-def _federal_counts(raw, blocs):
-    keep, long, electors, rejected, _ = _federal(raw)
+def _federal_counts(raw, blocs, area=None):
+    keep, long, electors, rejected, _ = _federal(raw, area)
     c = build_counts(long, blocs, electors=electors, rejected=rejected)
     ug = pd.Series(keep["FED_NUM"].astype(str).to_numpy(), index=keep["unit"].to_numpy())
     c = allocate_pools(c, ug, c["electors"].where(~c.index.str.startswith(POOL), 0).fillna(0))
@@ -142,9 +149,8 @@ def _federal_counts(raw, blocs):
 
 
 # ---------------------------------------------------------------------- Ontario
-def _ontario_counts(raw, blocs):
-    city = _city(raw)
-    cu = city.union_all() if hasattr(city, "union_all") else city.unary_union
+def _ontario_counts(raw, blocs, area=None):
+    cu = _area(raw, area)
     z = download(ON_PD, raw / "on_pd2025.zip")
     d = raw / "on_pd2025"
     if not d.exists():
@@ -233,7 +239,7 @@ def _census(census_geometry, levels):
 
 
 def load_all(scope: str, census_geometry: Optional[Dict[str, gpd.GeoDataFrame]] = None, worldpop_path: Optional[str] = None,
-             cache_dir: Optional[str] = None) -> Dict[str, pd.DataFrame]:
+             cache_dir: Optional[str] = None, area=None) -> Dict[str, pd.DataFrame]:
     """``{"poll", "h3", "da"}`` frames for scope in national/state/municipal.
 
     ``census_geometry``: ``{"da": GeoDataFrame(GEOID|DAUID, geometry)}`` (2021 dissemination areas around Toronto).
@@ -243,11 +249,17 @@ def load_all(scope: str, census_geometry: Optional[Dict[str, gpd.GeoDataFrame]] 
         census_geometry: ``{"da": dissemination areas}``.
         worldpop_path: Explicit WorldPop raster.
         cache_dir: Cache folder; ``None`` = the pycensus cache.
+        area: Study area (shapely geometry, EPSG:4326 -- e.g. the union of the census geometry): the federal and Ontario elections take
+            every polling division whose representative point lies in it (all of the province publishes them); ``None`` = the City of
+            Toronto. The municipal election is the City of Toronto's in any case.
     """
     e = ELECTIONS[scope]
     raw = _raw(cache_dir)
     blocs = load_blocs(BLOCS_PATH, e["key"])
-    geom, counts = {"national": _federal_counts, "state": _ontario_counts, "municipal": _toronto_counts}[scope](raw, blocs)
+    if scope == "municipal":
+        geom, counts = _toronto_counts(raw, blocs)
+    else:
+        geom, counts = {"national": _federal_counts, "state": _ontario_counts}[scope](raw, blocs, area)
     return run_pipeline(geom, counts, scope, e["year"], "can", _census(census_geometry, None), worldpop_path, unit_label="poll")
 
 

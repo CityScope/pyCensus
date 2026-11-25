@@ -1,0 +1,94 @@
+{
+ "country": "germany",
+ "source": "mid_hamburg",
+ "full_name": "Mobilitaet in Deutschland 2023, Hamburg results presentation: residents' trips by main mode per Bezirk",
+ "description": "Shares of residents' trips by main mode in each of Hamburg's 7 Bezirke, 2023 (slide 24 of the MiD 2023 Hamburg presentation; Bergedorf of limited comparability). kreis level: the Kreise of the Metropolregion Hamburg, MiD 2017 regional report (Abbildung 17).",
+ "source_url": "https://www.hamburg.de/resource/blob/1133804/97e90beaa73a2e06c6175e73048d03f7/mid2023-ergebnispraesentation-hamburg-data.pdf",
+ "years": [
+  2023
+ ],
+ "levels": [
+  "bezirk",
+  "kreis"
+ ],
+ "features": [
+  {
+   "category": "commuting",
+   "feature_name": "transit_trip_share",
+   "original_name": "ÖV",
+   "codes": [
+    "ÖV"
+   ],
+   "definition": "Public transport share of residents' trips.",
+   "type": "percentage",
+   "unit": "share (0-1)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "commuting",
+   "feature_name": "walk_trip_share",
+   "original_name": "zu Fuß",
+   "codes": [
+    "zu Fuß"
+   ],
+   "definition": "Walking share.",
+   "type": "percentage",
+   "unit": "share (0-1)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "commuting",
+   "feature_name": "bike_trip_share",
+   "original_name": "Fahrrad",
+   "codes": [
+    "Fahrrad"
+   ],
+   "definition": "Cycling share.",
+   "type": "percentage",
+   "unit": "share (0-1)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "commuting",
+   "feature_name": "car_trip_share",
+   "original_name": "MIV-Fahrt + MIV-Mitfahrt",
+   "codes": [
+    "MIV-Fahrt + MIV-Mitfahrt"
+   ],
+   "definition": "Car share (driver + passenger).",
+   "type": "percentage",
+   "unit": "share (0-1)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "commuting",
+   "feature_name": "car_driver_trip_share",
+   "original_name": "MIV-Fahrt",
+   "codes": [
+    "MIV-Fahrt"
+   ],
+   "definition": "Car driver share.",
+   "type": "percentage",
+   "unit": "share (0-1)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  },
+  {
+   "category": "commuting",
+   "feature_name": "car_passenger_trip_share",
+   "original_name": "MIV-Mitfahrt",
+   "codes": [
+    "MIV-Mitfahrt"
+   ],
+   "definition": "Car passenger share.",
+   "type": "percentage",
+   "unit": "share (0-1)",
+   "resampling_up": "weighted_mean",
+   "resampling_down": "weighted_mean"
+  }
+ ]
+}

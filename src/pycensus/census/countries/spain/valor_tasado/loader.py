@@ -29,6 +29,18 @@ def _norm(s: str) -> str:
     return re.sub(r"[^a-z0-9]", "", s)
 
 
+#: the ministry's spellings that differ from INE's beyond accents, articles and bilingual parts
+ALIASES = {"vitoria": "Vitoria-Gasteiz", "palmamallorca": "Palma", "mahon": "Maó", "santacolomagramanet": "Santa Coloma de Gramenet",
+           "santacruzdetenerife": "Santa Cruz de Tenerife"}
+
+
+def _variants(s: str) -> list:
+    """Normalised forms of every part of a bilingual name ("San Sebastián/Donostia" and INE's "Donostia/San Sebastián" share one)."""
+    parts = [str(s), *str(s).split("/")]
+    parts += [ALIASES[_norm(p)] for p in parts if _norm(p) in ALIASES]
+    return [v for v in dict.fromkeys(_norm(p) for p in parts) if v]
+
+
 def load_attributes(data_dir: Optional[str] = None, quarters: Optional[list] = None) -> pd.DataFrame:
     """Return GEOID (5-digit), province/municipality names and ``valor_tasado_{new,old,total}_<QnYYYY>`` (EUR/m2) and
     ``valor_tasado_n_<QnYYYY>`` (appraisals) for the given sheet names (default: the latest sheet and the one 4 and 40 quarters earlier).
@@ -47,10 +59,11 @@ def load_attributes(data_dir: Optional[str] = None, quarters: Optional[list] = N
     if quarters is None:
         quarters = [names[-1], names[-5], names[-41]]
     xw = municipality_crosswalk(data_dir)
-    xw["k"] = xw["NPRO"].map(_norm) + "|" + xw["NMUN"].map(_norm)
+    xw = xw.assign(v=xw["NMUN"].map(_variants)).explode("v")   # one key per part of a bilingual name
+    xw["k"] = xw["NPRO"].map(_norm) + "|" + xw["v"]
     xw = xw.drop_duplicates("k").set_index("k")["CUMUN"]
-    nm = xw.reset_index().assign(n=lambda d: d["k"].str.split("|").str[1])
-    by_name = nm[~nm["n"].duplicated(keep=False)].set_index("n")["CUMUN"]
+    nm = xw.reset_index().assign(n=lambda d: d["k"].str.split("|").str[1]).drop_duplicates(["n", "CUMUN"])
+    by_name = nm[~nm["n"].duplicated(keep=False)].set_index("n")["CUMUN"]   # names unique in the country (any part of a bilingual name)
     out = None
     for q in quarters:
         raw = book[[n for n in book if n.strip() == q][0]]
@@ -59,10 +72,10 @@ def load_attributes(data_dir: Optional[str] = None, quarters: Optional[list] = N
         body["prov"] = body["prov"].ffill()
         body = body[body["mun"].notna() & body["total"].notna()]
         body = body[~body["prov"].astype(str).str.contains("Fuente|Nota|\\(", regex=True)]
-        body["k"] = body["prov"].map(_norm) + "|" + body["mun"].map(_norm)
-        body["GEOID"] = body["k"].map(xw)
+        body["GEOID"] = [next((xw[k] for k in (_norm(p) + "|" + v for v in _variants(m)) if k in xw.index), None)
+                         for p, m in zip(body["prov"], body["mun"])]
         miss = body["GEOID"].isna()  # province name wrapped/misspelt in the sheet: fall back to a nationally unique municipality name
-        body.loc[miss, "GEOID"] = body.loc[miss, "mun"].map(_norm).map(by_name)
+        body.loc[miss, "GEOID"] = [next((by_name[v] for v in _variants(m) if v in by_name.index), None) for m in body.loc[miss, "mun"]]
         body = body.rename(columns={c: f"valor_tasado_{c}_{q}" for c in ("new", "old", "total", "n_total")})
         body = body[["GEOID", "prov", "mun"] + [c for c in body.columns if c.startswith("valor_tasado_")]]
         for c in body.columns[3:]:
