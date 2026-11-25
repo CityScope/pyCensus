@@ -108,6 +108,7 @@ Technical aspects:
 from __future__ import annotations
 
 import os
+import threading
 import warnings
 import zipfile
 from datetime import date, datetime
@@ -209,7 +210,26 @@ def _requests_get(url: str, retries: int = 6, **kwargs):
     raise last  # pragma: no cover
 
 
+_PATH_LOCKS: dict = {}
+_PATH_LOCKS_GUARD = threading.Lock()
+
+
+def _path_lock(path: str) -> threading.Lock:
+    """One lock per destination file. Layers that need the same raster run in threads; two of them writing its ``.part`` file at once
+    corrupt it or fail at the final rename, so the second waits and then finds the finished file."""
+    with _PATH_LOCKS_GUARD:
+        return _PATH_LOCKS.setdefault(os.path.abspath(path), threading.Lock())
+
+
 def _download_to(url: str, dest_path: str, overwrite: bool, chunk_size: int = 1048576, retries: int = 6) -> str:
+    """Stream ``url`` to ``dest_path`` (see `_download_locked`), one thread at a time per file."""
+    if os.path.isfile(dest_path) and not overwrite:
+        return dest_path
+    with _path_lock(dest_path):
+        return _download_locked(url, dest_path, overwrite, chunk_size, retries)
+
+
+def _download_locked(url: str, dest_path: str, overwrite: bool, chunk_size: int = 1048576, retries: int = 6) -> str:
     """Stream ``url`` to ``dest_path`` with a progress bar, reusing an existing file unless ``overwrite``.
 
     WorldPop's server drops connections and rate-limits (dozens of age/sex rasters are fetched per country), so the download has a
@@ -271,6 +291,14 @@ def _download_to(url: str, dest_path: str, overwrite: bool, chunk_size: int = 10
 
 
 def _clip_to_aoi(src_path: str, aoi: gpd.GeoDataFrame, dest_path: str, overwrite: bool, pad_deg: float = 0.05) -> str:
+    """Clip a downloaded raster to the AOI (see `_clip_locked`), one thread at a time per output file."""
+    if os.path.isfile(dest_path) and not overwrite:
+        return dest_path
+    with _path_lock(dest_path):
+        return _clip_locked(src_path, aoi, dest_path, overwrite, pad_deg)
+
+
+def _clip_locked(src_path: str, aoi: gpd.GeoDataFrame, dest_path: str, overwrite: bool, pad_deg: float = 0.05) -> str:
     """Clip an already-downloaded raster to the AOI's bounding box (plus a small pad).
 
     WorldPop's rasters are per-country (e.g. a ~63000x430000-pixel USA grid), and every
