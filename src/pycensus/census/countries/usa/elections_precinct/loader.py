@@ -207,6 +207,12 @@ def _census(city: str, level: str, census_geometry, year: int = 2020) -> gpd.Geo
     return load_boundaries(level, CITY_STATE_FIPS[city], year)
 
 
+def city_footprint(city: str, cache_dir: Optional[str] = None) -> gpd.GeoDataFrame:
+    """The city's area as its precinct files cover it (one polygon, EPSG:4326): the city precinct results describe only the people inside it."""
+    geom = _precinct_geometry(city, _raw(cache_dir)).to_crs(4326)
+    return gpd.GeoDataFrame(geometry=[geom.geometry.union_all()], crs=4326)
+
+
 def load_all(
     city: str,
     scope: str,
