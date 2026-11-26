@@ -49,7 +49,7 @@ import numpy as np
 import pandas as pd
 
 from pycensus.elections_common import (
-    PopulationGrid, build_counts, default_elections_cache, download, find_worldpop, finalize_all,
+    PopulationGrid, usa_block_grid, build_counts, default_elections_cache, download, find_worldpop, finalize_all,
     h3_to_units, load_blocs, units_to_h3, write_schema,
 )
 
@@ -249,7 +249,9 @@ def load_all(
         counts = counts.drop(columns=["electors"])
     bounds = geom.total_bounds
     pad = 0.01
-    grid = PopulationGrid(find_worldpop("usa", worldpop_path), (bounds[0] - pad, bounds[1] - pad, bounds[2] + pad, bounds[3] + pad))
+    box = (bounds[0] - pad, bounds[1] - pad, bounds[2] + pad, bounds[3] + pad)
+    # votes are spread over the census BLOCKS (the finest population count the census publishes), not a WorldPop raster; a raster is used only if one is given
+    grid = PopulationGrid(find_worldpop("usa", worldpop_path), box) if worldpop_path else usa_block_grid(box, cache_dir)
     h3c = units_to_h3(geom.drop_duplicates("unit"), counts, grid)
     out_counts = {}
     for lvl in census_levels:

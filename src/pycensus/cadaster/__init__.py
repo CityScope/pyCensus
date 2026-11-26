@@ -27,6 +27,9 @@ logger = logging.getLogger(__name__)
 GLOBAL_SCHEMA = json.loads((Path(__file__).resolve().parent / "global_schema.json").read_text())
 COLUMNS = [f["name"] for f in GLOBAL_SCHEMA["fields"]]
 USE_CLASSES = next(f["values"] for f in GLOBAL_SCHEMA["fields"] if f["name"] == "use_class")
+#: per use class: can its buildings hold residents / jobs (`global_schema.json`, "use_classes")
+USE_CLASS_RULES = {k: v for k, v in GLOBAL_SCHEMA["use_classes"].items() if not k.startswith("_")}
+assert set(USE_CLASS_RULES) == set(USE_CLASSES), "use_classes of global_schema.json must list exactly the values of the use_class field"
 FLOOR_HEIGHT_M = float(GLOBAL_SCHEMA["floor_height_m"])
 
 #: source key -> module (relative to pycensus.cadaster)

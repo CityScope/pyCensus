@@ -26,6 +26,7 @@ from __future__ import annotations
 
 import json
 import logging
+import os
 import re
 import unicodedata
 from pathlib import Path
@@ -240,6 +241,9 @@ def allocate_pools(counts: pd.DataFrame, unit_group: pd.Series, weights: pd.Seri
 
 
 # ----------------------------------------------------------------- pop grid
+POPULATION_RASTER_ENV_VAR = "PYCENSUS_POPULATION_RASTER"
+
+
 def find_worldpop(iso3: str, worldpop_path: Optional[str] = None) -> str:
     """Path of the WorldPop 2025 100 m raster of a country (from the given path, ``$PYCENSUS_WORLDPOP_DIRS``, the default
     folders or the cache).
@@ -256,7 +260,6 @@ def find_worldpop(iso3: str, worldpop_path: Optional[str] = None) -> str:
     """
     if worldpop_path:
         return worldpop_path
-    import os
     from pycensus.cache import get_worldpop_dir
 
     env_dirs = [d for d in os.environ.get(WORLDPOP_DIRS_ENV_VAR, "").split(os.pathsep) if d]
@@ -264,8 +267,11 @@ def find_worldpop(iso3: str, worldpop_path: Optional[str] = None) -> str:
         p = Path(d) / f"{iso3.lower()}_pop_2025_CN_100m_R2025A_v1.tif"
         if p.is_file():
             return str(p)
+    own = os.environ.get(POPULATION_RASTER_ENV_VAR, "")   # a run's own population raster (e.g. built from a fine census): the spreading surface when there is no WorldPop
+    if own and Path(own).is_file():
+        return own
     raise FileNotFoundError(
-        f"WorldPop raster for {iso3} not found; pass worldpop_path or download with "
+        f"WorldPop raster for {iso3} not found; pass worldpop_path, set {POPULATION_RASTER_ENV_VAR} to any population raster, or download with "
         "pycensus.census.worldwide.worldpop.loader.download_worldpop_population"
     )
 
@@ -304,6 +310,33 @@ class PopulationGrid:
         j = gpd.sjoin(self.gdf[["pop", "h3", "geometry"]], u, how="inner", predicate="within")
         j = j[~j.index.duplicated(keep="first")]
         return j[["pop", "h3", id_col]].rename(columns={id_col: "unit"})
+
+
+class BlockPopulationGrid(PopulationGrid):
+    """The same grid as `PopulationGrid`, with census blocks in place of WorldPop pixels: one point inside each block (its representative point)
+    carrying the block's population. Blocks are the finest population count a census publishes (no model, no raster to download), so votes are
+    spread over them wherever a census has blocks (the USA's decennial blocks)."""
+
+    def __init__(self, blocks: gpd.GeoDataFrame, pop_col: str, res: int = H3_RES):
+        self.res = res
+        b = blocks.to_crs(4326)
+        pts = b.geometry.representative_point()
+        pop = pd.to_numeric(b[pop_col], errors="coerce").fillna(0.0).clip(lower=0.0).to_numpy()
+        self.df = pd.DataFrame({"lon": pts.x.to_numpy(), "lat": pts.y.to_numpy(), "pop": pop})
+        self.df["h3"] = [h3.latlng_to_cell(la, lo, res) for la, lo in zip(self.df.lat, self.df.lon)]
+        self.gdf = gpd.GeoDataFrame(self.df, geometry=gpd.points_from_xy(self.df.lon, self.df.lat), crs=4326)
+
+
+def usa_block_grid(bbox: Sequence[float], cache_dir: Optional[str] = None, res: int = H3_RES) -> BlockPopulationGrid:
+    """`BlockPopulationGrid` of the decennial census blocks inside `bbox` (west, south, east, north)."""
+    from shapely.geometry import box
+
+    from pycensus.census.countries.usa import dhc
+
+    aoi = gpd.GeoDataFrame(geometry=[box(*bbox)], crs=4326)
+    blocks = dhc.load(aoi=aoi, level="block", cache_dir=cache_dir)
+    pop = next(c for c in ("dhc_population", "population") if c in blocks.columns)
+    return BlockPopulationGrid(blocks[[pop, "geometry"]], pop, res)
 
 
 def _count_cols(counts: pd.DataFrame) -> List[str]:

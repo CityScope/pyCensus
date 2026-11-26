@@ -82,8 +82,10 @@ def h3_zone(b, resolution: int) -> pd.Series:
 
 
 def cell_floor_area(b, resolution: int):
-    """(cells, residential floor area, other floor area) per H3 cell holding a building's centroid / point: sorted uint64 cell ids
-    with at least one building. Residential = use_class residential or mixed (gross floor area, built_area_m2).
+    """(cells, floor area open to residents, floor area open to jobs) per H3 cell holding a building's centroid / point: sorted uint64 cell ids
+    with at least one building (gross floor area, built_area_m2). By use class: residential buildings hold residents only, every non-residential
+    class (commercial, office, industrial, public ...) jobs only, MIXED buildings both, and buildings with no official use (class `unknown`: GlobalBuildingAtlas,
+    unmapped codes) both: without data, any building can hold both.
 
     Args:
         b: Buildings (unified schema).
@@ -93,9 +95,15 @@ def cell_floor_area(b, resolution: int):
 
     if b is None or not len(b):
         return np.zeros(0, np.uint64), np.zeros(0), np.zeros(0)
-    c = b.geometry if b.geom_type.iloc[0] == "Point" else b.geometry.representative_point()
+    # points stay as they are, polygons give a point inside them (a source can mix both: US structure points and GBA footprints)
+    c = b.geometry.where(b.geom_type == "Point", b.geometry.representative_point())
     cells = np.asarray(hv.coordinates_to_cells(c.y.to_numpy(), c.x.to_numpy(), resolution)).astype(np.uint64)
     ba = np.nan_to_num(pd.to_numeric(b["built_area_m2"], errors="coerce").to_numpy(float))
-    res = b["use_class"].isin(RESIDENTIAL).to_numpy()
+    from pycensus.cadaster import USE_CLASS_RULES
+
+    uc = b["use_class"].astype(str)
+    # which classes hold residents / jobs: `global_schema.json` ("use_classes"); a class not in it (a source that did not map) counts as unknown
+    for_residents = uc.map(lambda k: USE_CLASS_RULES.get(k, USE_CLASS_RULES["unknown"])["residents"]).to_numpy(bool)
+    for_jobs = uc.map(lambda k: USE_CLASS_RULES.get(k, USE_CLASS_RULES["unknown"])["jobs"]).to_numpy(bool)
     u, inv = np.unique(cells, return_inverse=True)
-    return u, np.bincount(inv, weights=np.where(res, ba, 0.0), minlength=len(u)), np.bincount(inv, weights=np.where(res, 0.0, ba), minlength=len(u))
+    return u, np.bincount(inv, weights=np.where(for_residents, ba, 0.0), minlength=len(u)), np.bincount(inv, weights=np.where(for_jobs, ba, 0.0), minlength=len(u))
