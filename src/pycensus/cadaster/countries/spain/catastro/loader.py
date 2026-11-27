@@ -126,6 +126,16 @@ def _parse(z: Path) -> gpd.GeoDataFrame:
     return standardize(b, SOURCE, "ESP")
 
 
+def _parse_safe(z: Path) -> gpd.GeoDataFrame:
+    """`_parse` that drops a corrupt zip (removed, so it is downloaded again next time) instead of stopping the others."""
+    try:
+        return _parse(z)
+    except Exception as exc:  # noqa: BLE001
+        logger.warning(f"es_catastro: {z.name} unreadable ({type(exc).__name__}: {str(exc)[:120]}); removed")
+        z.unlink(missing_ok=True)
+        return gpd.GeoDataFrame()
+
+
 def load(aoi: gpd.GeoDataFrame, cache_dir=None, workers: int = 8) -> gpd.GeoDataFrame:
     """Spanish common-regime cadaster buildings (INSPIRE) of every municipality touching ``aoi``.
 
@@ -153,15 +163,16 @@ def load(aoi: gpd.GeoDataFrame, cache_dir=None, workers: int = 8) -> gpd.GeoData
     with ThreadPoolExecutor(workers) as ex:
         zips = [z for z in ex.map(one, sel.url) if z is not None]
 
-    def parse(z):
-        try:
-            return _parse(z)
-        except Exception as exc:  # noqa: BLE001 -- a corrupt zip: dropped and logged, downloaded again next time
-            logger.warning(f"es_catastro: {z.name} unreadable ({type(exc).__name__}: {str(exc)[:120]}); removed")
-            z.unlink(missing_ok=True)
-            return gpd.GeoDataFrame()
+    # parsing a municipality's GML is CPU work: one process per core (the large cities dominate, the many small towns finish meanwhile)
+    from concurrent.futures import ProcessPoolExecutor
+    import os
 
-    parts = [g for g in map(parse, zips) if len(g)]
+    n = max(1, min(workers, os.cpu_count() or 1, len(zips)))
+    if n > 1:
+        with ProcessPoolExecutor(n) as px:
+            parts = [g for g in px.map(_parse_safe, zips) if len(g)]
+    else:
+        parts = [g for g in map(_parse_safe, zips) if len(g)]
     return gpd.GeoDataFrame(pd.concat(parts, ignore_index=True), crs=4326) if parts else standardize(gpd.GeoDataFrame(geometry=[], crs=4326), SOURCE, "ESP")
 
 

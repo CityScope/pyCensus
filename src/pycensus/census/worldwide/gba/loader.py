@@ -159,18 +159,22 @@ def download_tiles(tiles: Iterable[str], cache_dir=None) -> List[Tuple[str, str]
         tiles: Tile names.
         cache_dir: Cache folder; ``None`` = the pycensus cache.
     """
+    from concurrent.futures import ThreadPoolExecutor
+
     idx = tile_index(cache_dir)
-    out = []
+    out, jobs = [], []
     for t in tiles:
         c = idx.get(t)
         if c is None:
             logger.info(f"GBA has no tile {t} (ocean / no buildings)")
             continue
         odbl, poly, lod1 = tile_paths(t, c, cache_dir)
-        _download(f"{HF}datasets/zhu-xlab/GBA.ODbLPolygon/resolve/main/{c}/{t}.geojson", odbl)
-        _download(f"{HF}datasets/zhu-xlab/GBA.LoD1/resolve/main/Polygon/{c}/{t}.geojson", poly)
-        _download(f"{HF}datasets/zhu-xlab/GBA.LoD1/resolve/main/LoD1/{c}/{t}.json", lod1)
+        jobs += [(f"{HF}datasets/zhu-xlab/GBA.ODbLPolygon/resolve/main/{c}/{t}.geojson", odbl),
+                 (f"{HF}datasets/zhu-xlab/GBA.LoD1/resolve/main/Polygon/{c}/{t}.geojson", poly),
+                 (f"{HF}datasets/zhu-xlab/GBA.LoD1/resolve/main/LoD1/{c}/{t}.json", lod1)]
         out.append((t, c))
+    with ThreadPoolExecutor(3) as ex:   # the files are large and come from one server: three at a time, not one after another, never a burst
+        list(ex.map(lambda j: _download(*j), jobs))
     return out
 
 

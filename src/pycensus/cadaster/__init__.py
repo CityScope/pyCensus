@@ -48,6 +48,19 @@ SOURCES = {
 BY_COUNTRY = {"ESP": ["es_gipuzkoa", "es_araba", "es_bizkaia", "es_navarra", "es_catastro"], "USA": ["us_nsi"], "CAN": ["ca_toronto_massing"], "DEU": ["de_hamburg_lod2"]}
 
 
+def covers(source: str, aoi: gpd.GeoDataFrame) -> bool:
+    """Whether the AOI can lie in the source's coverage (its `coverage_bbox` in schema.json, west / south / east / north; no box = worldwide): a source
+    whose area is nowhere near the AOI (Bizkaia's cadaster for Madrid) is not asked at all."""
+    try:
+        box = source_schema(source).get("coverage_bbox")
+    except Exception:  # noqa: BLE001
+        return True
+    if not box:
+        return True
+    w, s, e, n = aoi.to_crs(4326).total_bounds
+    return not (w > box[2] or e < box[0] or s > box[3] or n < box[1])
+
+
 def source_schema(source: str) -> dict:
     """The schema JSON of one cadaster source.
 
@@ -220,6 +233,9 @@ def load_buildings(country: str, aoi: gpd.GeoDataFrame, cache_dir=None, sources:
     parts, covered = [], np.zeros(0, np.uint64)
     names = list(sources if sources is not None else BY_COUNTRY.get(country, [])) + (["gba"] if gba_fill else [])
     for s in names:
+        if not covers(s, aoi):
+            logger.info(f"cadaster {s}: the area is outside its coverage, not asked")
+            continue
         try:
             b = load(s, aoi, cache_dir)
         except Exception as exc:  # noqa: BLE001 -- one source failing leaves the others (and GBA) in place

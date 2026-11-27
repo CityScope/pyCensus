@@ -27,6 +27,7 @@ from pycensus.year_resolution import interpolate_frames, resolve_year
 from pycensus.census.countries.usa import api, constants, geography, utils
 from pycensus.census.countries.usa.acs5.schema import NATIVE_LEVELS, SCHEMA
 from pycensus.canonical import apply_canonical_names
+from pycensus.census.countries.usa.regions import only_county, region_units, state_boundaries
 
 # ACS5 vintages published by the Census API, and the earliest vintage each
 # level has reliable data for (block groups were suppressed/unreliable in
@@ -48,13 +49,13 @@ def _acs_code(code: str) -> str:
 
 
 def _fetch_missing(
-    missing_prefixed: List[str], level: str, state: str, year: int, api_key: Optional[str]
+    missing_prefixed: List[str], level: str, state: str, year: int, api_key: Optional[str], county: Optional[str] = None
 ) -> pd.DataFrame:
     """Fetch and compute just the logical columns in ``missing_prefixed``."""
     missing_defs = [SCHEMA.columns[SCHEMA.strip_prefix(c)] for c in missing_prefixed]
     codes = sorted({_acs_code(c) for col in missing_defs for c in col.codes})
 
-    raw = api.fetch_variables("acs/acs5", year, level, state, codes, api_key)
+    raw = api.fetch_variables("acs/acs5", year, level, state, codes, api_key, counties=[county] if county else None)
     exprs = [
         # 2026-11-15: a column whose codes are ALL null (a table the API does not publish at this level, e.g. B05002 nativity below the
         # tract) stays null; polars' sum_horizontal(ignore_nulls=True) returned 0 there, which showed as a real zero count on every block group
@@ -80,6 +81,7 @@ def _fetch_missing_resolved(
     state: str,
     resolution,
     api_key: Optional[str],
+    county: Optional[str] = None,
 ) -> pd.DataFrame:
     """Fetch missing columns per a :class:`~pycensus.year_resolution.YearResolution`.
 
@@ -89,10 +91,10 @@ def _fetch_missing_resolved(
     :func:`~pycensus.year_resolution.interpolate_frames`.
     """
     if resolution.mode == "exact":
-        return _fetch_missing(missing_prefixed, level, state, resolution.year, api_key)
+        return _fetch_missing(missing_prefixed, level, state, resolution.year, api_key, county)
 
-    low = _fetch_missing(missing_prefixed, level, state, resolution.year_low, api_key)
-    high = _fetch_missing(missing_prefixed, level, state, resolution.year_high, api_key)
+    low = _fetch_missing(missing_prefixed, level, state, resolution.year_low, api_key, county)
+    high = _fetch_missing(missing_prefixed, level, state, resolution.year_high, api_key, county)
     blended = interpolate_frames(
         pl.from_pandas(low),
         resolution.year_low,
@@ -164,18 +166,19 @@ def load(
 
     state_frames = []
     for state in states:
-        path = cache_store.region_path(cache_dir, "usa", level, utils.state_fips(state))
-        gdf = cache_store.load_region(
-            path,
-            id_col="GEOID",
-            columns=columns,
-            fetch_boundary=lambda state=state: geography.load_boundaries(level, state, geo_year),
-            fetch_columns=lambda missing, state=state: _fetch_missing_resolved(
-                missing, level, state, year_resolution, api_key
-            ),
-            use_cache=cache,
-        )
-        state_frames.append(gdf)
+        for code, county in region_units(aoi, state, level, geo_year, cache_dir):   # the counties touching the AOI (a state's own cache file if one exists)
+            path = cache_store.region_path(cache_dir, "usa", level, code)
+            gdf = cache_store.load_region(
+                path,
+                id_col="GEOID",
+                columns=columns,
+                fetch_boundary=lambda state=state, county=county: only_county(state_boundaries(level, state, geo_year), county, state),
+                fetch_columns=lambda missing, state=state, county=county: _fetch_missing_resolved(
+                    missing, level, state, year_resolution, api_key, county
+                ),
+                use_cache=cache,
+            )
+            state_frames.append(gdf)
 
     result = gpd.GeoDataFrame(pd.concat(state_frames, ignore_index=True), geometry="geometry", crs=4326)
 

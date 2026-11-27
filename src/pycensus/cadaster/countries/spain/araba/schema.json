@@ -1,21 +1,27 @@
 {
-  "source": "es_araba",
-  "country": "ESP",
-  "name": "Diputación Foral de Álava, Edificios de Araba/Álava (INSPIRE), one zip",
-  "url": "https://geo.araba.eus/deskargak/INSPIRE/BU/GML/25830/BU_25830_GML.zip",
-  "license": "Open data of the foral administration (INSPIRE)",
-  "coverage": "Álava / Araba (foral cadaster: not in the state Catastro)",
-  "api_key": false,
-  "use_map": {},
-  "fields": {
-    "building_id": "localId",
-    "footprint_m2": "area of the building footprint polygon",
-    "floors_above": "numberOfFloorsAboveGround (0 = unknown)",
-    "height_m": "value (uom m)",
-    "built_area_m2": "footprint x floors_above; footprint x height / 3 where the floors are missing",
-    "dwellings": "numberOfDwellings",
-    "units": "numberOfBuildingUnits",
-    "year_built": "date of construction (year)",
-    "use_class": "residential where numberOfDwellings > 0, else unknown (no use attribute)"
-  }
+ "source": "es_araba",
+ "country": "ESP",
+ "name": "Diputación Foral de Álava, Edificios de Araba/Álava (INSPIRE), one zip",
+ "url": "https://geo.araba.eus/deskargak/INSPIRE/BU/GML/25830/BU_25830_GML.zip",
+ "license": "Open data of the foral administration (INSPIRE)",
+ "coverage": "Álava / Araba (foral cadaster: not in the state Catastro)",
+ "api_key": false,
+ "use_map": {},
+ "fields": {
+  "building_id": "localId",
+  "footprint_m2": "area of the building footprint polygon",
+  "floors_above": "numberOfFloorsAboveGround (0 = unknown)",
+  "height_m": "value (uom m)",
+  "built_area_m2": "footprint x floors_above; footprint x height / 3 where the floors are missing",
+  "dwellings": "numberOfDwellings",
+  "units": "numberOfBuildingUnits",
+  "year_built": "date of construction (year)",
+  "use_class": "residential where numberOfDwellings > 0, else unknown (no use attribute)"
+ },
+ "coverage_bbox": [
+  -3.25,
+  42.4,
+  -2.1,
+  43.2
+ ]
 }

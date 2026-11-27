@@ -176,6 +176,18 @@ def _sections_raw_dir(data_dir: Optional[str] = None) -> Path:
     return raw_dir
 
 
+def municipalities_in(aoi: gpd.GeoDataFrame, data_dir: Optional[str] = None) -> gpd.GeoDataFrame:
+    """The Spanish municipalities an area touches: `GEOID` (5-digit INE code: the first two digits are the province code), `LAU_NAME` and
+    `province` (2-digit code), largest overlap with the area first."""
+    m = _load_spain_municipalities(data_dir)
+    a = aoi.to_crs(4326).union_all()
+    hit = m[m.intersects(a)].copy()
+    hit["province"] = hit["GEOID"].str[:2]
+    share = hit.geometry.intersection(a).to_crs(hit.estimate_utm_crs()).area if len(hit) else []
+    hit["_share"] = share
+    return hit.sort_values("_share", ascending=False).drop(columns="_share").reset_index(drop=True)[["GEOID", "LAU_NAME", "province"]]
+
+
 def _load_spain_sections_for_province(province_code: str, data_dir: Optional[str] = None) -> gpd.GeoDataFrame:
     """Return every real census-section boundary for one province, cached as GeoParquet.
 

@@ -1,18 +1,24 @@
 {
-  "source": "ca_toronto_massing",
-  "country": "CAN",
-  "name": "City of Toronto, 3D Massing (latest yearly shapefile, WGS84)",
-  "url": "https://open.toronto.ca/dataset/3d-massing/",
-  "license": "Open Government Licence - Toronto",
-  "coverage": "City of Toronto (the rest of the metro area: GBA)",
-  "api_key": false,
-  "fields": {
-    "building_id": "<year>_<row> (the shapefile has no building identifier; one row per massing part)",
-    "footprint_m2": "area of the massing polygon",
-    "height_m": "AVG_HEIGHT - MIN_HEIGHT (part height above its own base)",
-    "built_area_m2": "footprint x height / 3 (no floor counts in the source)",
-    "use_class": "unknown (no use attribute)",
-    "use_original": "BLDG_SRC (how the footprint was captured)"
-  },
-  "use_map": {}
+ "source": "ca_toronto_massing",
+ "country": "CAN",
+ "name": "City of Toronto, 3D Massing (latest yearly shapefile, WGS84)",
+ "url": "https://open.toronto.ca/dataset/3d-massing/",
+ "license": "Open Government Licence - Toronto",
+ "coverage": "City of Toronto (the rest of the metro area: GBA)",
+ "api_key": false,
+ "fields": {
+  "building_id": "<year>_<row> (the shapefile has no building identifier; one row per massing part)",
+  "footprint_m2": "area of the massing polygon",
+  "height_m": "AVG_HEIGHT - MIN_HEIGHT (part height above its own base)",
+  "built_area_m2": "footprint x height / 3 (no floor counts in the source)",
+  "use_class": "unknown (no use attribute)",
+  "use_original": "BLDG_SRC (how the footprint was captured)"
+ },
+ "use_map": {},
+ "coverage_bbox": [
+  -79.7,
+  43.55,
+  -79.1,
+  43.95
+ ]
 }

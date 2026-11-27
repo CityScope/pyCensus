@@ -1,20 +1,26 @@
 {
-  "source": "es_gipuzkoa",
-  "country": "ESP",
-  "name": "Diputación Foral de Gipuzkoa (b5m), INSPIRE Buildings (whole province, one GML)",
-  "url": "https://b5m.gipuzkoa.eus/inspire/download/GML/ES.GFA.BU.zip",
-  "license": "Open (Diputación Foral de Gipuzkoa, b5m)",
-  "coverage": "Gipuzkoa (foral cadaster: not in the state Catastro)",
-  "api_key": false,
-  "fields": {
-    "building_id": "gml_id",
-    "footprint_m2": "area of the building footprint polygon",
-    "floors_above": "numberOfFloorsAboveGround",
-    "floors_below": "numberOfFloorsBelowGround",
-    "height_m": "value (uom m)",
-    "built_area_m2": "footprint x floors_above; footprint x height / 3 where the floors are missing",
-    "dwellings": "numberOfDwellings",
-    "use_class": "residential where numberOfDwellings > 0, else unknown (no use attribute)"
-  },
-  "use_map": {}
+ "source": "es_gipuzkoa",
+ "country": "ESP",
+ "name": "Diputación Foral de Gipuzkoa (b5m), INSPIRE Buildings (whole province, one GML)",
+ "url": "https://b5m.gipuzkoa.eus/inspire/download/GML/ES.GFA.BU.zip",
+ "license": "Open (Diputación Foral de Gipuzkoa, b5m)",
+ "coverage": "Gipuzkoa (foral cadaster: not in the state Catastro)",
+ "api_key": false,
+ "fields": {
+  "building_id": "gml_id",
+  "footprint_m2": "area of the building footprint polygon",
+  "floors_above": "numberOfFloorsAboveGround",
+  "floors_below": "numberOfFloorsBelowGround",
+  "height_m": "value (uom m)",
+  "built_area_m2": "footprint x floors_above; footprint x height / 3 where the floors are missing",
+  "dwellings": "numberOfDwellings",
+  "use_class": "residential where numberOfDwellings > 0, else unknown (no use attribute)"
+ },
+ "use_map": {},
+ "coverage_bbox": [
+  -2.45,
+  42.85,
+  -1.7,
+  43.4
+ ]
 }

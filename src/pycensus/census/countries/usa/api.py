@@ -40,6 +40,7 @@ def fetch_variables(
     state: str,
     variables: List[str],
     api_key: Optional[str] = None,
+    counties: Optional[List[str]] = None,
 ) -> pl.DataFrame:
     """Fetch raw variable codes for one state/level/year from the Census API.
 
@@ -53,6 +54,7 @@ def fetch_variables(
             the Census API's own limit).
         api_key: Census API key. Requests work without one at low volume,
             but are rate-limited more aggressively.
+        counties: 3-digit county FIPS codes to request instead of every county of the state (levels below county).
 
     Returns:
         Polars DataFrame with a ``GEOID`` column plus one column per
@@ -61,7 +63,7 @@ def fetch_variables(
     hierarchy = constants.GEO_HIERARCHIES.get(level, ["state", "county", "tract"])
     fips = utils.state_fips(state)
 
-    geo_filter = {h: f"{h}:{fips}" if h == "state" else f"{h}:*" for h in hierarchy[:-1]}
+    geo_filter = {h: f"{h}:{fips}" if h == "state" else f"{h}:{','.join(counties)}" if (h == "county" and counties) else f"{h}:*" for h in hierarchy[:-1]}
 
     rows = []
     for batch_start in range(0, len(variables), 50):

@@ -23,12 +23,13 @@ from pycensus.api_keys import resolve_api_key
 from pycensus.census.countries.usa import api, constants, geography, utils
 from pycensus.census.countries.usa.dhc.schema import NATIVE_LEVELS, SCHEMA
 from pycensus.canonical import apply_canonical_names
+from pycensus.census.countries.usa.regions import only_county, region_units, state_boundaries
 
 
 def _fetch_missing(
-    missing_prefixed: List[str], level: str, state: str, year: int, api_key: Optional[str]
+    missing_prefixed: List[str], level: str, state: str, year: int, api_key: Optional[str], county: Optional[str] = None
 ) -> pd.DataFrame:
-    """Fetch and compute just the logical columns in ``missing_prefixed``.
+    """Fetch and compute just the logical columns in ``missing_prefixed`` (for one county when `county` is given).
 
     Most columns are a straight sum of one or more raw DHC codes. A few
     (e.g. ``nonwhitePopulation``) have no codes of their own and are
@@ -48,7 +49,7 @@ def _fetch_missing(
 
     codes = sorted({c for col in all_direct_defs for c in col.codes})
 
-    raw = api.fetch_variables("dec/dhc", year, level, state, codes, api_key)
+    raw = api.fetch_variables("dec/dhc", year, level, state, codes, api_key, counties=[county] if county else None)
     exprs = [
         # 2026-11-15: all codes null (a table not published at this level) -> null, not the 0 that sum_horizontal(ignore_nulls=True) gives
         pl.when(pl.all_horizontal([pl.col(c).cast(pl.Float64, strict=False).is_null() for c in col.codes]))
@@ -125,16 +126,17 @@ def load(
 
     state_frames = []
     for state in states:
-        path = cache_store.region_path(cache_dir, "usa", level, utils.state_fips(state))
-        gdf = cache_store.load_region(
-            path,
-            id_col="GEOID",
-            columns=columns,
-            fetch_boundary=lambda state=state: geography.load_boundaries(level, state, geo_year),
-            fetch_columns=lambda missing, state=state: _fetch_missing(missing, level, state, year, api_key),
-            use_cache=cache,
-        )
-        state_frames.append(gdf)
+        for code, county in region_units(aoi, state, level, geo_year, cache_dir):   # the counties touching the AOI (a state's own cache file if one exists)
+            path = cache_store.region_path(cache_dir, "usa", level, code)
+            gdf = cache_store.load_region(
+                path,
+                id_col="GEOID",
+                columns=columns,
+                fetch_boundary=lambda state=state, county=county: only_county(state_boundaries(level, state, geo_year), county, state),
+                fetch_columns=lambda missing, state=state, county=county: _fetch_missing(missing, level, state, year, api_key, county),
+                use_cache=cache,
+            )
+            state_frames.append(gdf)
 
     result = gpd.GeoDataFrame(pd.concat(state_frames, ignore_index=True), geometry="geometry", crs=4326)
 
